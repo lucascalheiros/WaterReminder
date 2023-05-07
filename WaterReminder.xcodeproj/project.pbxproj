@@ -10,7 +10,6 @@
 		17AE682C2A08590400571ED8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE682B2A08590400571ED8 /* AppDelegate.swift */; };
 		17AE682E2A08590400571ED8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE682D2A08590400571ED8 /* SceneDelegate.swift */; };
 		17AE68302A08590400571ED8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE682F2A08590400571ED8 /* ViewController.swift */; };
-		17AE68332A08590400571ED8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17AE68312A08590400571ED8 /* Main.storyboard */; };
 		17AE68352A08590500571ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17AE68342A08590500571ED8 /* Assets.xcassets */; };
 		17AE68382A08590500571ED8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17AE68362A08590500571ED8 /* LaunchScreen.storyboard */; };
 		17AE68432A08590500571ED8 /* WaterReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE68422A08590500571ED8 /* WaterReminderTests.swift */; };
@@ -40,7 +39,6 @@
 		17AE682B2A08590400571ED8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17AE682D2A08590400571ED8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		17AE682F2A08590400571ED8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		17AE68322A08590400571ED8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		17AE68342A08590500571ED8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17AE68372A08590500571ED8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17AE68392A08590500571ED8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				17AE682B2A08590400571ED8 /* AppDelegate.swift */,
 				17AE682D2A08590400571ED8 /* SceneDelegate.swift */,
 				17AE682F2A08590400571ED8 /* ViewController.swift */,
-				17AE68312A08590400571ED8 /* Main.storyboard */,
 				17AE68342A08590500571ED8 /* Assets.xcassets */,
 				17AE68362A08590500571ED8 /* LaunchScreen.storyboard */,
 				17AE68392A08590500571ED8 /* Info.plist */,
@@ -233,7 +230,6 @@
 			files = (
 				17AE68382A08590500571ED8 /* LaunchScreen.storyboard in Resources */,
 				17AE68352A08590500571ED8 /* Assets.xcassets in Resources */,
-				17AE68332A08590400571ED8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +293,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		17AE68312A08590400571ED8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				17AE68322A08590400571ED8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		17AE68362A08590500571ED8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -441,7 +429,6 @@
 				INFOPLIST_FILE = WaterReminder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,7 +455,6 @@
 				INFOPLIST_FILE = WaterReminder/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
