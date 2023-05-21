@@ -8,26 +8,26 @@
 import Foundation
 
 class WaterSource: Hashable {
-    
+
     let volume: Int
     let order: Int
     let waterSourceType: WaterSourceType
     let isPinned: Bool
-    
+
     internal init(volume: Int = Int.random(in: 150...300)) {
         self.volume = volume
         self.order = Int.max
-        self.waterSourceType = .Water
+        self.waterSourceType = .water
         self.isPinned = false
     }
-    
+
     internal init(volume: Int, order: Int = Int.max, waterSourceType: WaterSourceType, isPinned: Bool = false) {
         self.volume = volume
         self.order = order
         self.waterSourceType = waterSourceType
         self.isPinned = isPinned
     }
-    
+
     func copy(volume: Int? = nil, order: Int? = nil, waterSourceType: WaterSourceType? = nil, isPinned: Bool? = nil) -> WaterSource {
         return WaterSource(
             volume: volume ?? self.volume,
@@ -36,7 +36,7 @@ class WaterSource: Hashable {
             isPinned: isPinned ?? self.isPinned
         )
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(waterSourceType)
         hasher.combine(volume)
@@ -50,11 +50,11 @@ class WaterSource: Hashable {
         lhs.order == rhs.order &&
         lhs.volume == rhs.volume
     }
-    
+
 }
 
 extension WaterSource {
     static func getSample(number: Int) -> [WaterSource] {
-        return (0...number).map({value in WaterSource()})
+        return (0...number).map({_ in WaterSource()})
     }
 }

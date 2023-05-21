@@ -8,20 +8,19 @@
 import Foundation
 import UIKit
 
-
 enum Theme: String {
-    
+
     case LightBlue
     case LightTeal
-    
+
     var accentColor: UIColor {
         switch self {
         case .LightBlue, .LightTeal: return .darkGray
         }
     }
-    
+
     var mainColor: UIColor? {
         UIColor(named: rawValue)
     }
-    
+
 }

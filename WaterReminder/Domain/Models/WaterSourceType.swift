@@ -8,11 +8,11 @@
 import Foundation
 
 enum WaterSourceType: String {
-    
-    case Water
-    case Coffee
-    case Juice
-    case Tea
-    case Soda
-    
+
+    case water
+    case coffee
+    case juice
+    case tea
+    case soda
+
 }

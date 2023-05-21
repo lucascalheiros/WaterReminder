@@ -9,17 +9,17 @@ import Foundation
 import RxSwift
 
 class WaterSourceRepositoryMock: WaterSourceRepository {
-    
+
     private var waterSourceList = [
-        WaterSource(volume: 250, waterSourceType: .Water),
-        WaterSource(volume: 500, waterSourceType: .Water),
-        WaterSource(volume: 500, waterSourceType: .Coffee),
+        WaterSource(volume: 250, waterSourceType: .water),
+        WaterSource(volume: 500, waterSourceType: .water),
+        WaterSource(volume: 500, waterSourceType: .coffee)
     ]
-    
+
     func getWaterSourceList() async -> [WaterSource] {
         return self.waterSourceList
     }
-    
+
     func updateWaterSourcePinState(waterSource: WaterSource, isPinned: Bool) async {
         self.waterSourceList.removeAll(where: {
             $0.volume == waterSource.volume && $0.waterSourceType == waterSource.waterSourceType
@@ -28,5 +28,5 @@ class WaterSourceRepositoryMock: WaterSourceRepository {
         self.waterSourceList.append(waterSource.copy(order: isPinned ? order : Int.max, isPinned: isPinned))
         self.waterSourceList.sort(by: { $0.order < $1.order })
     }
-    
+
 }
