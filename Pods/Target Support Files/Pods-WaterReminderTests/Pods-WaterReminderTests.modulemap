@@ -1,0 +1,6 @@
+framework module Pods_WaterReminderTests {
+  umbrella header "Pods-WaterReminderTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
