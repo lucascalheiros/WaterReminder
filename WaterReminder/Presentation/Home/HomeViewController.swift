@@ -24,10 +24,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-    
-    lazy var waterContainerList: [WaterSource] = []
-    private let itemsPerRow: CGFloat = 2
-    
+        
     lazy var viewModel = HomeViewModel()
     let disposeBag = DisposeBag()
     
