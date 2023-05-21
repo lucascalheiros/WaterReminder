@@ -8,8 +8,8 @@
 import Foundation
 
 struct DailyConsumption {
-    
+
     let expectedVolume: Int
     let setDate: Date
-    
+
 }

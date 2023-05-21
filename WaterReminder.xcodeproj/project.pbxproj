@@ -358,6 +358,7 @@
 				17AE68252A08590400571ED8 /* Frameworks */,
 				17AE68262A08590400571ED8 /* Resources */,
 				8482B4D2CCDB1AC26DD55912 /* [CP] Embed Pods Frameworks */,
+				17C492A02A1ACEF800ECBAF6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -493,6 +494,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WaterReminder-WaterReminderUITests/Pods-WaterReminder-WaterReminderUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		17C492A02A1ACEF800ECBAF6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		58834CC7309D62AC9C048DE9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

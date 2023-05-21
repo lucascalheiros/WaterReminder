@@ -8,17 +8,16 @@
 import UIKit
 import RxSwift
 
-
 class WaterPercentageHeaderView: UICollectionViewCell {
-    
+
     var disposeBag = DisposeBag()
-    
+
     private lazy var circleView: CircularProgressView = {
         let circleView = CircularProgressView()
         circleView.translatesAutoresizingMaskIntoConstraints = false
         return circleView
     }()
-    
+
     private lazy var percentageValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -27,7 +26,7 @@ class WaterPercentageHeaderView: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
-    
+
     private lazy var percentageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -37,8 +36,7 @@ class WaterPercentageHeaderView: UICollectionViewCell {
         label.text = "%"
         return label
     }()
-    
-    
+
     private lazy var secondaryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +45,7 @@ class WaterPercentageHeaderView: UICollectionViewCell {
         label.textAlignment = .center
         return label
     }()
-    
+
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,8 +54,7 @@ class WaterPercentageHeaderView: UICollectionViewCell {
         stackView.distribution = .fill
         return stackView
     }()
-    
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(circleView)
@@ -74,30 +71,29 @@ class WaterPercentageHeaderView: UICollectionViewCell {
             percentageLabel.leadingAnchor.constraint(equalTo: percentageValueLabel.trailingAnchor),
             percentageLabel.bottomAnchor.constraint(equalTo: percentageValueLabel.bottomAnchor, constant: -10),
             labelStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            labelStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-
+            labelStackView.centerYAnchor.constraint(equalTo: centerYAnchor)
 
         ])
-        
+
         layer.cornerRadius = 8
         backgroundColor = .white.withAlphaComponent(0.5)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func prepareForReuse() {
          super.prepareForReuse()
 
          disposeBag = DisposeBag()
      }
-    
+
     func setPercentage(percentage: CGFloat, animationDuration: Double = 0.0) {
         percentageValueLabel.text = String(Int(percentage * 100))
         circleView.setPercentage(percentage: percentage, animationDuration: animationDuration)
     }
-    
+
     func setSecondaryText(text: String) {
         secondaryLabel.text = text
     }
