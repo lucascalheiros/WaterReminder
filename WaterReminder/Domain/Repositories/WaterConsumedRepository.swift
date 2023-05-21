@@ -9,8 +9,10 @@ import Foundation
 import RxSwift
 
 protocol WaterConsumedRepository {
-
+    
     func getWaterConsumedList() async -> [WaterConsumed]
     func registerWaterConsumption(waterSource: WaterSource) async
-
+    
 }
+
+

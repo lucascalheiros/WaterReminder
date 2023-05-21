@@ -8,55 +8,57 @@
 import UIKit
 
 class CircularProgressView: UIView {
-
+    
     private var percentage: CGFloat = 0.0 {
         didSet {
             createCircularPath()
         }
     }
-
+    
     private let mFilledView: UIView = UIView()
-    private var mHeightConstraint: NSLayoutConstraint?
-
+    private var mHeightConstraint: NSLayoutConstraint? = nil
+    
     var emptyColor: UIColor = .darkGray {
         didSet {
             backgroundColor = emptyColor
         }
     }
-
+    
     var filledColor: UIColor = .blue {
         didSet {
             mFilledView.backgroundColor = filledColor
         }
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createCircularPath()
 //        setupView()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         createCircularPath()
 
 //        setupView()
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
 
         createCircularPath()
 //        layer.cornerRadius = min(bounds.width, bounds.height) / 2
     }
-
+    
+    
     func setPercentage(percentage: CGFloat, animationDuration: Double = 0.0) {
         self.percentage = percentage
         UIView.animate(withDuration: animationDuration) {
             self.layoutIfNeeded()
         }
     }
-
+    
+    
     private var circleLayer = CAShapeLayer()
     private var progressLayer = CAShapeLayer()
     private var startPoint = CGFloat(-Double.pi / 2)
@@ -92,7 +94,7 @@ class CircularProgressView: UIView {
             // added progressLayer to layer
             layer.addSublayer(progressLayer)
         }
-
+    
     func progressAnimation(duration: TimeInterval) {
             // created circularProgressAnimation with keyPath
             let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")

@@ -7,24 +7,26 @@
 
 import UIKit
 
-class WaterPercentageView: CardStackView {
 
+class WaterPercentageView: CardStackView {
+    
     lazy var circleView: CircularProgressView = {
         let circleView = CircularProgressView()
         circleView.translatesAutoresizingMaskIntoConstraints = false
         return circleView
     }()
-
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
-
+    
     required init(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
-
+    
     override func setup() {
         super.setup()
         axis = .vertical
@@ -41,10 +43,10 @@ class WaterPercentageView: CardStackView {
         addArrangedSubview(circleView)
         NSLayoutConstraint.activate([
             circleView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 2/3),
-            circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor)
+            circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor),
         ])
     }
-
+    
     func setPercentage(percentage: CGFloat, animationDuration: Double = 0.0) {
         circleView.setPercentage(percentage: percentage, animationDuration: animationDuration)
     }

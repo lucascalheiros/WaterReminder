@@ -9,8 +9,8 @@ import Foundation
 import RxSwift
 
 protocol WaterSourceRepository {
-
+    
     func getWaterSourceList() async -> [WaterSource]
     func updateWaterSourcePinState(waterSource: WaterSource, isPinned: Bool) async
-
+    
 }

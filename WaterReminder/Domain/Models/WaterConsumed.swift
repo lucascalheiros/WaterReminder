@@ -8,9 +8,9 @@
 import Foundation
 
 struct WaterConsumed {
-
+    
     let volume: Int
     let waterSourceType: WaterSourceType
     let consumptionTime: Date
-
+    
 }

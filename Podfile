@@ -4,13 +4,11 @@
 target 'WaterReminder' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  inhibit_all_warnings!
 
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
   pod 'Swinject'
-  pod 'RealmSwift', '~>10'
-  
+
   target 'WaterReminderTests' do
     inherit! :search_paths
     # Pods for testing
