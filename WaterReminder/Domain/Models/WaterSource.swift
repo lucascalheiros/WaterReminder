@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WaterSource {
+class WaterSource: Hashable {
     
     let volume: Int
     let order: Int
@@ -37,8 +37,21 @@ struct WaterSource {
         )
     }
     
-}
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(waterSourceType)
+        hasher.combine(volume)
+        hasher.combine(order)
+        hasher.combine(lastTimeUsed)
+    }
 
+    static func == (lhs: WaterSource, rhs: WaterSource) -> Bool {
+        return lhs.waterSourceType == rhs.waterSourceType &&
+        lhs.lastTimeUsed == rhs.lastTimeUsed &&
+        lhs.order == rhs.order &&
+        lhs.volume == rhs.volume
+    }
+    
+}
 
 extension WaterSource {
     static func getSample(number: Int) -> [WaterSource] {

@@ -13,6 +13,7 @@ class WaterSourceRepositoryMock: WaterSourceRepository {
     private var waterSourceList = [
         WaterSource(volume: 250, waterSourceType: .Water, lastTimeUsed: Date()),
         WaterSource(volume: 500, waterSourceType: .Water, lastTimeUsed: Date()),
+        WaterSource(volume: 500, waterSourceType: .Coffee, lastTimeUsed: Date()),
     ]
     
     func getWaterSourceList() -> Single<[WaterSource]> {

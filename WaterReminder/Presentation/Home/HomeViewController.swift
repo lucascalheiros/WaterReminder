@@ -92,7 +92,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             ) as! WaterSourceListHorizontalCollectionView
             viewModel.waterSourceList.subscribe(onNext: {
                 cell.waterContainerList = $0
-                cell.waterContainerTableView.reloadData()
+                cell.applySnapshot()
             })
             
             cell.clickListener = { waterContainer in

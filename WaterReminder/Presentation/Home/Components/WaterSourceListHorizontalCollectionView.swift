@@ -8,8 +8,12 @@
 import UIKit
 import RxSwift
 
-class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+enum Section {
+    case main
+}
 
+class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectionViewDelegateFlowLayout {
+    
     lazy var waterContainerTableView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -19,24 +23,27 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
         )
         collectionView.backgroundColor = .clear
         collectionView.register(WaterContainerCellView.self, forCellWithReuseIdentifier: "WaterContainerCellView")
-        collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
-
+    lazy var dataSource: DataSource = makeDatasource()
+    
     var waterContainerList: [WaterSource] = []
     var clickListener: (WaterSource) -> Void = {_ in }
-
+    
     
     private let itemsPerRow: CGFloat = 2
     
     private let sectionInsets = UIEdgeInsets.set(inset: 16)
-        
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(waterContainerTableView)
+        
+        waterContainerTableView.dataSource = dataSource
+        applySnapshot()
         
         NSLayoutConstraint.activate([
             waterContainerTableView.topAnchor.constraint(equalTo: topAnchor),
@@ -50,27 +57,17 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
         fatalError("init(coder:) has not been implemented")
     }
     
+    func applySnapshot(animatingDifferences: Bool = true) {
+      var snapshot = Snapshot()
+      snapshot.appendSections([.main])
+      snapshot.appendItems(waterContainerList)
+      dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return waterContainerList.count
-    }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "WaterContainerCellView",
-            for: indexPath
-        ) as! WaterContainerCellView
-        let waterContainer = waterContainerList[indexPath.row]
-        cell.bindData(waterContainer: waterContainer)
-        cell.bindListener {
-            self.clickListener(waterContainer)
-        }
-        return cell
-    }
-
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -96,5 +93,28 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
     ) -> CGFloat {
         return sectionInsets.bottom
     }
+    
+    func makeDatasource() -> DataSource {
+        let dataSource = DataSource(
+            collectionView: self.waterContainerTableView,
+            cellProvider: { (collectionView, indexPath, waterSource) ->
+                UICollectionViewCell? in
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: "WaterContainerCellView",
+                    for: indexPath
+                ) as! WaterContainerCellView
+                cell.bindData(waterContainer: waterSource)
+                cell.bindListener {
+                    self.clickListener(waterSource)
+                }
+                return cell
+            })
+        return dataSource
+    }
+    
 }
+
+typealias DataSource = UICollectionViewDiffableDataSource<Section, WaterSource>
+typealias Snapshot = NSDiffableDataSourceSnapshot<Section, WaterSource>
+
 
