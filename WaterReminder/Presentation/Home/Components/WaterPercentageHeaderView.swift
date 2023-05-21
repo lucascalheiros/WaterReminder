@@ -69,7 +69,10 @@ class WaterPercentageHeaderView: UICollectionViewCell {
             circleView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 2/3),
             circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor),
             percentageLabel.leadingAnchor.constraint(equalTo: percentageValueLabel.trailingAnchor),
-            percentageLabel.bottomAnchor.constraint(equalTo: percentageValueLabel.bottomAnchor, constant: -10),
+            percentageLabel.bottomAnchor.constraint(
+                equalTo: percentageValueLabel.bottomAnchor,
+                constant: -10
+            ),
             labelStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
             labelStackView.centerYAnchor.constraint(equalTo: centerYAnchor)
 
