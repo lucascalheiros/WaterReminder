@@ -11,24 +11,22 @@ import RxSwift
 class WaterSourceRepositoryMock: WaterSourceRepository {
     
     private var waterSourceList = [
-        WaterSource(volume: 250, waterSourceType: .Water, lastTimeUsed: Date()),
-        WaterSource(volume: 500, waterSourceType: .Water, lastTimeUsed: Date()),
-        WaterSource(volume: 500, waterSourceType: .Coffee, lastTimeUsed: Date()),
+        WaterSource(volume: 250, waterSourceType: .Water),
+        WaterSource(volume: 500, waterSourceType: .Water),
+        WaterSource(volume: 500, waterSourceType: .Coffee),
     ]
     
-    func getWaterSourceList() -> Single<[WaterSource]> {
-        return Single.create(subscribe: { single in
-            single(.success(self.waterSourceList))
-            return Disposables.create()
-        })
+    func getWaterSourceList() async -> [WaterSource] {
+        return self.waterSourceList
     }
     
-    func updateWaterSourceLastUsedTime(waterSource: WaterSource) {
-        waterSourceList.removeAll(where: {
+    func updateWaterSourcePinState(waterSource: WaterSource, isPinned: Bool) async {
+        self.waterSourceList.removeAll(where: {
             $0.volume == waterSource.volume && $0.waterSourceType == waterSource.waterSourceType
         })
-        waterSourceList.append(waterSource.copy(lastTimeUsed: Date()))
-        waterSourceList.sort(by: { $0.order == $1.order ? ($0.lastTimeUsed ?? Date.distantPast) > ($1.lastTimeUsed ?? Date.distantPast) : $0.order < $1.order })
+        let order = (self.waterSourceList.filter { $0.order != Int.max }.map { $0.order }.max() ?? 0) + 1
+        self.waterSourceList.append(waterSource.copy(order: isPinned ? order : Int.max, isPinned: isPinned))
+        self.waterSourceList.sort(by: { $0.order < $1.order })
     }
     
 }

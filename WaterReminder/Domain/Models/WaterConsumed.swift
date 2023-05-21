@@ -11,6 +11,6 @@ struct WaterConsumed {
     
     let volume: Int
     let waterSourceType: WaterSourceType
-    let consumptiontime: Date
+    let consumptionTime: Date
     
 }

@@ -10,7 +10,7 @@ import RxSwift
 
 protocol WaterSourceRepository {
     
-    func getWaterSourceList() -> Single<[WaterSource]>
-    func updateWaterSourceLastUsedTime(waterSource: WaterSource)
+    func getWaterSourceList() async -> [WaterSource]
+    func updateWaterSourcePinState(waterSource: WaterSource, isPinned: Bool) async
     
 }

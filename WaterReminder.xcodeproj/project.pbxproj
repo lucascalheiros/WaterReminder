@@ -26,13 +26,14 @@
 		17AE68662A08927A00571ED8 /* DailyConsumption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE68652A08927A00571ED8 /* DailyConsumption.swift */; };
 		17C492992A192B6300ECBAF6 /* WaterConsumedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C492982A192B6300ECBAF6 /* WaterConsumedRepository.swift */; };
 		17C4929B2A192BCE00ECBAF6 /* WaterConsumedRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4929A2A192BCE00ECBAF6 /* WaterConsumedRepositoryMock.swift */; };
+		17C4929E2A1ABC8100ECBAF6 /* DailyConsumptionRespositoryMockImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4929D2A1ABC8100ECBAF6 /* DailyConsumptionRespositoryMockImpl.swift */; };
 		17E936192A09D60C00AAC4E5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E936182A09D60C00AAC4E5 /* Utils.swift */; };
 		17E9361B2A0D982700AAC4E5 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9361A2A0D982700AAC4E5 /* CircularProgressView.swift */; };
 		17E9361D2A0D9E2E00AAC4E5 /* CardStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9361C2A0D9E2E00AAC4E5 /* CardStackView.swift */; };
 		17E9361F2A0F19D500AAC4E5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9361E2A0F19D500AAC4E5 /* HomeViewModel.swift */; };
 		17E936232A11650300AAC4E5 /* WaterPercentageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E936222A11650300AAC4E5 /* WaterPercentageView.swift */; };
 		17E936252A116C9C00AAC4E5 /* WaterPercentageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E936242A116C9C00AAC4E5 /* WaterPercentageHeaderView.swift */; };
-		17E936272A117D1C00AAC4E5 /* WaterContainerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E936262A117D1C00AAC4E5 /* WaterContainerCellView.swift */; };
+		17E936272A117D1C00AAC4E5 /* WaterSourceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E936262A117D1C00AAC4E5 /* WaterSourceCellView.swift */; };
 		17E936292A118B5800AAC4E5 /* WaterSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E936282A118B5800AAC4E5 /* WaterSourceType.swift */; };
 		17E9362B2A118ECF00AAC4E5 /* WaterSourceListHorizontalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9362A2A118ECF00AAC4E5 /* WaterSourceListHorizontalCollectionView.swift */; };
 		17E9362D2A11B3F400AAC4E5 /* UIEdgeInsetsExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9362C2A11B3F400AAC4E5 /* UIEdgeInsetsExt.swift */; };
@@ -86,13 +87,14 @@
 		17AE68652A08927A00571ED8 /* DailyConsumption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyConsumption.swift; sourceTree = "<group>"; };
 		17C492982A192B6300ECBAF6 /* WaterConsumedRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterConsumedRepository.swift; sourceTree = "<group>"; };
 		17C4929A2A192BCE00ECBAF6 /* WaterConsumedRepositoryMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterConsumedRepositoryMock.swift; sourceTree = "<group>"; };
+		17C4929D2A1ABC8100ECBAF6 /* DailyConsumptionRespositoryMockImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyConsumptionRespositoryMockImpl.swift; sourceTree = "<group>"; };
 		17E936182A09D60C00AAC4E5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		17E9361A2A0D982700AAC4E5 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		17E9361C2A0D9E2E00AAC4E5 /* CardStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackView.swift; sourceTree = "<group>"; };
 		17E9361E2A0F19D500AAC4E5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		17E936222A11650300AAC4E5 /* WaterPercentageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterPercentageView.swift; sourceTree = "<group>"; };
 		17E936242A116C9C00AAC4E5 /* WaterPercentageHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPercentageHeaderView.swift; sourceTree = "<group>"; };
-		17E936262A117D1C00AAC4E5 /* WaterContainerCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterContainerCellView.swift; sourceTree = "<group>"; };
+		17E936262A117D1C00AAC4E5 /* WaterSourceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSourceCellView.swift; sourceTree = "<group>"; };
 		17E936282A118B5800AAC4E5 /* WaterSourceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSourceType.swift; sourceTree = "<group>"; };
 		17E9362A2A118ECF00AAC4E5 /* WaterSourceListHorizontalCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterSourceListHorizontalCollectionView.swift; sourceTree = "<group>"; };
 		17E9362C2A11B3F400AAC4E5 /* UIEdgeInsetsExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExt.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				173426E32A146879007D475B /* WaterSourceRepositoryMock.swift */,
 				17C4929A2A192BCE00ECBAF6 /* WaterConsumedRepositoryMock.swift */,
+				17C4929D2A1ABC8100ECBAF6 /* DailyConsumptionRespositoryMockImpl.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -262,6 +265,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		17C4929C2A1AAB1800ECBAF6 /* WaterSourceList */ = {
+			isa = PBXGroup;
+			children = (
+				17E9362A2A118ECF00AAC4E5 /* WaterSourceListHorizontalCollectionView.swift */,
+				17E936262A117D1C00AAC4E5 /* WaterSourceCellView.swift */,
+			);
+			path = WaterSourceList;
+			sourceTree = "<group>";
+		};
 		17E936202A11648800AAC4E5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,10 +300,9 @@
 		17E936302A11B80400AAC4E5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				17E9362A2A118ECF00AAC4E5 /* WaterSourceListHorizontalCollectionView.swift */,
+				17C4929C2A1AAB1800ECBAF6 /* WaterSourceList */,
 				17E936222A11650300AAC4E5 /* WaterPercentageView.swift */,
 				17E936242A116C9C00AAC4E5 /* WaterPercentageHeaderView.swift */,
-				17E936262A117D1C00AAC4E5 /* WaterContainerCellView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -592,12 +603,13 @@
 				17E936192A09D60C00AAC4E5 /* Utils.swift in Sources */,
 				17C492992A192B6300ECBAF6 /* WaterConsumedRepository.swift in Sources */,
 				17E936392A11C0B800AAC4E5 /* StatisticsViewController.swift in Sources */,
-				17E936272A117D1C00AAC4E5 /* WaterContainerCellView.swift in Sources */,
+				17E936272A117D1C00AAC4E5 /* WaterSourceCellView.swift in Sources */,
 				17AE68642A08883900571ED8 /* WaterSource.swift in Sources */,
 				17E9362D2A11B3F400AAC4E5 /* UIEdgeInsetsExt.swift in Sources */,
 				17AE682C2A08590400571ED8 /* AppDelegate.swift in Sources */,
 				17E936232A11650300AAC4E5 /* WaterPercentageView.swift in Sources */,
 				17AE682E2A08590400571ED8 /* SceneDelegate.swift in Sources */,
+				17C4929E2A1ABC8100ECBAF6 /* DailyConsumptionRespositoryMockImpl.swift in Sources */,
 				173426E62A146B3A007D475B /* WaterConsumed.swift in Sources */,
 				17E936252A116C9C00AAC4E5 /* WaterPercentageHeaderView.swift in Sources */,
 				17E9362B2A118ECF00AAC4E5 /* WaterSourceListHorizontalCollectionView.swift in Sources */,

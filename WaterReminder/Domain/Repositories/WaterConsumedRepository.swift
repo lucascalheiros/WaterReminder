@@ -10,7 +10,8 @@ import RxSwift
 
 protocol WaterConsumedRepository {
     
-    func getWaterConsumedList() -> Single<[WaterConsumed]>
+    func getWaterConsumedList() async -> [WaterConsumed]
+    func registerWaterConsumption(waterSource: WaterSource) async
     
 }
 

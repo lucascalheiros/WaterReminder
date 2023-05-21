@@ -9,7 +9,7 @@ import Foundation
 
 struct DailyConsumption {
     
-    var expectedVolume: Int
-    var date: Date
+    let expectedVolume: Int
+    let setDate: Date
     
 }

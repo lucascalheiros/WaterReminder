@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+protocol DailyConsumptionRepository {
+    
+    func getDailyConsumptionList() async -> [DailyConsumption]
+    func setDailyConsumption(expectedConsumption: Int) async
+    func lastDailyConsumption() async -> DailyConsumption?
+    
+}

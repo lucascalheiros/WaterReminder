@@ -18,7 +18,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         )
         collectionView.backgroundColor = .clear
         collectionView.register(WaterPercentageHeaderView.self, forCellWithReuseIdentifier: "WaterPercentageHeaderView")
-        collectionView.register(WaterContainerCellView.self, forCellWithReuseIdentifier: "WaterContainerCellView")
         collectionView.register(WaterSourceListHorizontalCollectionView.self, forCellWithReuseIdentifier: "WaterSourceListHorizontalCollectionView")
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -49,7 +48,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -57,8 +56,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         case 0:
             return 1
         case 1:
-            return 0
-        case 2:
             return 1
         default:
             fatalError("init(coder:) has not been implemented")
@@ -73,19 +70,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
                 for: indexPath
             ) as! WaterPercentageHeaderView
 
-            return cell.bind(percentageObservable: viewModel.consumedPercentage, secondaryText: viewModel.consumedQuantityText)
-        case 1:
-            let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "WaterContainerCellView",
-                for: indexPath
-            ) as! WaterContainerCellView
-            let waterContainer = waterContainerList[indexPath.row]
-            cell.bindData(waterContainer: waterContainer)
-            cell.bindListener {
-                self.viewModel.addWaterVolume(waterContainer: waterContainer)
-            }
+            viewModel.consumedPercentage.subscribe(onNext: { percentage in
+                cell.setPercentage(percentage: percentage)
+            }).disposed(by: cell.disposeBag)
+            viewModel.consumedQuantityText.subscribe(onNext: { text in
+                cell.setSecondaryText(text: text)
+            }).disposed(by: cell.disposeBag)
+            
             return cell
-        case 2:
+        case 1:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "WaterSourceListHorizontalCollectionView",
                 for: indexPath
@@ -93,11 +86,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             viewModel.waterSourceList.subscribe(onNext: {
                 cell.waterContainerList = $0
                 cell.applySnapshot()
-            })
+            }).disposed(by: cell.disposeBag)
             
-            cell.clickListener = { waterContainer in
-                self.viewModel.addWaterVolume(waterContainer: waterContainer)
-            }
+            cell.waterSourceListener = WaterSourceListener(
+                itemClickListener: {
+                    self.viewModel.addWaterVolume(waterContainer: $0)
+                },
+                pinClickListener: {
+                    self.viewModel.updateWaterSourcePinState(waterSource: $0)
+                }
+            )
+
             return cell
         default:
             fatalError("init(coder:) has not been implemented")
@@ -115,11 +114,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         case 0:
             return CGSize(width: collectionView.bounds.width - horizontalPadding, height: 300)
         case 1:
-            let itemSpacing = 16.0
-            let availableWidth = view.frame.width - horizontalPadding - itemSpacing
-            let widthPerItem = availableWidth / itemsPerRow
-            return CGSize(width: widthPerItem, height: 100)
-        case 2:
             return CGSize(width: collectionView.bounds.width, height: 248)
         default:
             fatalError("init(coder:) has not been implemented")
@@ -148,27 +142,12 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         case 0:
             return UIEdgeInsets.vertical(inset: 8).horizontal(inset: 16)
         case 1:
-            return UIEdgeInsets.vertical(inset: 8).horizontal(inset: 16)
-        case 2:
             return UIEdgeInsets.set(inset: 0)
         default:
             fatalError("init(coder:) has not been implemented")
         }
     }
-    
+
 }
 
 
-
-extension WaterPercentageHeaderView {
-    func bind(percentageObservable: Observable<Double>, secondaryText: Observable<String>) -> WaterPercentageHeaderView {
-        percentageObservable.subscribe(onNext: { percentage in
-            self.setPercentage(percentage: percentage)
-        }).disposed(by: disposeBag)
-        secondaryText.subscribe(onNext: { text in
-            self.setSecondaryText(text: text)
-        }).disposed(by: disposeBag)
-        
-        return self
-    }
-}

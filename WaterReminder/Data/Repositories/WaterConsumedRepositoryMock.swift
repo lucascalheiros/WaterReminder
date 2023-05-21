@@ -10,11 +10,20 @@ import RxSwift
 
 class WaterConsumedRepositoryMockImpl: WaterConsumedRepository {
     
-    func getWaterConsumedList() -> Single<[WaterConsumed]> {
-        return Single.create(subscribe: {
-            $0(.success([]))
-            return Disposables.create()
-        })
+    private var waterConsumedList: [WaterConsumed] = []
+    
+    func getWaterConsumedList() async -> [WaterConsumed] {
+        return waterConsumedList
+    }
+    
+    func registerWaterConsumption(waterSource: WaterSource) async {
+        waterConsumedList.append(
+            WaterConsumed(
+                volume: waterSource.volume,
+                waterSourceType: waterSource.waterSourceType,
+                consumptionTime: Date()
+            )
+        )
     }
     
 }

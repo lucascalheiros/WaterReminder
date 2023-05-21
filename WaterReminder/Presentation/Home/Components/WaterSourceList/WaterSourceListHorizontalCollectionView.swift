@@ -22,7 +22,7 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
             collectionViewLayout: layout
         )
         collectionView.backgroundColor = .clear
-        collectionView.register(WaterContainerCellView.self, forCellWithReuseIdentifier: "WaterContainerCellView")
+        collectionView.register(WaterSourceCellView.self, forCellWithReuseIdentifier: "WaterContainerCellView")
         collectionView.delegate = self
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -31,9 +31,10 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
     lazy var dataSource: DataSource = makeDatasource()
     
     var waterContainerList: [WaterSource] = []
-    var clickListener: (WaterSource) -> Void = {_ in }
+    var waterSourceListener: WaterSourceListener? = nil
     
-    
+    let disposeBag = DisposeBag()
+
     private let itemsPerRow: CGFloat = 2
     
     private let sectionInsets = UIEdgeInsets.set(inset: 16)
@@ -102,11 +103,16 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: "WaterContainerCellView",
                     for: indexPath
-                ) as! WaterContainerCellView
+                ) as! WaterSourceCellView
                 cell.bindData(waterContainer: waterSource)
-                cell.bindListener {
-                    self.clickListener(waterSource)
-                }
+                cell.listener = WaterSourceListener(
+                    itemClickListener: {
+                        self.waterSourceListener?.itemClickListener($0)
+                    },
+                    pinClickListener: {
+                        self.waterSourceListener?.pinClickListener($0)
+                    }
+                )
                 return cell
             })
         return dataSource
