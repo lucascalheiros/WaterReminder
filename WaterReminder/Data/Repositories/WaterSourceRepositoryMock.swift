@@ -11,9 +11,9 @@ import RxSwift
 class WaterSourceRepositoryMock: WaterSourceRepository {
     
     private var waterSourceList = [
-        WaterSource(volume: 250, waterSourceType: .Water),
-        WaterSource(volume: 500, waterSourceType: .Water),
-        WaterSource(volume: 500, waterSourceType: .Coffee),
+        WaterSource(volume: 250, waterSourceType: .water),
+        WaterSource(volume: 500, waterSourceType: .water),
+        WaterSource(volume: 500, waterSourceType: .coffee),
     ]
     
     func getWaterSourceList() async -> [WaterSource] {

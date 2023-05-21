@@ -17,7 +17,7 @@ class WaterSource: Hashable {
     internal init(volume: Int = Int.random(in: 150...300)) {
         self.volume = volume
         self.order = Int.max
-        self.waterSourceType = .Water
+        self.waterSourceType = .water
         self.isPinned = false
     }
     
@@ -28,7 +28,12 @@ class WaterSource: Hashable {
         self.isPinned = isPinned
     }
     
-    func copy(volume: Int? = nil, order: Int? = nil, waterSourceType: WaterSourceType? = nil, isPinned: Bool? = nil) -> WaterSource {
+    func copy(
+        volume: Int? = nil,
+        order: Int? = nil,
+        waterSourceType: WaterSourceType? = nil,
+        isPinned: Bool? = nil
+    ) -> WaterSource {
         return WaterSource(
             volume: volume ?? self.volume,
             order: order ?? self.order,
