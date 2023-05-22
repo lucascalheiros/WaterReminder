@@ -74,34 +74,39 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "WaterPercentageHeaderView",
                 for: indexPath
-            ) as! WaterPercentageHeaderView
-
-            viewModel.consumedPercentage.subscribe(onNext: { percentage in
-                cell.setPercentage(percentage: percentage)
-            }).disposed(by: cell.disposeBag)
-            viewModel.consumedQuantityText.subscribe(onNext: { text in
-                cell.setSecondaryText(text: text)
-            }).disposed(by: cell.disposeBag)
+            )
+            
+            if let cell = cell as? WaterPercentageHeaderView {
+                viewModel.consumedPercentage.subscribe(onNext: { percentage in
+                    cell.setPercentage(percentage: percentage)
+                }).disposed(by: cell.disposeBag)
+                viewModel.consumedQuantityText.subscribe(onNext: { text in
+                    cell.setSecondaryText(text: text)
+                }).disposed(by: cell.disposeBag)
+            }
 
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "WaterSourceListHorizontalCollectionView",
                 for: indexPath
-            ) as! WaterSourceListHorizontalCollectionView
-            viewModel.waterSourceList.subscribe(onNext: {
-                cell.waterContainerList = $0
-                cell.applySnapshot()
-            }).disposed(by: cell.disposeBag)
-
-            cell.waterSourceListener = WaterSourceListener(
-                itemClickListener: {
-                    self.viewModel.addWaterVolume(waterContainer: $0)
-                },
-                pinClickListener: {
-                    self.viewModel.updateWaterSourcePinState(waterSource: $0)
-                }
             )
+            
+            if let cell = cell as? WaterSourceListHorizontalCollectionView {
+                viewModel.waterSourceList.subscribe(onNext: {
+                    cell.waterContainerList = $0
+                    cell.applySnapshot()
+                }).disposed(by: cell.disposeBag)
+                
+                cell.waterSourceListener = WaterSourceListener(
+                    itemClickListener: {
+                        self.viewModel.addWaterVolume(waterContainer: $0)
+                    },
+                    pinClickListener: {
+                        self.viewModel.updateWaterSourcePinState(waterSource: $0)
+                    }
+                )
+            }
 
             return cell
         default:

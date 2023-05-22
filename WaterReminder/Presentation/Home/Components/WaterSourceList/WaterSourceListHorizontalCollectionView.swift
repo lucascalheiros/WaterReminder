@@ -106,9 +106,9 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: "WaterContainerCellView",
                     for: indexPath
-                ) as! WaterSourceCellView
-                cell.bindData(waterContainer: waterSource)
-                cell.listener = WaterSourceListener(
+                ) as? WaterSourceCellView
+                cell?.bindData(waterContainer: waterSource)
+                cell?.listener = WaterSourceListener(
                     itemClickListener: {
                         self.waterSourceListener?.itemClickListener($0)
                     },
