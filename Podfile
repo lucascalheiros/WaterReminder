@@ -8,6 +8,7 @@ target 'WaterReminder' do
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
   pod 'Swinject'
+  pod 'RealmSwift', '~>10'
 
   target 'WaterReminderTests' do
     inherit! :search_paths
