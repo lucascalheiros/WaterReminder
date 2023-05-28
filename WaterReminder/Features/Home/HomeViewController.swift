@@ -40,8 +40,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
 
         view.addSubview(waterContainerTableView)
 
-        viewModel.updateWaterSourceList()
-
         NSLayoutConstraint.activate([
             waterContainerTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             waterContainerTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -94,13 +92,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             
             if let cell = cell as? WaterSourceListHorizontalCollectionView {
                 viewModel.waterSourceList.subscribe(onNext: {
-                    cell.waterContainerList = $0
-                    cell.applySnapshot()
+                    cell.applySnapshot(waterContainerList: $0)
+                }, onError: {
+                    print($0)
                 }).disposed(by: cell.disposeBag)
                 
                 cell.waterSourceListener = WaterSourceListener(
                     itemClickListener: {
-                        self.viewModel.addWaterVolume(waterContainer: $0)
+                        self.viewModel.addWaterVolume(waterSource: $0)
                     },
                     pinClickListener: {
                         self.viewModel.updateWaterSourcePinState(waterSource: $0)

@@ -1,32 +1,22 @@
 //
-//  WaterContainer.swift
+//  DailyWaterConsumption.swift
 //  WaterReminder
 //
-//  Created by Lucas Calheiros on 07/05/23.
+//  Created by Lucas Calheiros on 22/05/23.
 //
 
-import Foundation
+import RealmSwift
 
-class WaterSource: Hashable {
+struct WaterSource: Hashable {
 
+    let id: String?
     let volume: Int
-    let order: Int
+    let order: Int?
     let waterSourceType: WaterSourceType
     let isPinned: Bool
-
-    internal init(volume: Int = Int.random(in: 150...300)) {
-        self.volume = volume
-        self.order = Int.max
-        self.waterSourceType = .water
-        self.isPinned = false
-    }
-
-    internal init(
-        volume: Int,
-        order: Int = Int.max,
-        waterSourceType: WaterSourceType,
-        isPinned: Bool = false
-    ) {
+ 
+    init(id: String? = nil, volume: Int, order: Int? = nil, waterSourceType: WaterSourceType, isPinned: Bool = false) {
+        self.id = id
         self.volume = volume
         self.order = order
         self.waterSourceType = waterSourceType
@@ -40,6 +30,7 @@ class WaterSource: Hashable {
         isPinned: Bool? = nil
     ) -> WaterSource {
         return WaterSource(
+            id: self.id,
             volume: volume ?? self.volume,
             order: order ?? self.order,
             waterSourceType: waterSourceType ?? self.waterSourceType,
@@ -48,6 +39,7 @@ class WaterSource: Hashable {
     }
 
     func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
         hasher.combine(waterSourceType)
         hasher.combine(volume)
         hasher.combine(order)
@@ -58,13 +50,8 @@ class WaterSource: Hashable {
         return lhs.waterSourceType == rhs.waterSourceType &&
         lhs.isPinned == rhs.isPinned &&
         lhs.order == rhs.order &&
-        lhs.volume == rhs.volume
+        lhs.volume == rhs.volume &&
+        lhs.id == rhs.id
     }
 
-}
-
-extension WaterSource {
-    static func getSample(number: Int) -> [WaterSource] {
-        return (0...number).map({_ in WaterSource()})
-    }
 }

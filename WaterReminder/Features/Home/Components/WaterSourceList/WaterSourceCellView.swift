@@ -89,14 +89,16 @@ class WaterSourceCellView: UICollectionViewCell {
 }
 
 struct WaterSourceListener {
-    var itemClickListener: (WaterSource) -> Void
-    var pinClickListener: (WaterSource) -> Void
+    var itemClickListener: WaterSourceRunnable
+    var pinClickListener: WaterSourceRunnable
 
     internal init(
-        itemClickListener: @escaping (WaterSource) -> Void,
-        pinClickListener: @escaping (WaterSource) -> Void
+        itemClickListener: @escaping WaterSourceRunnable,
+        pinClickListener: @escaping WaterSourceRunnable
     ) {
         self.itemClickListener = itemClickListener
         self.pinClickListener = pinClickListener
     }
 }
+
+typealias WaterSourceRunnable = (WaterSource) -> Void

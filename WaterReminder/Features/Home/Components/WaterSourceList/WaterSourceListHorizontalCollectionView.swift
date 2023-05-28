@@ -33,7 +33,6 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
 
     lazy var dataSource: DataSource = makeDatasource()
 
-    var waterContainerList: [WaterSource] = []
     var waterSourceListener: WaterSourceListener?
 
     let disposeBag = DisposeBag()
@@ -47,7 +46,6 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
         addSubview(waterContainerTableView)
 
         waterContainerTableView.dataSource = dataSource
-        applySnapshot()
 
         NSLayoutConstraint.activate([
             waterContainerTableView.topAnchor.constraint(equalTo: topAnchor),
@@ -61,7 +59,7 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
         fatalError("init(coder:) has not been implemented")
     }
 
-    func applySnapshot(animatingDifferences: Bool = true) {
+    func applySnapshot(waterContainerList: [WaterSource], animatingDifferences: Bool = true) {
       var snapshot = Snapshot()
       snapshot.appendSections([.main])
       snapshot.appendItems(waterContainerList)
