@@ -35,7 +35,12 @@ class WaterConsumedObject: BaseObject {
     }
     
     func toDomainModel() -> WaterConsumed {
-        return WaterConsumed(id: id, volume: volume, consumptionTime: consumptionTime, waterSourceType: waterSourceType)
+        return WaterConsumed(
+			id: id,
+			volume: volume,
+			consumptionTime: consumptionTime,
+			waterSourceType: waterSourceType
+		)
     }
     
 }

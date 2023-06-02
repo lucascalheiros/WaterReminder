@@ -12,32 +12,38 @@ class WaterSourceObject: BaseObject {
     typealias DomainType = WaterSource
 
     @Persisted var volume: Int = 0
-    @Persisted var order: Int? = nil
-    @Persisted var waterSourceTypeRaw: String = WaterSourceType.water.rawValue
-    @Persisted var isPinned: Bool = false
-    
-    var waterSourceType: WaterSourceType {
-        get {
-            return WaterSourceType(rawValue: waterSourceTypeRaw)!
-        }
-        set {
-            waterSourceTypeRaw = newValue.rawValue
-        }
+	@Persisted var order: Int?
+	@Persisted var waterSourceTypeRaw: String = WaterSourceType.water.rawValue
+	@Persisted var isPinned: Bool = false
+	
+	var waterSourceType: WaterSourceType {
+		get {
+			return WaterSourceType(rawValue: waterSourceTypeRaw)!
+		}
+		set {
+			waterSourceTypeRaw = newValue.rawValue
+		}
       }
 
     convenience init(
         waterSource: WaterSource
     ) {
         self.init()
-        self.id = waterSource.id
-        self.volume = waterSource.volume
+		self.id = waterSource.id
+		self.volume = waterSource.volume
         self.order = waterSource.order
         self.waterSourceType = waterSource.waterSourceType
         self.isPinned = waterSource.isPinned
     }
 
     func toDomainModel() -> WaterSource {
-        return WaterSource(id: id, volume: volume, order: order, waterSourceType: waterSourceType, isPinned: isPinned)
+		return WaterSource(
+			id: id,
+			volume: volume,
+			order: order,
+			waterSourceType: waterSourceType,
+			isPinned: isPinned
+		)
     }
     
 }

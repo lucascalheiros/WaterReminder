@@ -15,7 +15,13 @@ struct WaterSource: Hashable {
     let waterSourceType: WaterSourceType
     let isPinned: Bool
  
-    init(id: String? = nil, volume: Int, order: Int? = nil, waterSourceType: WaterSourceType, isPinned: Bool = false) {
+    init(
+		id: String? = nil,
+		volume: Int,
+		order: Int? = nil,
+		waterSourceType: WaterSourceType,
+		isPinned: Bool = false
+	) {
         self.id = id
         self.volume = volume
         self.order = order

@@ -7,31 +7,43 @@
 
 import UIKit
 
-class RootViewController: UIViewController {
+class RootViewController: UINavigationController {
+	
+	init() {
+		super.init(rootViewController: FirstAccessInformationViewController())
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	var isPushingViewController = false
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		delegate = self
+		interactivePopGestureRecognizer?.delegate = self
+	}
+	
+	override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+		isPushingViewController = true
+		super.pushViewController(viewController, animated: animated)
+	}
+}
 
-    lazy var homeViewController = UINavigationController(rootViewController: HomeViewController())
-    lazy var statisticsViewController = UINavigationController(rootViewController: StatisticsViewController())
-    lazy var settingsViewController = UINavigationController(rootViewController: SettingsViewController())
+extension RootViewController: UIGestureRecognizerDelegate {
+	func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+		guard gestureRecognizer is UIScreenEdgePanGestureRecognizer else { return true }
+		return viewControllers.count > 1 && !isPushingViewController
+	}
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        let tabBarController = UITabBarController()
-        addChild(tabBarController)
-        view.addSubview(tabBarController.view)
-        tabBarController.tabBar.tintColor = UIColor.blue
-        tabBarController.tabBar.backgroundColor = .clear
-        tabBarController.setViewControllers(
-            [homeViewController, statisticsViewController, settingsViewController],
-            animated: true
-        )
-        tabBarController.modalPresentationStyle = .fullScreen
-
-        if let items = tabBarController.tabBar.items {
-            items[0].image = UIImage(systemName: "drop.fill")
-            items[1].image = UIImage(systemName: "chart.bar.fill")
-            items[2].image = UIImage(systemName: "gear")
-        }
-    }
-
+extension RootViewController: UINavigationControllerDelegate {
+	func navigationController(
+		_ navigationController: UINavigationController,
+		didShow viewController: UIViewController,
+		animated: Bool
+	) {
+		isPushingViewController = false
+	}
 }

@@ -8,7 +8,6 @@
 import RealmSwift
 
 class _BaseObject: Object {
-    
     @Persisted(primaryKey: true) var _id: ObjectId
 
     var id: String? {

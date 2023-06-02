@@ -69,16 +69,16 @@ class FillableCircleView: UIView {
         }
     }
 
-    private func updateFilledPercentage() {
-        if let oldHeightConstraint = mHeightConstraint {
-            removeConstraint(oldHeightConstraint)
-            oldHeightConstraint.isActive = false
-        }
-        let newHeightConstraint =
-            mFilledView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: percentage)
-        newHeightConstraint.isActive = true
-        addConstraint(newHeightConstraint)
-        mHeightConstraint = newHeightConstraint
-    }
+	private func updateFilledPercentage() {
+		if let oldHeightConstraint = mHeightConstraint {
+			removeConstraint(oldHeightConstraint)
+			oldHeightConstraint.isActive = false
+		}
+		let newHeightConstraint =
+		mFilledView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: percentage)
+		newHeightConstraint.isActive = true
+		addConstraint(newHeightConstraint)
+		mHeightConstraint = newHeightConstraint
+	}
 
 }

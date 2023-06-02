@@ -7,19 +7,20 @@
 
 import RxSwift
 
-class DailyWaterConsumptionRepositoryImpl: BaseRepository<DailyWaterConsumptionObject>, DailyWaterConsumptionRepositoryProtocol {
+class DailyWaterConsumptionRepositoryImpl: BaseRepository<DailyWaterConsumptionObject>,
+											DailyWaterConsumptionRepositoryProtocol {
     
     let disposeBag = DisposeBag()
 
     override init() {
         super.init()
-        list().safeAsSingle()
-            .flatMapCompletable {
-                $0.isEmpty ?
-                self.setDailyWaterConsumption(2500) : Completable.empty()
-            }
-            .subscribe().disposed(by: disposeBag)
-    }
+		list().safeAsSingle()
+			.flatMapCompletable {
+				$0.isEmpty ?
+				self.setDailyWaterConsumption(2500) : Completable.empty()
+			}
+			.subscribe().disposed(by: disposeBag)
+	}
     
     func getDailyWaterConsumptionList() -> Observable<[DailyWaterConsumption]> {
         list()

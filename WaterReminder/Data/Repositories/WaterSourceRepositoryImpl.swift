@@ -18,7 +18,6 @@ class WaterSourceRepositoryImpl: BaseRepository<WaterSourceObject>, WaterSourceR
         WaterSource(volume: 500, waterSourceType: .coffee)
     ]
     
-    
     let disposeBag = DisposeBag()
     override init() {
         super.init()

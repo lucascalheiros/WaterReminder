@@ -10,17 +10,23 @@ import RxSwift
 import RealmSwift
 
 class HomeViewModel {
+    var dailyConsumptionRepository: DailyWaterConsumptionRepositoryProtocol =
+	DailyWaterConsumptionRepositoryImpl()
     
-    var dailyConsumptionRepository: DailyWaterConsumptionRepositoryProtocol = DailyWaterConsumptionRepositoryImpl()
-    var waterConsumedRepository: WaterConsumedRepositoryProtocol = WaterConsumedRepositoryImpl()
-    var waterSourceRepository: WaterSourceRepositoryProtocol = WaterSourceRepositoryImpl()
-    lazy var waterSourceList = { waterSourceRepository.getWaterSourceList() }()
+	var waterConsumedRepository: WaterConsumedRepositoryProtocol =
+	WaterConsumedRepositoryImpl()
+    
+	var waterSourceRepository: WaterSourceRepositoryProtocol =
+	WaterSourceRepositoryImpl()
+    
+	lazy var waterSourceList = { waterSourceRepository.getWaterSourceList() }()
     
     lazy var expectedWaterConsumptionInML: Observable<Int> =  {
         dailyConsumptionRepository.lastDailyWaterConsumption().map {
             $0?.expectedVolume ?? 0
         }
     }()
+	
     lazy var currentWaterConsumedInML = {
         waterConsumedRepository.getWaterConsumedList().map {
             $0.map { $0.volume }.reduce(0, { $0 + $1 })

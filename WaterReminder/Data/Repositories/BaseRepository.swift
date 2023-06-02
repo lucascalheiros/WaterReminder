@@ -11,7 +11,6 @@ import RxRealm
 import RxSwift
 
 class BaseRepository<T: BaseObject> {
-        
     private let provider = RealmProvider()
     
     var realm: Realm {
@@ -50,6 +49,4 @@ class BaseRepository<T: BaseObject> {
             return Observable.error(error)
         }
     }
-    
-    
 }

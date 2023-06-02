@@ -11,7 +11,7 @@ struct RealmProvider {
         
     private let configuration: Realm.Configuration =
         Realm.Configuration(
-            schemaVersion: 1,
+            schemaVersion: 2,
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 2 {
                     migration.enumerateObjects(ofType: "WaterSourceObject") { old, new in
