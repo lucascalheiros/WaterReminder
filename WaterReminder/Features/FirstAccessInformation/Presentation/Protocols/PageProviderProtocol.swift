@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol PageProviderProtocol {
-	var parentPageProvider: (ParentPageControllerProtocol & UIPageViewController) { get }
+	var count: Int { get }
 	func instanceFor(index: Int) -> UIViewController?
 	func indexFor(viewController: UIViewController) -> Int?
 	func firstPage() -> UIViewController?

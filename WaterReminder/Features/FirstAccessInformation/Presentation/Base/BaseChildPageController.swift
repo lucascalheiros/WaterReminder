@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-class BaseChildPageController: UIViewController, ChildPageProtocol {
-	var parentPageProvider: (ParentPageControllerProtocol & UIPageViewController)!
+class BaseChildPageController: UIViewController {
+	let firstAccessInformationViewModel: FirstAccessInformationSharedViewModel
 
 	lazy var informativeMainText = {
 		let label = UILabel()
@@ -23,19 +23,25 @@ class BaseChildPageController: UIViewController, ChildPageProtocol {
 		return label
 	}()
 	
-	private lazy var skipEstimativeButton = {
+	lazy var skipEstimativeButton = {
 		let button = UIButton()
 		button.setTitle("Skip estimative", for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(button)
 		button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(skipButtonClick)))
-		if parentPageProvider.getProvider().lastPage() == self {
-			button.isHidden = true
-		}
 		return button
 	}()
-	
+
+	init(firstAccessInformationViewModel: FirstAccessInformationSharedViewModel) {
+		self.firstAccessInformationViewModel = firstAccessInformationViewModel
+		super.init(nibName: nil, bundle: nil)
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
 	override func viewDidLoad() {
 		NSLayoutConstraint.activate([
 			skipEstimativeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
@@ -44,9 +50,6 @@ class BaseChildPageController: UIViewController, ChildPageProtocol {
 	}
 	
 	@objc func skipButtonClick() {
-		parentPageProvider.setViewControllers([parentPageProvider.getProvider().lastPage()!], direction: .forward,
-											  animated: true) { _ in
-			self.parentPageProvider.onNavigation()
-		}
+		firstAccessInformationViewModel.skipToLastPage()
 	}
 }

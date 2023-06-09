@@ -21,6 +21,21 @@ class DailyWaterInputField: UITextField, UITextFieldDelegate {
 		bottomLine.backgroundColor = UIColor.white.cgColor
 	}
 
+	private lazy var textPhantom = {
+		let label = UILabel()
+		label.font = UIFont.boldSystemFont(ofSize: 26)
+		label.textColor = .clear
+		return label
+	}()
+
+	private lazy var suffix = {
+		let label = UILabel()
+		label.text = "ml"
+		label.font = UIFont.boldSystemFont(ofSize: 20)
+		label.textColor = .white.withAlphaComponent(0.7)
+		return label
+	}()
+
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		delegate = self
@@ -32,6 +47,15 @@ class DailyWaterInputField: UITextField, UITextFieldDelegate {
 		borderStyle = .none
 		layer.addSublayer(bottomLine)
 		layer.masksToBounds = true
+
+		addConstrainedSubviews(textPhantom, suffix)
+		NSLayoutConstraint.activate([
+			textPhantom.centerXAnchor.constraint(equalTo: centerXAnchor),
+			textPhantom.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+			suffix.leadingAnchor.constraint(equalTo: textPhantom.trailingAnchor, constant: 2),
+			suffix.centerYAnchor.constraint(equalTo: textPhantom.centerYAnchor)
+		])
 	}
 
 	required init?(coder: NSCoder) {
@@ -47,7 +71,11 @@ class DailyWaterInputField: UITextField, UITextFieldDelegate {
 		let characterSet = CharacterSet(charactersIn: string)
 		let currentString = (textField.text ?? "") as NSString
 		let newString = currentString.replacingCharacters(in: range, with: string)
-		return allowedCharacters.isSuperset(of: characterSet) && newString.count <= 5
+		if allowedCharacters.isSuperset(of: characterSet) && newString.count <= 5 {
+			textPhantom.text = newString
+			return true
+		}
+		return false
 	}
 
 	override func layoutSubviews() {

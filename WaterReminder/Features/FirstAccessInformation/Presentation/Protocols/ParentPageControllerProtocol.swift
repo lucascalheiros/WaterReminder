@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ParentPageControllerProtocol {
 	func getProvider() -> PageProviderProtocol
-	func onNavigation()
+	func skipToLastPage()
 }

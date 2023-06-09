@@ -9,38 +9,19 @@ import Foundation
 import UIKit
 
 class FirstAccessPageProvider: PageProviderProtocol {
-	lazy var firstAccessInformative = {
-		let controller = FirstAccessInformative()
-		controller.parentPageProvider = self.parentPageProvider
-		return controller
-	}()
-	lazy var weightInputViewController = {
-		let controller = WeightInputViewController()
-		controller.parentPageProvider = self.parentPageProvider
-		return controller
-	}()
-	lazy var activityLevelInputViewController = {
-		let controller = ActivityLevelInputViewController()
-		controller.parentPageProvider = self.parentPageProvider
-		return controller
-	}()
-	lazy var ambienceTemperatureInputViewController = {
-		let controller = AmbienceTemperatureInputViewController()
-		controller.parentPageProvider = self.parentPageProvider
-		return controller
-	}()
-	lazy var confirmationDailyConsumptionViewController = {
-		let controller = ConfirmationDailyConsumptionViewController()
-		controller.parentPageProvider = self.parentPageProvider
-		return controller
-	}()
-	
+	let firstAccessInformative: FirstAccessInformativeViewController
+	let weightInputViewController: WeightInputViewController
+	let activityLevelInputViewController: ActivityLevelInputViewController
+	let ambienceTemperatureInputViewController: AmbienceTemperatureInputViewController
+	let confirmationDailyConsumptionViewController: ConfirmationDailyConsumptionViewController
 	let count = 5
-	
-	let parentPageProvider: (ParentPageControllerProtocol & UIPageViewController)
-	
-	internal init(parentPageProvider: (UIPageViewController & ParentPageControllerProtocol)) {
-		self.parentPageProvider = parentPageProvider
+
+	internal init(firstAccessInformative: FirstAccessInformativeViewController, weightInputViewController: WeightInputViewController, activityLevelInputViewController: ActivityLevelInputViewController, ambienceTemperatureInputViewController: AmbienceTemperatureInputViewController, confirmationDailyConsumptionViewController: ConfirmationDailyConsumptionViewController) {
+		self.firstAccessInformative = firstAccessInformative
+		self.weightInputViewController = weightInputViewController
+		self.activityLevelInputViewController = activityLevelInputViewController
+		self.ambienceTemperatureInputViewController = ambienceTemperatureInputViewController
+		self.confirmationDailyConsumptionViewController = confirmationDailyConsumptionViewController
 	}
 	
 	func instanceFor(index: Int) -> UIViewController? {
@@ -62,7 +43,7 @@ class FirstAccessPageProvider: PageProviderProtocol {
 	
 	func indexFor(viewController: UIViewController) -> Int? {
 		switch viewController {
-		case is FirstAccessInformative:
+		case is FirstAccessInformativeViewController:
 			return 0
 		case is WeightInputViewController:
 			return 1
