@@ -8,6 +8,7 @@ target 'WaterReminder' do
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
   pod 'Swinject', '2.8.3'
+	pod 'SwinjectAutoregistration', '2.8.3'
   pod 'RealmSwift', '~>10'
   pod 'RxRealm', '5.0.4'
 

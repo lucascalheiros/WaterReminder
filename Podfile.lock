@@ -16,6 +16,8 @@ PODS:
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
   - Swinject (2.8.3)
+  - SwinjectAutoregistration (2.8.3):
+    - Swinject (~> 2.8.3)
 
 DEPENDENCIES:
   - RealmSwift (~> 10)
@@ -23,6 +25,7 @@ DEPENDENCIES:
   - RxRealm (= 5.0.4)
   - RxSwift (= 6.5.0)
   - Swinject (= 2.8.3)
+  - SwinjectAutoregistration (= 2.8.3)
 
 SPEC REPOS:
   trunk:
@@ -33,6 +36,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - Swinject
+    - SwinjectAutoregistration
 
 SPEC CHECKSUMS:
   Realm: 9c5fc6f8f5cb70b299f2e3064d2b9f6cb0f1523d
@@ -42,7 +46,8 @@ SPEC CHECKSUMS:
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   Swinject: 893c9a543000ac2f10ee4cbaf0933c6992c935d5
+  SwinjectAutoregistration: e3ee378dc458acf78d176fc7fec3902603452667
 
-PODFILE CHECKSUM: 96d7ded2fb21c1b62f22b510b05fc9defa8fd957
+PODFILE CHECKSUM: a18500e781298f42c1e425ac69bdc3b067c26032
 
 COCOAPODS: 1.12.0
