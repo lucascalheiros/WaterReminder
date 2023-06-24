@@ -50,6 +50,6 @@ class BaseChildPageController: UIViewController {
 	}
 	
 	@objc func skipButtonClick() {
-		firstAccessInformationViewModel.skipToLastPage()
+		firstAccessInformationViewModel.pageNavigationDelegate.skipToLastPage()
 	}
 }

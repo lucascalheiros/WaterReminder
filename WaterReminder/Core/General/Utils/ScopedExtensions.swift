@@ -11,6 +11,20 @@ import Foundation
  Same functioning as kotlin counterparts, nice to reduce swift nil check verbosity :)
  */
 extension Optional {
+	func unwrapLet<A>(function: (Wrapped) -> A) -> A? {
+		if let some = self {
+			return function(some)
+		}
+		return nil
+	}
+
+	func unwrapAlso<A>(function: (Wrapped) -> A) -> A? {
+		if let some = self {
+			return function(some)
+		}
+		return nil
+	}
+
 	func run<A>(function: (Wrapped) -> A) -> A? {
 		if let some = self {
 			return function(some)

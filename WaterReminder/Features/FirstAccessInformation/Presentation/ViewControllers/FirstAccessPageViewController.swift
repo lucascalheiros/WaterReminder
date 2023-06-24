@@ -53,8 +53,8 @@ class FirstAccessPageViewController: UIPageViewController {
 		
 		setupPageController()
 
-		firstAccessInformationViewModel.setTotalPages(total: pageProvider.count)
-		firstAccessInformationViewModel.currentPageIndex.subscribe {
+		firstAccessInformationViewModel.pageNavigationDelegate.setTotalPages(total: pageProvider.count)
+		firstAccessInformationViewModel.pageNavigationDelegate.currentPageIndex.subscribe {
 			let currentIndex = self.presentationIndex(for: self)
 			if let controller = self.pageProvider.instanceFor(index: $0) {
 				self.setViewControllers(
@@ -65,11 +65,11 @@ class FirstAccessPageViewController: UIPageViewController {
 			}
 		}.disposed(by: disposeBag)
 
-		firstAccessInformationViewModel.isFirstPage.subscribe {
+		firstAccessInformationViewModel.pageNavigationDelegate.isFirstPage.subscribe {
 			self.previousButton.isHidden = $0
 		}.disposed(by: disposeBag)
 
-		firstAccessInformationViewModel.isLastPage.subscribe {
+		firstAccessInformationViewModel.pageNavigationDelegate.isLastPage.subscribe {
 			self.nextButton.isHidden = $0
 		}.disposed(by: disposeBag)
 
@@ -103,19 +103,19 @@ class FirstAccessPageViewController: UIPageViewController {
 	) {
 		if completed {
 			let currentIndex = presentationIndex(for: self)
-			firstAccessInformationViewModel.setPage(page: currentIndex)
+			firstAccessInformationViewModel.pageNavigationDelegate.setPage(page: currentIndex)
 		}
 
 	}
 
 	@objc func nextClick() {
 		let currentIndex = presentationIndex(for: self)
-		firstAccessInformationViewModel.setPage(page: currentIndex + 1)
+		firstAccessInformationViewModel.pageNavigationDelegate.setPage(page: currentIndex + 1)
 	}
 	
 	@objc func previousClick() {
 		let currentIndex = presentationIndex(for: self)
-		firstAccessInformationViewModel.setPage(page: currentIndex - 1)
+		firstAccessInformationViewModel.pageNavigationDelegate.setPage(page: currentIndex - 1)
 	}
 
 	func hasPreviousPage() -> Bool {

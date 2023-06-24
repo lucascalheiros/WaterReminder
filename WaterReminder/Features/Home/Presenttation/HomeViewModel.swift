@@ -28,9 +28,14 @@ class HomeViewModel {
     }()
 	
     lazy var currentWaterConsumedInML = {
-        waterConsumedRepository.getWaterConsumedList().map {
-            $0.map { $0.volume }.reduce(0, { $0 + $1 })
-        }
+		waterConsumedRepository.getWaterConsumedList()
+			.map {
+				let currentDate = Date()
+				let startOfDay = currentDate.startOfDay
+				let endOfDay = currentDate.endOfDay
+				return $0.filter { startOfDay < $0.consumptionTime && $0.consumptionTime < endOfDay }
+					.map { $0.volume }.reduce(0, { $0 + $1 })
+			}
     }()
     
     lazy var consumedPercentage: Observable<Double> = {

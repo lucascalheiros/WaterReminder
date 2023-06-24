@@ -12,7 +12,8 @@ class AmbienceTemperatureRangeEmbeddedObject: EmbeddedObject {
 	@Persisted var min: Int
 	@Persisted var max: Int
 
-	init(min: Int, max: Int) {
+	convenience init(min: Int, max: Int) {
+		self.init()
 		self.min = min
 		self.max = max
 	}

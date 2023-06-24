@@ -11,9 +11,9 @@ import RxCocoa
 
 class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 
-	let disposeBag = DisposeBag()
+	private let disposeBag = DisposeBag()
 
-	lazy var dailyWaterEditText = {
+	private lazy var dailyWaterEditText = {
 		let text = DailyWaterInputField()
 		return text
 	}()
@@ -22,7 +22,16 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 		let button = UIButton()
 		button.setTitle("Confirm", for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
-//		button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(skipButtonClick)))
+		button
+			.rx
+			.tap
+			.bind {
+				let waterVolume: Int = self.dailyWaterEditText.text.unwrapLet { $0.toInt() ?? 0 } ?? 0
+				self.firstAccessInformationViewModel.registerWaterVolume(waterValue: waterVolume).subscribe(onCompleted: {
+					self.firstAccessInformationViewModel.completeProcess()
+				}).disposed(by: self.disposeBag)
+			}
+			.disposed(by: disposeBag)
 		return button
 	}()
 
@@ -44,17 +53,6 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 		return picker
 	}()
 
-	func limitInitialPickerValue() {
-		if (initialNotificationTime.dayTimeIndex > finalNotificationTime.dayTimeIndex) {
-			finalNotificationTime.selectRow(initialNotificationTime.dayTimeIndex, inComponent: 0, animated: true)
-		}
-	}
-
-	func limitFinalPickerValue() {
-		if (finalNotificationTime.dayTimeIndex < initialNotificationTime.dayTimeIndex) {
-			initialNotificationTime.selectRow(finalNotificationTime.dayTimeIndex, inComponent: 0, animated: true)
-		}
-	}
 	private lazy var shouldRemindSwitch = {
 		let uiSwitch = SwitchWithLabel()
 		uiSwitch.label.text = "I want to be reminded"
@@ -128,6 +126,18 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 			confirmationBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
 			confirmationBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor)
 		])
+	}
+
+	func limitInitialPickerValue() {
+		if (initialNotificationTime.dayTimeIndex > finalNotificationTime.dayTimeIndex) {
+			finalNotificationTime.selectRow(initialNotificationTime.dayTimeIndex, inComponent: 0, animated: true)
+		}
+	}
+
+	func limitFinalPickerValue() {
+		if (finalNotificationTime.dayTimeIndex < initialNotificationTime.dayTimeIndex) {
+			initialNotificationTime.selectRow(finalNotificationTime.dayTimeIndex, inComponent: 0, animated: true)
+		}
 	}
 
 	func offsetForRotation(_ finalWidth: CGFloat, _ finalHeight: CGFloat) -> CGFloat {

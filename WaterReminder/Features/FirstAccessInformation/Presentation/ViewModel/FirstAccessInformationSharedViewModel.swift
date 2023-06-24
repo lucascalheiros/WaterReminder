@@ -8,52 +8,60 @@
 import Foundation
 import RxRelay
 import RxSwift
+import RxFlow
 
 class FirstAccessInformationSharedViewModel {
-	internal init(expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase) {
-		self.expectedWaterConsumptionUseCase = expectedWaterConsumptionUseCase
-	}
-	
-	let expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase
+	private let disposeBag = DisposeBag()
+	private let expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase
+	private let registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase
 
-	let currentPageIndex = BehaviorRelay(value: 0)
-	let totalPages = BehaviorRelay(value: 0)
-	lazy var isLastPage = {
+	let pageNavigationDelegate = FirstAccessInformationPageNavigationDelegate()
+
+	let stepper: FirstAccessInformationStepper
+
+	lazy var weight = BehaviorRelay(value: 70000)
+	lazy var exerciseDays = BehaviorRelay(value: 3)
+	lazy var temperatureLevel = BehaviorRelay(value: 20 ... 25)
+
+	lazy var userInformation = {
 		Observable.combineLatest(
-			currentPageIndex.asObservable(),
-			totalPages.asObservable()
-		) { currentPage, totalPages in
-			currentPage + 1 == totalPages
-		}
-	}()
-	lazy var isFirstPage = {
-		currentPageIndex.map {
-			$0 == 0
+			weight.asObservable(),
+			exerciseDays.asObservable(),
+			temperatureLevel.asObservable()
+		) { weight, exerciseDays, temperatureLevel in
+			UserInformation(id: nil, weightInGrams: weight, activityLevelInWeekDays: exerciseDays, ambienceTemperatureLevel: temperatureLevel, date: Date() )
 		}
 	}()
 
-	func setPage(page: Int) {
-		currentPageIndex.accept(page)
-	}
+	lazy var expectedWaterVolume = {
+		userInformation.map {
+			self.expectedWaterConsumptionUseCase.calculateExpectedWaterConsumptionFromUserInformation($0)
+		}
+	}()
 
-	func skipToLastPage() {
-		currentPageIndex.accept(totalPages.value - 1)
-	}
-
-	func setTotalPages(total: Int) {
-		totalPages.accept(total)
+	internal init(expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase, registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase, stepper: FirstAccessInformationStepper) {
+		self.expectedWaterConsumptionUseCase = expectedWaterConsumptionUseCase
+		self.registerDailyWaterConsumptionUseCase = registerDailyWaterConsumptionUseCase
+		self.stepper = stepper
 	}
 
 	func setWeight(weightInGrams: Int) {
-
+		weight.accept(weightInGrams)
 	}
 
 	func setExerciseDays(exerciseDays: Int) {
-
+		self.exerciseDays.accept(exerciseDays)
 	}
 
-	func setTemperatureLevel() {
-		
+	func setTemperatureLevel(temperateLevelRange: ClosedRange<Int>) {
+		self.temperatureLevel.accept(temperateLevelRange)
 	}
 
+	func registerWaterVolume(waterValue: Int) -> Completable {
+		registerDailyWaterConsumptionUseCase.registerDailyWaterConsumption(waterValue: waterValue)
+	}
+
+	func completeProcess() {
+		self.stepper.steps.accept(FirstAccessFlowSteps.firstAccessUserInformationAlreadyProvided)
+	}
 }

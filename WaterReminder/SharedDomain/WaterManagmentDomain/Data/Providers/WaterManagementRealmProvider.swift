@@ -11,7 +11,7 @@ struct WaterManagementRealmProvider: RealmProviderProtocol {
         
     private let configuration: Realm.Configuration =
         Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: 3,
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < 2 {
                     migration.enumerateObjects(ofType: "WaterSourceObject") { old, new in
@@ -21,7 +21,8 @@ struct WaterManagementRealmProvider: RealmProviderProtocol {
                     }
                 }
             },
-            deleteRealmIfMigrationNeeded: false
+            deleteRealmIfMigrationNeeded: false,
+			objectTypes: [DailyWaterConsumptionObject.self, WaterSourceObject.self, WaterSourceObject.self, WaterConsumedObject.self]
         )
     
     func getInstance() throws -> Realm {

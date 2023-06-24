@@ -26,3 +26,9 @@ extension Double {
 		String(self)
 	}
 }
+
+extension String {
+	func toInt() -> Int? {
+		Int(self)
+	}
+}

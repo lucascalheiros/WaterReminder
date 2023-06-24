@@ -31,7 +31,7 @@ class DailyWaterConsumptionRepositoryImpl: BaseRepository<DailyWaterConsumptionO
     }
     
     func lastDailyWaterConsumption() -> Observable<DailyWaterConsumption?> {
-        list().map { $0.max(by: {$0.date > $1.date}) }
+        list().map { $0.max(by: {$0.date < $1.date}) }
     }
 
 }

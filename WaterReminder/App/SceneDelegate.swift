@@ -7,32 +7,62 @@
 
 import UIKit
 import Swinject
+import RxFlow
+import RxSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
 	lazy var container: Container = appContainer()
+	lazy var coordinator = FlowCoordinator()
+	let disposeBag = DisposeBag()
 
-    func scene(
-        _ scene: UIScene,
-        willConnectTo session: UISceneSession,
-        options connectionOptions: UIScene.ConnectionOptions
-    ) {
-        // Use this method to optionally configure and attach the
-        // UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically
-        // be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session
-        // are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
+	var appFlow: FirstAccessFlow!
+
+	func assembleModuleContainers(container: Container) {
 		FirstAccessInformationAssembly().assemble(container: container)
 		UserInformationDomainAssembly().assemble(container: container)
 		WaterManagementDomainAssembly().assemble(container: container)
-		window.rootViewController = RootViewController(rootViewController: container.resolve(FirstAccessPageViewController.self)!)
-        self.window = window
-        window.makeKeyAndVisible()
+		HomeAssembly().assemble(container: container)
+		SettingsAssembly().assemble(container: container)
+		StatisticsAssembly().assemble(container: container)
+	}
+
+	func scene(
+		_ scene: UIScene,
+		willConnectTo session: UISceneSession,
+		options connectionOptions: UIScene.ConnectionOptions
+	) {
+		// Use this method to optionally configure and attach the
+		// UIWindow `window` to the provided UIWindowScene `scene`.
+		// If using a storyboard, the `window` property will automatically
+		// be initialized and attached to the scene.
+		// This delegate does not imply the connecting scene or session
+		// are new (see `application:configurationForConnectingSceneSession` instead).
+		guard let windowScene = (scene as? UIWindowScene) else { return }
+		let window = UIWindow(windowScene: windowScene)
+
+		assembleModuleContainers(container: container)
+
+		self.coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
+			print("will navigate to flow=\(flow) and step=\(step)")
+		}).disposed(by: self.disposeBag)
+
+		self.coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
+			print("did navigate to flow=\(flow) and step=\(step)")
+		}).disposed(by: self.disposeBag)
+
+		appFlow = FirstAccessFlow(container: container)
+
+		self.coordinator.coordinate(flow: appFlow, with: OneStepper(withSingleStep: FirstAccessFlowSteps.firstAccessUserInformationIsRequired))
+
+		Flows.use(appFlow, when: .created) { root in
+			window.rootViewController = root
+			window.makeKeyAndVisible()
+		}
+
+		self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

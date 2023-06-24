@@ -11,6 +11,7 @@ target 'WaterReminder' do
 	pod 'SwinjectAutoregistration', '2.8.3'
   pod 'RealmSwift', '~>10'
   pod 'RxRealm', '5.0.4'
+	pod 'RxFlow', '2.13.0'
 
   target 'WaterReminderTests' do
     inherit! :search_paths
