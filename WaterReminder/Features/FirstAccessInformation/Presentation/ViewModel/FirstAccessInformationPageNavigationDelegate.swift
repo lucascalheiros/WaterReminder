@@ -8,7 +8,6 @@
 import RxRelay
 import RxSwift
 
-
 internal class FirstAccessInformationPageNavigationDelegate {
 	let currentPageIndex = BehaviorRelay(value: 0)
 

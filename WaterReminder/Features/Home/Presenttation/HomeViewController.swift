@@ -46,53 +46,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             waterContainerTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             waterContainerTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         ])
-
-		// Define the custom actions.
-		let acceptAction = UNNotificationAction(identifier: "ACCEPT_ACTION",
-												title: "Accept",
-												options: [])
-		let declineAction = UNNotificationAction(identifier: "DECLINE_ACTION",
-												 title: "Decline",
-												 options: [])
-		// Define the notification type
-		let meetingInviteCategory =
-		UNNotificationCategory(identifier: "MEETING_INVITATION",
-							   actions: [acceptAction, declineAction],
-							   intentIdentifiers: [],
-							   hiddenPreviewsBodyPlaceholder: "",
-							   options: .customDismissAction)
-		// Register the notification type.
-		let notificationCenter = UNUserNotificationCenter.current()
-		notificationCenter.setNotificationCategories([meetingInviteCategory])
-
-		UNUserNotificationCenter.current().requestAuthorization(
-			options: [.alert, .badge, .sound]) { success, error in
-				let content = UNMutableNotificationContent()
-				content.title = "Weekly Staff Meeting"
-				content.body = "Every Tuesday at 2pm"
-				content.categoryIdentifier = "MEETING_INVITATION"
-				// Configure the recurring date.
-				var dateComponents = DateComponents()
-				dateComponents.calendar = Calendar.current
-				dateComponents.hour = 22    // 14:00 hours
-				dateComponents.minute = 02
-
-				// Create the trigger as a repeating event.
-				let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-
-				// Create the request
-				let uuidString = UUID().uuidString
-				let request = UNNotificationRequest(identifier: uuidString,
-													content: content, trigger: trigger)
-
-				// Schedule the request with the system.
-				let notificationCenter = UNUserNotificationCenter.current()
-				notificationCenter.add(request) { (error) in
-					if error != nil {
-						// Handle any errors.
-					}
-				}
-			}
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {

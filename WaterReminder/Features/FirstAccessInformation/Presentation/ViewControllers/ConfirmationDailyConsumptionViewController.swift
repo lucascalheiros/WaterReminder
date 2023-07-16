@@ -25,8 +25,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 			.rx
 			.tap
 			.bind {
-				let waterVolume: Int = self.dailyWaterEditText.text.unwrapLet { $0.toInt() ?? 0 } ?? 0
-				self.firstAccessInformationViewModel.confirmWaterVolume(waterValue: waterVolume)
+				self.onConfirmPressed()
 			}
 			.disposed(by: disposeBag)
 		return button
@@ -167,5 +166,22 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 
 	func offsetForRotation(_ finalWidth: CGFloat, _ finalHeight: CGFloat) -> CGFloat {
 		-(finalWidth - finalHeight) / 2
+	}
+
+	func onConfirmPressed() {
+		if firstAccessInformationViewModel.shouldRemind.value {
+			UNUserNotificationCenter.current().requestAuthorization(
+				options: [.alert, .badge, .sound]
+			) { _, _ in
+				self.confirmWaterVolume()
+			}
+		} else {
+			confirmWaterVolume()
+		}
+	}
+
+	func confirmWaterVolume() {
+		let waterVolume: Int = self.dailyWaterEditText.text.unwrapLet { $0.toInt() ?? 0 } ?? 0
+		self.firstAccessInformationViewModel.confirmWaterVolume(waterValue: waterVolume)
 	}
 }
