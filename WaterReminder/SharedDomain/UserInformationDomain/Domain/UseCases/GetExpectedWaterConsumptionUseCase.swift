@@ -10,8 +10,8 @@ import RxSwift
 
 class GetExpectedWaterConsumptionUseCase {
 	private let userInformationRepository: UserInformationRepositoryProtocol
-	private let multiplierConstantFactor = 0.0035
-	private let activityLevelMultiplierFactor = 0.0015 / 7
+	private let multiplierConstantFactor = 0.030
+	private let activityLevelMultiplierFactor = 0.020 / 7
 
 	internal init(userInformationRepository: UserInformationRepositoryProtocol) {
 		self.userInformationRepository = userInformationRepository
@@ -46,22 +46,21 @@ class GetExpectedWaterConsumptionUseCase {
 		return .successful(waterQuantity: waterIntake.toInt())
 	}
 
-	private func intakeFromAmbienceLevel(ambienceTemperatureLevel: ClosedRange<Int>) -> Int {
-		switch ambienceTemperatureLevel.lowerBound {
-		case 20...24:
+	private func intakeFromAmbienceLevel(ambienceTemperatureLevel: AmbienceTemperatureLevel) -> Int {
+		switch ambienceTemperatureLevel {
+		case .moderate:
 			return 100
-		case 25...29:
+		case .warn:
 			return 250
-		case 30...Int.max:
+		case .hot:
 			return 500
 		default:
 			return 0
 		}
 	}
+}
 
-	enum ExpectedWaterConsumptionState {
-		case successful(waterQuantity: Int)
-		case unableToInfer
-	}
-
+enum ExpectedWaterConsumptionState {
+	case successful(waterQuantity: Int)
+	case unableToInfer
 }

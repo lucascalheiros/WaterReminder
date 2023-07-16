@@ -10,7 +10,7 @@ import Swinject
 import RxFlow
 import RxSwift
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	var appFlow: FirstAccessFlow!
 
 	func assembleModuleContainers(container: Container) {
+		WaterReminderNotificationDomainAssembly().assemble(container: container)
 		FirstAccessInformationAssembly().assemble(container: container)
 		UserInformationDomainAssembly().assemble(container: container)
 		WaterManagementDomainAssembly().assemble(container: container)
@@ -55,7 +56,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		appFlow = FirstAccessFlow(container: container)
 
-		self.coordinator.coordinate(flow: appFlow, with: OneStepper(withSingleStep: FirstAccessFlowSteps.firstAccessUserInformationIsRequired))
+		// TODO add splash and refactor to include this decision there.
+		let getDailyWaterConsumptionUseCase = container.resolve(GetDailyWaterConsumptionUseCase.self)
+		getDailyWaterConsumptionUseCase?.lastDailyWaterConsumption().safeAsSingle().subscribe(onSuccess: {
+			let step = $0 == nil ? FirstAccessFlowSteps.firstAccessUserInformationIsRequired : FirstAccessFlowSteps.firstAccessUserInformationAlreadyProvided
+			self.coordinator.coordinate(flow: self.appFlow, with: OneStepper(withSingleStep: step))
+		}).disposed(by: disposeBag)
 
 		Flows.use(appFlow, when: .created) { root in
 			window.rootViewController = root
@@ -96,5 +102,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+
+	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+		// TODO add water consumption as action and register consumption to a useCase
+		completionHandler()
+	}
 
 }

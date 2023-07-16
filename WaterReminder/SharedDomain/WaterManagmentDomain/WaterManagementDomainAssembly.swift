@@ -26,7 +26,29 @@ class WaterManagementDomainAssembly: Assembly {
 			RegisterDailyWaterConsumptionUseCase.self,
 			initializer: RegisterDailyWaterConsumptionUseCase.init
 		)
+		container.autoregister(
+			GetDailyWaterConsumptionUseCase.self,
+			initializer: GetDailyWaterConsumptionUseCase.init
+		)
+		container.autoregister(
+			RegisterWaterConsumedUseCase.self,
+			initializer: RegisterWaterConsumedUseCase.init
+		)
+		container.autoregister(
+			ManageWaterSourceUseCase.self,
+			initializer: ManageWaterSourceUseCase.init
+		)
+		container.autoregister(
+			GetDailyWaterConsumptionUseCase.self,
+			initializer: GetDailyWaterConsumptionUseCase.init
+		)
+		container.autoregister(
+			GetWaterSourceUseCase.self,
+			initializer: GetWaterSourceUseCase.init
+		)
+		container.autoregister(
+			GetWaterConsumedUseCase.self,
+			initializer: GetWaterConsumedUseCase.init
+		)
 	}
 }
-
-

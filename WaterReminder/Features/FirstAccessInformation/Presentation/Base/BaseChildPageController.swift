@@ -23,15 +23,15 @@ class BaseChildPageController: UIViewController {
 		return label
 	}()
 	
-	lazy var skipEstimativeButton = {
-		let button = UIButton()
-		button.setTitle("Skip estimative", for: .normal)
-		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
-		button.translatesAutoresizingMaskIntoConstraints = false
-		view.addSubview(button)
-		button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(skipButtonClick)))
-		return button
-	}()
+//	lazy var skipEstimativeButton = {
+//		let button = UIButton()
+//		button.setTitle("Skip estimative", for: .normal)
+//		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
+//		button.translatesAutoresizingMaskIntoConstraints = false
+//		view.addSubview(button)
+//		button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(skipButtonClick)))
+//		return button
+//	}()
 
 	init(firstAccessInformationViewModel: FirstAccessInformationSharedViewModel) {
 		self.firstAccessInformationViewModel = firstAccessInformationViewModel
@@ -43,10 +43,10 @@ class BaseChildPageController: UIViewController {
 	}
 
 	override func viewDidLoad() {
-		NSLayoutConstraint.activate([
-			skipEstimativeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
-			skipEstimativeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-		])
+//		NSLayoutConstraint.activate([
+//			skipEstimativeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
+//			skipEstimativeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+//		])
 	}
 	
 	@objc func skipButtonClick() {

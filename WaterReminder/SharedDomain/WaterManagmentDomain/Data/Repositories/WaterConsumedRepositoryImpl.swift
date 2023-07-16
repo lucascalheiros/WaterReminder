@@ -19,12 +19,12 @@ class WaterConsumedRepositoryImpl: BaseRepository<WaterConsumedObject>, WaterCon
         list()
     }
     
-    func registerWaterConsumption(waterSource: WaterSource) -> Completable {
+	func registerWaterConsumption(waterVolume: Int, sourceType: WaterSourceType) -> Completable {
         save(
             WaterConsumed(
-                volume: waterSource.volume,
+                volume: waterVolume,
                 consumptionTime: Date(),
-                waterSourceType: waterSource.waterSourceType
+                waterSourceType: sourceType
             ).toDataObject()
         )
     }

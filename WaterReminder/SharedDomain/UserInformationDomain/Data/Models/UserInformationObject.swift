@@ -24,8 +24,8 @@ class UserInformationObject: BaseObject {
         self.activityLevelInWeekDays = userInformation.activityLevelInWeekDays
 		self.ambienceTemperatureLevel = userInformation.ambienceTemperatureLevel.run {
 			AmbienceTemperatureRangeEmbeddedObject(
-				min: $0.lowerBound,
-				max: $0.upperBound
+				min: $0.range.lowerBound,
+				max: $0.range.upperBound
 			)
 		}
 
@@ -38,7 +38,10 @@ class UserInformationObject: BaseObject {
 			weightInGrams: weightInGrams,
 			activityLevelInWeekDays: activityLevelInWeekDays,
 			ambienceTemperatureLevel: ambienceTemperatureLevel.run {
-				$0.min ... $0.max
+				let mean = $0.min + $0.max / 2
+				return AmbienceTemperatureLevel.allCases.first(where: { level in
+					level.range.contains(mean)
+				}) ?? .moderate
 			},
 			date: date
 		)

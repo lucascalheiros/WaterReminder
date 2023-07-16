@@ -12,6 +12,16 @@ class DailyWaterInputField: UITextField, UITextFieldDelegate {
 
 	let bottomLine = CALayer()
 
+	override var text: String? {
+		get {
+			super.text
+		}
+		set {
+			super.text = newValue
+			textPhantom.text = newValue
+		}
+	}
+
 	func setupUnderlineLayer() {
 		var frame = self.bounds
 		frame.origin.y = frame.size.height - 1

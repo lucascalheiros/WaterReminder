@@ -6,15 +6,22 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
-class WeightInputViewController: BaseChildPageController {	
+class WeightInputViewController: BaseChildPageController {
+	private let disposeBag = DisposeBag()
 	
 	lazy var weightPicker = {
 		let picker = WeightPickerView()
 		picker.translatesAutoresizingMaskIntoConstraints = false
-		picker.valueChangeListener = {
-			$0
-		}
+		picker.rx
+			.itemSelected
+			.map { _ in
+				picker.selectedWeightInfo
+			}
+			.bind(to: firstAccessInformationViewModel.weightInfo)
+			.disposed(by: disposeBag)
 		view.addSubview(picker)
 		return picker
 	}()

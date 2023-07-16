@@ -11,7 +11,6 @@ import RealmSwift
 import RxRealm
 
 class WaterSourceRepositoryImpl: BaseRepository<WaterSourceObject>, WaterSourceRepositoryProtocol {
-    
     private var waterSourceList = [
         WaterSource(volume: 250, waterSourceType: .water),
         WaterSource(volume: 500, waterSourceType: .water),
@@ -34,6 +33,10 @@ class WaterSourceRepositoryImpl: BaseRepository<WaterSourceObject>, WaterSourceR
         list().map { $0.sorted(by: { ($0.order ?? Int.max) < ($1.order ?? Int.max) }) }
     }
 
+	func createWaterSource(waterSource: WaterSource) -> Completable {
+		self.save(waterSource.toDataObject())
+	}
+
     func updateWaterSourcePinState(waterSource: WaterSource, isPinned: Bool) -> Completable {
         return list().safeAsSingle()
             .flatMapCompletable {
@@ -44,5 +47,4 @@ class WaterSourceRepositoryImpl: BaseRepository<WaterSourceObject>, WaterSourceR
                 return self.save(waterSource)
             }
     }
-
 }

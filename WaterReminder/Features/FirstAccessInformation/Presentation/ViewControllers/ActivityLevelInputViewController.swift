@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class ActivityLevelInputViewController: BaseChildPageController {
+	private let disposeBag = DisposeBag()
+
 	lazy var activityLevelSlider = {
 		let slider = ActivitySliderView()
 		slider.translatesAutoresizingMaskIntoConstraints = false
@@ -83,11 +87,14 @@ class ActivityLevelInputViewController: BaseChildPageController {
 		let roundedStepValue = Float(round(newValue / 1))
 
 		activityLevelSlider.setValue(roundedStepValue, animated: true)
+		self.firstAccessInformationViewModel.exerciseDays.accept(Float(roundedStepValue))
+
 	}
 
 	@objc func numberTapped(_ sender: IntParameterUITapGestureRecognizer) {
 		if let value = sender.value {
 			activityLevelSlider.setValue(Float(value), animated: true)
+			self.firstAccessInformationViewModel.exerciseDays.accept(Float(value))
 		}
 	}
 }

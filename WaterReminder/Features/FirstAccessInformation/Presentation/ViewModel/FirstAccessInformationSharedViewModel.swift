@@ -14,51 +14,68 @@ class FirstAccessInformationSharedViewModel {
 	private let disposeBag = DisposeBag()
 	private let expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase
 	private let registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase
+	private let waterReminderNotificationUseCase: ScheduleWaterReminderNotificationsUseCase
 
 	let pageNavigationDelegate = FirstAccessInformationPageNavigationDelegate()
 
 	let stepper: FirstAccessInformationStepper
 
-	lazy var weight = BehaviorRelay(value: 70000)
-	lazy var exerciseDays = BehaviorRelay(value: 3)
-	lazy var temperatureLevel = BehaviorRelay(value: 20 ... 25)
+	let timePeriodFifteenMinutesSpaced =  Array(0...23).flatMap { hour in
+		Array(0...3).map { minute in TimePeriod(hour: hour, minute: minute * 15) }
+	}
+
+	lazy var exerciseDays: BehaviorRelay<Float> = BehaviorRelay(value: 3.0)
+	lazy var temperatureLevel = BehaviorRelay(value: AmbienceTemperatureLevel.moderate)
+	lazy var weightInfo = BehaviorRelay(value: WeightInfo(weightInteger: 70, weightFraction: 0, weightFormat: WeightFormat.metric))
+	lazy var shouldRemind = BehaviorRelay(value: true)
+	lazy var initialTimeIndex = BehaviorRelay(value: 8 * 4)
+	lazy var finalTimeIndex = BehaviorRelay(value: 20 * 4)
 
 	lazy var userInformation = {
 		Observable.combineLatest(
-			weight.asObservable(),
+			weightInfo.asObservable(),
 			exerciseDays.asObservable(),
 			temperatureLevel.asObservable()
 		) { weight, exerciseDays, temperatureLevel in
-			UserInformation(id: nil, weightInGrams: weight, activityLevelInWeekDays: exerciseDays, ambienceTemperatureLevel: temperatureLevel, date: Date() )
+			UserInformation(id: nil, weightInGrams: weight.toGrams(), activityLevelInWeekDays: Int(exerciseDays), ambienceTemperatureLevel: temperatureLevel, date: Date() )
 		}
 	}()
 
-	lazy var expectedWaterVolume = {
+	lazy var expectedWaterVolume: Observable<ExpectedWaterConsumptionState> = {
 		userInformation.map {
 			self.expectedWaterConsumptionUseCase.calculateExpectedWaterConsumptionFromUserInformation($0)
 		}
 	}()
 
-	internal init(expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase, registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase, stepper: FirstAccessInformationStepper) {
+	internal init(
+		expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase,
+		registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase,
+		waterReminderNotificationUseCase: ScheduleWaterReminderNotificationsUseCase,
+		stepper: FirstAccessInformationStepper
+	) {
 		self.expectedWaterConsumptionUseCase = expectedWaterConsumptionUseCase
 		self.registerDailyWaterConsumptionUseCase = registerDailyWaterConsumptionUseCase
+		self.waterReminderNotificationUseCase = waterReminderNotificationUseCase
 		self.stepper = stepper
 	}
 
-	func setWeight(weightInGrams: Int) {
-		weight.accept(weightInGrams)
-	}
-
-	func setExerciseDays(exerciseDays: Int) {
-		self.exerciseDays.accept(exerciseDays)
-	}
-
-	func setTemperatureLevel(temperateLevelRange: ClosedRange<Int>) {
-		self.temperatureLevel.accept(temperateLevelRange)
-	}
-
-	func registerWaterVolume(waterValue: Int) -> Completable {
+	func confirmWaterVolume(waterValue: Int) {
 		registerDailyWaterConsumptionUseCase.registerDailyWaterConsumption(waterValue: waterValue)
+			.subscribe(onCompleted: {
+				self.scheduleReminderNotifications()
+				self.completeProcess()
+			})
+			.disposed(by: disposeBag)
+	}
+
+	func scheduleReminderNotifications() {
+		if shouldRemind.value {
+			waterReminderNotificationUseCase.scheduleNotifications(
+				startTime: timePeriodFifteenMinutesSpaced[initialTimeIndex.value],
+				endTime: timePeriodFifteenMinutesSpaced[finalTimeIndex.value],
+				frequency: .medium
+			)
+		}
 	}
 
 	func completeProcess() {

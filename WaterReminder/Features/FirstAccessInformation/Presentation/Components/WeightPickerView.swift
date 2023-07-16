@@ -13,17 +13,14 @@ class WeightPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelega
 	let weightInteger = Array(1...500)
 	let weightFractional = Array(0...9)
 	let weightFormat = WeightFormat.allCases
-	var valueChangeListener: ((WeightPickerView) -> Void)? = nil
-
-	var selectedWeightInteger = 69
-	var selectedWeightFraction = 0
-	var selectedWeightFormat = WeightFormat.metric
+	var valueChangeListener: ((WeightPickerView) -> Void)?
+	var selectedWeightInfo = WeightInfo(weightInteger: 70, weightFraction: 0, weightFormat: WeightFormat.metric)
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		dataSource = self
 		delegate = self
-		selectRow(selectedWeightInteger, inComponent: 0, animated: false)
+		selectRow(selectedWeightInfo.weightInteger - 1, inComponent: 0, animated: false)
 	}
 	
 	required init?(coder: NSCoder) {
@@ -111,6 +108,9 @@ class WeightPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelega
 	}
 
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+		var selectedWeightInteger: Int = selectedWeightInfo.weightInteger
+		var selectedWeightFraction: Int = selectedWeightInfo.weightFraction
+		var selectedWeightFormat: WeightFormat = selectedWeightInfo.weightFormat
 		switch component {
 		case 0:
 			selectedWeightInteger = weightInteger[row]
@@ -121,6 +121,17 @@ class WeightPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelega
 		default:
 			break
 		}
+		selectedWeightInfo = WeightInfo(weightInteger: selectedWeightInteger, weightFraction: selectedWeightFraction, weightFormat: selectedWeightFormat)
 		valueChangeListener?(self)
+	}
+}
+
+struct WeightInfo {
+	let weightInteger: Int
+	let weightFraction: Int
+	let weightFormat: WeightFormat
+
+	func toGrams() -> Int {
+		return weightInteger * 1000 + weightFraction * 100
 	}
 }

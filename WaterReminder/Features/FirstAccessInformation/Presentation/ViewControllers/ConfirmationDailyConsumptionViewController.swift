@@ -10,7 +10,6 @@ import RxSwift
 import RxCocoa
 
 class ConfirmationDailyConsumptionViewController: BaseChildPageController {
-
 	private let disposeBag = DisposeBag()
 
 	private lazy var dailyWaterEditText = {
@@ -27,9 +26,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 			.tap
 			.bind {
 				let waterVolume: Int = self.dailyWaterEditText.text.unwrapLet { $0.toInt() ?? 0 } ?? 0
-				self.firstAccessInformationViewModel.registerWaterVolume(waterValue: waterVolume).subscribe(onCompleted: {
-					self.firstAccessInformationViewModel.completeProcess()
-				}).disposed(by: self.disposeBag)
+				self.firstAccessInformationViewModel.confirmWaterVolume(waterValue: waterVolume)
 			}
 			.disposed(by: disposeBag)
 		return button
@@ -37,19 +34,31 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 
 	private lazy var initialNotificationTime = {
 		let picker = TimeWheelPickerView()
-		picker.selectRow(8 * 4, inComponent: 0, animated: false)
-		picker.valueChangeListener = { _ in
-			self.limitInitialPickerValue()
-		}
+		picker.updateData(dayTime: firstAccessInformationViewModel.timePeriodFifteenMinutesSpaced)
+		picker.selectRow(firstAccessInformationViewModel.initialTimeIndex.value, inComponent: 0, animated: false)
+		picker.rx
+			.itemSelected
+			.map { _ in
+				self.limitInitialPickerValue()
+				return picker.selectedIndex
+			}
+			.bind(to: firstAccessInformationViewModel.initialTimeIndex)
+			.disposed(by: disposeBag)
 		return picker
 	}()
 
 	private lazy var finalNotificationTime = {
 		let picker = TimeWheelPickerView()
-		picker.selectRow(20 * 4, inComponent: 0, animated: false)
-		picker.valueChangeListener = { _ in
-			self.limitFinalPickerValue()
-		}
+		picker.updateData(dayTime: firstAccessInformationViewModel.timePeriodFifteenMinutesSpaced)
+		picker.selectRow(firstAccessInformationViewModel.finalTimeIndex.value, inComponent: 0, animated: false)
+		picker.rx
+			.itemSelected
+			.map { _ in
+				self.limitFinalPickerValue()
+				return picker.selectedIndex
+			}
+			.bind(to: firstAccessInformationViewModel.finalTimeIndex)
+			.disposed(by: disposeBag)
 		return picker
 	}()
 
@@ -61,18 +70,34 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 			.rx
 			.controlEvent(.valueChanged)
 			.withLatestFrom(uiSwitch.switchView.rx.value)
-			.subscribe(onNext : { bool in
-				self.initialNotificationTime.isHidden = !bool
-				self.finalNotificationTime.isHidden = !bool
-			})
+			.bind(to: firstAccessInformationViewModel.shouldRemind)
 			.disposed(by: disposeBag)
 		return uiSwitch
 	}()
 
 	let viewWrapper = UIView()
 
+	override func viewWillAppear(_ animated: Bool) {
+		firstAccessInformationViewModel.expectedWaterVolume
+			.safeAsSingle()
+			.subscribe(onSuccess: { expectedWaterVolume in
+				switch expectedWaterVolume {
+				case .successful(let waterQuantity):
+					self.dailyWaterEditText.text = waterQuantity.toString()
+				default:
+					return
+				}
+			}).disposed(by: disposeBag)
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		firstAccessInformationViewModel.shouldRemind.subscribe(onNext : { bool in
+			self.initialNotificationTime.isHidden = !bool
+			self.finalNotificationTime.isHidden = !bool
+		})
+		.disposed(by: disposeBag)
 
 		prepareHideKeyboardWhenTappedOut()
 		prepareConfiguration()
@@ -81,7 +106,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 
 	func prepareConfiguration() {
 		informativeMainText.text = "Confirm the amount of daily water you want to ingest, and confirm the notification interval we should use for the reminders."
-		skipEstimativeButton.isHidden = true
+//		skipEstimativeButton.isHidden = true
 	}
 
 	func prepareConstraints() {
@@ -129,14 +154,14 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 	}
 
 	func limitInitialPickerValue() {
-		if (initialNotificationTime.dayTimeIndex > finalNotificationTime.dayTimeIndex) {
-			finalNotificationTime.selectRow(initialNotificationTime.dayTimeIndex, inComponent: 0, animated: true)
+		if (initialNotificationTime.selectedIndex > finalNotificationTime.selectedIndex) {
+			finalNotificationTime.selectRow(initialNotificationTime.selectedIndex, inComponent: 0, animated: true)
 		}
 	}
 
 	func limitFinalPickerValue() {
-		if (finalNotificationTime.dayTimeIndex < initialNotificationTime.dayTimeIndex) {
-			initialNotificationTime.selectRow(finalNotificationTime.dayTimeIndex, inComponent: 0, animated: true)
+		if (finalNotificationTime.selectedIndex < initialNotificationTime.selectedIndex) {
+			initialNotificationTime.selectRow(finalNotificationTime.selectedIndex, inComponent: 0, animated: true)
 		}
 	}
 

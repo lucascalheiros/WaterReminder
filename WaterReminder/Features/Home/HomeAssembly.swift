@@ -13,7 +13,10 @@ class HomeAssembly: Assembly {
 		container.autoregister(
 			HomeViewController.self
 		) {
-			return HomeViewController()
+			let home = HomeViewController()
+			home.viewModel = container.resolve(HomeViewModel.self)!
+			return home
 		}
+		container.autoregister(HomeViewModel.self, initializer: HomeViewModel.init)
 	}
 }

@@ -10,12 +10,10 @@ import UIKit
 
 class TimeWheelPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
 	
-	let dayTime = Array(0...23).flatMap { hour in
-		Array(0...3).map { minute in DayTime(hour: hour, minute: minute * 15) }
-	}
+	var dayTime: [TimePeriod] = Array()
 	var valueChangeListener: ((TimeWheelPickerView) -> Void)?
 
-	var dayTimeIndex = 8 * 4
+	var selectedIndex: Int = 0
 	let rotationSelfAngle: CGFloat = -90  * (.pi/180)
 	let rotationItemAngle: CGFloat = 90  * (.pi/180)
 	
@@ -23,12 +21,21 @@ class TimeWheelPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDel
 		super.init(frame: frame)
 		dataSource = self
 		delegate = self
-		selectRow(dayTimeIndex, inComponent: 0, animated: false)
 		transform = CGAffineTransform(rotationAngle: rotationSelfAngle)
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+
+	func updateData(dayTime: [TimePeriod]) {
+		self.dayTime = dayTime
+		reloadComponent(0)
+	}
+
+	override func selectRow(_ row: Int, inComponent: Int, animated: Bool) {
+		selectedIndex = row
+		super.selectRow(row, inComponent: inComponent, animated: animated)
 	}
 	
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -56,7 +63,7 @@ class TimeWheelPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDel
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 		switch component {
 		case 0:
-			return dayTime[row].asString()
+			return dayTime[row].hourAndMinuteAsString()
 		default:
 			return ""
 		}
@@ -86,7 +93,7 @@ class TimeWheelPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDel
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		switch component {
 		case 0:
-			dayTimeIndex = row
+			selectedIndex = row
 		default:
 			break
 		}
@@ -94,11 +101,8 @@ class TimeWheelPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDel
 	}
 }
 
-struct DayTime {
-	let hour: Int
-	let minute: Int
-
-	func asString() -> String {
+extension TimePeriod {
+	func hourAndMinuteAsString() -> String {
 		return String(format: "%02d:%02d", hour, minute)
 	}
 }

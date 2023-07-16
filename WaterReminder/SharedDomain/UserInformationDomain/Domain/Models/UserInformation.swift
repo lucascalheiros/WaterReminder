@@ -12,7 +12,7 @@ struct UserInformation {
     let id: String?
     let weightInGrams: Int?
     let activityLevelInWeekDays: Int?
-    let ambienceTemperatureLevel: ClosedRange<Int>?
+    let ambienceTemperatureLevel: AmbienceTemperatureLevel?
     let date: Date
     
 }

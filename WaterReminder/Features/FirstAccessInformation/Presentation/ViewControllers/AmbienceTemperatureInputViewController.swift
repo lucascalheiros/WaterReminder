@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class AmbienceTemperatureInputViewController: BaseChildPageController {
+	private let disposeBag = DisposeBag()
+
 	private lazy var buttonsStackView: UIStackView = {
 		let stackView = UIStackView()
 		stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +35,13 @@ class AmbienceTemperatureInputViewController: BaseChildPageController {
 		button.selectedSegmentTintColor = .blue
 		button.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(button)
-		button.addTarget(self, action: #selector(self.segmentedValueChanged(_:)), for: .valueChanged)
+		button.rx
+			.value
+			.map { index in
+				AmbienceTemperatureLevel.allCases[index]
+			}
+			.bind(to: firstAccessInformationViewModel.temperatureLevel)
+			.disposed(by: disposeBag)
 		return button
 	}()
 
@@ -65,9 +75,5 @@ class AmbienceTemperatureInputViewController: BaseChildPageController {
 			buttonsStackView.leadingAnchor.constraint(equalTo: temperatureSegmentationControl.leadingAnchor),
 			buttonsStackView.trailingAnchor.constraint(equalTo: temperatureSegmentationControl.trailingAnchor)
 		])
-	}
-	
-	@objc func segmentedValueChanged(_ sender:UISegmentedControl!) {
-		print("Selected Segment Index is : \(sender.selectedSegmentIndex)")
 	}
 }

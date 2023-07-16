@@ -10,32 +10,26 @@ import RxSwift
 import RealmSwift
 
 class HomeViewModel {
-    var dailyConsumptionRepository: DailyWaterConsumptionRepositoryProtocol =
-	DailyWaterConsumptionRepositoryImpl()
+	let manageWaterSourceUseCase: ManageWaterSourceUseCase
+
+	let getWaterSourceUseCase: GetWaterSourceUseCase
+
+	let registerWaterConsumedUseCase: RegisterWaterConsumedUseCase
+
+	let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
+
+	let getWaterConsumedUseCase: GetWaterConsumedUseCase
     
-	var waterConsumedRepository: WaterConsumedRepositoryProtocol =
-	WaterConsumedRepositoryImpl()
-    
-	var waterSourceRepository: WaterSourceRepositoryProtocol =
-	WaterSourceRepositoryImpl()
-    
-	lazy var waterSourceList = { waterSourceRepository.getWaterSourceList() }()
+	lazy var waterSourceList = { getWaterSourceUseCase.getWaterSourceList() }()
     
     lazy var expectedWaterConsumptionInML: Observable<Int> =  {
-        dailyConsumptionRepository.lastDailyWaterConsumption().map {
+		getDailyWaterConsumptionUseCase.lastDailyWaterConsumption().map {
             $0?.expectedVolume ?? 0
         }
     }()
 	
     lazy var currentWaterConsumedInML = {
-		waterConsumedRepository.getWaterConsumedList()
-			.map {
-				let currentDate = Date()
-				let startOfDay = currentDate.startOfDay
-				let endOfDay = currentDate.endOfDay
-				return $0.filter { startOfDay < $0.consumptionTime && $0.consumptionTime < endOfDay }
-					.map { $0.volume }.reduce(0, { $0 + $1 })
-			}
+		getWaterConsumedUseCase.getWaterConsumedToday()
     }()
     
     lazy var consumedPercentage: Observable<Double> = {
@@ -50,17 +44,31 @@ class HomeViewModel {
         }.asObservable().observe(on: MainScheduler.instance)
     }()
     
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
+
+	init (
+		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase,
+		getWaterConsumedUseCase: GetWaterConsumedUseCase,
+		registerWaterConsumedUseCase: RegisterWaterConsumedUseCase,
+		manageWaterSourceUseCase: ManageWaterSourceUseCase,
+		getWaterSourceUseCase: GetWaterSourceUseCase
+	) {
+		self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
+		self.getWaterConsumedUseCase = getWaterConsumedUseCase
+		self.registerWaterConsumedUseCase = registerWaterConsumedUseCase
+		self.manageWaterSourceUseCase = manageWaterSourceUseCase
+		self.getWaterSourceUseCase = getWaterSourceUseCase
+	}
     
     func addWaterVolume(waterSource: WaterSource) {
-        waterConsumedRepository.registerWaterConsumption(waterSource: waterSource)
+		registerWaterConsumedUseCase.registerWaterConsumption(waterVolume: waterSource.volume, sourceType: waterSource.waterSourceType)
             .subscribe().disposed(by: DisposeBag())
     }
     
     func updateWaterSourcePinState(waterSource: WaterSource) {
-        waterSourceRepository.updateWaterSourcePinState(
+        manageWaterSourceUseCase.updateWaterSourcePinState(
             waterSource: waterSource,
-            isPinned: !waterSource.isPinned
+            pinnedState: !waterSource.isPinned
         ).subscribe().disposed(by: disposeBag)
     }
 }
