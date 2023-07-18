@@ -95,8 +95,11 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 		firstAccessInformationViewModel.shouldRemind.subscribe(onNext : { bool in
 			self.initialNotificationTime.isHidden = !bool
 			self.finalNotificationTime.isHidden = !bool
-		})
-		.disposed(by: disposeBag)
+		}).disposed(by: disposeBag)
+
+		firstAccessInformationViewModel.scheduleNotificationOnConfirmEvent.subscribe(onNext: { _ in
+			self.requestNotificationPermisionThenSchedule()
+		}).disposed(by: disposeBag)
 
 		prepareHideKeyboardWhenTappedOut()
 		prepareConfiguration()
@@ -169,19 +172,15 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 	}
 
 	func onConfirmPressed() {
-		if firstAccessInformationViewModel.shouldRemind.value {
-			UNUserNotificationCenter.current().requestAuthorization(
-				options: [.alert, .badge, .sound]
-			) { _, _ in
-				self.confirmWaterVolume()
-			}
-		} else {
-			confirmWaterVolume()
-		}
-	}
-
-	func confirmWaterVolume() {
 		let waterVolume: Int = self.dailyWaterEditText.text.unwrapLet { $0.toInt() ?? 0 } ?? 0
 		self.firstAccessInformationViewModel.confirmWaterVolume(waterValue: waterVolume)
+	}
+
+	func requestNotificationPermisionThenSchedule() {
+		UNUserNotificationCenter.current().requestAuthorization(
+			options: [.alert, .badge, .sound]
+		) { _, _ in
+			self.firstAccessInformationViewModel.scheduleReminderNotifications()
+		}
 	}
 }

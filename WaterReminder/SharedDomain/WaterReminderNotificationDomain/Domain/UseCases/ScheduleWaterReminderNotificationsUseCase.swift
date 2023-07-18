@@ -19,7 +19,7 @@ class ScheduleWaterReminderNotificationsUseCase {
 		let intervalPeriod = frequency.timePeriod()
 		let intervalTimes = (endTime - startTime) / intervalPeriod
 		(0 ..< intervalTimes).forEach { times in
-			let reminderTime = startTime * times
+			let reminderTime = startTime + intervalPeriod * times
 			var date = DateComponents()
 			date.hour = reminderTime.hour
 			date.minute = reminderTime.minute

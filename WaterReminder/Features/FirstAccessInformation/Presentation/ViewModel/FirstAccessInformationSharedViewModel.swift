@@ -30,6 +30,7 @@ class FirstAccessInformationSharedViewModel {
 	lazy var shouldRemind = BehaviorRelay(value: true)
 	lazy var initialTimeIndex = BehaviorRelay(value: 8 * 4)
 	lazy var finalTimeIndex = BehaviorRelay(value: 20 * 4)
+	lazy var scheduleNotificationOnConfirmEvent: PublishRelay<Bool> = PublishRelay()
 
 	lazy var userInformation = {
 		Observable.combineLatest(
@@ -62,20 +63,22 @@ class FirstAccessInformationSharedViewModel {
 	func confirmWaterVolume(waterValue: Int) {
 		registerDailyWaterConsumptionUseCase.registerDailyWaterConsumption(waterValue: waterValue)
 			.subscribe(onCompleted: {
-				self.scheduleReminderNotifications()
-				self.completeProcess()
+				if self.shouldRemind.value {
+					self.scheduleNotificationOnConfirmEvent.accept(true)
+				} else {
+					self.completeProcess()
+				}
 			})
 			.disposed(by: disposeBag)
 	}
 
 	func scheduleReminderNotifications() {
-		if shouldRemind.value {
-			waterReminderNotificationUseCase.scheduleNotifications(
-				startTime: timePeriodFifteenMinutesSpaced[initialTimeIndex.value],
-				endTime: timePeriodFifteenMinutesSpaced[finalTimeIndex.value],
-				frequency: .medium
-			)
-		}
+		waterReminderNotificationUseCase.scheduleNotifications(
+			startTime: timePeriodFifteenMinutesSpaced[initialTimeIndex.value],
+			endTime: timePeriodFifteenMinutesSpaced[finalTimeIndex.value],
+			frequency: .medium
+		)
+		self.completeProcess()
 	}
 
 	func completeProcess() {
