@@ -24,6 +24,10 @@ extension UIEdgeInsets {
         return UIEdgeInsets(top: inset, left: left, bottom: inset, right: right)
     }
 
+	func left(inset: CGFloat) -> UIEdgeInsets {
+		return UIEdgeInsets(top: top, left: inset, bottom: bottom, right: right)
+	}
+
     static func set(inset: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }

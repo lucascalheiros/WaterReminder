@@ -14,7 +14,7 @@ class FirstAccessInformationSharedViewModel {
 	private let disposeBag = DisposeBag()
 	private let expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase
 	private let registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase
-	private let waterReminderNotificationUseCase: ScheduleWaterReminderNotificationsUseCase
+	private let manageNotificationSettingsUseCase: ManageNotificationSettingsUseCase
 
 	let pageNavigationDelegate = FirstAccessInformationPageNavigationDelegate()
 
@@ -51,12 +51,12 @@ class FirstAccessInformationSharedViewModel {
 	internal init(
 		expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase,
 		registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase,
-		waterReminderNotificationUseCase: ScheduleWaterReminderNotificationsUseCase,
+		manageNotificationSettingsUseCase: ManageNotificationSettingsUseCase,
 		stepper: FirstAccessInformationStepper
 	) {
 		self.expectedWaterConsumptionUseCase = expectedWaterConsumptionUseCase
 		self.registerDailyWaterConsumptionUseCase = registerDailyWaterConsumptionUseCase
-		self.waterReminderNotificationUseCase = waterReminderNotificationUseCase
+		self.manageNotificationSettingsUseCase = manageNotificationSettingsUseCase
 		self.stepper = stepper
 	}
 
@@ -73,11 +73,13 @@ class FirstAccessInformationSharedViewModel {
 	}
 
 	func scheduleReminderNotifications() {
-		waterReminderNotificationUseCase.scheduleNotifications(
+		let notificationSettings = NotificationSettings(
+			isReminderEnabled: shouldRemind.value,
+			notificationFrequency: .medium,
 			startTime: timePeriodFifteenMinutesSpaced[initialTimeIndex.value],
-			endTime: timePeriodFifteenMinutesSpaced[finalTimeIndex.value],
-			frequency: .medium
+			endTime: timePeriodFifteenMinutesSpaced[finalTimeIndex.value]
 		)
+		manageNotificationSettingsUseCase.setNotificationSetting(notificationSettings: notificationSettings)
 		self.completeProcess()
 	}
 

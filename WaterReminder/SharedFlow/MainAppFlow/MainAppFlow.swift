@@ -33,8 +33,8 @@ class MainAppFlow: Flow {
 	
 	private func navigateToMainAppTab() -> FlowContributors {
 		let homeFlow = HomeFlow(container: self.container)
-		let statisticsFlow = SettingsFlow(container: self.container)
-		let settingsFlow = StatisticsFlow(container: self.container)
+		let statisticsFlow = StatisticsFlow(container: self.container)
+		let settingsFlow = SettingsFlow(container: self.container)
 		
 		Flows.use(homeFlow, statisticsFlow, settingsFlow, when: .created) { [unowned self] (root1: UINavigationController, root2: UINavigationController, root3: UINavigationController) in
 			rootViewController.tabBar.tintColor = UIColor.blue

@@ -18,5 +18,17 @@ class WaterReminderNotificationDomainAssembly: Assembly {
 			ScheduleWaterReminderNotificationsUseCase.self,
 			initializer: ScheduleWaterReminderNotificationsUseCase.init
 		)
+		container.autoregister(
+			GetNotificationSettingsUseCase.self,
+			initializer: GetNotificationSettingsUseCase.init
+		)
+		container.autoregister(
+			ManageNotificationSettingsUseCase.self,
+			initializer: ManageNotificationSettingsUseCase.init
+		)
+		container.autoregister(
+			NotificationSettingsRepositoryProtocol.self,
+			initializer: NotificationSettingsRepositoryImpl.init
+		)
 	}
 }

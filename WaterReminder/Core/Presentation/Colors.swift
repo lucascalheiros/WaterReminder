@@ -12,10 +12,17 @@ enum Theme: String {
 
     case lightBlue
     case lightTeal
+	case blue
+	case darkGray
+	case white
+	case teal
 
     var accentColor: UIColor {
         switch self {
-        case .lightBlue, .lightTeal: return .darkGray
+		case .lightBlue, .lightTeal, .white:
+			return .darkGray
+		case .blue, .darkGray, .teal:
+			return .white
         }
     }
 

@@ -13,6 +13,7 @@ class SwitchWithLabel: ProgrammaticView {
 
 	lazy var switchView = {
 		let uiSwitch = UISwitch()
+		uiSwitch.onTintColor = .blue
 		return uiSwitch
 	}()
 
@@ -22,7 +23,6 @@ class SwitchWithLabel: ProgrammaticView {
 		label.textColor = .white
 		return label
 	}()
-
 
 	override func prepareConstraints() {
 		addConstrainedSubviews(label, switchView)

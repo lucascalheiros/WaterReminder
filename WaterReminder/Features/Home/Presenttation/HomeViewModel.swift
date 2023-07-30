@@ -40,9 +40,19 @@ class HomeViewModel {
     
     lazy var consumedQuantityText = {
         Observable.combineLatest(expectedWaterConsumptionInML, currentWaterConsumedInML) { total, current in
-            return "\(current) of \(total)ml"
+            return "\(current)ml"
         }.asObservable().observe(on: MainScheduler.instance)
     }()
+
+	lazy var remainingQuantityText = {
+		Observable.combineLatest(expectedWaterConsumptionInML, currentWaterConsumedInML) { total, current in
+			let difference = total - current
+			if difference <= 0 {
+				return "You achieved your goal!"
+			}
+			return "\(difference)ml remaining!"
+		}.asObservable().observe(on: MainScheduler.instance)
+	}()
     
     private let disposeBag = DisposeBag()
 

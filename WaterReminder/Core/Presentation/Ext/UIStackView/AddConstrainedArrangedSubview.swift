@@ -14,6 +14,6 @@ extension UIStackView {
 	}
 
 	func addConstrainedArrangedSubviews(_ views: UIView...) {
-		views.forEach { view in addConstrainedSubview(view) }
+		views.forEach { view in addConstrainedArrangedSubview(view) }
 	}
 }

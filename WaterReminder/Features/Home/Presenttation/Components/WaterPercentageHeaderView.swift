@@ -14,7 +14,6 @@ class WaterPercentageHeaderView: UICollectionViewCell {
 
     private lazy var circleView: CircularProgressView = {
         let circleView = CircularProgressView()
-        circleView.translatesAutoresizingMaskIntoConstraints = false
         return circleView
     }()
 
@@ -29,7 +28,6 @@ class WaterPercentageHeaderView: UICollectionViewCell {
 
     private lazy var percentageLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 20.0)
         label.textColor = .blue
         label.textAlignment = .center
@@ -39,7 +37,6 @@ class WaterPercentageHeaderView: UICollectionViewCell {
 
     private lazy var secondaryLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 20.0)
         label.textColor = .blue
         label.textAlignment = .center
@@ -48,25 +45,29 @@ class WaterPercentageHeaderView: UICollectionViewCell {
 
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .fill
         return stackView
     }()
 
+	private lazy var informativeBottomRightLabel: UILabel = {
+		let label = UILabel()
+		label.font = UIFont.boldSystemFont(ofSize: 20.0)
+		label.textColor = Theme.lightBlue.accentColor
+		label.textAlignment = .center
+		return label
+	}()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(circleView)
-        addSubview(percentageLabel)
-        addSubview(labelStackView)
-        labelStackView.addArrangedSubview(percentageValueLabel)
-        labelStackView.addArrangedSubview(secondaryLabel)
+        addConstrainedSubviews(circleView, percentageLabel, labelStackView, informativeBottomRightLabel)
+        labelStackView.addConstrainedArrangedSubviews(percentageValueLabel, secondaryLabel)
 
         NSLayoutConstraint.activate([
             circleView.centerXAnchor.constraint(equalTo: centerXAnchor),
             circleView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            circleView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 2/3),
+            circleView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 5/9),
             circleView.widthAnchor.constraint(equalTo: circleView.heightAnchor),
             percentageLabel.leadingAnchor.constraint(equalTo: percentageValueLabel.trailingAnchor),
             percentageLabel.bottomAnchor.constraint(
@@ -74,12 +75,14 @@ class WaterPercentageHeaderView: UICollectionViewCell {
                 constant: -10
             ),
             labelStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            labelStackView.centerYAnchor.constraint(equalTo: centerYAnchor)
-
+            labelStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+			informativeBottomRightLabel.topAnchor.constraint(equalTo: circleView.bottomAnchor),
+			informativeBottomRightLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+			informativeBottomRightLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
         layer.cornerRadius = 8
-        backgroundColor = .white.withAlphaComponent(0.5)
+		backgroundColor = Theme.lightBlue.mainColor
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -100,4 +103,8 @@ class WaterPercentageHeaderView: UICollectionViewCell {
     func setSecondaryText(text: String) {
         secondaryLabel.text = text
     }
+
+	func setInformativeText(text: String) {
+		informativeBottomRightLabel.text = text
+	}
 }

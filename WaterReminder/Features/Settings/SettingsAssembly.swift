@@ -13,7 +13,19 @@ class SettingsAssembly: Assembly {
 		container.autoregister(
 			SettingsViewController.self
 		) {
-			return SettingsViewController()
+			return SettingsViewController(settingsViewModel: container.resolve(SettingsViewModel.self)!)
 		}
+		container.autoregister(
+			SettingsStepper.self,
+			initializer: SettingsStepper.init
+		).inObjectScope(.container)
+		container.autoregister(
+			SettingsViewModel.self,
+			initializer: SettingsViewModel.init
+		)
+		container.autoregister(
+			PeriodSelectorDelegate.self,
+			initializer: PeriodSelectorDelegate.init
+		)
 	}
 }
