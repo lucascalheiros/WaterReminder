@@ -38,9 +38,8 @@ class DailyWaterInputField: UITextField, UITextFieldDelegate {
 		return label
 	}()
 
-	private lazy var suffix = {
+	lazy var suffix = {
 		let label = UILabel()
-		label.text = "ml"
 		label.font = UIFont.boldSystemFont(ofSize: 20)
 		label.textColor = .white.withAlphaComponent(0.7)
 		return label
@@ -53,7 +52,7 @@ class DailyWaterInputField: UITextField, UITextFieldDelegate {
 		textAlignment = .center
 		font = UIFont.boldSystemFont(ofSize: 26)
 		textColor = .white
-		keyboardType = .numberPad
+		keyboardType = .decimalPad
 		borderStyle = .none
 		layer.addSublayer(bottomLine)
 		layer.masksToBounds = true
@@ -77,11 +76,11 @@ class DailyWaterInputField: UITextField, UITextFieldDelegate {
 		shouldChangeCharactersIn range: NSRange,
 		replacementString string: String
 	) -> Bool {
-		let allowedCharacters = CharacterSet.decimalDigits
+		let allowedCharacters = CharacterSet(charactersIn: ".,").union(CharacterSet.decimalDigits)
 		let characterSet = CharacterSet(charactersIn: string)
 		let currentString = (textField.text ?? "") as NSString
 		let newString = currentString.replacingCharacters(in: range, with: string)
-		if allowedCharacters.isSuperset(of: characterSet) && newString.count <= 5 {
+		if allowedCharacters.isSuperset(of: characterSet) && newString.count <= 7 {
 			textPhantom.text = newString
 			return true
 		}

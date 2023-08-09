@@ -5,88 +5,77 @@
 //  Created by Lucas Calheiros on 21/07/23.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 class DailyWaterSelectorModalViewController: UIViewController {
 	var disposeBag = DisposeBag()
 
-	let periodSelectorDelegate: PeriodSelectorDelegate
+	let dailyWaterSelectorDelegate: DailyWaterSelectorDelegate
 
-	let timePeriodFifteenMinutesSpaced = Array(0...23).flatMap { hour in
-		Array(0...3).map { minute in TimePeriod(hour: hour, minute: minute * 15) }
-	}
-
-	private lazy var initialNotificationTime = {
-		let picker = TimeWheelPickerView()
-		picker.updateData(dayTime: timePeriodFifteenMinutesSpaced)
-		picker.rx
-			.itemSelected
-			.map { _ in
-				self.limitInitialPickerValue()
-				return picker.selectedIndex
-			}
-			.bind(to: initialTimeIndex)
-			.disposed(by: disposeBag)
-		return picker
+	private lazy var dailyWaterEditText = {
+		let text = DailyWaterInputField()
+		return text
 	}()
 
-	private lazy var finalNotificationTime = {
-		let picker = TimeWheelPickerView()
-		picker.updateData(dayTime: timePeriodFifteenMinutesSpaced)
-		picker.rx
-			.itemSelected
-			.map { _ in
-				self.limitFinalPickerValue()
-				return picker.selectedIndex
-			}
-			.bind(to: finalTimeIndex)
-			.disposed(by: disposeBag)
-		return picker
+	private var currentVolumeFormat = VolumeFormat.metric
+
+	private lazy var volumeFormatSegmentationControl = {
+		let button = UISegmentedControl(items: VolumeFormat.allCases.map { $0.localizedDisplay })
+		dailyWaterEditText.suffix.text = VolumeFormat.metric.formatDisplay
+		button.selectedSegmentIndex = 0
+		button.backgroundColor = Theme.lightTeal.mainColor
+		let attributes = [
+			NSAttributedString.Key.foregroundColor: UIColor.white,
+			NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16.0)
+		]
+		button.setTitleTextAttributes(attributes, for: .normal)
+		button.setTitleTextAttributes(attributes, for: .selected)
+		button.selectedSegmentTintColor = .blue
+		button.rx.selectedSegmentIndex.bind {
+			let format = (VolumeFormat(rawValue: $0) ?? VolumeFormat.metric)
+			self.dailyWaterEditText.suffix.text = format.formatDisplay
+			self.dailyWaterEditText.text = String(format: "%.1f", self.waterVolumeTo(format))
+			self.currentVolumeFormat = format
+		}.disposed(by: disposeBag)
+		return button
 	}()
 
-	lazy var initialTimeIndex = BehaviorRelay<Int>(value: 0)
-	lazy var finalTimeIndex = BehaviorRelay<Int>(value: 0)
+	lazy var cancel = UIBarButtonItem(
+		title: "Cancel",
+		primaryAction: .init(handler: { _ in
+			self.dismiss(animated: true)
+		})
+	)
 
-	lazy var cancel = UIBarButtonItem(title: "Cancel", primaryAction: .init(handler: { _ in
-		self.dismiss(animated: true)
-	}))
+	lazy var confirm = UIBarButtonItem(
+		title: "Confirm", image: nil,
+		primaryAction: .init(handler: { _ in
+			let waterVolume = self.dailyWaterEditText.text?.toFloat() ?? 0
+			self.dailyWaterSelectorDelegate.setVolumeAndFormat(waterVolume, self.currentVolumeFormat)
+			self.dismiss(animated: true)
+		})
+	)
 
-	lazy var confirm = UIBarButtonItem(title: "Confirm", image: nil, primaryAction: .init(handler: { _ in
-		let startTime = self.timePeriodFifteenMinutesSpaced[self.initialTimeIndex.value]
-		let endTime = self.timePeriodFifteenMinutesSpaced[self.finalTimeIndex.value]
-		self.periodSelectorDelegate.setNotificationPeriod(startTime: startTime, endTime: endTime)
-		self.dismiss(animated: true)
-	}))
-
-	init(periodSelectorDelegate: PeriodSelectorDelegate) {
-		self.periodSelectorDelegate = periodSelectorDelegate
+	init(dailyWaterSelectorDelegate: DailyWaterSelectorDelegate) {
+		self.dailyWaterSelectorDelegate = dailyWaterSelectorDelegate
 		super.init(nibName: nil, bundle: nil)
 	}
 
-	required init?(coder: NSCoder) {
+	@available(*, unavailable)
+	required init?(coder _: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		periodSelectorDelegate.initialTime.subscribe(
-			onNext: { time in
-				let index = self.timeToIndex(time)
-				self.initialTimeIndex.accept(index)
-				self.initialNotificationTime.selectRow(self.timeToIndex(time), inComponent: 0, animated: true)
-			}
-		).disposed(by: disposeBag)
-
-		periodSelectorDelegate.finalTime.subscribe(
-			onNext: { time in
-				let index = self.timeToIndex(time)
-				self.finalTimeIndex.accept(index)
-				self.finalNotificationTime.selectRow(index, inComponent: 0, animated: true)
-			}
-		).disposed(by: disposeBag)
+		dailyWaterSelectorDelegate.volumeWithFormat.safeAsSingle().subscribe( onSuccess: { volumeWithFormat in
+			self.dailyWaterEditText.text = String(volumeWithFormat.volumeFormat.fromMetric(Float(volumeWithFormat.waterInML)))
+			self.currentVolumeFormat = volumeWithFormat.volumeFormat
+			self.volumeFormatSegmentationControl.selectedSegmentIndex = volumeWithFormat.volumeFormat.rawValue
+		}).disposed(by: disposeBag)
 
 		view.backgroundColor = Theme.lightBlue.mainColor
 		cancel.tintColor = .blue
@@ -95,42 +84,25 @@ class DailyWaterSelectorModalViewController: UIViewController {
 		navigationItem.leftBarButtonItem = cancel
 		navigationItem.rightBarButtonItem = confirm
 
-		view.addConstrainedSubviews(initialNotificationTime, finalNotificationTime)
+		view.addConstrainedSubviews(dailyWaterEditText, volumeFormatSegmentationControl)
 
 		NSLayoutConstraint.activate([
-			initialNotificationTime.centerYAnchor.constraint(
-				equalTo: view.centerYAnchor,
-				constant: offsetForRotation(300, 75) + 16),
-			initialNotificationTime.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			initialNotificationTime.widthAnchor.constraint(equalToConstant: 75),
-			initialNotificationTime.heightAnchor.constraint(equalToConstant: 300),
-
-			finalNotificationTime.centerYAnchor.constraint(
-				equalTo: view.centerYAnchor,
-				constant: offsetForRotation(300, 75) + 91),
-			finalNotificationTime.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			finalNotificationTime.widthAnchor.constraint(equalToConstant: 75),
-			finalNotificationTime.heightAnchor.constraint(equalToConstant: 300)
+			dailyWaterEditText.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+			dailyWaterEditText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			dailyWaterEditText.widthAnchor.constraint(equalToConstant: 180),
+			dailyWaterEditText.heightAnchor.constraint(equalToConstant: 60),
+			volumeFormatSegmentationControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			volumeFormatSegmentationControl.topAnchor.constraint(equalTo: dailyWaterEditText.bottomAnchor, constant: 8)
 		])
 	}
 
-	func timeToIndex(_ time: TimePeriod) -> Int {
-		self.timePeriodFifteenMinutesSpaced.firstIndex { time == $0 } ?? 0
+	func waterVolumeInML() -> Float {
+		let volume = self.dailyWaterEditText.text.unwrapLet { $0.toFloat() ?? 0 } ?? 0
+		return currentVolumeFormat.toMetric(volume)
 	}
 
-	func limitInitialPickerValue() {
-		if (initialNotificationTime.selectedIndex > finalNotificationTime.selectedIndex) {
-			finalNotificationTime.selectRow(initialNotificationTime.selectedIndex, inComponent: 0, animated: true)
-		}
-	}
-
-	func limitFinalPickerValue() {
-		if (finalNotificationTime.selectedIndex < initialNotificationTime.selectedIndex) {
-			initialNotificationTime.selectRow(finalNotificationTime.selectedIndex, inComponent: 0, animated: true)
-		}
-	}
-
-	func offsetForRotation(_ finalWidth: CGFloat, _ finalHeight: CGFloat) -> CGFloat {
-		-(finalWidth - finalHeight) / 2
+	func waterVolumeTo(_ volumeFormat: VolumeFormat) -> Float {
+		let volume = waterVolumeInML()
+		return volumeFormat.fromMetric(volume)
 	}
 }

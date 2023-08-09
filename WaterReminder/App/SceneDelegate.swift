@@ -28,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 		HomeAssembly().assemble(container: container)
 		SettingsAssembly().assemble(container: container)
 		StatisticsAssembly().assemble(container: container)
+		LocalePreferencesDomainAssembly().assemble(container: container)
 	}
 
 	func scene(
@@ -57,7 +58,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 		appFlow = FirstAccessFlow(container: container)
 
 		// TODO add splash and refactor to include this decision there.
-		let getDailyWaterConsumptionUseCase = container.resolve(GetDailyWaterConsumptionUseCase.self)
+		let getDailyWaterConsumptionUseCase = container.resolve(GetDailyWaterConsumptionUseCaseProtocol.self)
 		getDailyWaterConsumptionUseCase?.lastDailyWaterConsumption().safeAsSingle().subscribe(onSuccess: {
 			let step = $0 == nil ? FirstAccessFlowSteps.firstAccessUserInformationIsRequired : FirstAccessFlowSteps.firstAccessUserInformationAlreadyProvided
 			self.coordinator.coordinate(flow: self.appFlow, with: OneStepper(withSingleStep: step))

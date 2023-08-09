@@ -8,8 +8,7 @@
 import RxSwift
 
 class NotificationSettingsRepositoryImpl: NotificationSettingsRepositoryProtocol {
-	lazy var defaults = UserDefaults.standard
-
+	private lazy var defaults = UserDefaults.standard
 
 	private var isReminderNotificationEnabledObs: NSKeyValueObservation?
 	private var notificationFrequencyObs: NSKeyValueObservation?
@@ -27,7 +26,7 @@ class NotificationSettingsRepositoryImpl: NotificationSettingsRepositoryProtocol
 		return Observable.create { emitter in
 			let value = self.defaults.bool(forKey: NotificationSettingsUserDefault.reminderNotificationEnabledKey.rawValue)
 			emitter.onNext(value)
-			self.isReminderNotificationEnabledObs = self.defaults.observe(\.reminderNotificationEnabled, options: [.new]) { (defaults, change) in
+			self.isReminderNotificationEnabledObs = self.defaults.observe(\.reminderNotificationEnabled, options: [.new]) { (_, change) in
 				guard let newValue = change.newValue else { return }
 				emitter.onNext(newValue)
 			}
@@ -39,7 +38,7 @@ class NotificationSettingsRepositoryImpl: NotificationSettingsRepositoryProtocol
 		return Observable.create { emitter in
 			let value = self.defaults.integer(forKey: NotificationSettingsUserDefault.notificationFrequency.rawValue)
 			emitter.onNext(NotificationFrequencyEnum(rawValue: value) ?? .medium)
-			self.notificationFrequencyObs = self.defaults.observe(\.notificationFrequency, options: [.new]) { (defaults, change) in
+			self.notificationFrequencyObs = self.defaults.observe(\.notificationFrequency, options: [.new]) { (_, change) in
 				guard let newValue = change.newValue else { return }
 				emitter.onNext(NotificationFrequencyEnum(rawValue: newValue) ?? .medium)
 			}
@@ -51,7 +50,7 @@ class NotificationSettingsRepositoryImpl: NotificationSettingsRepositoryProtocol
 		return Observable.create { emitter in
 			let value = self.defaults.integer(forKey: NotificationSettingsUserDefault.startTimeSec.rawValue)
 			emitter.onNext(TimePeriod.fromSeconds(seconds: value))
-			self.notificationStartTimeObs = self.defaults.observe(\.startTimeSec, options: [.new]) { (defaults, change) in
+			self.notificationStartTimeObs = self.defaults.observe(\.startTimeSec, options: [.new]) { (_, change) in
 				guard let newValue = change.newValue else { return }
 				emitter.onNext(TimePeriod.fromSeconds(seconds: newValue))
 			}
@@ -63,7 +62,7 @@ class NotificationSettingsRepositoryImpl: NotificationSettingsRepositoryProtocol
 		return Observable.create { emitter in
 			let value = self.defaults.integer(forKey: NotificationSettingsUserDefault.endTimeSec.rawValue)
 			emitter.onNext(TimePeriod.fromSeconds(seconds: value))
-			self.notificationEndTimeObs = self.defaults.observe(\.endTimeSec, options: [.new]) { (defaults, change) in
+			self.notificationEndTimeObs = self.defaults.observe(\.endTimeSec, options: [.new]) { (_, change) in
 				guard let newValue = change.newValue else { return }
 				emitter.onNext(TimePeriod.fromSeconds(seconds: newValue))
 			}

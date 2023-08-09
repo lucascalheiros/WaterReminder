@@ -7,7 +7,7 @@
 
 import RxSwift
 
-class ManageWaterSourceUseCase {
+internal class ManageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol {
 	let waterSourceRepository: WaterSourceRepositoryProtocol
 
 	init(waterSourceRepository: WaterSourceRepositoryProtocol) {

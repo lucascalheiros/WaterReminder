@@ -7,10 +7,12 @@
 
 import RxSwift
 
-class GetDailyWaterConsumptionUseCase {
+internal class GetDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol {
 	let dailyWaterConsumptionRepository: DailyWaterConsumptionRepositoryProtocol
 
-	internal init(dailyWaterConsumptionRepository: DailyWaterConsumptionRepositoryProtocol) {
+	init(
+		dailyWaterConsumptionRepository: DailyWaterConsumptionRepositoryProtocol
+	) {
 		self.dailyWaterConsumptionRepository = dailyWaterConsumptionRepository
 	}
 

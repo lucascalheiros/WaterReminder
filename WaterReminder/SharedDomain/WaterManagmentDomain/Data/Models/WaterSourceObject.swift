@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class WaterSourceObject: BaseObject {
+internal class WaterSourceObject: BaseObject {
     
     typealias DomainType = WaterSource
 

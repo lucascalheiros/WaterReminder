@@ -81,6 +81,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
                 viewModel.consumedQuantityText.subscribe(onNext: { text in
                     cell.setSecondaryText(text: text)
                 }).disposed(by: cell.disposeBag)
+				viewModel.volumeFormat.subscribe(onNext: { text in
+					cell.setFormatText(text: text.formatDisplay)
+                }).disposed(by: cell.disposeBag)
 				viewModel.remainingQuantityText.subscribe(onNext: { text in
                     cell.setInformativeText(text: text)
                 }).disposed(by: cell.disposeBag)

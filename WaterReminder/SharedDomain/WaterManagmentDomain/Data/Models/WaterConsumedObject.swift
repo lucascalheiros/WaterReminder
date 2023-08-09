@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-class WaterConsumedObject: BaseObject {
+internal class WaterConsumedObject: BaseObject {
     
     typealias DomainType = WaterConsumed
 

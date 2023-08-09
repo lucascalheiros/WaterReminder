@@ -124,6 +124,10 @@ class SettingsViewController: UITableViewController {
 		switch sectionItem {
 		case NotificationSectionItems.notificationPeriod:
 			self.presentPeriodSelector()
+		case NotificationSectionItems.notificationFrequency:
+			self.presentFrequencySelector()
+		case GeneralSectionItems.dailyWaterVolume:
+			self.presentDailyWaterGoalSelector()
 		default:
 			return
 		}

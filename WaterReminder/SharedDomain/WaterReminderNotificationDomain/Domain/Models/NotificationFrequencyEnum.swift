@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NotificationFrequencyEnum: Int {
+enum NotificationFrequencyEnum: Int, CaseIterable {
 	case high
 	case medium
 	case low

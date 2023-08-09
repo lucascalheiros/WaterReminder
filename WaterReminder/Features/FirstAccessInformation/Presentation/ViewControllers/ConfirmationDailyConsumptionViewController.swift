@@ -17,17 +17,36 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 		return text
 	}()
 
+	private var currentVolumeFormat = VolumeFormat.metric
+
+	private lazy var volumeFormatSegmentationControl = {
+		let button =  UISegmentedControl(items: VolumeFormat.allCases.map { $0.localizedDisplay })
+		dailyWaterEditText.suffix.text = VolumeFormat.metric.formatDisplay
+		button.selectedSegmentIndex = 0
+		button.backgroundColor = Theme.lightTeal.mainColor
+		let attributes = [
+			NSAttributedString.Key.foregroundColor: UIColor.white,
+			NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16.0)
+		]
+		button.setTitleTextAttributes(attributes, for: .normal)
+		button.setTitleTextAttributes(attributes, for: .selected)
+		button.selectedSegmentTintColor = .blue
+		button.rx.selectedSegmentIndex.bind {
+			let format = (VolumeFormat(rawValue: $0) ?? VolumeFormat.metric)
+			self.dailyWaterEditText.suffix.text = format.formatDisplay
+			self.dailyWaterEditText.text = String(format: "%.1f", self.waterVolumeTo(format))
+			self.currentVolumeFormat = format
+		}.disposed(by: disposeBag)
+		return button
+	}()
+
 	private lazy var confirmationBtn = {
 		let button = UIButton()
 		button.setTitle("Confirm", for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
-		button
-			.rx
-			.tap
-			.bind {
-				self.onConfirmPressed()
-			}
-			.disposed(by: disposeBag)
+		button.rx.tap.bind {
+			self.onConfirmPressed()
+		}.disposed(by: disposeBag)
 		return button
 	}()
 
@@ -35,13 +54,10 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 		let picker = TimeWheelPickerView()
 		picker.updateData(dayTime: firstAccessInformationViewModel.timePeriodFifteenMinutesSpaced)
 		picker.selectRow(firstAccessInformationViewModel.initialTimeIndex.value, inComponent: 0, animated: false)
-		picker.rx
-			.itemSelected
-			.map { _ in
-				self.limitInitialPickerValue()
-				return picker.selectedIndex
-			}
-			.bind(to: firstAccessInformationViewModel.initialTimeIndex)
+		picker.rx.itemSelected.map { _ in
+			self.limitInitialPickerValue()
+			return picker.selectedIndex
+		}.bind(to: firstAccessInformationViewModel.initialTimeIndex)
 			.disposed(by: disposeBag)
 		return picker
 	}()
@@ -50,13 +66,10 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 		let picker = TimeWheelPickerView()
 		picker.updateData(dayTime: firstAccessInformationViewModel.timePeriodFifteenMinutesSpaced)
 		picker.selectRow(firstAccessInformationViewModel.finalTimeIndex.value, inComponent: 0, animated: false)
-		picker.rx
-			.itemSelected
-			.map { _ in
-				self.limitFinalPickerValue()
-				return picker.selectedIndex
-			}
-			.bind(to: firstAccessInformationViewModel.finalTimeIndex)
+		picker.rx.itemSelected.map { _ in
+			self.limitFinalPickerValue()
+			return picker.selectedIndex
+		}.bind(to: firstAccessInformationViewModel.finalTimeIndex)
 			.disposed(by: disposeBag)
 		return picker
 	}()
@@ -65,9 +78,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 		let uiSwitch = SwitchWithLabel()
 		uiSwitch.label.text = "I want to be reminded"
 		uiSwitch.switchView.setOn(true, animated: false)
-		uiSwitch.switchView
-			.rx
-			.controlEvent(.valueChanged)
+		uiSwitch.switchView.rx.controlEvent(.valueChanged)
 			.withLatestFrom(uiSwitch.switchView.rx.value)
 			.bind(to: firstAccessInformationViewModel.shouldRemind)
 			.disposed(by: disposeBag)
@@ -108,7 +119,6 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 
 	func prepareConfiguration() {
 		informativeMainText.text = "Confirm the amount of daily water you want to ingest, and confirm the notification interval we should use for the reminders."
-//		skipEstimativeButton.isHidden = true
 	}
 
 	func prepareConstraints() {
@@ -118,7 +128,8 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 			confirmationBtn,
 			initialNotificationTime,
 			finalNotificationTime,
-			shouldRemindSwitch
+			shouldRemindSwitch,
+			volumeFormatSegmentationControl
 		)
 
 		NSLayoutConstraint.activate([
@@ -133,7 +144,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 
 			dailyWaterEditText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			dailyWaterEditText.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-			dailyWaterEditText.widthAnchor.constraint(equalToConstant: 150),
+			dailyWaterEditText.widthAnchor.constraint(equalToConstant: 180),
 			dailyWaterEditText.heightAnchor.constraint(equalToConstant: 60),
 
 			initialNotificationTime.bottomAnchor.constraint(equalTo: shouldRemindSwitch.topAnchor, constant: -offsetForRotation(300, 75) - 91),
@@ -151,7 +162,10 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 			shouldRemindSwitch.widthAnchor.constraint(equalToConstant: 300),
 
 			confirmationBtn.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16),
-			confirmationBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+			confirmationBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+			volumeFormatSegmentationControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			volumeFormatSegmentationControl.topAnchor.constraint(equalTo: dailyWaterEditText.bottomAnchor, constant: 8)
 		])
 	}
 
@@ -172,8 +186,18 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 	}
 
 	func onConfirmPressed() {
-		let waterVolume: Int = self.dailyWaterEditText.text.unwrapLet { $0.toInt() ?? 0 } ?? 0
+		let waterVolume: Int = Int(waterVolumeInML()) // todo allow float
 		self.firstAccessInformationViewModel.confirmWaterVolume(waterValue: waterVolume)
+	}
+
+	func waterVolumeInML() -> Float {
+		let volume = self.dailyWaterEditText.text.unwrapLet { $0.toFloat() ?? 0 } ?? 0
+		return currentVolumeFormat.toMetric(volume)
+	}
+
+	func waterVolumeTo(_ volumeFormat: VolumeFormat) -> Float {
+		let volume = waterVolumeInML()
+		return volumeFormat.fromMetric(volume)
 	}
 
 	func requestNotificationPermisionThenSchedule() {

@@ -9,7 +9,9 @@ import UIKit
 
 extension SettingsViewController {
 	func presentDailyWaterGoalSelector() {
-		let detailViewController = PeriodSelectorModalViewController(periodSelectorDelegate: settingsViewModel.periodSelectorDelegate)
+		let detailViewController = DailyWaterSelectorModalViewController(
+			dailyWaterSelectorDelegate: settingsViewModel.dailyWaterSelectorDelegate
+		)
 		let nav = UINavigationController(rootViewController: detailViewController)
 		nav.modalPresentationStyle = .pageSheet
 

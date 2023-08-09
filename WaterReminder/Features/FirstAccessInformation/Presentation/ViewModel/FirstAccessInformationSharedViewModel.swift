@@ -12,9 +12,11 @@ import RxFlow
 
 class FirstAccessInformationSharedViewModel {
 	private let disposeBag = DisposeBag()
+
 	private let expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase
 	private let registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase
 	private let manageNotificationSettingsUseCase: ManageNotificationSettingsUseCase
+	private let manageLocalePreferencesUseCase: ManageLocalePreferencesUseCase
 
 	let pageNavigationDelegate = FirstAccessInformationPageNavigationDelegate()
 
@@ -52,12 +54,14 @@ class FirstAccessInformationSharedViewModel {
 		expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase,
 		registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase,
 		manageNotificationSettingsUseCase: ManageNotificationSettingsUseCase,
-		stepper: FirstAccessInformationStepper
+		stepper: FirstAccessInformationStepper,
+		manageLocalePreferencesUseCase: ManageLocalePreferencesUseCase
 	) {
 		self.expectedWaterConsumptionUseCase = expectedWaterConsumptionUseCase
 		self.registerDailyWaterConsumptionUseCase = registerDailyWaterConsumptionUseCase
 		self.manageNotificationSettingsUseCase = manageNotificationSettingsUseCase
 		self.stepper = stepper
+		self.manageLocalePreferencesUseCase = manageLocalePreferencesUseCase
 	}
 
 	func confirmWaterVolume(waterValue: Int) {
@@ -84,6 +88,7 @@ class FirstAccessInformationSharedViewModel {
 	}
 
 	func completeProcess() {
+		manageLocalePreferencesUseCase.setWeightFormat(weightInfo.value.weightFormat)
 		self.stepper.steps.accept(FirstAccessFlowSteps.firstAccessUserInformationAlreadyProvided)
 	}
 }

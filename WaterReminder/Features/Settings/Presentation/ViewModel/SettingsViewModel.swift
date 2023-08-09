@@ -9,10 +9,12 @@ import RxSwift
 import RxCocoa
 
 class SettingsViewModel {
-	let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
+	let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
 	let getNotificationSettingsUseCase: GetNotificationSettingsUseCase
 	let manageNotificationSettingsUseCase: ManageNotificationSettingsUseCase
 	let periodSelectorDelegate: PeriodSelectorDelegate
+	let notificationFrequencySelectorDelegate: NotificationFrequencySelectorDelegate
+	let dailyWaterSelectorDelegate: DailyWaterSelectorDelegate
 
 	let disposeBag = DisposeBag()
 
@@ -26,12 +28,6 @@ class SettingsViewModel {
 		$0.hourAndMinuteAsString() + "-" + $1.hourAndMinuteAsString()
 	}
 
-	lazy var notificationFrequency = {
-		let notificationFrequency = BehaviorRelay(value: NotificationFrequencyEnum.medium)
-		getNotificationSettingsUseCase.notificationFrequency().bind(to: notificationFrequency).disposed(by: disposeBag)
-		return notificationFrequency
-	}()
-
 	lazy var currentWaterConsumption = getDailyWaterConsumptionUseCase.lastDailyWaterConsumption().map {
 		String($0?.expectedVolume ?? 0) + " ml"
 	}
@@ -40,12 +36,16 @@ class SettingsViewModel {
 		getNotificationSettingsUseCase: GetNotificationSettingsUseCase,
 		manageNotificationSettingsUseCase: ManageNotificationSettingsUseCase,
 		periodSelectorDelegate: PeriodSelectorDelegate,
-		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
+		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol,
+		notificationFrequencySelectorDelegate: NotificationFrequencySelectorDelegate,
+		dailyWaterSelectorDelegate: DailyWaterSelectorDelegate
 	) {
 		self.getNotificationSettingsUseCase = getNotificationSettingsUseCase
 		self.manageNotificationSettingsUseCase = manageNotificationSettingsUseCase
 		self.periodSelectorDelegate = periodSelectorDelegate
 		self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
+		self.notificationFrequencySelectorDelegate = notificationFrequencySelectorDelegate
+		self.dailyWaterSelectorDelegate = dailyWaterSelectorDelegate
 	}
 
 	func setNotificationEnabled(value: Bool) {
@@ -58,23 +58,6 @@ class SettingsViewModel {
 				self.manageNotificationSettingsUseCase.setNotificationSetting(notificationSettings: NotificationSettings(
 					isReminderEnabled: value,
 					notificationFrequency: $0,
-					startTime: $1,
-					endTime: $2
-				))
-			}
-		).disposed(by: disposeBag)
-	}
-
-	func setNotificationFrequency(frequency: NotificationFrequencyEnum) {
-		Single.zip(
-			getNotificationSettingsUseCase.isReminderNotificationEnabled().safeAsSingle(),
-			getNotificationSettingsUseCase.notificationStartTime().safeAsSingle(),
-			getNotificationSettingsUseCase.notificationEndTime().safeAsSingle()
-		).subscribe(
-			onSuccess: {
-				self.manageNotificationSettingsUseCase.setNotificationSetting(notificationSettings: NotificationSettings(
-					isReminderEnabled: $0,
-					notificationFrequency: frequency,
 					startTime: $1,
 					endTime: $2
 				))

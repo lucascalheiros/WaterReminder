@@ -7,7 +7,7 @@
 
 import RxSwift
 
-class DailyWaterConsumptionRepositoryImpl: BaseRepository<DailyWaterConsumptionObject>,
+internal class DailyWaterConsumptionRepositoryImpl: BaseRepository<DailyWaterConsumptionObject>,
 											DailyWaterConsumptionRepositoryProtocol {
     init() {
         super.init(WaterManagementRealmProvider())

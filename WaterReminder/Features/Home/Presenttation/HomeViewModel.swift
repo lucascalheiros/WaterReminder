@@ -10,15 +10,12 @@ import RxSwift
 import RealmSwift
 
 class HomeViewModel {
-	let manageWaterSourceUseCase: ManageWaterSourceUseCase
-
-	let getWaterSourceUseCase: GetWaterSourceUseCase
-
-	let registerWaterConsumedUseCase: RegisterWaterConsumedUseCase
-
-	let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
-
-	let getWaterConsumedUseCase: GetWaterConsumedUseCase
+	let manageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol
+	let getWaterSourceUseCase: GetWaterSourceUseCaseProtocol
+	let registerWaterConsumedUseCase: RegisterWaterConsumedUseCaseProtocol
+	let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
+	let getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol
+	let getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol
     
 	lazy var waterSourceList = { getWaterSourceUseCase.getWaterSourceList() }()
     
@@ -34,19 +31,27 @@ class HomeViewModel {
     
     lazy var consumedPercentage: Observable<Double> = {
         Observable.combineLatest(expectedWaterConsumptionInML, currentWaterConsumedInML) { total, current in
-            return total == 0 ? 0 : Double(current) / Double(total)
-        }.asObservable().observe(on: MainScheduler.instance)
+			return total == 0 ? 0 : Double(current.waterInML) / Double(total)
+        }
     }()
+
+	lazy var volumeFormat = {
+		getVolumeFormatUseCase.volumeFormat()
+	}()
+
+	lazy var volumeFormatText = {
+		volumeFormat.map { $0.formatDisplay } 
+	}()
     
     lazy var consumedQuantityText = {
-        Observable.combineLatest(expectedWaterConsumptionInML, currentWaterConsumedInML) { total, current in
-            return "\(current)ml"
-        }.asObservable().observe(on: MainScheduler.instance)
+		currentWaterConsumedInML.map {
+			return "\(String(format: "%.2f", $0.volumeFormat.fromMetric(Float($0.waterInML))))"
+        }
     }()
 
 	lazy var remainingQuantityText = {
 		Observable.combineLatest(expectedWaterConsumptionInML, currentWaterConsumedInML) { total, current in
-			let difference = total - current
+			let difference = total - current.waterInML
 			if difference <= 0 {
 				return "You achieved your goal!"
 			}
@@ -57,17 +62,19 @@ class HomeViewModel {
     private let disposeBag = DisposeBag()
 
 	init (
-		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase,
-		getWaterConsumedUseCase: GetWaterConsumedUseCase,
-		registerWaterConsumedUseCase: RegisterWaterConsumedUseCase,
-		manageWaterSourceUseCase: ManageWaterSourceUseCase,
-		getWaterSourceUseCase: GetWaterSourceUseCase
+		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol,
+		getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol,
+		registerWaterConsumedUseCase: RegisterWaterConsumedUseCaseProtocol,
+		manageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol,
+		getWaterSourceUseCase: GetWaterSourceUseCaseProtocol,
+		getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol
 	) {
 		self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
 		self.getWaterConsumedUseCase = getWaterConsumedUseCase
 		self.registerWaterConsumedUseCase = registerWaterConsumedUseCase
 		self.manageWaterSourceUseCase = manageWaterSourceUseCase
 		self.getWaterSourceUseCase = getWaterSourceUseCase
+		self.getVolumeFormatUseCase = getVolumeFormatUseCase
 	}
     
     func addWaterVolume(waterSource: WaterSource) {

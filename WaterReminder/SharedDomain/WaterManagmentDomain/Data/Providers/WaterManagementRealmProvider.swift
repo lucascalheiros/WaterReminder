@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-struct WaterManagementRealmProvider: RealmProviderProtocol {
+internal struct WaterManagementRealmProvider: RealmProviderProtocol {
         
     private let configuration: Realm.Configuration =
         Realm.Configuration(

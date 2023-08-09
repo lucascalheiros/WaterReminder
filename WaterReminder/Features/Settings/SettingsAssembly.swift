@@ -27,5 +27,13 @@ class SettingsAssembly: Assembly {
 			PeriodSelectorDelegate.self,
 			initializer: PeriodSelectorDelegate.init
 		)
+		container.autoregister(
+			NotificationFrequencySelectorDelegate.self,
+			initializer: NotificationFrequencySelectorDelegate.init
+		)
+		container.autoregister(
+			DailyWaterSelectorDelegate.self,
+			initializer: DailyWaterSelectorDelegate.init
+		)
 	}
 }

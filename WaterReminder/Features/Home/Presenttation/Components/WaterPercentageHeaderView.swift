@@ -43,6 +43,14 @@ class WaterPercentageHeaderView: UICollectionViewCell {
         return label
     }()
 
+    private lazy var secondaryFormatLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.textColor = .blue
+        label.textAlignment = .center
+        return label
+    }()
+
     private lazy var labelStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -61,7 +69,7 @@ class WaterPercentageHeaderView: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addConstrainedSubviews(circleView, percentageLabel, labelStackView, informativeBottomRightLabel)
+        addConstrainedSubviews(circleView, percentageLabel, labelStackView, informativeBottomRightLabel, secondaryFormatLabel)
         labelStackView.addConstrainedArrangedSubviews(percentageValueLabel, secondaryLabel)
 
         NSLayoutConstraint.activate([
@@ -78,7 +86,9 @@ class WaterPercentageHeaderView: UICollectionViewCell {
             labelStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
 			informativeBottomRightLabel.topAnchor.constraint(equalTo: circleView.bottomAnchor),
 			informativeBottomRightLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-			informativeBottomRightLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+			informativeBottomRightLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+			secondaryFormatLabel.leadingAnchor.constraint(equalTo: secondaryLabel.trailingAnchor),
+			secondaryFormatLabel.bottomAnchor.constraint(equalTo: secondaryLabel.bottomAnchor)
         ])
 
         layer.cornerRadius = 8
@@ -103,6 +113,10 @@ class WaterPercentageHeaderView: UICollectionViewCell {
     func setSecondaryText(text: String) {
         secondaryLabel.text = text
     }
+
+	func setFormatText(text: String) {
+		secondaryFormatLabel.text = text
+	}
 
 	func setInformativeText(text: String) {
 		informativeBottomRightLabel.text = text

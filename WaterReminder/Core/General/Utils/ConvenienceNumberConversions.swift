@@ -31,4 +31,8 @@ extension String {
 	func toInt() -> Int? {
 		Int(self)
 	}
+
+	func toFloat() -> Float? {
+		Float(self)
+	}
 }

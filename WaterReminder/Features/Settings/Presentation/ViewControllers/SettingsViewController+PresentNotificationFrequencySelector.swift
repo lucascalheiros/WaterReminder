@@ -9,7 +9,9 @@ import UIKit
 
 extension SettingsViewController {
 	func presentFrequencySelector() {
-		let detailViewController = PeriodSelectorModalViewController(periodSelectorDelegate: settingsViewModel.periodSelectorDelegate)
+		let detailViewController = NotificationFrequencySelectorModalViewController(
+			notificationFrequencySelectorDelegate: settingsViewModel.notificationFrequencySelectorDelegate
+		)
 		let nav = UINavigationController(rootViewController: detailViewController)
 		nav.modalPresentationStyle = .pageSheet
 

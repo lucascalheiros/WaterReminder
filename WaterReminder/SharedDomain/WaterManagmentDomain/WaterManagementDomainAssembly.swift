@@ -10,6 +10,11 @@ import SwinjectAutoregistration
 
 class WaterManagementDomainAssembly: Assembly {
 	func assemble(container: Container) {
+		assembleRepositories(container)
+		assembleUseCases(container)
+	}
+
+	func assembleRepositories(_ container: Container) {
 		container.autoregister(
 			DailyWaterConsumptionRepositoryProtocol.self,
 			initializer: DailyWaterConsumptionRepositoryImpl.init
@@ -23,32 +28,47 @@ class WaterManagementDomainAssembly: Assembly {
 			initializer: WaterConsumedRepositoryImpl.init
 		)
 		container.autoregister(
-			RegisterDailyWaterConsumptionUseCase.self,
+			VolumeFormatRepositoryProtocol.self,
+			initializer: VolumeFormatRepositoryImpl.init
+		)
+	}
+
+	func assembleUseCases(_ container: Container) {
+		container.autoregister(
+			RegisterDailyWaterConsumptionUseCaseProtocol.self,
 			initializer: RegisterDailyWaterConsumptionUseCase.init
 		)
 		container.autoregister(
-			GetDailyWaterConsumptionUseCase.self,
+			GetDailyWaterConsumptionUseCaseProtocol.self,
 			initializer: GetDailyWaterConsumptionUseCase.init
 		)
 		container.autoregister(
-			RegisterWaterConsumedUseCase.self,
+			RegisterWaterConsumedUseCaseProtocol.self,
 			initializer: RegisterWaterConsumedUseCase.init
 		)
 		container.autoregister(
-			ManageWaterSourceUseCase.self,
+			ManageWaterSourceUseCaseProtocol.self,
 			initializer: ManageWaterSourceUseCase.init
 		)
 		container.autoregister(
-			GetDailyWaterConsumptionUseCase.self,
+			GetDailyWaterConsumptionUseCaseProtocol.self,
 			initializer: GetDailyWaterConsumptionUseCase.init
 		)
 		container.autoregister(
-			GetWaterSourceUseCase.self,
+			GetWaterSourceUseCaseProtocol.self,
 			initializer: GetWaterSourceUseCase.init
 		)
 		container.autoregister(
-			GetWaterConsumedUseCase.self,
+			GetWaterConsumedUseCaseProtocol.self,
 			initializer: GetWaterConsumedUseCase.init
+		)
+		container.autoregister(
+			GetVolumeFormatUseCaseProtocol.self,
+			initializer: GetVolumeFormatUseCase.init
+		)
+		container.autoregister(
+			RegisterVolumeFormatUseCaseProtocol.self,
+			initializer: RegisterVolumeFormatUseCase.init
 		)
 	}
 }

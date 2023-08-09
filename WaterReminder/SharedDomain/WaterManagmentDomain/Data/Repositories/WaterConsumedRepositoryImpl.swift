@@ -9,7 +9,7 @@ import RxSwift
 import RealmSwift
 import RxRealm
 
-class WaterConsumedRepositoryImpl: BaseRepository<WaterConsumedObject>, WaterConsumedRepositoryProtocol {
+internal class WaterConsumedRepositoryImpl: BaseRepository<WaterConsumedObject>, WaterConsumedRepositoryProtocol {
 
 	init() {
 		super.init(WaterManagementRealmProvider())

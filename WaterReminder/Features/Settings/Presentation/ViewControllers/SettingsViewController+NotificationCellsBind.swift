@@ -42,7 +42,7 @@ extension SettingsViewController {
 		detailCell.detailLabel.font = UIFont.boldSystemFont(ofSize: 16)
 		detailCell.detailLabel.textColor = .blue
 
-		settingsViewModel.notificationFrequency.subscribe(onNext: {
+		settingsViewModel.notificationFrequencySelectorDelegate.notificationFrequency.subscribe(onNext: {
 			let attributedString = NSMutableAttributedString.init(string: $0.stringValue())
 			detailCell.detailLabel.attributedText = attributedString
 		}).disposed(by: detailCell.disposeBag)

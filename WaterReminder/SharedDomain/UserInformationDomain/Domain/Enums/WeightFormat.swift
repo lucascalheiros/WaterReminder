@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum WeightFormat: CaseIterable {
-	case metric
-	case imperial
+enum WeightFormat: Int, CaseIterable {
+	case metric = 0
+	case imperial = 1
 	
 	var displayString: String {
 		switch self {

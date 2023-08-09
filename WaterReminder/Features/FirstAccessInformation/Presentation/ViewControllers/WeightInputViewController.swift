@@ -14,7 +14,6 @@ class WeightInputViewController: BaseChildPageController {
 	
 	lazy var weightPicker = {
 		let picker = WeightPickerView()
-		picker.translatesAutoresizingMaskIntoConstraints = false
 		picker.rx
 			.itemSelected
 			.map { _ in
@@ -22,12 +21,13 @@ class WeightInputViewController: BaseChildPageController {
 			}
 			.bind(to: firstAccessInformationViewModel.weightInfo)
 			.disposed(by: disposeBag)
-		view.addSubview(picker)
 		return picker
 	}()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		view.addConstrainedSubview(weightPicker)
 		
 		informativeMainText.text = "Your weight is an important factor to estimate your necessary water consumption"
 
