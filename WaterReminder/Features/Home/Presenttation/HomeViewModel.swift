@@ -45,7 +45,7 @@ class HomeViewModel {
     
     lazy var consumedQuantityText = {
 		currentWaterConsumedInML.map {
-			return "\(String(format: "%.2f", $0.volumeFormat.fromMetric(Float($0.waterInML))))"
+			$0.exhibitionValue()
         }
     }()
 
@@ -55,8 +55,9 @@ class HomeViewModel {
 			if difference <= 0 {
 				return "You achieved your goal!"
 			}
-			return "\(difference)ml remaining!"
-		}.asObservable().observe(on: MainScheduler.instance)
+			let remainingWaterWithFormat = WaterWithFormat(waterInML: difference, volumeFormat: current.volumeFormat)
+			return "\(remainingWaterWithFormat.exhibitionValueWithFormat()) remaining!"
+		}
 	}()
     
     private let disposeBag = DisposeBag()

@@ -9,6 +9,9 @@ import UIKit
 import RxSwift
 
 class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+	let disposeBag = DisposeBag()
+	let waterPercentageHeaderView = "WaterPercentageHeaderView"
+	let waterSourceListHorizontalCollectionView = "WaterSourceListHorizontalCollectionView"
 
     lazy var waterContainerTableView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -19,26 +22,24 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         collectionView.backgroundColor = .clear
         collectionView.register(
             WaterPercentageHeaderView.self,
-            forCellWithReuseIdentifier: "WaterPercentageHeaderView"
+            forCellWithReuseIdentifier: waterPercentageHeaderView
         )
         collectionView.register(
             WaterSourceListHorizontalCollectionView.self,
-            forCellWithReuseIdentifier: "WaterSourceListHorizontalCollectionView"
+            forCellWithReuseIdentifier: waterSourceListHorizontalCollectionView
         )
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
 
 	var viewModel: HomeViewModel!
-    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
 
-        view.addSubview(waterContainerTableView)
+        view.addConstrainedSubviews(waterContainerTableView)
 
         NSLayoutConstraint.activate([
             waterContainerTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -59,7 +60,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         case 1:
             return 1
         default:
-            fatalError("init(coder:) has not been implemented")
+			fatalError("Section not implemented")
         }
     }
 
@@ -69,53 +70,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     ) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "WaterPercentageHeaderView",
-                for: indexPath
-            )
-            
-            if let cell = cell as? WaterPercentageHeaderView {
-                viewModel.consumedPercentage.subscribe(onNext: { percentage in
-                    cell.setPercentage(percentage: percentage)
-                }).disposed(by: cell.disposeBag)
-                viewModel.consumedQuantityText.subscribe(onNext: { text in
-                    cell.setSecondaryText(text: text)
-                }).disposed(by: cell.disposeBag)
-				viewModel.volumeFormat.subscribe(onNext: { text in
-					cell.setFormatText(text: text.formatDisplay)
-                }).disposed(by: cell.disposeBag)
-				viewModel.remainingQuantityText.subscribe(onNext: { text in
-                    cell.setInformativeText(text: text)
-                }).disposed(by: cell.disposeBag)
-            }
-
-            return cell
+            return bindPercentageView(collectionView, indexPath)
         case 1:
-            let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: "WaterSourceListHorizontalCollectionView",
-                for: indexPath
-            )
-            
-            if let cell = cell as? WaterSourceListHorizontalCollectionView {
-                viewModel.waterSourceList.subscribe(onNext: {
-                    cell.applySnapshot(waterContainerList: $0)
-                }, onError: {
-                    print($0)
-                }).disposed(by: cell.disposeBag)
-                
-                cell.waterSourceListener = WaterSourceListener(
-                    itemClickListener: {
-                        self.viewModel.addWaterVolume(waterSource: $0)
-                    },
-                    pinClickListener: {
-                        self.viewModel.updateWaterSourcePinState(waterSource: $0)
-                    }
-                )
-            }
-
-            return cell
+            return bindWaterSourceListCellBind(collectionView, indexPath)
         default:
-            fatalError("init(coder:) has not been implemented")
+            fatalError("Section not implemented")
         }
     }
 
@@ -132,7 +91,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         case 1:
             return CGSize(width: collectionView.bounds.width, height: 248)
         default:
-            fatalError("init(coder:) has not been implemented")
+			fatalError("Section not implemented")
         }
     }
 
@@ -159,7 +118,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         case 1:
             return UIEdgeInsets.set(inset: 0)
         default:
-            fatalError("init(coder:) has not been implemented")
+			fatalError("Section not implemented")
         }
     }
 

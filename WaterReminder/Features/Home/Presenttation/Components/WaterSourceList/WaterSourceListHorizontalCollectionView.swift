@@ -7,12 +7,11 @@
 
 import UIKit
 import RxSwift
-
-enum Section {
-    case main
-}
+import RxRelay
 
 class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectionViewDelegateFlowLayout {
+	let disposeBag = DisposeBag()
+	let waterContainerCellView = "WaterContainerCellView"
 
     lazy var waterContainerTableView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -24,10 +23,9 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
         collectionView.backgroundColor = .clear
         collectionView.register(
             WaterSourceCellView.self,
-            forCellWithReuseIdentifier: "WaterContainerCellView"
+            forCellWithReuseIdentifier: waterContainerCellView
         )
         collectionView.delegate = self
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
 
@@ -35,15 +33,15 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
 
     var waterSourceListener: WaterSourceListener?
 
-    let disposeBag = DisposeBag()
-
     private let itemsPerRow: CGFloat = 2
 
     private let sectionInsets = UIEdgeInsets.set(inset: 16)
 
+	let volumeFormatBehaviorRelay = BehaviorRelay(value: VolumeFormat.metric)
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(waterContainerTableView)
+        addConstrainedSubviews(waterContainerTableView)
 
         waterContainerTableView.dataSource = dataSource
 
@@ -102,18 +100,22 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
             cellProvider: { (collectionView, indexPath, waterSource) ->
                 UICollectionViewCell? in
                 let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: "WaterContainerCellView",
+					withReuseIdentifier: self.waterContainerCellView,
                     for: indexPath
-                ) as? WaterSourceCellView
-                cell?.bindData(waterContainer: waterSource)
-                cell?.listener = WaterSourceListener(
-                    itemClickListener: {
-                        self.waterSourceListener?.itemClickListener($0)
-                    },
-                    pinClickListener: {
-                        self.waterSourceListener?.pinClickListener($0)
-                    }
                 )
+				if let cell = cell as? WaterSourceCellView {
+					self.volumeFormatBehaviorRelay.bind(to: cell.volumeFormat).disposed(by: self.disposeBag)
+					cell.waterSource.accept(waterSource)
+
+					cell.listener = WaterSourceListener(
+						itemClickListener: { [weak self] in
+							self?.waterSourceListener?.itemClickListener($0)
+						},
+						pinClickListener: { [weak self] in
+							self?.waterSourceListener?.pinClickListener($0)
+						}
+					)
+				}
                 return cell
             })
         return dataSource
@@ -123,3 +125,7 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
 
 typealias DataSource = UICollectionViewDiffableDataSource<Section, WaterSource>
 typealias Snapshot = NSDiffableDataSourceSnapshot<Section, WaterSource>
+
+enum Section {
+	case main
+}
