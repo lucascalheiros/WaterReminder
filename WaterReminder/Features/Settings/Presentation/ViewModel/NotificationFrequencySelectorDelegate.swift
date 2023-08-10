@@ -32,7 +32,7 @@ class NotificationFrequencySelectorDelegate {
 			getNotificationSettingsUseCase.notificationEndTime().safeAsSingle()
 		).subscribe(
 			onSuccess: {
-				self.manageNotificationSettingsUseCase.setNotificationSetting(notificationSettings: NotificationSettings(
+				self.manageNotificationSettingsUseCase.setNotificationSetting(NotificationSettings(
 					isReminderEnabled: $0,
 					notificationFrequency: frequency,
 					startTime: $1,

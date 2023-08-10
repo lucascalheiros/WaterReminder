@@ -35,5 +35,9 @@ class SettingsAssembly: Assembly {
 			DailyWaterSelectorDelegate.self,
 			initializer: DailyWaterSelectorDelegate.init
 		)
+		container.autoregister(
+			NotificationReminderToggleDelegate.self,
+			initializer: NotificationReminderToggleDelegate.init
+		)
 	}
 }

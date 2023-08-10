@@ -22,7 +22,7 @@ class ManageNotificationSettingsUseCase {
 		self.notificationSettingsRepository = notificationSettingsRepository
 	}
 
-	func setNotificationSetting(notificationSettings: NotificationSettings) {
+	func setNotificationSetting(_ notificationSettings: NotificationSettings) {
 		notificationSettingsRepository.setNotificationSettings(notificationSettings: notificationSettings)
 		if notificationSettings.isReminderEnabled {
 			scheduleWaterReminderNotificationsUseCase.scheduleNotifications(

@@ -78,7 +78,7 @@ class SettingsViewController: UITableViewController {
 				for: indexPath
 			)
 			if let detailCell = cell as? SettingsDetailTableViewCell {
-				bindDailyWaterGoaldCell(detailCell: detailCell, sectionItem: sectionItem)
+				bindDailyWaterGoalCell(detailCell: detailCell, sectionItem: sectionItem)
 			}
 		case NotificationSectionItems.notificationEnabled:
 			cell = tableView.dequeueReusableCell(

@@ -17,11 +17,11 @@ extension SettingsViewController {
 			.controlEvent(.valueChanged)
 			.withLatestFrom(switchCell.switchView.rx.value)
 			.bind {
-				self.settingsViewModel.setNotificationEnabled(value: $0)
+				self.settingsViewModel.notificationReminderToggleDelegate.setNotificationEnabled(value: $0)
 			}
 			.disposed(by: disposeBag)
 
-		settingsViewModel.isNotificationReminderEnabled.subscribe(onNext: {
+		settingsViewModel.notificationReminderToggleDelegate.isNotificationReminderEnabled.subscribe(onNext: {
 			switchCell.switchView.setOn($0, animated: true)
 		}).disposed(by: switchCell.disposeBag)
 	}
@@ -31,7 +31,7 @@ extension SettingsViewController {
 		detailCell.detailLabel.textColor = .blue
 		detailCell.detailLabel.font = UIFont.boldSystemFont(ofSize: 16)
 
-		settingsViewModel.periodInterval.subscribe(onNext: {
+		settingsViewModel.periodSelectorDelegate.periodInterval.subscribe(onNext: {
 			let attributedString = NSMutableAttributedString.init(string: $0)
 			detailCell.detailLabel.attributedText = attributedString
 		}).disposed(by: detailCell.disposeBag)
