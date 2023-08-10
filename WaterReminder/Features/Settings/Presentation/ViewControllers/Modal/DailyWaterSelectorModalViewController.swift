@@ -19,12 +19,10 @@ class DailyWaterSelectorModalViewController: UIViewController {
 		return text
 	}()
 
-	private var currentVolumeFormat = VolumeFormat.metric
+	private var lastVolumeFormat: VolumeFormat?
 
 	private lazy var volumeFormatSegmentationControl = {
 		let button = UISegmentedControl(items: VolumeFormat.allCases.map { $0.localizedDisplay })
-		dailyWaterEditText.suffix.text = VolumeFormat.metric.formatDisplay
-		button.selectedSegmentIndex = 0
 		button.backgroundColor = Theme.lightTeal.mainColor
 		let attributes = [
 			NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -34,10 +32,17 @@ class DailyWaterSelectorModalViewController: UIViewController {
 		button.setTitleTextAttributes(attributes, for: .selected)
 		button.selectedSegmentTintColor = .blue
 		button.rx.selectedSegmentIndex.bind {
+			if $0 == -1 {
+				return
+			}
 			let format = (VolumeFormat(rawValue: $0) ?? VolumeFormat.metric)
 			self.dailyWaterEditText.suffix.text = format.formatDisplay
-			self.dailyWaterEditText.text = String(format: "%.1f", self.waterVolumeTo(format))
-			self.currentVolumeFormat = format
+			if let lastVolumeFormat = self.lastVolumeFormat {
+				let lastVolumeInML = self.lastVolumeFormat?.toMetric(self.dailyWaterEditText.text?.toFloat() ?? 0.0) ?? 0
+				let waterWithFormat = WaterWithFormat(waterInML: Int(lastVolumeInML), volumeFormat: format)
+				self.dailyWaterEditText.text = waterWithFormat.exhibitionValue()
+			}
+			self.lastVolumeFormat = format
 		}.disposed(by: disposeBag)
 		return button
 	}()
@@ -53,7 +58,10 @@ class DailyWaterSelectorModalViewController: UIViewController {
 		title: "Confirm", image: nil,
 		primaryAction: .init(handler: { _ in
 			let waterVolume = self.dailyWaterEditText.text?.toFloat() ?? 0
-			self.dailyWaterSelectorDelegate.setVolumeAndFormat(waterVolume, self.currentVolumeFormat)
+			self.dailyWaterSelectorDelegate.setVolumeAndFormat(
+				waterVolume,
+				(VolumeFormat(rawValue:  self.volumeFormatSegmentationControl.selectedSegmentIndex) ?? VolumeFormat.metric)
+			)
 			self.dismiss(animated: true)
 		})
 	)
@@ -72,9 +80,11 @@ class DailyWaterSelectorModalViewController: UIViewController {
 		super.viewDidLoad()
 
 		dailyWaterSelectorDelegate.volumeWithFormat.safeAsSingle().subscribe( onSuccess: { volumeWithFormat in
-			self.dailyWaterEditText.text = String(volumeWithFormat.volumeFormat.fromMetric(Float(volumeWithFormat.waterInML)))
-			self.currentVolumeFormat = volumeWithFormat.volumeFormat
+			self.dailyWaterEditText.text = volumeWithFormat.exhibitionValue()
+			self.dailyWaterEditText.suffix.text = volumeWithFormat.volumeFormat.formatDisplay
+			self.lastVolumeFormat = volumeWithFormat.volumeFormat
 			self.volumeFormatSegmentationControl.selectedSegmentIndex = volumeWithFormat.volumeFormat.rawValue
+
 		}).disposed(by: disposeBag)
 
 		view.backgroundColor = Theme.lightBlue.mainColor
@@ -94,15 +104,5 @@ class DailyWaterSelectorModalViewController: UIViewController {
 			volumeFormatSegmentationControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			volumeFormatSegmentationControl.topAnchor.constraint(equalTo: dailyWaterEditText.bottomAnchor, constant: 8)
 		])
-	}
-
-	func waterVolumeInML() -> Float {
-		let volume = self.dailyWaterEditText.text.unwrapLet { $0.toFloat() ?? 0 } ?? 0
-		return currentVolumeFormat.toMetric(volume)
-	}
-
-	func waterVolumeTo(_ volumeFormat: VolumeFormat) -> Float {
-		let volume = waterVolumeInML()
-		return volumeFormat.fromMetric(volume)
 	}
 }
