@@ -100,14 +100,14 @@ class PeriodSelectorModalViewController: UIViewController {
 		NSLayoutConstraint.activate([
 			initialNotificationTime.centerYAnchor.constraint(
 				equalTo: view.centerYAnchor,
-				constant: offsetForRotation(300, 75) + 16),
+				constant: offsetForRotation(300, 75) + 75),
 			initialNotificationTime.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			initialNotificationTime.widthAnchor.constraint(equalToConstant: 75),
 			initialNotificationTime.heightAnchor.constraint(equalToConstant: 300),
 
 			finalNotificationTime.centerYAnchor.constraint(
 				equalTo: view.centerYAnchor,
-				constant: offsetForRotation(300, 75) + 91),
+				constant: offsetForRotation(300, 75) + 150),
 			finalNotificationTime.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			finalNotificationTime.widthAnchor.constraint(equalToConstant: 75),
 			finalNotificationTime.heightAnchor.constraint(equalToConstant: 300)
