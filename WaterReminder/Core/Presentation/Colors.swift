@@ -16,18 +16,21 @@ enum Theme: String {
 	case darkGray
 	case white
 	case teal
+	case primary
+	case primaryDisabled
+	case primaryBackground
 
     var accentColor: UIColor {
         switch self {
 		case .lightBlue, .lightTeal, .white:
 			return .darkGray
-		case .blue, .darkGray, .teal:
+		case .blue, .darkGray, .teal, .primary, .primaryDisabled, .primaryBackground:
 			return .white
         }
     }
 
-    var mainColor: UIColor? {
-        UIColor(named: rawValue)
+    var mainColor: UIColor {
+        UIColor(named: rawValue)!
     }
 
 }
