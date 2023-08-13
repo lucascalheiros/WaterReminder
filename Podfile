@@ -12,6 +12,7 @@ target 'WaterReminder' do
   pod 'RealmSwift', '~>10'
   pod 'RxRealm', '5.0.4'
 	pod 'RxFlow', '2.13.0'
+	pod 'RxSwiftExt', '6.0.1'
 
   target 'WaterReminderTests' do
     inherit! :search_paths
