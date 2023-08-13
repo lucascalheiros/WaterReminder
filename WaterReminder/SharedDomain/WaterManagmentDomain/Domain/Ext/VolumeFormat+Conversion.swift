@@ -1,10 +1,9 @@
 //
-//  WaterConversionFormat.swift
+//  VolumeFormat+Conversion.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 03/08/23.
 //
-
 
 extension VolumeFormat {
 	func toMetric(_ volume: Float) -> Float {

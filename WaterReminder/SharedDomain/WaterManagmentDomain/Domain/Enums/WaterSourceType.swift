@@ -5,14 +5,12 @@
 //  Created by Lucas Calheiros on 14/05/23.
 //
 
-import Foundation
+import UIKit
 
 enum WaterSourceType: String {
-
     case water
     case coffee
     case juice
     case tea
     case soda
-
 }
