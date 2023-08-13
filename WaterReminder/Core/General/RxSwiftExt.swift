@@ -11,8 +11,4 @@ extension Observable {
     func safeAsSingle() -> Single<Element> {
         self.take(1).asSingle()
     }
-
-	func subscribe(function: ((Element) -> Void)?) -> Disposable {
-		self.subscribe(onNext: function)
-	}
 }

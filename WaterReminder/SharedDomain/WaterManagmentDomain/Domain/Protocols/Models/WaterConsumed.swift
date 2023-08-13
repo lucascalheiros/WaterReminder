@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-struct WaterConsumed {
+struct WaterConsumed: Hashable {
 
     let id: String?
     let volume: Int

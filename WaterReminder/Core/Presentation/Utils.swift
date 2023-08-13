@@ -19,11 +19,3 @@ func generateRandomString(length: Int) -> String {
 
     return randomString
 }
-
-extension Int {
-
-    func toML() -> String {
-        return "\(String(self)) ml"
-    }
-
-}

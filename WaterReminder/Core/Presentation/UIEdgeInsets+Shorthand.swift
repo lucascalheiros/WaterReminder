@@ -1,5 +1,5 @@
 //
-//  UIEdgeInsetsExt.swift
+//  UIEdgeInsets+Shorthand.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 14/05/23.
