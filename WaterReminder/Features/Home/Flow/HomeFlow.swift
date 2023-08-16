@@ -15,7 +15,11 @@ class HomeFlow: Flow {
 		return self.rootViewController
 	}
 
-	private let rootViewController = UINavigationController()
+	private lazy var rootViewController = {
+		let nc = UINavigationController()
+		nc.setDefaultAppearance()
+		return nc
+	}()
 	private let container: Container
 
 	init(container: Container) {
@@ -35,7 +39,7 @@ class HomeFlow: Flow {
 
 	private func navigateToHome() -> FlowContributors {
 		let viewController = container.resolve(HomeViewController.self)!
-		self.rootViewController.pushViewController(viewController, animated: false)
+		rootViewController.pushViewController(viewController, animated: false)
 		return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep:  HomeFlowSteps.home)))
 	}
 }

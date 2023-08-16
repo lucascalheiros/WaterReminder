@@ -15,13 +15,14 @@ class RootViewController: UINavigationController {
 		super.init(coder: aDecoder)
 
 	}
+	
 	override init(rootViewController: UIViewController) {
 		super.init(rootViewController: rootViewController)
 	}
+
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 	}
-
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

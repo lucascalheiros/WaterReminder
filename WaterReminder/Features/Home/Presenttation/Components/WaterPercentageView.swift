@@ -46,6 +46,6 @@ class WaterPercentageView: CardStackView {
     }
 
     func setPercentage(percentage: CGFloat, animationDuration: Double = 0.0) {
-        circleView.setPercentage(percentage: percentage, animationDuration: animationDuration)
+		circleView.setPercentage([PercentageAndColor(percentage: percentage, color: Theme.primary.mainColor.cgColor)], animationDuration: animationDuration)
     }
 }

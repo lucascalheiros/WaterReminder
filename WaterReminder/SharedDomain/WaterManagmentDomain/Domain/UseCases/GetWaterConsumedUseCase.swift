@@ -19,19 +19,18 @@ internal class GetWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol {
 		self.getVolumeFormatUseCase = getVolumeFormatUseCase
 	}
 
-	func getWaterConsumedByPeriod(startPeriod: Date, endPeriod: Date) -> Observable<WaterWithFormat> {
-		wrapWithFormat(waterConsumedRepository.getWaterConsumedList()
-			.map {
-				$0.filter { startPeriod < $0.consumptionTime && $0.consumptionTime < endPeriod }
-					.map { $0.volume }.reduce(0, { $0 + $1 })
-			})
+	func getWaterConsumedVolumeByPeriod(_ startPeriod: Date, _ endPeriod: Date) -> Observable<WaterWithFormat> {
+		wrapWithFormat(
+			getWaterConsumedList(startPeriod, endPeriod)
+				.map { $0.map { $0.volume }.reduce(0, { $0 + $1 }) }
+		)
 	}
 
-	func getWaterConsumedToday() -> Observable<WaterWithFormat> {
+	func getWaterConsumedVolumeToday() -> Observable<WaterWithFormat> {
 		let currentDate = Date()
 		let startOfDay = currentDate.startOfDay
 		let endOfDay = currentDate.endOfDay
-		return getWaterConsumedByPeriod(startPeriod: startOfDay, endPeriod: endOfDay)
+		return getWaterConsumedVolumeByPeriod(startOfDay, endOfDay)
 	}
 
 	private func wrapWithFormat(_ waterInMl: Observable<Int>) -> Observable<WaterWithFormat> {
@@ -41,5 +40,12 @@ internal class GetWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol {
 		) { volume, format in
 			return WaterWithFormat(waterInML: volume, volumeFormat: format)
 		}
+	}
+	
+	func getWaterConsumedList(_ startPeriod: Date, _ endPeriod: Date) -> Observable<[WaterConsumed]> {
+		return waterConsumedRepository.getWaterConsumedList()
+			.map {
+				$0.filter { startPeriod < $0.consumptionTime && $0.consumptionTime < endPeriod }
+			}
 	}
 }

@@ -14,7 +14,7 @@ class MainAppFlow: Flow {
 		return self.rootViewController
 	}
 	
-	private let rootViewController = UITabBarController()
+	private lazy var rootViewController = tabBarVC()
 	private let container: Container
 	
 	init(container: Container) {
@@ -30,6 +30,32 @@ class MainAppFlow: Flow {
 			return navigateToMainAppTab()
 		}
 	}
+
+	private func tabBarVC() -> UITabBarController {
+		let vc = UITabBarController()
+		vc.tabBar.standardAppearance = tabBarAppearance()
+		vc.view.backgroundColor = .systemTeal
+		return vc
+	}
+
+	private func tabBarItemAppearance() -> UITabBarItemAppearance {
+		let itemAppearance = UITabBarItemAppearance()
+		itemAppearance.normal.iconColor = Theme.primaryDisabled.mainColor
+		itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.primaryDisabled.mainColor]
+		itemAppearance.selected.iconColor = Theme.primary.mainColor
+		itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.primary.mainColor]
+		return itemAppearance
+	}
+
+	private func tabBarAppearance() -> UITabBarAppearance {
+		let itemAppearance = tabBarItemAppearance()
+		let appearance = UITabBarAppearance()
+		appearance.inlineLayoutAppearance = itemAppearance
+		appearance.stackedLayoutAppearance = itemAppearance
+		appearance.compactInlineLayoutAppearance = itemAppearance
+		appearance.backgroundColor = Theme.primaryBackground.mainColor
+		return appearance
+	}
 	
 	private func navigateToMainAppTab() -> FlowContributors {
 		let homeFlow = HomeFlow(container: self.container)
@@ -37,9 +63,6 @@ class MainAppFlow: Flow {
 		let settingsFlow = SettingsFlow(container: self.container)
 		
 		Flows.use(homeFlow, statisticsFlow, settingsFlow, when: .created) { [unowned self] (root1: UINavigationController, root2: UINavigationController, root3: UINavigationController) in
-			rootViewController.tabBar.tintColor = UIColor.blue
-			rootViewController.tabBar.backgroundColor = .clear
-			rootViewController.view.backgroundColor = .red
 			rootViewController.setViewControllers([root1, root2, root3], animated: true)
 			rootViewController.navigationController?.setNavigationBarHidden(true, animated: false)
 			

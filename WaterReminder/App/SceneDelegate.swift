@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 		WaterManagementDomainAssembly().assemble(container: container)
 		HomeAssembly().assemble(container: container)
 		SettingsAssembly().assemble(container: container)
-		StatisticsAssembly().assemble(container: container)
+		HistoryAssembly().assemble(container: container)
 		LocalePreferencesDomainAssembly().assemble(container: container)
 	}
 
@@ -105,7 +105,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
     }
 
 	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-		// TODO add water consumption as action and register consumption to a useCase
 		completionHandler()
 	}
 

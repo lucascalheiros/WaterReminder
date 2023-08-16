@@ -121,11 +121,10 @@ class WaterSourceListHorizontalCollectionView: UICollectionViewCell, UICollectio
         return dataSource
     }
 
-}
+	typealias DataSource = UICollectionViewDiffableDataSource<WaterSourceSection, WaterSource>
+	typealias Snapshot = NSDiffableDataSourceSnapshot<WaterSourceSection, WaterSource>
 
-typealias DataSource = UICollectionViewDiffableDataSource<Section, WaterSource>
-typealias Snapshot = NSDiffableDataSourceSnapshot<Section, WaterSource>
-
-enum Section {
-	case main
+	enum WaterSourceSection {
+		case main
+	}
 }

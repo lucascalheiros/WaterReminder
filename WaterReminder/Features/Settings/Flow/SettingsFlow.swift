@@ -15,7 +15,11 @@ class SettingsFlow: Flow {
 		return self.rootViewController
 	}
 
-	private let rootViewController = UINavigationController()
+	private lazy var rootViewController = {
+		let nc = UINavigationController()
+		nc.setDefaultAppearance()
+		return nc
+	}()
 	private let container: Container
 
 	init(container: Container) {
@@ -35,8 +39,14 @@ class SettingsFlow: Flow {
 
 	private func navigateToSettings() -> FlowContributors {
 		let viewController = container.resolve(SettingsViewController.self)!
-		self.rootViewController.pushViewController(viewController, animated: false)
-		return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: SettingsFlowSteps.settings)))
+		viewController.title = "Settings"
+		rootViewController.pushViewController(viewController, animated: false)
+		return .one(
+			flowContributor: .contribute(
+				withNextPresentable: viewController,
+				withNextStepper: OneStepper(withSingleStep: SettingsFlowSteps.settings)
+			)
+		)
 	}
 
 }

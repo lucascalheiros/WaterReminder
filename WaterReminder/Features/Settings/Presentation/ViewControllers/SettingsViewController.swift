@@ -28,9 +28,6 @@ class SettingsViewController: UITableViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		title = "Settings"
-
 		view.backgroundColor = .systemTeal
 
 		tableView.register(

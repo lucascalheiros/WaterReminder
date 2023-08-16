@@ -26,7 +26,7 @@ class HomeViewModel {
     }()
 	
     lazy var currentWaterConsumedInML = {
-		getWaterConsumedUseCase.getWaterConsumedToday()
+		getWaterConsumedUseCase.getWaterConsumedVolumeToday()
     }()
     
     lazy var consumedPercentage: Observable<Double> = {
@@ -79,8 +79,10 @@ class HomeViewModel {
 	}
     
     func addWaterVolume(waterSource: WaterSource) {
-		registerWaterConsumedUseCase.registerWaterConsumption(waterVolume: waterSource.volume, sourceType: waterSource.waterSourceType)
-            .subscribe().disposed(by: DisposeBag())
+		registerWaterConsumedUseCase.registerWaterConsumption(
+			waterVolume: waterSource.volume,
+			sourceType: waterSource.waterSourceType
+		).subscribe().disposed(by: disposeBag)
     }
     
     func updateWaterSourcePinState(waterSource: WaterSource) {

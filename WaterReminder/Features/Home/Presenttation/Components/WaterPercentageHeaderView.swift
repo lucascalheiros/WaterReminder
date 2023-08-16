@@ -107,7 +107,7 @@ class WaterPercentageHeaderView: UICollectionViewCell {
 
     func setPercentage(percentage: CGFloat, animationDuration: Double = 0.0) {
         percentageValueLabel.text = String(Int(percentage * 100))
-        circleView.setPercentage(percentage: percentage, animationDuration: animationDuration)
+        circleView.setPercentage([PercentageAndColor(percentage: percentage, color: Theme.primary.mainColor.cgColor)], animationDuration: animationDuration)
     }
 
     func setSecondaryText(text: String) {

@@ -40,8 +40,10 @@ class WaterSourceCellView: UICollectionViewCell {
 
 	func bindData(_ waterSource: WaterSource, _ format: VolumeFormat) {
 		let waterWithFormat = WaterWithFormat(waterInML: waterSource.volume, volumeFormat: format)
-        titleLabel.text = waterSource.waterSourceType.rawValue
+        titleLabel.text = waterSource.waterSourceType.exhibitionName
 		volumeLabel.text = waterWithFormat.exhibitionValueWithFormat()
+		titleLabel.textColor = waterSource.waterSourceType.color
+		volumeLabel.textColor = waterSource.waterSourceType.color
         setPinButtonIcon(isPinned: waterSource.isPinned)
     }
 

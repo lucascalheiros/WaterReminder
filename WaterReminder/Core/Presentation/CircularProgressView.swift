@@ -9,98 +9,92 @@ import UIKit
 
 class CircularProgressView: UIView {
 
-    private var percentage: CGFloat = 0.0 {
-        didSet {
-            createCircularPath()
-        }
-    }
+	private let mFilledView: UIView = UIView()
 
-    private let mFilledView: UIView = UIView()
-    private var mHeightConstraint: NSLayoutConstraint?
+	private let mStartPoint = CGFloat(-Double.pi / 2)
+	private let mEndPoint = CGFloat(3 * Double.pi / 2)
 
-    var emptyColor: UIColor = .darkGray {
-        didSet {
-            backgroundColor = emptyColor
-        }
-    }
+	private var mEmptyCircleLayer = CAShapeLayer()
+	private var mProgressShapeDict: [CGColor: CAShapeLayer] = [:]
+	private var mPercentageAndColorList: [PercentageAndColor] = []
 
-    var filledColor: UIColor = .blue {
-        didSet {
-            mFilledView.backgroundColor = filledColor
-        }
-    }
+	private var mPercentage: CGFloat = 0.0
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        createCircularPath()
-//        setupView()
-    }
+	var lineWidth = 20.0 {
+		didSet {
+			createCircularPath()
+		}
+	}
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        createCircularPath()
+	var emptyColor: UIColor = .white {
+		didSet {
+			createCircularPath()
+		}
+	}
 
-//        setupView()
-    }
+	var filledColor: UIColor = .blue {
+		didSet {
+			createCircularPath()
+		}
+	}
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		createCircularPath()
+	}
 
-        createCircularPath()
-//        layer.cornerRadius = min(bounds.width, bounds.height) / 2
-    }
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		createCircularPath()
+	}
 
-    func setPercentage(percentage: CGFloat, animationDuration: Double = 0.0) {
-        self.percentage = percentage
-        UIView.animate(withDuration: animationDuration) {
-            self.layoutIfNeeded()
-        }
-    }
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		createCircularPath()
+	}
 
-    private var circleLayer = CAShapeLayer()
-    private var progressLayer = CAShapeLayer()
-    private var startPoint = CGFloat(-Double.pi / 2)
-    private var endPoint = CGFloat(3 * Double.pi / 2)
+	func createCircularPath() {
+		addCircleShapeLayer(shapeLayer: mEmptyCircleLayer, color: emptyColor.cgColor, drawPercentage: 1.0)
+		mPercentageAndColorList.forEach { percentageAndColor in
+			if mProgressShapeDict[percentageAndColor.color] == nil {
+				mProgressShapeDict[percentageAndColor.color] = CAShapeLayer()
+			}
+			if let shape = mProgressShapeDict[percentageAndColor.color] {
+				addCircleShapeLayer(shapeLayer: shape, color: percentageAndColor.color, drawPercentage: percentageAndColor.percentage)
+			}
+		}
+	}
 
-    func createCircularPath() {
-            // created circularPath for circleLayer and progressLayer
-            let circularPath = UIBezierPath(
-                arcCenter: CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0),
-                radius: (bounds.width - 20.0) / 2,
-                startAngle: startPoint,
-                endAngle: endPoint,
-                clockwise: true
-            )
-            // circleLayer path defined to circularPath
-            circleLayer.path = circularPath.cgPath
-            // ui edits
-            circleLayer.fillColor = UIColor.clear.cgColor
-            circleLayer.lineCap = .round
-            circleLayer.lineWidth = 20.0
-            circleLayer.strokeEnd = 1.0
-            circleLayer.strokeColor = UIColor.white.cgColor
-            // added circleLayer to layer
-            layer.addSublayer(circleLayer)
-            // progressLayer path defined to circularPath
-            progressLayer.path = circularPath.cgPath
-            // ui edits
-            progressLayer.fillColor = UIColor.clear.cgColor
-            progressLayer.lineCap = .round
-            progressLayer.lineWidth = 20.0
-            progressLayer.strokeEnd = percentage
-            progressLayer.strokeColor = UIColor.blue.cgColor
-            // added progressLayer to layer
-            layer.addSublayer(progressLayer)
-        }
+	func circularPath() -> UIBezierPath {
+		return UIBezierPath(
+			arcCenter: CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0),
+			radius: (bounds.width - lineWidth) / 2,
+			startAngle: mStartPoint,
+			endAngle: mEndPoint,
+			clockwise: true
+		)
+	}
 
-    func progressAnimation(duration: TimeInterval) {
-            // created circularProgressAnimation with keyPath
-            let circularProgressAnimation = CABasicAnimation(keyPath: "strokeEnd")
-            // set the end time
-            circularProgressAnimation.duration = duration
-            circularProgressAnimation.toValue = 1.0
-            circularProgressAnimation.fillMode = .forwards
-            circularProgressAnimation.isRemovedOnCompletion = false
-            progressLayer.add(circularProgressAnimation, forKey: "progressAnim")
-        }
+	func addCircleShapeLayer(shapeLayer: CAShapeLayer, color: CGColor, drawPercentage: CGFloat) {
+		shapeLayer.path = circularPath().cgPath
+		shapeLayer.fillColor = UIColor.clear.cgColor
+		shapeLayer.lineCap = .round
+		shapeLayer.lineWidth = lineWidth
+		shapeLayer.strokeEnd = drawPercentage
+		shapeLayer.strokeColor = color
+		layer.addSublayer(shapeLayer)
+	}
+
+	func setPercentage(_ percentageAndColorList: [PercentageAndColor], animationDuration: Double = 0.0) {
+		self.mPercentageAndColorList = percentageAndColorList
+		createCircularPath()
+		UIView.animate(withDuration: animationDuration) {
+			self.layoutIfNeeded()
+		}
+	}
+}
+
+struct PercentageAndColor {
+	let percentage: CGFloat
+	let color: CGColor
 }

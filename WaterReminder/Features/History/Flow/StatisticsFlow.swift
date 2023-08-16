@@ -15,7 +15,11 @@ class StatisticsFlow: Flow {
 		return self.rootViewController
 	}
 
-	private let rootViewController = UINavigationController()
+	private lazy var rootViewController = {
+		let nc = UINavigationController()
+		nc.setDefaultAppearance()
+		return nc
+	}()
 	private let container: Container
 
 	init(container: Container) {
@@ -34,8 +38,9 @@ class StatisticsFlow: Flow {
 	}
 
 	private func navigateToStatistics() -> FlowContributors {
-		let viewController = container.resolve(StatisticsViewController.self)!
-		self.rootViewController.pushViewController(viewController, animated: false)
+		let viewController = container.resolve(HistoryViewController.self)!
+		viewController.title = "History"
+		rootViewController.pushViewController(viewController, animated: false)
 		return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: StatisticsFlowSteps.statistics)))
 	}
 
