@@ -69,6 +69,8 @@
 		172F4DB62A240B4F00318699 /* ActivityLevelSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F4DB52A240B4F00318699 /* ActivityLevelSliderView.swift */; };
 		172F4DBB2A24122200318699 /* BaseChildPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F4DBA2A24122200318699 /* BaseChildPageController.swift */; };
 		172F4DBE2A26D81500318699 /* DailyWaterInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F4DBD2A26D81500318699 /* DailyWaterInputField.swift */; };
+		17318F982A8C544E00026FAD /* HomeViewController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17318F972A8C544E00026FAD /* HomeViewController+Datasource.swift */; };
+		17318F9A2A8C546100026FAD /* HomeViewController+FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17318F992A8C546100026FAD /* HomeViewController+FlowLayout.swift */; };
 		173426D82A145518007D475B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173426D72A145518007D475B /* Colors.swift */; };
 		173426DB2A146116007D475B /* WaterSourceRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173426DA2A146115007D475B /* WaterSourceRepositoryProtocol.swift */; };
 		173426E42A146879007D475B /* WaterSourceRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173426E32A146879007D475B /* WaterSourceRepositoryImpl.swift */; };
@@ -251,6 +253,8 @@
 		172F4DB52A240B4F00318699 /* ActivityLevelSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevelSliderView.swift; sourceTree = "<group>"; };
 		172F4DBA2A24122200318699 /* BaseChildPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChildPageController.swift; sourceTree = "<group>"; };
 		172F4DBD2A26D81500318699 /* DailyWaterInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWaterInputField.swift; sourceTree = "<group>"; };
+		17318F972A8C544E00026FAD /* HomeViewController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Datasource.swift"; sourceTree = "<group>"; };
+		17318F992A8C546100026FAD /* HomeViewController+FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+FlowLayout.swift"; sourceTree = "<group>"; };
 		173426D72A145518007D475B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		173426DA2A146115007D475B /* WaterSourceRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSourceRepositoryProtocol.swift; sourceTree = "<group>"; };
 		173426E32A146879007D475B /* WaterSourceRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterSourceRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -753,6 +757,8 @@
 			children = (
 				17E936302A11B80400AAC4E5 /* Components */,
 				17AE682F2A08590400571ED8 /* HomeViewController.swift */,
+				17318F992A8C546100026FAD /* HomeViewController+FlowLayout.swift */,
+				17318F972A8C544E00026FAD /* HomeViewController+Datasource.swift */,
 				17A5C28D2A844F4A002DFA20 /* HomeViewController+PercentageViewBind.swift */,
 				17A5C28F2A8450C9002DFA20 /* HomeViewController+WaterSourceListCellBind.swift */,
 				17E9361E2A0F19D500AAC4E5 /* HomeViewModel.swift */,
@@ -1588,6 +1594,7 @@
 				17A35CBF2A2D26E3003FF38A /* UserInformationRealmProvider.swift in Sources */,
 				17C493062A1C4E3F00ECBAF6 /* WaterConsumed.swift in Sources */,
 				1763E33B2A6B2CD700DA788D /* SettingsStepper.swift in Sources */,
+				17318F9A2A8C546100026FAD /* HomeViewController+FlowLayout.swift in Sources */,
 				17A494112A3FB5C700B25CE5 /* StatisticsFlow.swift in Sources */,
 				172171A72A7B33AF00EFD6FF /* NotificationFrequencyPickerView.swift in Sources */,
 				17A35CA92A2B947D003FF38A /* AppContainer.swift in Sources */,
@@ -1733,6 +1740,7 @@
 				172171AA2A7C874400EFD6FF /* VolumeFormat+Conversion.swift in Sources */,
 				17C4930E2A1EEDB700ECBAF6 /* WaterSourceObject.swift in Sources */,
 				17E936252A116C9C00AAC4E5 /* WaterPercentageHeaderView.swift in Sources */,
+				17318F982A8C544E00026FAD /* HomeViewController+Datasource.swift in Sources */,
 				172171842A76FD9E00EFD6FF /* DailyWaterSelectorModalViewController.swift in Sources */,
 				172171BA2A7FF62C00EFD6FF /* GetVolumeFormatUseCaseProtocol.swift in Sources */,
 				1763E3332A68CD8900DA788D /* GetNotificationSettingsUseCase.swift in Sources */,

@@ -8,10 +8,10 @@
 import UIKit
 import RxSwift
 
-class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+class HomeViewController: UIViewController {
 	let disposeBag = DisposeBag()
-	let waterPercentageHeaderView = "WaterPercentageHeaderView"
-	let waterSourceListHorizontalCollectionView = "WaterSourceListHorizontalCollectionView"
+
+	let sections = HomeSection.allCases
 
     lazy var waterContainerTableView: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -19,15 +19,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             frame: .zero,
             collectionViewLayout: layout
         )
-        collectionView.backgroundColor = .clear
-        collectionView.register(
-            WaterPercentageHeaderView.self,
-            forCellWithReuseIdentifier: waterPercentageHeaderView
-        )
-        collectionView.register(
-            WaterSourceListHorizontalCollectionView.self,
-            forCellWithReuseIdentifier: waterSourceListHorizontalCollectionView
-        )
+		registerCells(collectionView)
+		collectionView.backgroundColor = .clear
         collectionView.dataSource = self
         collectionView.delegate = self
         return collectionView
@@ -48,78 +41,18 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             waterContainerTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
         ])
     }
+}
 
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
+enum HomeSection: CaseIterable {
+	case mainWaterTracker
+	case waterSourceList
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 1
-        default:
-			fatalError("Section not implemented")
-        }
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        switch indexPath.section {
-        case 0:
-            return bindPercentageView(collectionView, indexPath)
-        case 1:
-            return bindWaterSourceListCellBind(collectionView, indexPath)
-        default:
-            fatalError("Section not implemented")
-        }
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath
-    ) -> CGSize {
-        let horizontalPadding = insetBySection(section: indexPath.section).horizontalPadding()
-
-        switch indexPath.section {
-        case 0:
-            return CGSize(width: collectionView.bounds.width - horizontalPadding, height: 300)
-        case 1:
-            return CGSize(width: collectionView.bounds.width, height: 248)
-        default:
-			fatalError("Section not implemented")
-        }
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumLineSpacingForSectionAt section: Int
-    ) -> CGFloat {
-        return 16
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        insetForSectionAt section: Int
-    ) -> UIEdgeInsets {
-        insetBySection(section: section)
-    }
-
-    private func insetBySection(section: Int) -> UIEdgeInsets {
-        switch section {
-        case 0:
-            return UIEdgeInsets.vertical(inset: 8).horizontal(inset: 16)
-        case 1:
-            return UIEdgeInsets.set(inset: 0)
-        default:
-			fatalError("Section not implemented")
-        }
-    }
-
+	func itemsForSection() -> Int {
+		switch self {
+		case .mainWaterTracker:
+			return 1
+		case .waterSourceList:
+			return 1
+		}
+	}
 }
