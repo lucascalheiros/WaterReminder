@@ -47,4 +47,12 @@ internal class WaterSourceRepositoryImpl: BaseRepository<WaterSourceObject>, Wat
                 return self.save(waterSource)
             }
     }
+
+	func updateWaterSources(waterSources: [WaterSource]) -> Completable {
+		return self.save(waterSources.map({  WaterSourceObject(waterSource: $0) }))
+	}
+
+    func deleteWaterSource(waterSource: WaterSource) -> Completable {
+        return self.delete(waterSource.toDataObject()._id)
+    }
 }

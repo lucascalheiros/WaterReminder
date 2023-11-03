@@ -1,5 +1,5 @@
 //
-//  DailyWaterInputField.swift
+//  InputFieldWithSuffix.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 30/05/23.
@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-class DailyWaterInputField: UITextField, UITextFieldDelegate {
+class InputFieldWithSuffix: UITextField, UITextFieldDelegate {
 
-	let bottomLine = CALayer()
+	private let bottomLine = CALayer()
 
 	override var text: String? {
 		get {
@@ -22,11 +22,10 @@ class DailyWaterInputField: UITextField, UITextFieldDelegate {
 		}
 	}
 
-	func setupUnderlineLayer() {
+	private func setupUnderlineLayer() {
 		var frame = self.bounds
 		frame.origin.y = frame.size.height - 1
 		frame.size.height = 1
-
 		bottomLine.frame = frame
 		bottomLine.backgroundColor = UIColor.white.cgColor
 	}
@@ -47,6 +46,15 @@ class DailyWaterInputField: UITextField, UITextFieldDelegate {
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+		prepareConfiguration()
+		prepareConstraints()
+	}
+
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	func prepareConfiguration() {
 		delegate = self
 		borderStyle = .none
 		textAlignment = .center
@@ -56,19 +64,16 @@ class DailyWaterInputField: UITextField, UITextFieldDelegate {
 		borderStyle = .none
 		layer.addSublayer(bottomLine)
 		layer.masksToBounds = true
+	}
 
+	func prepareConstraints() {
 		addConstrainedSubviews(textPhantom, suffix)
 		NSLayoutConstraint.activate([
 			textPhantom.centerXAnchor.constraint(equalTo: centerXAnchor),
 			textPhantom.centerYAnchor.constraint(equalTo: centerYAnchor),
-
 			suffix.leadingAnchor.constraint(equalTo: textPhantom.trailingAnchor, constant: 2),
 			suffix.centerYAnchor.constraint(equalTo: textPhantom.centerYAnchor)
 		])
-	}
-
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
 	}
 
 	func textField(

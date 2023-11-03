@@ -1,5 +1,5 @@
 //
-//  HomeViewController+PercentageViewBind.swift
+//  HomeVC+Cell+WaterPercentageSection.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 09/08/23.
@@ -7,17 +7,17 @@
 
 import UIKit
 
-extension HomeViewController {
+extension HomeVC {
 	func bindPercentageView(
 		_ collectionView: UICollectionView,
 		_ indexPath: IndexPath
 	) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(
-			withReuseIdentifier: waterPercentageHeaderView,
+			withReuseIdentifier: HomeVC.waterPercentageCell,
 			for: indexPath
 		)
 
-		if let cell = cell as? WaterPercentageHeaderView {
+		if let cell = cell as? WaterPercentageCell {
 			viewModel.consumedPercentage.subscribe(onNext: { percentage in
 				cell.setPercentage(percentage: percentage)
 			}).disposed(by: cell.disposeBag)

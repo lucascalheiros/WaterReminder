@@ -14,10 +14,7 @@ class DailyWaterSelectorModalViewController: UIViewController {
 
 	let dailyWaterSelectorDelegate: DailyWaterSelectorDelegate
 
-	private lazy var dailyWaterEditText = {
-		let text = DailyWaterInputField()
-		return text
-	}()
+	private lazy var dailyWaterEditText = InputFieldWithSuffix()
 
 	private var lastVolumeFormat: VolumeFormat?
 

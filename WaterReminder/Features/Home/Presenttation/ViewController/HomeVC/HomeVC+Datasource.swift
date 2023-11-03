@@ -1,5 +1,5 @@
 //
-//  HomeViewController+Datasource.swift
+//  HomeVC+Datasource.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 15/08/23.
@@ -7,19 +7,38 @@
 
 import UIKit
 
-extension HomeViewController: UICollectionViewDataSource {
-	static let waterPercentageHeaderView = "WaterPercentageHeaderView"
+extension HomeVC: UICollectionViewDataSource {
+	static let waterPercentageCell = "WaterPercentageCell"
 	static let waterSourceListHorizontalCollectionView = "WaterSourceListHorizontalCollectionView"
+	static let waterSourceListSectionHeader = "WaterSourceListSectionHeader"
 
 	func registerCells(_ collectionView: UICollectionView) {
 		collectionView.register(
-			WaterPercentageHeaderView.self,
-			forCellWithReuseIdentifier: waterPercentageHeaderView
+			WaterPercentageCell.self,
+			forCellWithReuseIdentifier: HomeVC.waterPercentageCell
 		)
 		collectionView.register(
 			WaterSourceListHorizontalCollectionView.self,
-			forCellWithReuseIdentifier: waterSourceListHorizontalCollectionView
+			forCellWithReuseIdentifier: HomeVC.waterSourceListHorizontalCollectionView
 		)
+		collectionView.register(
+			WaterSourceListSectionHeader.self,
+			forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+			withReuseIdentifier: HomeVC.waterSourceListSectionHeader
+		)
+	}
+
+	func collectionView(
+		_ collectionView: UICollectionView,
+		viewForSupplementaryElementOfKind kind: String,
+		at indexPath: IndexPath
+	) -> UICollectionReusableView {
+		switch sections[indexPath.section] {
+		case .waterSourceList:
+			return bindWaterSourceSectionHeader(collectionView, kind, indexPath)
+		default:
+			return UICollectionReusableView()
+		}
 	}
 
 	func numberOfSections(in collectionView: UICollectionView) -> Int {

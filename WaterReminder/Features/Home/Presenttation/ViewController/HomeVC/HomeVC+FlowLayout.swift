@@ -1,5 +1,5 @@
 //
-//  HomeViewController+FlowLayout.swift
+//  HomeVC+FlowLayout.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 15/08/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension HomeViewController: UICollectionViewDelegateFlowLayout {
+extension HomeVC: UICollectionViewDelegateFlowLayout {
 	func collectionView(
 		_ collectionView: UICollectionView,
 		layout collectionViewLayout: UICollectionViewLayout,
@@ -19,6 +19,15 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 			return CGSize(width: collectionView.bounds.width - horizontalPadding, height: 300)
 		case .waterSourceList:
 			return CGSize(width: collectionView.bounds.width, height: 248)
+		}
+	}
+
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+		switch sections[section] {
+		case .mainWaterTracker:
+			return CGSize.zero
+		case .waterSourceList:
+			return CGSize(width: collectionView.bounds.width, height: 32)
 		}
 	}
 

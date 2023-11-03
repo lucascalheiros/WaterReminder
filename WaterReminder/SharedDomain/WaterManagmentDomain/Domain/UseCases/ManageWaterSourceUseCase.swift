@@ -8,6 +8,7 @@
 import RxSwift
 
 internal class ManageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol {
+    
 	let waterSourceRepository: WaterSourceRepositoryProtocol
 
 	init(waterSourceRepository: WaterSourceRepositoryProtocol) {
@@ -21,4 +22,13 @@ internal class ManageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol {
 	func updateWaterSourcePinState(waterSource: WaterSource, pinnedState: Bool) -> Completable {
 		waterSourceRepository.updateWaterSourcePinState(waterSource: waterSource, isPinned: pinnedState)
 	}
+
+	func updateWaterSources(waterSources: [WaterSource]) -> Completable {
+		waterSourceRepository.updateWaterSources(waterSources: waterSources)
+	}
+
+    func deleteWaterSource(waterSource: WaterSource) -> RxSwift.Completable {
+        waterSourceRepository.deleteWaterSource(waterSource: waterSource)
+    }
+
 }

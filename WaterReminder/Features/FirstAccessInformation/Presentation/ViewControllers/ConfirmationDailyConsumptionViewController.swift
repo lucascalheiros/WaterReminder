@@ -13,7 +13,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 	private let disposeBag = DisposeBag()
 
 	private lazy var dailyWaterEditText = {
-		let text = DailyWaterInputField()
+		let text = InputFieldWithSuffix()
 		return text
 	}()
 

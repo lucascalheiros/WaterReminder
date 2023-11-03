@@ -9,4 +9,10 @@ import RxSwift
 
 protocol GetWaterSourceUseCaseProtocol {
 	func getWaterSourceList() -> Observable<[WaterSource]>
+    func getWaterSourceListWithVolumeFormat() -> Observable<WaterSourceListWithVolumeFormat> 
+}
+
+struct WaterSourceListWithVolumeFormat {
+    let waterSourceList: [WaterSource]
+    let volumeFormat: VolumeFormat
 }

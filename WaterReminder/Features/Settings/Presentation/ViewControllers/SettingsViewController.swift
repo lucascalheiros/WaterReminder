@@ -55,11 +55,11 @@ class SettingsViewController: UITableViewController {
 		let section = SettingsSections.allCases[sectionIndex]
 
 		label.text = section.sectionTitle()
+		label.textColor = UIColor.white
 		viewWrapper.addConstrainedSubview(label)
 		NSLayoutConstraint.activate([
 			label.topAnchor.constraint(equalTo: viewWrapper.topAnchor, constant: 8),
 			label.bottomAnchor.constraint(equalTo: viewWrapper.bottomAnchor, constant: -8),
-
 			label.leadingAnchor.constraint(equalTo: viewWrapper.leadingAnchor, constant: 8)
 		])
 		return viewWrapper

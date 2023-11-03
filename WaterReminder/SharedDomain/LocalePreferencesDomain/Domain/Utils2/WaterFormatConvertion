@@ -1,0 +1,31 @@
+//
+//  WaterFormatConvertion.swift
+//  WaterReminder
+//
+//  Created by Lucas Calheiros on 03/08/23.
+//
+
+
+func waterVolumeInML() -> Float {
+    let volume = self.dailyWaterEditText.text.unwrapLet { $0.toFloat() ?? 0 } ?? 0
+    switch currentVolumeFormat {
+    case .metric:
+        return volume
+    case .imperial_uk:
+        return volume * 28.413
+    case .imperial_us:
+        return volume * 29.573
+    }
+}
+
+func waterVolumeTo(_ volumeFormat: VolumeFormat) -> Float {
+    let volume = waterVolumeInML()
+    switch volumeFormat {
+    case .metric:
+        return volume
+    case .imperial_uk:
+        return volume / 28.413
+    case .imperial_us:
+        return volume / 29.573
+    }
+}
