@@ -53,4 +53,23 @@ class BaseRepository<T: BaseObject> {
             return Observable.error(error)
         }
     }
+
+    func delete(_ id: ObjectId) -> Completable {
+        return Completable.create { completable in
+            do {
+                let realm = try self.realm
+                try realm.write {
+                    let objects = realm.objects(T.self).where {
+                        $0._id == id
+                    }
+                    realm.delete(objects)
+                }
+                completable(.completed)
+            } catch let error {
+                print(error)
+                completable(.error(error))
+            }
+            return Disposables.create()
+        }
+    }
 }

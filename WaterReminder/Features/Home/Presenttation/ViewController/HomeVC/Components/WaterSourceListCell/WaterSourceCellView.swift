@@ -29,12 +29,6 @@ class WaterSourceCellView: UICollectionViewCell {
         return label
     }()
 
-    private lazy var pinButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 32, height: 32)
-        return button
-    }()
-
 	let volumeFormat = BehaviorRelay<VolumeFormat?>(value: nil)
 	let waterSource = BehaviorRelay<WaterSource?>(value: nil)
 
@@ -44,12 +38,6 @@ class WaterSourceCellView: UICollectionViewCell {
 		volumeLabel.text = waterWithFormat.exhibitionValueWithFormat()
 		titleLabel.textColor = waterSource.waterSourceType.color
 		volumeLabel.textColor = waterSource.waterSourceType.color
-        setPinButtonIcon(isPinned: waterSource.isPinned)
-    }
-
-    func setPinButtonIcon(isPinned: Bool) {
-        let image = UIImage(systemName: isPinned ? "pin.fill" : "pin")
-        pinButton.setImage(image, for: .normal)
     }
 
     override init(frame: CGRect) {
@@ -61,35 +49,24 @@ class WaterSourceCellView: UICollectionViewCell {
 			}
 		}).disposed(by: disposeBag)
 
-		contentView.addConstrainedSubviews(titleLabel, volumeLabel, pinButton)
+		contentView.addConstrainedSubviews(titleLabel, volumeLabel)
         contentView.layer.cornerRadius = 8
         contentView.backgroundColor = Theme.lightBlue.mainColor
         contentView.addGestureRecognizer(
 			UITapGestureRecognizer(target: self, action: #selector(tapItemDetected))
-		)
-        pinButton.addGestureRecognizer(
-			UITapGestureRecognizer(target: self, action: #selector(tapPinDetected))
 		)
 
 		NSLayoutConstraint.activate([
 			titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
 			titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
 			volumeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-			volumeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-			pinButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-			pinButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
+			volumeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
 		])
     }
 
 	@objc func tapItemDetected() {
 		if let data = waterSource.value {
 			listener?.itemClickListener(data)
-		}
-	}
-
-	@objc func tapPinDetected() {
-		if let data = waterSource.value {
-			listener?.pinClickListener(data)
 		}
 	}
 

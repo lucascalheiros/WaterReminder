@@ -34,12 +34,27 @@ class HomeFlow: Flow {
 
 		case .home:
 			return navigateToHome()
+		case .waterSourceEditor:
+			return waterSourceModal()
 		}
 	}
 
 	private func navigateToHome() -> FlowContributors {
-		let viewController = container.resolve(HomeViewController.self)!
+		let viewController = container.resolve(HomeVC.self)!
 		rootViewController.pushViewController(viewController, animated: false)
-		return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep:  HomeFlowSteps.home)))
+		return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: container.resolve(HomeFlowStepper.self)!))
+	}
+
+	private func waterSourceModal() -> FlowContributors {
+		let viewController = container.resolve(EditWaterSourceListVC.self)!
+		let nav = UINavigationController(rootViewController: viewController)
+		nav.modalPresentationStyle = .pageSheet
+
+		if let sheet = nav.sheetPresentationController {
+			sheet.detents = [.large()]
+		}
+
+		rootViewController.present(nav, animated: true, completion: nil)
+		return .none
 	}
 }

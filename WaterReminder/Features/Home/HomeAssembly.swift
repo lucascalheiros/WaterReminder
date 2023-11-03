@@ -9,14 +9,24 @@ import Swinject
 import SwinjectAutoregistration
 
 class HomeAssembly: Assembly {
-	func assemble(container: Container) {
-		container.autoregister(
-			HomeViewController.self
-		) {
-			let home = HomeViewController()
-			home.viewModel = container.resolve(HomeViewModel.self)!
-			return home
-		}
-		container.autoregister(HomeViewModel.self, initializer: HomeViewModel.init)
-	}
+    func assemble(container: Container) {
+        container.autoregister(
+            HomeVC.self
+        ) {
+            return HomeVC(viewModel: container.resolve(HomeViewModel.self)!)
+        }
+        container.autoregister(
+            EditWaterSourceListVC.self
+        ) {
+            return EditWaterSourceListVC(
+                getWaterSourceUseCase: container.resolve(GetWaterSourceUseCaseProtocol.self)!,
+                reorderWaterSourceUseCase: container.resolve(ReorderWaterSourceUseCase.self)!,
+                manageWaterSourceUseCase: container.resolve(ManageWaterSourceUseCaseProtocol.self)!
+            )
+        }
+        container.autoregister(HomeViewModel.self, initializer: HomeViewModel.init)
+        container.autoregister(HomeFlowStepper.self, initializer: HomeFlowStepper.init).inObjectScope(.container)
+
+        container.autoregister(ReorderWaterSourceUseCase.self, initializer: ReorderWaterSourceUseCaseImpl.init)
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  HomeViewController+WaterSourceListCellBind.swift
+//  HomeVC+Cell+WaterSourceSection.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 09/08/23.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-extension HomeViewController {
+extension HomeVC {
 	func bindWaterSourceListCellBind(
 		_ collectionView: UICollectionView,
 		_ indexPath: IndexPath
 	) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(
-			withReuseIdentifier: waterSourceListHorizontalCollectionView,
+			withReuseIdentifier: HomeVC.waterSourceListHorizontalCollectionView,
 			for: indexPath
 		)
 
@@ -27,10 +27,10 @@ extension HomeViewController {
 
 			cell.waterSourceListener = WaterSourceListener(
 				itemClickListener: { [weak self] in
-					self?.viewModel?.addWaterVolume(waterSource: $0)
+					self?.viewModel.addWaterVolume(waterSource: $0)
 				},
 				pinClickListener: { [weak self] in
-					self?.viewModel?.updateWaterSourcePinState(waterSource: $0)
+					self?.viewModel.updateWaterSourcePinState(waterSource: $0)
 				}
 			)
 		}

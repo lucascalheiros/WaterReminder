@@ -12,25 +12,30 @@ enum Theme: String {
 
     case lightBlue
     case lightTeal
-	case blue
-	case darkGray
-	case white
-	case teal
-	case primary
-	case primaryDisabled
-	case primaryBackground
+    case blue
+    case darkGray
+    case white
+    case teal
+    case primary
+    case primaryDisabled
+    case primaryBackground
 
     var accentColor: UIColor {
         switch self {
-		case .lightBlue, .lightTeal, .white:
-			return .darkGray
-		case .blue, .darkGray, .teal, .primary, .primaryDisabled, .primaryBackground:
-			return .white
+        case .lightBlue, .lightTeal, .white:
+            return .darkGray
+        case .blue, .darkGray, .teal, .primary, .primaryDisabled, .primaryBackground:
+            return .white
         }
     }
 
     var mainColor: UIColor {
-        UIColor(named: rawValue)!
+        switch self {
+        case .blue:
+            return UIColor.blue
+        default:
+            return UIColor(named: rawValue)!
+        }
     }
-
+    
 }

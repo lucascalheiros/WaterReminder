@@ -11,6 +11,7 @@ extension UINavigationController {
 	func setDefaultAppearance() {
 		let navigationBarAppearance = UINavigationBarAppearance()
 		navigationBarAppearance.backgroundColor = Theme.primaryBackground.mainColor
+		navigationBarAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 		self.navigationBar.standardAppearance = navigationBarAppearance
 	}
 }

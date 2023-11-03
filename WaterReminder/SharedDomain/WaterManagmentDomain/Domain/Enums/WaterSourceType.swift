@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum WaterSourceType: String {
+enum WaterSourceType: String, CaseIterable {
     case water
     case coffee
     case juice
