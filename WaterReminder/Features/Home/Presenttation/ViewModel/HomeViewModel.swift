@@ -85,7 +85,7 @@ class HomeViewModel {
 		self.getVolumeFormatUseCase = getVolumeFormatUseCase
 		self.homeFlowStepper = homeFlowStepper
 
-        getConsumedWaterPercentageUseCase.todayConsumedWaterPercentageWithWaterType()
+        getConsumedWaterPercentageUseCase.dailyConsumedWaterPercentageWithWaterType(date: Date())
             .bind(to: todayConsumedWaterPercentageByWaterType)
             .disposed(by: disposeBag)
 

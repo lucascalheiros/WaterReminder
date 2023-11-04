@@ -1,5 +1,5 @@
 //
-//  TodayConsumptionCell.swift
+//  DailyConsumptionCell.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 10/08/23.
@@ -10,7 +10,8 @@ import RxRelay
 import RxSwift
 import RxSwiftExt
 
-class TodayConsumptionCell: UICollectionViewCell {
+class DailyConsumptionCell: UICollectionViewCell {
+    static let identifier = "DailyConsumptionCell"
 	let disposeBag = DisposeBag()
 
 	private lazy var titleLabel: UILabel = {

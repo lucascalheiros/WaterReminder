@@ -8,5 +8,6 @@
 import RxSwift
 
 protocol GetConsumedWaterPercentageUseCase {
-    func todayConsumedWaterPercentageWithWaterType() -> Observable<[PercentageWithWaterSourceType]>
+    func dailyConsumedWaterPercentageWithWaterType(date: Date) -> Observable<[PercentageWithWaterSourceType]>
+    func waterPercentageWithTypeByConsumedList(expectedWaterVolume: Float, waterConsumedList: [WaterConsumed]) -> [PercentageWithWaterSourceType]
 }

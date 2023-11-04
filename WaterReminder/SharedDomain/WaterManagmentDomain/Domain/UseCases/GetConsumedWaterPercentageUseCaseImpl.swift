@@ -9,8 +9,10 @@ import RxSwift
 
 class GetConsumedWaterPercentageUseCaseImpl: GetConsumedWaterPercentageUseCase {
 
-    let getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol
-    let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
+    private let getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol
+    private let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
+
+    private lazy var expectedWaterVolume: Observable<Float> = getDailyWaterConsumptionUseCase.getDailyWaterConsumptionList().map { ($0.last?.expectedVolume ?? 0).toFloat() }
 
     init(
         getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol,
@@ -20,30 +22,24 @@ class GetConsumedWaterPercentageUseCaseImpl: GetConsumedWaterPercentageUseCase {
         self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
     }
 
-    func todayConsumedWaterPercentageWithWaterType() -> Observable<[PercentageWithWaterSourceType]> {
-        let currentDate = Date()
-        let startOfDay = currentDate.startOfDay
-        let endOfDay = currentDate.endOfDay
-        let expectedWaterVolume: Observable<Float> = getDailyWaterConsumptionUseCase.getDailyWaterConsumptionList().map { ($0.last?.expectedVolume ?? 0).toFloat() }
+    func dailyConsumedWaterPercentageWithWaterType(date: Date) -> Observable<[PercentageWithWaterSourceType]> {
+        let startOfDay = date.startOfDay
+        let endOfDay = date.endOfDay
         let waterConsumedListToday: Observable<[WaterConsumed]> = getWaterConsumedUseCase.getWaterConsumedList(startOfDay, endOfDay)
         return Observable.combineLatest(expectedWaterVolume, waterConsumedListToday)
             .map { expectedWaterVolume, waterConsumedList in
-                var totalVolume: Float = 0
-                var volumeToWaterSourceType: [WaterSourceType:Float] = [:]
-                for waterConsumed in waterConsumedList {
-                    let volume = waterConsumed.volume.toFloat()
-                    totalVolume += volume
-                    var volumeByType = volumeToWaterSourceType[waterConsumed.waterSourceType] ?? 0
-                    volumeByType += volume
-                    volumeToWaterSourceType[waterConsumed.waterSourceType] = volumeByType
-                }
-
-                return volumeToWaterSourceType.map { key, value in
-                    let maxValue = max(expectedWaterVolume, totalVolume)
-                    let percentage: Float = (Float(value) / maxValue)
-                    return PercentageWithWaterSourceType(percentage: percentage, waterSourceType: key)
-                }.sorted(by: { $0.waterSourceType.order < $1.waterSourceType.order })
+                self.waterPercentageWithTypeByConsumedList(expectedWaterVolume: expectedWaterVolume, waterConsumedList: waterConsumedList)
             }
+    }
+
+    func waterPercentageWithTypeByConsumedList(expectedWaterVolume: Float, waterConsumedList: [WaterConsumed]) -> [PercentageWithWaterSourceType] {
+        let totalConsumedVolume = waterConsumedList.map { $0.volume }.reduce(0, +).toFloat()
+        let maxVolume = max(expectedWaterVolume, totalConsumedVolume)
+        return Dictionary(grouping: waterConsumedList, by: { $0.waterSourceType }).map { waterSourceType, waterConsumedListByType in
+            let volumePerType = waterConsumedListByType.map { $0.volume }.reduce(0, +).toFloat()
+            let percentage = volumePerType / maxVolume
+            return PercentageWithWaterSourceType(percentage: percentage, waterSourceType: waterSourceType)
+        }.sorted(by: { $0.waterSourceType.order < $1.waterSourceType.order })
     }
 
 }
