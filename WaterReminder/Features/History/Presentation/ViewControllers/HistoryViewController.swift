@@ -102,9 +102,9 @@ class HistoryViewController: UICollectionViewController {
 				for: indexPath
 			) as? TodayConsumptionSection {
 				historyViewModel.todayConsumedWaterPercentage
-					.bind(to: sectionHeader.todayConsumedWaterPercentage).disposed(by: disposeBag)
+					.bind(to: sectionHeader.percentageWithWaterSourceTypeList).disposed(by: disposeBag)
 				historyViewModel.todayConsumedVolume
-					.bind(to: sectionHeader.todayConsumedVolume).disposed(by: disposeBag)
+					.bind(to: sectionHeader.consumedVolume).disposed(by: disposeBag)
 				return sectionHeader
 			}
 		default:

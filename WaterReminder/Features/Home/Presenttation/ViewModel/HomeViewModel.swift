@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 import RealmSwift
 
 class HomeViewModel {
@@ -63,6 +64,9 @@ class HomeViewModel {
 
 	private let disposeBag = DisposeBag()
 
+    lazy var todayConsumedWaterPercentageByWaterType = BehaviorRelay<[PercentageWithWaterSourceType]>(value: [])
+
+
 	init (
 		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol,
 		getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol,
@@ -70,7 +74,8 @@ class HomeViewModel {
 		manageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol,
 		getWaterSourceUseCase: GetWaterSourceUseCaseProtocol,
 		getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol,
-		homeFlowStepper: HomeFlowStepper
+		homeFlowStepper: HomeFlowStepper,
+        getConsumedWaterPercentageUseCase: GetConsumedWaterPercentageUseCase
 	) {
 		self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
 		self.getWaterConsumedUseCase = getWaterConsumedUseCase
@@ -79,6 +84,11 @@ class HomeViewModel {
 		self.getWaterSourceUseCase = getWaterSourceUseCase
 		self.getVolumeFormatUseCase = getVolumeFormatUseCase
 		self.homeFlowStepper = homeFlowStepper
+
+        getConsumedWaterPercentageUseCase.todayConsumedWaterPercentageWithWaterType()
+            .bind(to: todayConsumedWaterPercentageByWaterType)
+            .disposed(by: disposeBag)
+
 	}
 
 	func addWaterVolume(waterSource: WaterSource) {
@@ -99,3 +109,4 @@ class HomeViewModel {
 		homeFlowStepper.showWaterSourceModal()
 	}
 }
+

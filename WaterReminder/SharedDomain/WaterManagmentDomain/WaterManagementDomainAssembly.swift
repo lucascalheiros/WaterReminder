@@ -66,9 +66,13 @@ class WaterManagementDomainAssembly: Assembly {
 			GetVolumeFormatUseCaseProtocol.self,
 			initializer: GetVolumeFormatUseCase.init
 		)
-		container.autoregister(
-			RegisterVolumeFormatUseCaseProtocol.self,
-			initializer: RegisterVolumeFormatUseCase.init
+        container.autoregister(
+            RegisterVolumeFormatUseCaseProtocol.self,
+            initializer: RegisterVolumeFormatUseCase.init
+        )
+        container.autoregister(
+            GetConsumedWaterPercentageUseCase.self,
+			initializer: GetConsumedWaterPercentageUseCaseImpl.init
 		)
 	}
 }

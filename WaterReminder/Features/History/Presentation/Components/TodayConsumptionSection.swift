@@ -40,23 +40,18 @@ class TodayConsumptionSection: UICollectionReusableView {
 		return cpv
 	}()
 
-	let todayConsumedWaterPercentage = BehaviorRelay<Float>(value: 0.0)
-	let todayConsumedVolume = BehaviorRelay<WaterWithFormat?>(value: nil)
+	let percentageWithWaterSourceTypeList = BehaviorRelay<[PercentageWithWaterSourceType]>(value: [])
+	let consumedVolume = BehaviorRelay<WaterWithFormat?>(value: nil)
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
 		addConstrainedSubviews(titleLabel, circularProgressView, percentageLabel, volumeLabel)
-		todayConsumedWaterPercentage.subscribe(onNext: {
-			self.circularProgressView.setPercentage([
-				PercentageAndColor(
-					percentage: CGFloat($0),
-					color: Theme.primary.mainColor.cgColor
-				)
-			])
-			self.percentageLabel.text = String(format: "%.1f%%", $0 * 100)
+		percentageWithWaterSourceTypeList.subscribe(onNext: {
+            self.circularProgressView.setPercentage($0.map { PercentageAndColor(percentage: CGFloat($0.percentage), color: $0.waterSourceType.color.cgColor) })
+            self.percentageLabel.text = String(format: "%.1f%%", $0.map { $0.percentage }.reduce(0, +) * 100)
 		}).disposed(by: disposeBag)
-		todayConsumedVolume.subscribe(onNext: {
+		consumedVolume.subscribe(onNext: {
 			if let volumeWithFormat = $0 {
 				self.volumeLabel.text = volumeWithFormat.exhibitionValueWithFormat()
 			}

@@ -15,6 +15,7 @@ class CircularProgressView: UIView {
 	private let mEndPoint = CGFloat(3 * Double.pi / 2)
 
 	private var mEmptyCircleLayer = CAShapeLayer()
+    private var mNextShapeLayer = CAShapeLayer()
 	private var mProgressShapeDict: [CGColor: CAShapeLayer] = [:]
 	private var mPercentageAndColorList: [PercentageAndColor] = []
 
@@ -55,15 +56,22 @@ class CircularProgressView: UIView {
 
 	func createCircularPath() {
 		addCircleShapeLayer(shapeLayer: mEmptyCircleLayer, color: emptyColor.cgColor, drawPercentage: 1.0)
-		mPercentageAndColorList.forEach { percentageAndColor in
-			if mProgressShapeDict[percentageAndColor.color] == nil {
-				mProgressShapeDict[percentageAndColor.color] = CAShapeLayer()
-			}
-			if let shape = mProgressShapeDict[percentageAndColor.color] {
-				addCircleShapeLayer(shapeLayer: shape, color: percentageAndColor.color, drawPercentage: percentageAndColor.percentage)
-			}
-		}
+        addCircleShapeLayer(shapeLayer: mNextShapeLayer, color: emptyColor.cgColor, drawPercentage: 0)
+        var percentageDrawed: CGFloat = 0
+		mPercentageAndColorList.map { percentageAndColor in
+            let shape = mProgressShapeDict[percentageAndColor.color] ?? {
+                let tempShapeLayer = mNextShapeLayer
+                mNextShapeLayer = CAShapeLayer()
+                return tempShapeLayer
+            }()
+            mProgressShapeDict[percentageAndColor.color] = shape
+            percentageDrawed += percentageAndColor.percentage
+            return CircleShapeParams(shapeLayer: shape, color: percentageAndColor.color, drawPercentage: percentageDrawed)
+        }.reversed().forEach {
+            addCircleShapeLayer(shapeLayer: $0.shapeLayer, color: $0.color, drawPercentage: $0.drawPercentage)
+        }
 	}
+
 
 	func circularPath() -> UIBezierPath {
 		return UIBezierPath(
@@ -92,6 +100,13 @@ class CircularProgressView: UIView {
 			self.layoutIfNeeded()
 		}
 	}
+
+    struct CircleShapeParams {
+        let shapeLayer: CAShapeLayer
+        let color: CGColor
+        let drawPercentage: CGFloat
+    }
+
 }
 
 struct PercentageAndColor {
