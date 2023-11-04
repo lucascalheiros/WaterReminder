@@ -37,4 +37,19 @@ extension WaterSourceType {
 			return "Soda"
 		}
 	}
+
+    var order: Int {
+        switch self {
+        case .water:
+            return 0
+        case .coffee:
+            return 1
+        case .juice:
+            return 2
+        case .tea:
+            return 3
+        case .soda:
+            return 4
+        }
+    }
 }

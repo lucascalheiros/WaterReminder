@@ -13,6 +13,7 @@ class HistoryViewModel {
 	let getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol
 	let getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol
 	let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
+    let getConsumedWaterPercentageUseCase: GetConsumedWaterPercentageUseCase
 
 	lazy var todayWaterConsumedList = {
 		let currentDate = Date()
@@ -25,21 +26,20 @@ class HistoryViewModel {
 
 	lazy var todayConsumedVolume = BehaviorRelay<WaterWithFormat?>(value: nil)
 
-	lazy var todayConsumedWaterPercentage: Observable<Float> = Observable.combineLatest(todayConsumedVolume, getDailyWaterConsumptionUseCase.lastDailyWaterConsumption()) { todayVolume, waterGoal in
-		if let expectedVolume = waterGoal?.expectedVolume, let todayVolume = todayVolume?.waterInML {
-			return Float(todayVolume) / Float(expectedVolume)
-		}
-		return 0
-	}
-
+    lazy var todayConsumedWaterPercentage: Observable<[PercentageWithWaterSourceType]> = {
+        getConsumedWaterPercentageUseCase.todayConsumedWaterPercentageWithWaterType()
+    }()
+    
 	init(
 		getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol,
 		getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol,
-		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
+		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol,
+        getConsumedWaterPercentageUseCase: GetConsumedWaterPercentageUseCase
 	) {
 		self.getWaterConsumedUseCase = getWaterConsumedUseCase
 		self.getVolumeFormatUseCase = getVolumeFormatUseCase
 		self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
+        self.getConsumedWaterPercentageUseCase = getConsumedWaterPercentageUseCase
 		getVolumeFormatUseCase.volumeFormat()
 			.bind(to: volumeFormat).disposed(by: disposeBag)
 		getWaterConsumedUseCase.getWaterConsumedVolumeToday()

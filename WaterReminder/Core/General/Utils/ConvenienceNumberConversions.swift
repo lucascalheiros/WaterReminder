@@ -12,6 +12,10 @@ extension Int {
 		Double(self)
 	}
 
+    func toFloat() -> Float {
+        Float(self)
+    }
+
 	func toString() -> String {
 		String(self)
 	}

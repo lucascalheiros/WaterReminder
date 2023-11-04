@@ -105,9 +105,10 @@ class WaterPercentageCell: UICollectionViewCell {
          disposeBag = DisposeBag()
      }
 
-    func setPercentage(percentage: CGFloat, animationDuration: Double = 0.0) {
-        percentageValueLabel.text = String(Int(percentage * 100))
-        circleView.setPercentage([PercentageAndColor(percentage: percentage, color: Theme.primary.mainColor.cgColor)], animationDuration: animationDuration)
+    func setPercentage(_ percentageWithWaterSourceType: [PercentageWithWaterSourceType], animationDuration: Double = 0.0) {
+        percentageValueLabel.text = String(Int(percentageWithWaterSourceType.map { $0.percentage }.reduce(0, +) * 100))
+        let percentageWithColor = percentageWithWaterSourceType.map { PercentageAndColor(percentage: CGFloat($0.percentage), color: $0.waterSourceType.color.cgColor) }
+        circleView.setPercentage(percentageWithColor, animationDuration: animationDuration)
     }
 
     func setSecondaryText(text: String) {

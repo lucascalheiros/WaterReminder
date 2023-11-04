@@ -18,8 +18,8 @@ extension HomeVC {
 		)
 
 		if let cell = cell as? WaterPercentageCell {
-			viewModel.consumedPercentage.subscribe(onNext: { percentage in
-				cell.setPercentage(percentage: percentage)
+			viewModel.todayConsumedWaterPercentageByWaterType.subscribe(onNext: { percentage in
+				cell.setPercentage(percentage)
 			}).disposed(by: cell.disposeBag)
 
 			viewModel.currentWaterConsumedInML.subscribe(onNext: { waterWithFormat in

@@ -1,0 +1,12 @@
+//
+//  GetConsumedWaterPercentageUseCase.swift
+//  WaterReminder
+//
+//  Created by Lucas Calheiros on 03/11/23.
+//
+
+import RxSwift
+
+protocol GetConsumedWaterPercentageUseCase {
+    func todayConsumedWaterPercentageWithWaterType() -> Observable<[PercentageWithWaterSourceType]>
+}
