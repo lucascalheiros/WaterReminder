@@ -12,3 +12,10 @@ extension Observable {
         self.take(1).asSingle()
     }
 }
+
+extension ObservableType {
+    func filterNotNull<T>() -> Observable<T> where Element == T? {
+        return self.compactMap { $0 }
+    }
+}
+

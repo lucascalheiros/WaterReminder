@@ -10,10 +10,13 @@ import RxSwift
 import RxCocoa
 
 class HistoryViewController: UICollectionViewController {
+    typealias DataSource = UICollectionViewDiffableDataSource<Sections, WaterConsumed>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Sections, WaterConsumed>
+
 	let disposeBag = DisposeBag()
 	let historyViewModel: HistoryViewModel
-	let todayConsumptionSection = "TodayConsumptionSection"
-	let todayConsumptionCell = "TodayConsumptionCell"
+
+    lazy var diffableDatasource: DataSource  = makeDatasource()
 
 	var todayWaterConsumedList: [WaterConsumed] = []
 
@@ -30,86 +33,105 @@ class HistoryViewController: UICollectionViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-		configuration.backgroundColor = .systemTeal
-		configuration.showsSeparators = true
-		configuration.separatorConfiguration.bottomSeparatorInsets = NSDirectionalEdgeInsets()
-		configuration.headerMode = .supplementary
-		// TODO Default height for section is 17.6667, so there is a warning for constraint satisfaction
-		//	inside TodayConsumptionSection as ios (awfully) does not provide a way to set the section
-		//	height using UICollectionLayoutListConfiguration, fix in the future, lowest priority since its
-		//	functioning correctly
-		collectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: configuration)
-		view.backgroundColor = .systemTeal
-		collectionView.backgroundColor = .systemTeal
 
-		// Register cell classes and other setup
-		collectionView.register(
-			TodayConsumptionCell.self,
-			forCellWithReuseIdentifier: todayConsumptionCell
-		)
-		collectionView.register(
-			TodayConsumptionSection.self,
-			forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-			withReuseIdentifier: todayConsumptionSection
-		)
-
-		historyViewModel.todayWaterConsumedList.subscribe(onNext: {
-			self.todayWaterConsumedList = $0.reversed()
-			self.collectionView.reloadSections(IndexSet(integer: 0))
-		}).disposed(by: disposeBag)
-
-		// Set the data source and delegate
-		collectionView.dataSource = self
-		collectionView.delegate = self
+        prepareConfiguration()
+        loadData()
 	}
 
-	override func numberOfSections(in collectionView: UICollectionView) -> Int {
-		1
-	}
+    func loadData() {
+        historyViewModel.waterConsumedByDay.subscribe(onNext: {
+            self.applySnapshot(waterConsumedByDay: $0, animatingDifferences: true)
+        }).disposed(by: disposeBag)
+    }
 
-	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		switch section {
-		case 0:
-			return todayWaterConsumedList.count
-		default:
-			return 0
-		}
-	}
+    func prepareConfiguration() {
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        configuration.backgroundColor = .systemTeal
+        configuration.showsSeparators = true
+        configuration.separatorConfiguration.bottomSeparatorInsets = NSDirectionalEdgeInsets()
+        configuration.headerMode = .supplementary
 
-	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		switch indexPath.section {
-		case 0:
-			let cell = collectionView.dequeueReusableCell(withReuseIdentifier: todayConsumptionCell, for: indexPath)
-			if let waterConsumedCell = cell as? TodayConsumptionCell {
-				waterConsumedCell.waterConsumed.accept(todayWaterConsumedList[indexPath.row])
-				historyViewModel.volumeFormat.bind(to: waterConsumedCell.volumeFormat).disposed(by: disposeBag)
-			}
-			return cell
-		default:
-			break
-		}
+        // TODO Default height for section is 17.6667, so there is a warning for constraint satisfaction
+        //    inside TodayConsumptionSection as ios (awfully) does not provide a way to set the section
+        //    height using UICollectionLayoutListConfiguration, fix in the future, lowest priority since its
+        //    functioning correctly
+        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: configuration)
+        view.backgroundColor = .systemTeal
+        collectionView.backgroundColor = .systemTeal
 
-		return UICollectionViewCell()
-	}
+        // Set the data source and delegate
+        collectionView.dataSource = diffableDatasource
+        collectionView.delegate = self
 
-	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-		switch indexPath.section {
-		case 0:
-			if let sectionHeader = collectionView.dequeueReusableSupplementaryView(
-				ofKind: kind,
-				withReuseIdentifier: todayConsumptionSection,
-				for: indexPath
-			) as? TodayConsumptionSection {
-				historyViewModel.todayConsumedWaterPercentage
-					.bind(to: sectionHeader.percentageWithWaterSourceTypeList).disposed(by: disposeBag)
-				historyViewModel.todayConsumedVolume
-					.bind(to: sectionHeader.consumedVolume).disposed(by: disposeBag)
-				return sectionHeader
-			}
-		default:
-			break
-		}
-		return UICollectionReusableView()
-	}
+        registerCells()
+        configureHeader()
+    }
+
+    func registerCells() {
+        collectionView.register(
+            DailyConsumptionCell.self,
+            forCellWithReuseIdentifier: DailyConsumptionCell.identifier
+        )
+        collectionView.register(
+            DailyConsumptionSection.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: DailyConsumptionSection.identifier
+        )
+    }
+
+    func applySnapshot(waterConsumedByDay: [Date:[WaterConsumed]], animatingDifferences: Bool = true) {
+        var snapshot = Snapshot()
+        snapshot.appendSections(waterConsumedByDay.keys.sorted(by: >).map(Sections.dailyHistory))
+        waterConsumedByDay.forEach { day, waterConsumedList in
+            snapshot.appendItems(waterConsumedList, toSection: .dailyHistory(day))
+        }
+        diffableDatasource.apply(snapshot, animatingDifferences: animatingDifferences)
+    }
+
+    func configureHeader() {
+        diffableDatasource.supplementaryViewProvider = { (collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+            if let sectionHeader = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: DailyConsumptionSection.identifier,
+                for: indexPath
+            ) as? DailyConsumptionSection {
+                guard let section = self.diffableDatasource.sectionIdentifier(for: indexPath.section) else {
+                    return sectionHeader
+                }
+                switch section {
+                case .dailyHistory(let date):
+                    sectionHeader.bindData(
+                        date: date,
+                        percentageWithWaterSourceTypeList: self.historyViewModel.waterPercentageWithTypeByDay(date),
+                        consumedVolume: self.historyViewModel.waterConsumedByDay(date)
+                    )
+                }
+
+                return sectionHeader
+            }
+            return UICollectionReusableView()
+        }
+    }
+
+    func makeDatasource() -> DataSource {
+        let dataSource = DataSource(
+            collectionView: self.collectionView,
+            cellProvider: { (collectionView, indexPath, waterSource) ->
+                UICollectionViewCell? in
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: DailyConsumptionCell.identifier,
+                    for: indexPath
+                )
+                if let cell = cell as? DailyConsumptionCell {
+                    cell.waterConsumed.accept(waterSource)
+                    self.historyViewModel.volumeFormat.bind(to: cell.volumeFormat).disposed(by: self.disposeBag)
+                }
+                return cell
+            })
+        return dataSource
+    }
+
+    enum Sections: Hashable {
+        case dailyHistory(Date)
+    }
 }
