@@ -689,6 +689,7 @@
 				172171C12A7FF77900EFD6FF /* RegisterDailyWaterConsumptionUseCaseProtocol.swift */,
 				172171C32A7FF7B000EFD6FF /* RegisterVolumeFormatUseCaseProtocol.swift */,
 				172171C52A7FF7DE00EFD6FF /* RegisterWaterConsumedUseCaseProtocol.swift */,
+				171A674A2AF5C82600B174C3 /* GetConsumedWaterPercentageUseCase.swift */,
 			);
 			path = UseCaseProtocols;
 			sourceTree = "<group>";
@@ -771,6 +772,7 @@
 				1710B5D32A326167004A6385 /* RegisterDailyWaterConsumptionUseCase.swift */,
 				172171B12A7FF1F600EFD6FF /* RegisterVolumeFormatUseCase.swift */,
 				17FF310B2A5B08D1004857C1 /* RegisterWaterConsumedUseCase.swift */,
+				171A674C2AF5C86C00B174C3 /* GetConsumedWaterPercentageUseCaseImpl.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1240,6 +1242,7 @@
 				17C493052A1C4E3F00ECBAF6 /* WaterConsumed.swift */,
 				17C493032A1C49A100ECBAF6 /* WaterSource.swift */,
 				172171C72A7FFACC00EFD6FF /* WaterWithFormat.swift */,
+				171A674E2AF5DF9D00B174C3 /* PercentageWithWaterSourceType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
