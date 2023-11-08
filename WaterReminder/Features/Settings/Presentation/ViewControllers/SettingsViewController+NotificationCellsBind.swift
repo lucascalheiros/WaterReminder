@@ -29,7 +29,7 @@ extension SettingsViewController {
 	func bindTimePeriodCell(detailCell: SettingsDetailTableViewCell, sectionItem: any SectionItem) {
 		detailCell.titleLabel.text = sectionItem.itemTitle()
 		detailCell.detailLabel.textColor = .blue
-		detailCell.detailLabel.font = UIFont.boldSystemFont(ofSize: 16)
+		detailCell.detailLabel.font = .body
 
 		settingsViewModel.periodSelectorDelegate.periodInterval.subscribe(onNext: {
 			let attributedString = NSMutableAttributedString.init(string: $0)
@@ -39,7 +39,7 @@ extension SettingsViewController {
 
 	func bindNotificationFrequencyCell(detailCell: SettingsDetailTableViewCell, sectionItem: any SectionItem) {
 		detailCell.titleLabel.text = sectionItem.itemTitle()
-		detailCell.detailLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        detailCell.detailLabel.font = .body
 		detailCell.detailLabel.textColor = .blue
 
 		settingsViewModel.notificationFrequencySelectorDelegate.notificationFrequency.subscribe(onNext: {

@@ -264,12 +264,22 @@
         }
       }
     },
+    "home.screenTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        }
+      }
+    },
     "home.volume.remaining.%@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%@remaining!"
+            "value" : "%@ remaining!"
           }
         }
       }

@@ -13,7 +13,7 @@ class BaseChildPageController: UIViewController {
 
 	lazy var informativeMainText = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.font = .screenTitle
 		label.lineBreakMode = .byWordWrapping
 		label.numberOfLines = 0
 		label.textColor = .white

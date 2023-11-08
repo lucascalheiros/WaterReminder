@@ -13,7 +13,7 @@ class AddWaterSourceCell: UITableViewCell {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 16)
+		label.font = .body
 		label.textColor = Theme.primary.mainColor
         return label
     }()

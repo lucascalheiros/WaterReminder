@@ -22,6 +22,12 @@ class InputFieldWithSuffix: UITextField, UITextFieldDelegate {
 		}
 	}
 
+    override var font: UIFont? {
+        didSet {
+            textPhantom.font = font
+        }
+    }
+
 	private func setupUnderlineLayer() {
 		var frame = self.bounds
 		frame.origin.y = frame.size.height - 1
@@ -32,14 +38,13 @@ class InputFieldWithSuffix: UITextField, UITextFieldDelegate {
 
 	private lazy var textPhantom = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 26)
 		label.textColor = .clear
 		return label
 	}()
 
 	lazy var suffix = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = .h4
 		label.textColor = .white.withAlphaComponent(0.7)
 		return label
 	}()
@@ -58,7 +63,7 @@ class InputFieldWithSuffix: UITextField, UITextFieldDelegate {
 		delegate = self
 		borderStyle = .none
 		textAlignment = .center
-		font = UIFont.boldSystemFont(ofSize: 26)
+        font = .h3
 		textColor = .white
 		keyboardType = .decimalPad
 		borderStyle = .none

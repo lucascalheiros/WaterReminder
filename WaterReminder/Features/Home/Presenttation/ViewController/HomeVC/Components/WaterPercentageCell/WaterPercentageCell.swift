@@ -20,7 +20,7 @@ class WaterPercentageCell: UICollectionViewCell {
     private lazy var percentageValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 50.0)
+        label.font = .h1
         label.textColor = .blue
         label.textAlignment = .center
         return label
@@ -28,7 +28,7 @@ class WaterPercentageCell: UICollectionViewCell {
 
     private lazy var percentageLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.font = .h4
         label.textColor = .blue
         label.textAlignment = .center
         label.text = "%"
@@ -37,7 +37,7 @@ class WaterPercentageCell: UICollectionViewCell {
 
     private lazy var secondaryLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.font = .h4
         label.textColor = .blue
         label.textAlignment = .center
         return label
@@ -45,7 +45,7 @@ class WaterPercentageCell: UICollectionViewCell {
 
     private lazy var secondaryFormatLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.font = .h4
         label.textColor = .blue
         label.textAlignment = .center
         return label
@@ -61,7 +61,7 @@ class WaterPercentageCell: UICollectionViewCell {
 
 	private lazy var informativeBottomRightLabel: UILabel = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.font = .h4
 		label.textColor = Theme.lightBlue.accentColor
 		label.textAlignment = .center
 		return label

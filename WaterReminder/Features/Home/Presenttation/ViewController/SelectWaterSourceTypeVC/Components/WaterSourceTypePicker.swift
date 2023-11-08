@@ -47,7 +47,7 @@ class WaterSourceTypePicker: UIPickerView, UIPickerViewDataSource, UIPickerViewD
 		label.textAlignment = .center
 		switch component {
 		case 0:
-			label.font = UIFont.boldSystemFont(ofSize: 30.0)
+            label.font = .h2
 		default:
 			break
 		}
