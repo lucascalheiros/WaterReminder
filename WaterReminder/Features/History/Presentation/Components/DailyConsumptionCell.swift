@@ -16,21 +16,21 @@ class DailyConsumptionCell: UICollectionViewCell {
 
 	private lazy var titleLabel: UILabel = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.font = .body
 		label.textColor = .darkGray
 		return label
 	}()
 
 	private lazy var volumeLabel: UILabel = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 16.0)
+		label.font = .body
 		label.textColor = .darkGray
 		return label
 	}()
 
 	private lazy var timeLabel: UILabel = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 16.0)
+		label.font = .body
 		label.textColor = .darkGray
 		return label
 	}()

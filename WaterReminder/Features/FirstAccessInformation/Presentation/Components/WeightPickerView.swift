@@ -96,11 +96,11 @@ class WeightPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelega
 		label.textAlignment = .center
 		switch component {
 		case 0:
-			label.font = UIFont.boldSystemFont(ofSize: 60.0)
+            label.font = .h1
 		case 1:
-			label.font = UIFont.boldSystemFont(ofSize: 40.0)
+            label.font = .h2
 		case 2:
-			label.font = UIFont.boldSystemFont(ofSize: 30.0)
+            label.font = .h3
 		default:
 			break
 		}

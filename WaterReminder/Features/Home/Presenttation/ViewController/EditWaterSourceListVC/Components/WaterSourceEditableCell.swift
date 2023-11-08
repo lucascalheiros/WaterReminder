@@ -13,13 +13,13 @@ class WaterSourceEditableCell: UITableViewCell {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 16)
+		label.font = .body
         return label
     }()
 
     private lazy var volumeLabel: UILabel = {
         let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 16)
+		label.font = .body
         return label
     }()
 

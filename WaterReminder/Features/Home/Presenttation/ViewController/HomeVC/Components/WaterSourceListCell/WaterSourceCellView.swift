@@ -17,14 +17,14 @@ class WaterSourceCellView: UICollectionViewCell {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.font = .h4
         label.textColor = .darkGray
         return label
     }()
 
     private lazy var volumeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 30.0)
+        label.font = .h3
         label.textColor = .darkGray
         return label
     }()

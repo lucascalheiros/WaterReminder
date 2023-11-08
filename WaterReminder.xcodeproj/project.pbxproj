@@ -142,6 +142,7 @@
 		17A5C28E2A844F4A002DFA20 /* HomeVC+WaterPercentageSection+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A5C28D2A844F4A002DFA20 /* HomeVC+WaterPercentageSection+Cell.swift */; };
 		17A5C2902A8450C9002DFA20 /* HomeVC+WaterSourceListSection+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A5C28F2A8450C9002DFA20 /* HomeVC+WaterSourceListSection+Cell.swift */; };
 		17A5C2922A845DD3002DFA20 /* NotificationReminderToggleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A5C2912A845DD3002DFA20 /* NotificationReminderToggleDelegate.swift */; };
+		17AE0B5D2AFB11C700361E04 /* UIFont+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE0B5C2AFB11C700361E04 /* UIFont+Resources.swift */; };
 		17AE682C2A08590400571ED8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE682B2A08590400571ED8 /* AppDelegate.swift */; };
 		17AE682E2A08590400571ED8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE682D2A08590400571ED8 /* SceneDelegate.swift */; };
 		17AE68302A08590400571ED8 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE682F2A08590400571ED8 /* HomeVC.swift */; };
@@ -355,6 +356,7 @@
 		17A5C28D2A844F4A002DFA20 /* HomeVC+WaterPercentageSection+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+WaterPercentageSection+Cell.swift"; sourceTree = "<group>"; };
 		17A5C28F2A8450C9002DFA20 /* HomeVC+WaterSourceListSection+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+WaterSourceListSection+Cell.swift"; sourceTree = "<group>"; };
 		17A5C2912A845DD3002DFA20 /* NotificationReminderToggleDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationReminderToggleDelegate.swift; sourceTree = "<group>"; };
+		17AE0B5C2AFB11C700361E04 /* UIFont+Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Resources.swift"; sourceTree = "<group>"; };
 		17AE68282A08590400571ED8 /* WaterReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE682B2A08590400571ED8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17AE682D2A08590400571ED8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -500,8 +502,8 @@
 		1710B5DB2A32B107004A6385 /* SharedFlow */ = {
 			isa = PBXGroup;
 			children = (
-				17A494022A3FAD6000B25CE5 /* MainAppFlow */,
 				1710B5DC2A32B151004A6385 /* FirstAccessFlow */,
+				17A494022A3FAD6000B25CE5 /* MainAppFlow */,
 			);
 			path = SharedFlow;
 			sourceTree = "<group>";
@@ -1145,11 +1147,21 @@
 		17A4940B2A3FB36400B25CE5 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
-				17A494122A3FB6B600B25CE5 /* HomeFlowSteps.swift */,
 				17A4940C2A3FB5AD00B25CE5 /* HomeFlow.swift */,
 				17BA30152ADB56520090B959 /* HomeFlowStepper.swift */,
+				17A494122A3FB6B600B25CE5 /* HomeFlowSteps.swift */,
 			);
 			path = Flow;
+			sourceTree = "<group>";
+		};
+		17AE0B5B2AFB115F00361E04 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				17AE68342A08590500571ED8 /* Assets.xcassets */,
+				1779E5EA2AF6BF0500BAC397 /* Localizable.xcstrings */,
+				17AE0B5C2AFB11C700361E04 /* UIFont+Resources.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		17AE681F2A08590400571ED8 = {
@@ -1178,7 +1190,6 @@
 			isa = PBXGroup;
 			children = (
 				17AE68392A08590500571ED8 /* Info.plist */,
-				17AE68342A08590500571ED8 /* Assets.xcassets */,
 				17A35CA12A2B8E11003FF38A /* App */,
 				17C493082A1EDDF700ECBAF6 /* Core */,
 				17C493072A1EDD8D00ECBAF6 /* Features */,
@@ -1335,9 +1346,9 @@
 			isa = PBXGroup;
 			children = (
 				17395FCC2A239FDE0006823A /* FirstAccessInformation */,
-				17E936322A11BE4500AAC4E5 /* Settings */,
 				17E936312A11BE3700AAC4E5 /* History */,
 				17E936202A11648800AAC4E5 /* Home */,
+				17E936322A11BE4500AAC4E5 /* Settings */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -1349,7 +1360,7 @@
 				17A35CB02A2BB18E003FF38A /* Domain */,
 				17A35CAF2A2BB150003FF38A /* General */,
 				17E936212A11649800AAC4E5 /* Presentation */,
-				1779E5EA2AF6BF0500BAC397 /* Localizable.xcstrings */,
+				17AE0B5B2AFB115F00361E04 /* Resources */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1819,6 +1830,7 @@
 				172171792A76F6AC00EFD6FF /* SettingsViewController+PresentPeriodSelector.swift in Sources */,
 				171A67422AF54DDA00B174C3 /* CreateWaterSourceDelegate.swift in Sources */,
 				17E9361B2A0D982700AAC4E5 /* CircularProgressView.swift in Sources */,
+				17AE0B5D2AFB11C700361E04 /* UIFont+Resources.swift in Sources */,
 				17E936372A11C0A100AAC4E5 /* SettingsViewController.swift in Sources */,
 				17B16AF12A4E6037008133AC /* NotificationFrequencyEnum.swift in Sources */,
 				171A674B2AF5C82600B174C3 /* GetConsumedWaterPercentageUseCase.swift in Sources */,

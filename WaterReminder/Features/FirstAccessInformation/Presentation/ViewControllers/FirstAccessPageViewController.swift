@@ -16,7 +16,7 @@ class FirstAccessPageViewController: UIPageViewController {
 	private lazy var nextButton = {
 		let button = UIButton()
 		button.setTitle(String(localized: "generic.next"), for: .normal)
-		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
+        button.titleLabel?.font = .buttonDefault
 		button.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(button)
 		button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextClick)))
@@ -26,7 +26,7 @@ class FirstAccessPageViewController: UIPageViewController {
 	private lazy var previousButton = {
 		let button = UIButton()
 		button.setTitle(String(localized: "generic.previous"), for: .normal)
-		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
+		button.titleLabel?.font = .buttonDefault
 		button.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(button)
 		button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(previousClick)))

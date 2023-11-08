@@ -15,21 +15,21 @@ class DailyConsumptionSection: UICollectionReusableView {
 
     lazy var titleLabel: UILabel = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        label.font = .sectionTitle
 		label.textColor = .white
 		return label
 	}()
 
 	lazy var percentageLabel: UILabel = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 15.0)
+        label.font = .caption
 		label.textColor = .white
 		return label
 	}()
 
 	lazy var volumeLabel: UILabel = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 15.0)
+		label.font = .caption
 		label.textColor = .white
 		return label
 	}()

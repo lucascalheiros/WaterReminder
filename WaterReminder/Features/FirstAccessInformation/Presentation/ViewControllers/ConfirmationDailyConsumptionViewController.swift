@@ -26,7 +26,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 		button.backgroundColor = Theme.lightTeal.mainColor
 		let attributes = [
 			NSAttributedString.Key.foregroundColor: UIColor.white,
-			NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16.0)
+			NSAttributedString.Key.font: UIFont.body
 		]
 		button.setTitleTextAttributes(attributes, for: .normal)
 		button.setTitleTextAttributes(attributes, for: .selected)
@@ -43,7 +43,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 	private lazy var confirmationBtn = {
 		let button = UIButton()
 		button.setTitle(String(localized: "generic.confirm"), for: .normal)
-		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
+        button.titleLabel?.font = .buttonBig
 		button.rx.tap.bind {
 			self.onConfirmPressed()
 		}.disposed(by: disposeBag)

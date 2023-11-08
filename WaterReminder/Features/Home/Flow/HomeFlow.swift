@@ -41,6 +41,7 @@ class HomeFlow: Flow {
 
 	private func navigateToHome() -> FlowContributors {
 		let viewController = container.resolve(HomeVC.self)!
+        viewController.navigationItem.title = String(localized: "home.screenTitle")
 		rootViewController.pushViewController(viewController, animated: false)
 		return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: container.resolve(HomeFlowStepper.self)!))
 	}

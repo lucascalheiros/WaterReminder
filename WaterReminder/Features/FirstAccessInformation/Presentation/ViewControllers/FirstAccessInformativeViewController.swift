@@ -12,7 +12,7 @@ class FirstAccessInformativeViewController: BaseChildPageController {
 	lazy var informativeSecondaryText = {
 		let label = UILabel()
 		label.text = String(localized: "welcome.informativeText")
-		label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.font = .body
 		label.lineBreakMode = .byWordWrapping
 		label.numberOfLines = 0
 		label.textColor = .white

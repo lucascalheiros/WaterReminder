@@ -39,7 +39,7 @@ class StatisticsFlow: Flow {
 
 	private func navigateToStatistics() -> FlowContributors {
 		let viewController = container.resolve(HistoryViewController.self)!
-		viewController.title = String(localized: "history.screenTitle")
+        viewController.navigationItem.title = String(localized: "history.screenTitle")
 		rootViewController.pushViewController(viewController, animated: false)
 		return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: StatisticsFlowSteps.statistics)))
 	}

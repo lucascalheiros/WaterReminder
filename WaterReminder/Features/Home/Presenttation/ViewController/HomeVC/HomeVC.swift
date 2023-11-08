@@ -44,7 +44,6 @@ class HomeVC: UIViewController {
 		prepareConstraints()
     }
 
-
 	func prepareConfiguration() {
 		view.backgroundColor = .systemTeal
 	}

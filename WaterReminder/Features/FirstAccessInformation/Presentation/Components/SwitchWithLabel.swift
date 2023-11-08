@@ -19,7 +19,7 @@ class SwitchWithLabel: ProgrammaticView {
 
 	lazy var label = {
 		let label = UILabel()
-		label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = .body
 		label.textColor = .white
 		return label
 	}()

@@ -11,7 +11,7 @@ extension SettingsViewController {
 	func bindDailyWaterGoalCell(detailCell: SettingsDetailTableViewCell, sectionItem: any SectionItem) {
 		detailCell.dispose()
 		detailCell.titleLabel.text = sectionItem.itemTitle()
-		detailCell.detailLabel.font = UIFont.boldSystemFont(ofSize: 16)
+		detailCell.detailLabel.font = .body
 		detailCell.detailLabel.textColor = .blue
 
 		settingsViewModel.dailyWaterSelectorDelegate.volumeWithFormat.subscribe(onNext: {

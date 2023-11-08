@@ -20,7 +20,7 @@ class WaterSourceTypeSettingCell: UITableViewCell {
 	lazy var detailLabel: UILabel = {
 		let label = UILabel()
 		label.textColor = Theme.lightBlue.accentColor
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = .body
 		return label
 	}()
 
