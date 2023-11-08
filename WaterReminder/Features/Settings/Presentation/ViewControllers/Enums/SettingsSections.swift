@@ -14,9 +14,9 @@ enum SettingsSections: CaseIterable {
 	func sectionTitle() -> String {
 		switch self {
 		case .general:
-			return "General"
+			return String(localized: "settings.section.general")
 		case .notification:
-			return "Remind Notifications"
+            return String(localized: "settings.section.notifications")
 		}
 	}
 

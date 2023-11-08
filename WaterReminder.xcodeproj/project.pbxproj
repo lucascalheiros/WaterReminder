@@ -113,6 +113,7 @@
 		176D585F2AD828FE00206125 /* HomeVC+WaterSourceListSection+Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176D585E2AD828FE00206125 /* HomeVC+WaterSourceListSection+Header.swift */; };
 		176D58622AD82D7900206125 /* HomeSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176D58612AD82D7900206125 /* HomeSections.swift */; };
 		176D58652AD82E9F00206125 /* WaterSourceEditableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176D58642AD82E9F00206125 /* WaterSourceEditableCell.swift */; };
+		1779E5EB2AF6BF0500BAC397 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1779E5EA2AF6BF0500BAC397 /* Localizable.xcstrings */; };
 		177FD3DC2A3694A800F5602F /* FirstAccessInformationPageNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177FD3DB2A3694A800F5602F /* FirstAccessInformationPageNavigationDelegate.swift */; };
 		177FD3DE2A36960100F5602F /* FirstAccessInformationStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177FD3DD2A36960100F5602F /* FirstAccessInformationStepper.swift */; };
 		17A35C9B2A282C0C003FF38A /* FirstAccessInformationSharedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A35C9A2A282C0C003FF38A /* FirstAccessInformationSharedViewModel.swift */; };
@@ -325,6 +326,7 @@
 		176D585E2AD828FE00206125 /* HomeVC+WaterSourceListSection+Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeVC+WaterSourceListSection+Header.swift"; sourceTree = "<group>"; };
 		176D58612AD82D7900206125 /* HomeSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSections.swift; sourceTree = "<group>"; };
 		176D58642AD82E9F00206125 /* WaterSourceEditableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSourceEditableCell.swift; sourceTree = "<group>"; };
+		1779E5EA2AF6BF0500BAC397 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		177FD3DB2A3694A800F5602F /* FirstAccessInformationPageNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAccessInformationPageNavigationDelegate.swift; sourceTree = "<group>"; };
 		177FD3DD2A36960100F5602F /* FirstAccessInformationStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAccessInformationStepper.swift; sourceTree = "<group>"; };
 		17A35C9A2A282C0C003FF38A /* FirstAccessInformationSharedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAccessInformationSharedViewModel.swift; sourceTree = "<group>"; };
@@ -680,7 +682,6 @@
 		172171B62A7FF55C00EFD6FF /* UseCaseProtocols */ = {
 			isa = PBXGroup;
 			children = (
-				171A674A2AF5C82600B174C3 /* GetConsumedWaterPercentageUseCase.swift */,
 				172171B72A7FF59600EFD6FF /* GetDailyWaterConsumptionUseCaseProtocol.swift */,
 				172171B92A7FF62C00EFD6FF /* GetVolumeFormatUseCaseProtocol.swift */,
 				172171BB2A7FF69C00EFD6FF /* GetWaterConsumedUseCaseProtocol.swift */,
@@ -763,7 +764,6 @@
 		173426D92A145D4F007D475B /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				171A674C2AF5C86C00B174C3 /* GetConsumedWaterPercentageUseCaseImpl.swift */,
 				17FF31092A57B85C004857C1 /* GetDailyWaterConsumptionUseCase.swift */,
 				172171AF2A7FF1E100EFD6FF /* GetVolumeFormatUseCase.swift */,
 				17FF310D2A5B08E8004857C1 /* GetWaterConsumedUseCase.swift */,
@@ -1238,7 +1238,6 @@
 			isa = PBXGroup;
 			children = (
 				17C493012A1C436500ECBAF6 /* DailyWaterConsumption.swift */,
-				171A674E2AF5DF9D00B174C3 /* PercentageWithWaterSourceType.swift */,
 				17C493052A1C4E3F00ECBAF6 /* WaterConsumed.swift */,
 				17C493032A1C49A100ECBAF6 /* WaterSource.swift */,
 				172171C72A7FFACC00EFD6FF /* WaterWithFormat.swift */,
@@ -1350,6 +1349,7 @@
 				17A35CB02A2BB18E003FF38A /* Domain */,
 				17A35CAF2A2BB150003FF38A /* General */,
 				17E936212A11649800AAC4E5 /* Presentation */,
+				1779E5EA2AF6BF0500BAC397 /* Localizable.xcstrings */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1610,6 +1610,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 17AE681F2A08590400571ED8;
 			productRefGroup = 17AE68292A08590400571ED8 /* Products */;
@@ -1630,6 +1631,7 @@
 			files = (
 				17AE68382A08590500571ED8 /* LaunchScreen.storyboard in Resources */,
 				17AE68352A08590500571ED8 /* Assets.xcassets in Resources */,
+				1779E5EB2AF6BF0500BAC397 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2009,6 +2011,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -2069,6 +2072,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

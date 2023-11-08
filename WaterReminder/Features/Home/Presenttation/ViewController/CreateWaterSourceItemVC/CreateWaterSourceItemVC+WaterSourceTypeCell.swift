@@ -15,7 +15,7 @@ extension CreateWaterSourceItemVC: WaterSourceTypeSelector {
             for: indexPath
         )
         if let cell = cell as? WaterSourceTypeSettingCell {
-            cell.titleLabel.text = "Water Source Type"
+            cell.titleLabel.text = String(localized: "createWaterSource.cellTitle.waterSourceType")
             cell.detailLabel.text = waterSourceType.exhibitionName
             cell.detailLabel.textColor = waterSourceType.color
         }

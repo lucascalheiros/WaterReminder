@@ -17,7 +17,6 @@ class DailyConsumptionSection: UICollectionReusableView {
 		let label = UILabel()
 		label.font = UIFont.boldSystemFont(ofSize: 20.0)
 		label.textColor = .white
-		label.text = "Today"
 		return label
 	}()
 
@@ -74,11 +73,11 @@ class DailyConsumptionSection: UICollectionReusableView {
 
         switch date.startOfDay {
         case today.startOfDay:
-            titleLabel.text = "Today"
+            titleLabel.text = String(localized: "generic.today")
         case yesterday.startOfDay:
-            titleLabel.text = "Yesterday"
+            titleLabel.text = String(localized: "generic.yesterday")
         default:
-            titleLabel.text = date.formatted()
+            titleLabel.text = date.formatted(date: .numeric, time: .omitted)
         }
     }
 

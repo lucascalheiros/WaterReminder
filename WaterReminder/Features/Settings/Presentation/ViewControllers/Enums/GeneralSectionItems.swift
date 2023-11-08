@@ -13,7 +13,7 @@ enum GeneralSectionItems: SectionItem {
 	func itemTitle() -> String {
 		switch self {
 		case .dailyWaterVolume:
-			return "Daily water goal"
+			return String(localized: "settings.section.general.goal")
 		}
 	}
 }

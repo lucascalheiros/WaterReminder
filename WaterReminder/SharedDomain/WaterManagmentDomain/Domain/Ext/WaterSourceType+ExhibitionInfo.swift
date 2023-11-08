@@ -26,15 +26,15 @@ extension WaterSourceType {
 	var exhibitionName: String {
 		switch self {
 		case .water:
-			return "Water"
+			return String(localized: "generic.water")
 		case .coffee:
-			return "Coffee"
+            return String(localized: "generic.coffee")
 		case .juice:
-			return "Juice"
+            return String(localized: "generic.juice")
 		case .tea:
-			return "Tea"
+            return String(localized: "generic.tea")
 		case .soda:
-			return "Soda"
+            return String(localized: "generic.soda")
 		}
 	}
 

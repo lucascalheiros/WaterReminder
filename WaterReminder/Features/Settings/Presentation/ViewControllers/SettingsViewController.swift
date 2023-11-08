@@ -56,6 +56,7 @@ class SettingsViewController: UITableViewController {
 
 		label.text = section.sectionTitle()
 		label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 18)
 		viewWrapper.addConstrainedSubview(label)
 		NSLayoutConstraint.activate([
 			label.topAnchor.constraint(equalTo: viewWrapper.topAnchor, constant: 8),

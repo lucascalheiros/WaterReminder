@@ -15,7 +15,7 @@ class FirstAccessPageViewController: UIPageViewController {
 
 	private lazy var nextButton = {
 		let button = UIButton()
-		button.setTitle("Next", for: .normal)
+		button.setTitle(String(localized: "generic.next"), for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(button)
@@ -25,7 +25,7 @@ class FirstAccessPageViewController: UIPageViewController {
 	
 	private lazy var previousButton = {
 		let button = UIButton()
-		button.setTitle("Previous", for: .normal)
+		button.setTitle(String(localized: "generic.previous"), for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(button)

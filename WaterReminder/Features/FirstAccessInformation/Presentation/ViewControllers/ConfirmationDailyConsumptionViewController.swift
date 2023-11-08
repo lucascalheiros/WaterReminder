@@ -42,7 +42,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 
 	private lazy var confirmationBtn = {
 		let button = UIButton()
-		button.setTitle("Confirm", for: .normal)
+		button.setTitle(String(localized: "generic.confirm"), for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20.0)
 		button.rx.tap.bind {
 			self.onConfirmPressed()
@@ -76,7 +76,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 
 	private lazy var shouldRemindSwitch = {
 		let uiSwitch = SwitchWithLabel()
-		uiSwitch.label.text = "I want to be reminded"
+		uiSwitch.label.text = String(localized: "welcomeConfirmation.remindMe")
 		uiSwitch.switchView.setOn(true, animated: false)
 		uiSwitch.switchView.rx.controlEvent(.valueChanged)
 			.withLatestFrom(uiSwitch.switchView.rx.value)
@@ -118,7 +118,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 	}
 
 	func prepareConfiguration() {
-		informativeMainText.text = "Confirm the amount of daily water you want to ingest, and confirm the notification interval we should use for the reminders."
+		informativeMainText.text = String(localized: "welcomeConfirmation.mainText")
 	}
 
 	func prepareConstraints() {

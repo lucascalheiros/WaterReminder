@@ -15,11 +15,11 @@ enum NotificationSectionItems: SectionItem {
 	func itemTitle() -> String {
 		switch self {
 		case .notificationEnabled:
-			return "Notifications enabled"
+			return String(localized: "settings.section.notifications.notificationEnabled")
 		case .notificationPeriod:
-			return "Period"
+			return String(localized: "settings.section.notifications.period")
 		case .notificationFrequency:
-			return "Frequency"
+			return String(localized: "settings.section.notifications.frequency")
 		}
 	}
 }

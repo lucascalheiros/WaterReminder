@@ -39,8 +39,8 @@ class ActivityLevelInputViewController: BaseChildPageController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		informativeMainText.text = "How much often do you exercise by week?"
-		
+        informativeMainText.text = String(localized: "activityLevel.mainText")
+
 		weekNumber.forEach { number in
 			sliderLabelStackView.addArrangedSubview({
 				let label = UILabel()

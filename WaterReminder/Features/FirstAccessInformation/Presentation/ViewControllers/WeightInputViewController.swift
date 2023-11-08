@@ -29,7 +29,7 @@ class WeightInputViewController: BaseChildPageController {
 
 		view.addConstrainedSubview(weightPicker)
 		
-		informativeMainText.text = "Your weight is an important factor to estimate your necessary water consumption"
+		informativeMainText.text = String(localized: "weight.mainText")
 
 		NSLayoutConstraint.activate([
 			informativeMainText.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),

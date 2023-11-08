@@ -45,14 +45,14 @@ class DailyWaterSelectorModalViewController: UIViewController {
 	}()
 
 	lazy var cancel = UIBarButtonItem(
-		title: "Cancel",
+		title: String(localized: "generic.cancel"),
 		primaryAction: .init(handler: { _ in
 			self.dismiss(animated: true)
 		})
 	)
 
 	lazy var confirm = UIBarButtonItem(
-		title: "Confirm", image: nil,
+		title: String(localized: "generic.confirm"), image: nil,
 		primaryAction: .init(handler: { _ in
 			let waterVolume = self.dailyWaterEditText.text?.toFloat() ?? 0
 			self.dailyWaterSelectorDelegate.setVolumeAndFormat(
