@@ -15,11 +15,11 @@ enum NotificationFrequencyEnum: Int, CaseIterable {
 	func stringValue() -> String {
 		switch self {
 		case .high:
-			return "High"
+			return String(localized: "generic.high")
 		case .medium:
-			return "Medium"
+			return String(localized: "generic.medium")
 		case .low:
-			return "Low"
+			return String(localized: "generic.low")
 		}
 	}
 }

@@ -55,10 +55,10 @@ class HomeViewModel {
 		Observable.combineLatest(expectedWaterConsumptionInML, currentWaterConsumedInML) { total, current in
 			let difference = total - current.waterInML
 			if difference <= 0 {
-				return "You achieved your goal!"
+				return String(localized: "home.goalAchieved")
 			}
 			let remainingWaterWithFormat = WaterWithFormat(waterInML: difference, volumeFormat: current.volumeFormat)
-			return "\(remainingWaterWithFormat.exhibitionValueWithFormat()) remaining!"
+			return String(localized: "home.volume.remaining.\(remainingWaterWithFormat.exhibitionValueWithFormat())")
 		}
 	}()
 

@@ -23,7 +23,12 @@ class AmbienceTemperatureInputViewController: BaseChildPageController {
 	}()
 	
 	private lazy var temperatureSegmentationControl = {
-		let button =  UISegmentedControl(items: ["Cold","Moderate","Warm", "Hot"])
+		let button =  UISegmentedControl(items: [
+            String(localized: "temperatureLevel.cold"),
+            String(localized: "temperatureLevel.moderate"),
+            String(localized: "temperatureLevel.warm"),
+            String(localized: "temperatureLevel.hot")
+        ])
 		button.selectedSegmentIndex = 1
 		button.backgroundColor = Theme.lightTeal.mainColor
 		let attributes = [
@@ -45,12 +50,17 @@ class AmbienceTemperatureInputViewController: BaseChildPageController {
 		return button
 	}()
 
-	let informativeRange = ["less 20º", "20-25º", "26-30º", "more 30º"]
+	let informativeRange = [
+        String(localized: "temperatureLevel.coldTemp"),
+        String(localized: "temperatureLevel.moderateTemp"),
+        String(localized: "temperatureLevel.warmTemp"),
+        String(localized: "temperatureLevel.hotTemp")
+    ]
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		informativeMainText.text = "What is the average temperature in your region?"
+		informativeMainText.text = String(localized: "temperatureLevel.mainText")
 
 		informativeRange.forEach { value in
 			buttonsStackView.addArrangedSubview({

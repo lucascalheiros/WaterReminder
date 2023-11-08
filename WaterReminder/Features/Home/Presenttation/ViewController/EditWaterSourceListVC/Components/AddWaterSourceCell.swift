@@ -33,7 +33,7 @@ class AddWaterSourceCell: UITableViewCell {
 		separatorInset = UIEdgeInsets.zero
 		layoutMargins = UIEdgeInsets.zero
 		selectionStyle = .none
-		titleLabel.text = "+ Add"
+		titleLabel.text = String(localized: "editWaterSourceList.cellTitle.add")
 	}
 
 	private func prepareConstraints() {

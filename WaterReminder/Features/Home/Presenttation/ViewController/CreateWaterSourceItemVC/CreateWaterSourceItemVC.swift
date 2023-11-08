@@ -14,7 +14,7 @@ class CreateWaterSourceItemVC: UITableViewController {
     var createWaterSourceDelegate: CreateWaterSourceDelegate?
 
     lazy var cancel = {
-        let btn = UIBarButtonItem(title: "Cancel", primaryAction: .init(handler: { _ in
+        let btn = UIBarButtonItem(title: String(localized: "generic.cancel"), primaryAction: .init(handler: { _ in
             self.dismiss(animated: true)
         }))
         btn.tintColor = .white
@@ -22,7 +22,7 @@ class CreateWaterSourceItemVC: UITableViewController {
     }()
 
     lazy var confirm = {
-        let btn = UIBarButtonItem(title: "Confirm", image: nil, primaryAction: .init(handler: { _ in
+        let btn = UIBarButtonItem(title: String(localized: "generic.confirm"), image: nil, primaryAction: .init(handler: { _ in
             self.createWaterSourceDelegate?.onCreateWaterSource(self.waterWithFormat.waterInML, self.waterSourceType)
             self.dismiss(animated: true)
         }))
@@ -32,7 +32,7 @@ class CreateWaterSourceItemVC: UITableViewController {
 
 	init() {
 		super.init(style: .insetGrouped)
-		self.title = "Water Source"
+		self.title = String(localized: "createWaterSource.screenTitle")
 	}
 
 	required init?(coder: NSCoder) {

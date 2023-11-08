@@ -11,7 +11,7 @@ class FirstAccessInformativeViewController: BaseChildPageController {
 	
 	lazy var informativeSecondaryText = {
 		let label = UILabel()
-		label.text = "If you already know your expected daily water consumption or don't want to provide the information please press skip estimatimative below."
+		label.text = String(localized: "welcome.informativeText")
 		label.font = UIFont.boldSystemFont(ofSize: 16.0)
 		label.lineBreakMode = .byWordWrapping
 		label.numberOfLines = 0
@@ -34,7 +34,7 @@ class FirstAccessInformativeViewController: BaseChildPageController {
 		containerView.addSubview(informativeMainText)
 		view.addSubview(containerView)
 		
-		informativeMainText.text = "We will ask you some questions in order to estimate your expected daily water consumption."
+		informativeMainText.text = String(localized: "welcome.mainText")
 
 		NSLayoutConstraint.activate([
 			containerView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),

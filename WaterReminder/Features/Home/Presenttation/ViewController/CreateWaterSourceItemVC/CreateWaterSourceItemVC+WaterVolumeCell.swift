@@ -15,7 +15,7 @@ extension CreateWaterSourceItemVC {
             for: indexPath
         )
         if let cell = cell as? WaterSourceTypeSettingCell {
-            cell.titleLabel.text = "Volume"
+            cell.titleLabel.text = String(localized: "createWaterSource.cellTitle.volume")
             cell.detailLabel.text = waterWithFormat.exhibitionValueWithFormat()
             cell.detailLabel.textColor = Theme.blue.mainColor
         }
@@ -33,19 +33,19 @@ extension CreateWaterSourceItemVC {
     }
 
     func presentWaterVolumeInput(_ volume: WaterWithFormat) {
-        let alert = UIAlertController(title: "Water volume", message: "Enter a water volume in " + volume.volumeFormat.localizedDisplay, preferredStyle: .alert)
+        let alert = UIAlertController(title: String(localized: "createWaterSource.alertTitle.waterVolume"), message: String(localized: "createWaterSource.alertdescription.enterWaterVolume.\(volume.volumeFormat.localizedDisplay)") , preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.keyboardType = .decimalPad
             textField.text = volume.exhibitionValue()
             textField.textAlignment = .center
         }
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert, weak self] _ in
+        alert.addAction(UIAlertAction(title: String(localized: "generic.ok"), style: .default, handler: { [weak alert, weak self] _ in
             guard let volume = Float(alert?.textFields?.first?.text ?? "0") else {
                 return
             }
             self?.onWaterVolumeChange(volume)
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: String(localized: "generic.cancel"), style: .cancel))
         present(alert, animated: true, completion: nil)
     }
 

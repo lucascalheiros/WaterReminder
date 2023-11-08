@@ -23,7 +23,7 @@ class ScheduleWaterReminderNotificationsUseCase {
 			var date = DateComponents()
 			date.hour = reminderTime.hour
 			date.minute = reminderTime.minute
-			waterReminderNotificationManager.scheduleReminder(title: "Time for water!", message: "Keep hydrated!", date: date)
+			waterReminderNotificationManager.scheduleReminder(title: String(localized: "notification.title"), message: String(localized: "notification.message"), date: date)
 		}
 	}
 }
