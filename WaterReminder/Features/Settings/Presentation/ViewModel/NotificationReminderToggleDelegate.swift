@@ -7,6 +7,7 @@
 
 import RxSwift
 import RxRelay
+import Common
 
 class NotificationReminderToggleDelegate {
 	let disposeBag = DisposeBag()

@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Core
 
 class NotificationFrequencySelectorModalViewController: UIViewController {
 	var disposeBag = DisposeBag()
@@ -49,7 +50,7 @@ class NotificationFrequencySelectorModalViewController: UIViewController {
 			}
 		).disposed(by: disposeBag)
 
-		view.backgroundColor = Theme.lightBlue.mainColor
+		view.backgroundColor = AppColorGroup.primary.color
 		cancel.tintColor = .blue
 		confirm.tintColor = .blue
 

@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import Core
 
 internal class DailyWaterConsumptionRepositoryImpl: BaseRepository<DailyWaterConsumptionObject>,
 											DailyWaterConsumptionRepositoryProtocol {

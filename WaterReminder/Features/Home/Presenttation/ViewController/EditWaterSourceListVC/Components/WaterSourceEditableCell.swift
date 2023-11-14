@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Core
 
 class WaterSourceEditableCell: UITableViewCell {
 
@@ -27,7 +28,7 @@ class WaterSourceEditableCell: UITableViewCell {
 		let button = UIButton(type: .custom)
 		button.setImage(UIImage(systemName: "trash"), for: .normal)
         button.setImage(UIImage(systemName: "trash.fill"), for: .highlighted)
-		button.tintColor = Theme.primary.mainColor
+		button.tintColor = AppColorGroup.primary.color
         button.addTapListener { [weak self] in
             guard let waterSource = self?.waterSource else {
                 return
@@ -45,7 +46,7 @@ class WaterSourceEditableCell: UITableViewCell {
 
 	private lazy var rearrangeIcon: UIImageView = {
 		let imageView = UIImageView(image: UIImage(systemName: "line.3.horizontal"))
-		imageView.tintColor = Theme.primary.mainColor
+		imageView.tintColor = AppColorGroup.primary.color
 		return imageView
 	}()
 
@@ -72,7 +73,7 @@ class WaterSourceEditableCell: UITableViewCell {
 	}
 
 	private func configure() {
-		contentView.backgroundColor = Theme.lightBlue.mainColor
+		contentView.backgroundColor = AppColorGroup.surface.color
 		separatorInset = UIEdgeInsets.zero
 		layoutMargins = UIEdgeInsets.zero
 		selectionStyle = .none

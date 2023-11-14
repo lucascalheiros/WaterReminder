@@ -8,6 +8,7 @@
 import RxSwift
 import RealmSwift
 import RxRealm
+import Core
 
 internal class WaterConsumedRepositoryImpl: BaseRepository<WaterConsumedObject>, WaterConsumedRepositoryProtocol {
 

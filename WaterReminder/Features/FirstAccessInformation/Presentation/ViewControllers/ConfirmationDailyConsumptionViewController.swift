@@ -8,6 +8,9 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Components
+import Common
+import Core
 
 class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 	private let disposeBag = DisposeBag()
@@ -23,7 +26,7 @@ class ConfirmationDailyConsumptionViewController: BaseChildPageController {
 		let button =  UISegmentedControl(items: VolumeFormat.allCases.map { $0.localizedDisplay })
 		dailyWaterEditText.suffix.text = VolumeFormat.metric.formatDisplay
 		button.selectedSegmentIndex = 0
-		button.backgroundColor = Theme.lightTeal.mainColor
+        button.backgroundColor = AppColorGroup.surface.color
 		let attributes = [
 			NSAttributedString.Key.foregroundColor: UIColor.white,
 			NSAttributedString.Key.font: UIFont.body

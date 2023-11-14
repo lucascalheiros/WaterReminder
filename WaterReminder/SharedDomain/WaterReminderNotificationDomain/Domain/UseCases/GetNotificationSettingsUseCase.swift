@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import Common
 
 class GetNotificationSettingsUseCase {
 	let notificationSettingsRepository: NotificationSettingsRepositoryProtocol

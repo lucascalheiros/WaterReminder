@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Core
 
 class BaseChildPageController: UIViewController {
 	let firstAccessInformationViewModel: FirstAccessInformationSharedViewModel
@@ -16,7 +17,7 @@ class BaseChildPageController: UIViewController {
         label.font = .screenTitle
 		label.lineBreakMode = .byWordWrapping
 		label.numberOfLines = 0
-		label.textColor = .white
+        label.textColor = AppColorGroup.background.onColor
 		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
 		view.addSubview(label)

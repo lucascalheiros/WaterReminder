@@ -9,9 +9,9 @@ import UIKit
 import RxFlow
 import Swinject
 
-class FirstAccessFlow: Flow {
+public class FirstAccessFlow: Flow {
 
-	var root: Presentable {
+    public var root: Presentable {
 		return self.rootViewController
 	}
 
@@ -22,7 +22,7 @@ class FirstAccessFlow: Flow {
 		self.container = container
 	}
 
-	func navigate(to step: Step) -> FlowContributors {
+    public func navigate(to step: Step) -> FlowContributors {
 
 		guard let step = step as? FirstAccessFlowSteps else { return .none }
 

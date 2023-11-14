@@ -8,6 +8,8 @@
 import UIKit
 import RxSwift
 import RxRelay
+import Common
+import Components
 
 class DailyConsumptionSection: UICollectionReusableView {
     static let identifier = "DailyConsumptionSection"

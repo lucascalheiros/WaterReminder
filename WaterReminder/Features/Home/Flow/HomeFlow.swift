@@ -8,6 +8,7 @@
 import UIKit
 import RxFlow
 import Swinject
+import Core
 
 class HomeFlow: Flow {
 

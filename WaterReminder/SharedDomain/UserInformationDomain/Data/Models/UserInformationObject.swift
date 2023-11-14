@@ -6,6 +6,7 @@
 //
 
 import RealmSwift
+import Core
 
 class UserInformationObject: BaseObject {
     typealias DomainType = UserInformation

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Core
 
 class AddWaterSourceCell: UITableViewCell {
 
@@ -14,7 +15,7 @@ class AddWaterSourceCell: UITableViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
 		label.font = .body
-		label.textColor = Theme.primary.mainColor
+		label.textColor = AppColorGroup.primary.color
         return label
     }()
 
@@ -29,7 +30,7 @@ class AddWaterSourceCell: UITableViewCell {
 	}
 
 	private func configure() {
-		contentView.backgroundColor = Theme.lightBlue.mainColor
+		contentView.backgroundColor = AppColorGroup.surface.color
 		separatorInset = UIEdgeInsets.zero
 		layoutMargins = UIEdgeInsets.zero
 		selectionStyle = .none

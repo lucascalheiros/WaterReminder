@@ -8,6 +8,9 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Components
+import Common
+import Core
 
 class PeriodSelectorModalViewController: UIViewController {
 	var disposeBag = DisposeBag()
@@ -15,7 +18,7 @@ class PeriodSelectorModalViewController: UIViewController {
 	let periodSelectorDelegate: PeriodSelectorDelegate
 
 	let timePeriodFifteenMinutesSpaced = Array(0...23).flatMap { hour in
-		Array(0...3).map { minute in TimePeriod(hour: hour, minute: minute * 15) }
+        Array(0...3).map { minute in TimePeriod(hour: hour, minute: minute * 15) }
 	}
 
 	private lazy var initialNotificationTime = {
@@ -88,7 +91,7 @@ class PeriodSelectorModalViewController: UIViewController {
 			}
 		).disposed(by: disposeBag)
 
-		view.backgroundColor = Theme.lightBlue.mainColor
+		view.backgroundColor = AppColorGroup.primary.color
 		cancel.tintColor = .blue
 		confirm.tintColor = .blue
 

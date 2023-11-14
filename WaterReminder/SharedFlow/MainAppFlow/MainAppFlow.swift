@@ -8,6 +8,7 @@
 import UIKit
 import RxFlow
 import Swinject
+import Core
 
 class MainAppFlow: Flow {
 	var root: Presentable {
@@ -40,10 +41,10 @@ class MainAppFlow: Flow {
 
 	private func tabBarItemAppearance() -> UITabBarItemAppearance {
 		let itemAppearance = UITabBarItemAppearance()
-		itemAppearance.normal.iconColor = Theme.primaryDisabled.mainColor
-		itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.primaryDisabled.mainColor]
-		itemAppearance.selected.iconColor = Theme.primary.mainColor
-		itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Theme.primary.mainColor]
+        itemAppearance.normal.iconColor = AppColorGroup.primary.color.withAlphaComponent(0.3)
+        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppColorGroup.primary.color.withAlphaComponent(0.3)]
+		itemAppearance.selected.iconColor = AppColorGroup.primary.color
+		itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppColorGroup.primary.color]
 		return itemAppearance
 	}
 
@@ -53,7 +54,7 @@ class MainAppFlow: Flow {
 		appearance.inlineLayoutAppearance = itemAppearance
 		appearance.stackedLayoutAppearance = itemAppearance
 		appearance.compactInlineLayoutAppearance = itemAppearance
-		appearance.backgroundColor = Theme.primaryBackground.mainColor
+		appearance.backgroundColor = AppColorGroup.background.color
 		return appearance
 	}
 	

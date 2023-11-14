@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import Common
 
 protocol NotificationSettingsRepositoryProtocol {
 	func setNotificationSettings(notificationSettings: NotificationSettings)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Core
 
 extension CreateWaterSourceItemVC {
 
@@ -17,7 +18,7 @@ extension CreateWaterSourceItemVC {
         if let cell = cell as? WaterSourceTypeSettingCell {
             cell.titleLabel.text = String(localized: "createWaterSource.cellTitle.volume")
             cell.detailLabel.text = waterWithFormat.exhibitionValueWithFormat()
-            cell.detailLabel.textColor = Theme.blue.mainColor
+            cell.detailLabel.textColor = AppColorGroup.primary.color
         }
         cell.selectionStyle = .none
         return cell

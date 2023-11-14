@@ -6,6 +6,8 @@
 //
 
 import RxSwift
+import Common
+import Foundation
 
 internal class GetWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol {
 	let waterConsumedRepository: WaterConsumedRepositoryProtocol

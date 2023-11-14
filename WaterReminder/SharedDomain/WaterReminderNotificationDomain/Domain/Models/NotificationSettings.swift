@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Common
 
 struct NotificationSettings {
 	var isReminderEnabled: Bool = false

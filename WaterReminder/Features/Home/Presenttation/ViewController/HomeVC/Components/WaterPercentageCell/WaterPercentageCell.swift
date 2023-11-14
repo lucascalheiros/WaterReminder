@@ -7,6 +7,8 @@
 
 import UIKit
 import RxSwift
+import Components
+import Core
 
 class WaterPercentageCell: UICollectionViewCell {
 
@@ -62,7 +64,7 @@ class WaterPercentageCell: UICollectionViewCell {
 	private lazy var informativeBottomRightLabel: UILabel = {
 		let label = UILabel()
         label.font = .h4
-		label.textColor = Theme.lightBlue.accentColor
+		label.textColor = AppColorGroup.primary.color
 		label.textAlignment = .center
 		return label
 	}()
@@ -92,7 +94,7 @@ class WaterPercentageCell: UICollectionViewCell {
         ])
 
         layer.cornerRadius = 8
-		backgroundColor = Theme.lightBlue.mainColor
+		backgroundColor = AppColorGroup.surface.color
     }
 
     required init?(coder aDecoder: NSCoder) {

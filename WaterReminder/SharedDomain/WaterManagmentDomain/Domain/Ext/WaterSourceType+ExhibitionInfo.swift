@@ -10,16 +10,8 @@ import UIKit
 extension WaterSourceType {
 	var color: UIColor {
 		switch self {
-		case .water:
-			return UIColor.blue
-		case .coffee:
-			return UIColor.brown
-		case .juice:
-			return UIColor.orange
-		case .tea:
-			return UIColor.green
-		case .soda:
-			return UIColor.cyan
+		default:
+            return UIColor(named: self.rawValue)!
 		}
 	}
 

@@ -6,6 +6,7 @@
 //
 
 import RealmSwift
+import Core
 
 struct UserInformationRealmProvider: RealmProviderProtocol {
         

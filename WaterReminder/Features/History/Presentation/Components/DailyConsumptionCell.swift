@@ -9,6 +9,7 @@ import UIKit
 import RxRelay
 import RxSwift
 import RxSwiftExt
+import Core
 
 class DailyConsumptionCell: UICollectionViewCell {
     static let identifier = "DailyConsumptionCell"
@@ -42,7 +43,7 @@ class DailyConsumptionCell: UICollectionViewCell {
 		super.init(frame: frame)
 
 		contentView.addConstrainedSubviews(titleLabel, volumeLabel, timeLabel)
-		contentView.backgroundColor = Theme.lightBlue.mainColor
+		contentView.backgroundColor = AppColorGroup.surface.color
 
 		observeRelays()
 

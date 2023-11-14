@@ -7,6 +7,7 @@
 
 import RxSwift
 import RxCocoa
+import Common
 
 extension SettingsViewController {
 

@@ -1,26 +1,75 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '11.0'
+platform :ios, '13.0'
+use_frameworks!
+workspace 'WaterReminder'
+
+
+def rxSwift
+  pod 'RxSwift', '6.6.0'
+  pod 'RxCocoa', '6.6.0'
+  pod 'RxSwiftExt', '6.2.1'
+end
+
+def realm
+  pod 'RealmSwift', '~>10.40.1'
+  pod 'RxRealm', :git => 'https://github.com/RxSwiftCommunity/RxRealm.git', :branch => 'main'
+end
+
+def swinject
+  pod 'Swinject', '2.8.3'
+  pod 'SwinjectAutoregistration', '2.8.3'
+end
+
+def rxFlow
+  pod 'RxFlow', '2.13.0'
+end
 
 target 'WaterReminder' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
-
-  pod 'RxSwift', '6.5.0'
-  pod 'RxCocoa', '6.5.0'
-  pod 'Swinject', '2.8.3'
-	pod 'SwinjectAutoregistration', '2.8.3'
-  pod 'RealmSwift', '~>10'
-  pod 'RxRealm', '5.0.4'
-	pod 'RxFlow', '2.13.0'
-	pod 'RxSwiftExt', '6.0.1'
-
+  rxSwift
+  rxFlow
+  realm
+  swinject
+  
   target 'WaterReminderTests' do
     inherit! :search_paths
-    # Pods for testing
   end
 
   target 'WaterReminderUITests' do
-    # Pods for testing
+    inherit! :search_paths
   end
+end
 
+target 'Common' do
+  project 'Common/Common'
+  rxSwift
+  target 'CommonTests' do
+    inherit! :search_paths
+  end
+end
+
+target 'Core' do
+  project 'Core/Core'
+  rxSwift
+  rxFlow
+  realm
+  swinject
+  target 'CoreTests' do
+    inherit! :search_paths
+  end
+end
+
+target 'Components' do
+  project 'Components/Components'
+  target 'ComponentsTests' do
+    inherit! :search_paths
+  end
+end
+
+
+
+target 'Settings' do
+  project 'Settings/Settings'
+  target 'SettingsTests' do
+    inherit! :search_paths
+  end
 end

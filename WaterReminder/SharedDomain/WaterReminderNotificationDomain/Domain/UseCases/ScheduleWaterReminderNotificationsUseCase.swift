@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Common
 
 class ScheduleWaterReminderNotificationsUseCase {
 	private let waterReminderNotificationManager: WaterReminderNotificationManager

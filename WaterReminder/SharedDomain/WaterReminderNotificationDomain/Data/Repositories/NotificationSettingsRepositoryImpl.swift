@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import Common
 
 class NotificationSettingsRepositoryImpl: NotificationSettingsRepositoryProtocol {
 	private lazy var defaults = UserDefaults.standard

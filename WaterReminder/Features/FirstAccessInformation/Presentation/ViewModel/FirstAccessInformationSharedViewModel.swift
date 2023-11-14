@@ -5,10 +5,10 @@
 //  Created by Lucas Calheiros on 31/05/23.
 //
 
-import Foundation
 import RxRelay
 import RxSwift
 import RxFlow
+import Common
 
 class FirstAccessInformationSharedViewModel {
 	private let disposeBag = DisposeBag()
@@ -23,7 +23,7 @@ class FirstAccessInformationSharedViewModel {
 	let stepper: FirstAccessInformationStepper
 
 	let timePeriodFifteenMinutesSpaced =  Array(0...23).flatMap { hour in
-		Array(0...3).map { minute in TimePeriod(hour: hour, minute: minute * 15) }
+        Array(0...3).map { minute in TimePeriod(hour: hour, minute: minute * 15) }
 	}
 
 	lazy var exerciseDays: BehaviorRelay<Float> = BehaviorRelay(value: 3.0)

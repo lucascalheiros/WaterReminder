@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Core
 
 class AmbienceTemperatureInputViewController: BaseChildPageController {
 	private let disposeBag = DisposeBag()
@@ -30,7 +31,7 @@ class AmbienceTemperatureInputViewController: BaseChildPageController {
             String(localized: "temperatureLevel.hot")
         ])
 		button.selectedSegmentIndex = 1
-		button.backgroundColor = Theme.lightTeal.mainColor
+		button.backgroundColor = AppColorGroup.surface.color
 		let attributes = [
 			NSAttributedString.Key.foregroundColor: UIColor.white,
             NSAttributedString.Key.font: UIFont.body

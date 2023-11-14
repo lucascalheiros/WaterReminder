@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import RxRelay
 import RxSwift
+import Core
 
 class WaterSourceCellView: UICollectionViewCell {
 	let disposeBag = DisposeBag()
@@ -51,7 +52,7 @@ class WaterSourceCellView: UICollectionViewCell {
 
 		contentView.addConstrainedSubviews(titleLabel, volumeLabel)
         contentView.layer.cornerRadius = 8
-        contentView.backgroundColor = Theme.lightBlue.mainColor
+        contentView.backgroundColor = AppColorGroup.surface.color
         contentView.addGestureRecognizer(
 			UITapGestureRecognizer(target: self, action: #selector(tapItemDetected))
 		)

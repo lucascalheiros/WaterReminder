@@ -8,8 +8,9 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Common
 
-class SwitchWithLabel: ProgrammaticView {
+open class SwitchWithLabel: ProgrammaticView {
 
 	lazy var switchView = {
 		let uiSwitch = UISwitch()
@@ -24,7 +25,7 @@ class SwitchWithLabel: ProgrammaticView {
 		return label
 	}()
 
-	override func prepareConstraints() {
+	open override func prepareConstraints() {
 		addConstrainedSubviews(label, switchView)
 
 		NSLayoutConstraint.activate([

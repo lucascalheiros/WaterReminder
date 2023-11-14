@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Core
 
 class WaterSourceListSectionHeader: UICollectionReusableView {
 
@@ -13,7 +14,7 @@ class WaterSourceListSectionHeader: UICollectionReusableView {
 		let button = UIButton(type: .custom)
 		button.frame = CGRect(x: 0, y: 0, width: 48, height: 48)
 		button.setImage(UIImage(systemName: "slider.horizontal.3"), for: .normal)
-		button.tintColor = Theme.primary.mainColor
+		button.tintColor = AppColorGroup.primary.color
 		return button
 	}()
 

@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 import RealmSwift
 import RxRealm
+import Core
 
 internal class WaterSourceRepositoryImpl: BaseRepository<WaterSourceObject>, WaterSourceRepositoryProtocol {
     private var waterSourceList = [

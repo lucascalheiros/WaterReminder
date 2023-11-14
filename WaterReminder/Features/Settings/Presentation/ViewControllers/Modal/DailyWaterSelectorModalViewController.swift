@@ -8,6 +8,9 @@
 import RxCocoa
 import RxSwift
 import UIKit
+import Common
+import Components
+import Core
 
 class DailyWaterSelectorModalViewController: UIViewController {
 	var disposeBag = DisposeBag()
@@ -20,7 +23,7 @@ class DailyWaterSelectorModalViewController: UIViewController {
 
 	private lazy var volumeFormatSegmentationControl = {
 		let button = UISegmentedControl(items: VolumeFormat.allCases.map { $0.localizedDisplay })
-		button.backgroundColor = Theme.lightTeal.mainColor
+		button.backgroundColor = AppColorGroup.surface.color
 		let attributes = [
 			NSAttributedString.Key.foregroundColor: UIColor.white,
             NSAttributedString.Key.font: UIFont.body
@@ -84,7 +87,7 @@ class DailyWaterSelectorModalViewController: UIViewController {
 
 		}).disposed(by: disposeBag)
 
-		view.backgroundColor = Theme.lightBlue.mainColor
+		view.backgroundColor = AppColorGroup.surface.color
 		cancel.tintColor = .blue
 		confirm.tintColor = .blue
 

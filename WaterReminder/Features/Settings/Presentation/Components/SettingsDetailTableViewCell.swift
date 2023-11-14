@@ -8,19 +8,20 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Core
 
 class SettingsDetailTableViewCell: UITableViewCell {
 	var disposeBag = DisposeBag()
 
 	lazy var titleLabel: UILabel = {
 		let label = UILabel()
-		label.textColor = Theme.lightBlue.accentColor
+        label.textColor = AppColorGroup.surface.onColor
 		return label
 	}()
 
 	lazy var detailLabel: UILabel = {
 		let label = UILabel()
-		label.textColor = Theme.lightBlue.accentColor
+		label.textColor = AppColorGroup.surface.onColor
 		return label
 	}()
 
@@ -31,7 +32,7 @@ class SettingsDetailTableViewCell: UITableViewCell {
 		preservesSuperviewLayoutMargins = false
 		separatorInset = UIEdgeInsets.zero
 		layoutMargins = UIEdgeInsets.zero
-		backgroundColor = Theme.lightBlue.mainColor
+		backgroundColor = AppColorGroup.surface.color
 		prepareConstraints()
 	}
 

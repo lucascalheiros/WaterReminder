@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Core
 
 class WaterSourceTypeSettingCell: UITableViewCell {
 
@@ -13,13 +14,13 @@ class WaterSourceTypeSettingCell: UITableViewCell {
 
 	lazy var titleLabel: UILabel = {
 		let label = UILabel()
-		label.textColor = Theme.lightBlue.accentColor
+		label.textColor = AppColorGroup.surface.onColor
 		return label
 	}()
 
 	lazy var detailLabel: UILabel = {
 		let label = UILabel()
-		label.textColor = Theme.lightBlue.accentColor
+        label.textColor = AppColorGroup.surface.onColor
         label.font = .body
 		return label
 	}()
@@ -40,7 +41,7 @@ class WaterSourceTypeSettingCell: UITableViewCell {
 		preservesSuperviewLayoutMargins = false
 		separatorInset = UIEdgeInsets.zero
 		layoutMargins = UIEdgeInsets.zero
-		backgroundColor = Theme.lightBlue.mainColor
+		backgroundColor = AppColorGroup.surface.color
 	}
 
 	func prepareConstraints() {
