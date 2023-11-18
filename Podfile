@@ -65,11 +65,18 @@ target 'Components' do
   end
 end
 
-
-
 target 'Settings' do
   project 'Settings/Settings'
   target 'SettingsTests' do
+    inherit! :search_paths
+  end
+end
+
+target 'WaterReminderNotificationDomain' do
+  project 'WaterReminderNotificationDomain/WaterReminderNotificationDomain'
+  swinject
+  rxSwift
+  target 'WaterReminderNotificationDomainTests' do
     inherit! :search_paths
   end
 end

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		174405DD2B084E89008952B6 /* DefaultComponentsTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174405DC2B084E89008952B6 /* DefaultComponentsTheme.swift */; };
+		174405DF2B084EB2008952B6 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174405DE2B084EB2008952B6 /* ThemeProtocol.swift */; };
+		175F92BF2B08ECF800758C50 /* TimePeriodPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92BE2B08ECF800758C50 /* TimePeriodPickerView.swift */; };
 		17668C702AFF0A1A00B09779 /* Components.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17668C6F2AFF0A1A00B09779 /* Components.docc */; };
 		17668C762AFF0A1A00B09779 /* Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17668C6B2AFF0A1A00B09779 /* Components.framework */; };
 		17668C7B2AFF0A1A00B09779 /* ComponentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668C7A2AFF0A1A00B09779 /* ComponentsTests.swift */; };
@@ -45,6 +48,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		174405DC2B084E89008952B6 /* DefaultComponentsTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultComponentsTheme.swift; sourceTree = "<group>"; };
+		174405DE2B084EB2008952B6 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
+		175F92BE2B08ECF800758C50 /* TimePeriodPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePeriodPickerView.swift; sourceTree = "<group>"; };
 		17668C6B2AFF0A1A00B09779 /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17668C6F2AFF0A1A00B09779 /* Components.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Components.docc; sourceTree = "<group>"; };
 		17668C752AFF0A1A00B09779 /* ComponentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComponentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		174405E02B084EF2008952B6 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				174405DE2B084EB2008952B6 /* ThemeProtocol.swift */,
+				174405DC2B084E89008952B6 /* DefaultComponentsTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		17668C612AFF0A1A00B09779 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +127,8 @@
 				17668CDE2AFF178400B09779 /* FillableCircleView.swift */,
 				17668CE02AFF178400B09779 /* InputFieldWithSuffix.swift */,
 				17668CDF2AFF178400B09779 /* TimeWheelPickerView.swift */,
+				175F92BE2B08ECF800758C50 /* TimePeriodPickerView.swift */,
+				174405E02B084EF2008952B6 /* Theme */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -305,8 +322,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				17668C702AFF0A1A00B09779 /* Components.docc in Sources */,
+				175F92BF2B08ECF800758C50 /* TimePeriodPickerView.swift in Sources */,
 				17668CE22AFF178500B09779 /* FillableCircleView.swift in Sources */,
+				174405DF2B084EB2008952B6 /* ThemeProtocol.swift in Sources */,
 				17668CE42AFF178500B09779 /* CircularProgressView.swift in Sources */,
+				174405DD2B084E89008952B6 /* DefaultComponentsTheme.swift in Sources */,
 				17668CE32AFF178500B09779 /* InputFieldWithSuffix.swift in Sources */,
 				17668CE52AFF178500B09779 /* TimeWheelPickerView.swift in Sources */,
 			);

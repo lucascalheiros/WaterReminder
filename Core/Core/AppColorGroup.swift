@@ -7,22 +7,17 @@
 
 import Foundation
 import UIKit
+import Common
 
-public enum AppColorGroup: String, CaseIterable {
+public enum AppColorGroup: String, CaseIterable, ThemedColorProtocol {
 
     case primary
     case secondary
     case error
     case surface
-
     case primaryVariant
     case secondaryVariant
-
     case background
-
-    case primaryContainer
-    case secondaryContainer
-    case errorContainer
 
     public var color: UIColor {
         switch self {
@@ -33,18 +28,10 @@ public enum AppColorGroup: String, CaseIterable {
 
     public var onColor: UIColor {
         switch self {
-        case .surface:
-            return UIColor(named: "onSurface")!
         default:
-            return .white
+            return UIColor(named: "on" + rawValue.capitalized)!
         }
     }
 
-    public var onColorVariant: UIColor {
-        switch self {
-        default:
-            return .white
-        }
-    }
     
 }

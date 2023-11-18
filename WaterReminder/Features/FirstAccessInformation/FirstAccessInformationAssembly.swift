@@ -17,9 +17,9 @@ class FirstAccessInformationAssembly: Assembly {
 			initializer: FirstAccessInformationSharedViewModel.init
 		)
 		container.autoregister(
-			FirstAccessPageViewController.self
+			FirstAccessPageVC.self
 		) {
-			return FirstAccessPageViewController(
+			return FirstAccessPageVC(
 				pageProvider: container.resolve(FirstAccessPageProvider.self)!,
 				firstAccessInformationViewModel: container.resolve(FirstAccessInformationSharedViewModel.self)!
 			)
@@ -29,37 +29,37 @@ class FirstAccessInformationAssembly: Assembly {
 			initializer: FirstAccessPageProvider.init
 		)
 		container.autoregister(
-			ActivityLevelInputViewController.self
+			ActivityLevelInputVC.self
 		) {
-			return ActivityLevelInputViewController(
+			return ActivityLevelInputVC(
 				firstAccessInformationViewModel: container.resolve(FirstAccessInformationSharedViewModel.self)!
 			)
 		}
 		container.autoregister(
-			AmbienceTemperatureInputViewController.self
+			AmbienceTemperatureInputVC.self
 		) {
-			return AmbienceTemperatureInputViewController(
+			return AmbienceTemperatureInputVC(
 				firstAccessInformationViewModel: container.resolve(FirstAccessInformationSharedViewModel.self)!
 			)
 		}
 		container.autoregister(
-			ConfirmationDailyConsumptionViewController.self
+			ConfirmationDailyConsumptionVC.self
 		) {
-			return ConfirmationDailyConsumptionViewController(
+			return ConfirmationDailyConsumptionVC(
 				firstAccessInformationViewModel: container.resolve(FirstAccessInformationSharedViewModel.self)!
 			)
 		}
 		container.autoregister(
-			FirstAccessInformativeViewController.self
+			FirstAccessInformativeVC.self
 		) {
-			return FirstAccessInformativeViewController(
+			return FirstAccessInformativeVC(
 				firstAccessInformationViewModel: container.resolve(FirstAccessInformationSharedViewModel.self)!
 			)
 		}
 		container.autoregister(
-			WeightInputViewController.self
+			WeightInputVC.self
 		) {
-			return WeightInputViewController(
+			return WeightInputVC(
 				firstAccessInformationViewModel: container.resolve(FirstAccessInformationSharedViewModel.self)!
 			)
 		}

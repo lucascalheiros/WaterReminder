@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Core
 
 class ActivitySliderView: UISlider {
 	
@@ -16,7 +17,7 @@ class ActivitySliderView: UISlider {
 		maximumValue = 7
 		value = 3
 		isContinuous = false
-		tintColor = .blue
+		tintColor = AppColorGroup.primary.color
 	}
 	
 	required init?(coder: NSCoder) {

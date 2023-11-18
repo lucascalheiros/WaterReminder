@@ -9,6 +9,8 @@ import UIKit
 import Swinject
 import RxFlow
 import RxSwift
+import WaterReminderNotificationDomain
+import Components
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCenterDelegate {
 
@@ -44,6 +46,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 		// are new (see `application:configurationForConnectingSceneSession` instead).
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		let window = UIWindow(windowScene: windowScene)
+
+        DefaultComponentsTheme.componentsTheme = AppTheme()
 
 		assembleModuleContainers(container: container)
 

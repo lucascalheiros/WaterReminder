@@ -69,7 +69,7 @@ open class InputFieldWithSuffix: UITextField, UITextFieldDelegate {
 		borderStyle = .none
 		textAlignment = .center
         font = .boldSystemFont(ofSize: 25)
-		textColor = .white
+        textColor = DefaultComponentsTheme.componentsTheme.background.onColor
 		keyboardType = .decimalPad
 		borderStyle = .none
 		layer.addSublayer(bottomLine)

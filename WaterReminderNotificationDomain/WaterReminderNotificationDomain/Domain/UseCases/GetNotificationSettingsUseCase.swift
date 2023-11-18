@@ -8,7 +8,7 @@
 import RxSwift
 import Common
 
-class GetNotificationSettingsUseCase {
+public class GetNotificationSettingsUseCase {
 	let notificationSettingsRepository: NotificationSettingsRepositoryProtocol
 
 	init(
@@ -17,19 +17,19 @@ class GetNotificationSettingsUseCase {
 		self.notificationSettingsRepository = notificationSettingsRepository
 	}
 
-	func isReminderNotificationEnabled() -> Observable<Bool> {
+    public func isReminderNotificationEnabled() -> Observable<Bool> {
 		notificationSettingsRepository.isReminderNotificationEnabled()
 	}
 
-	func notificationFrequency() -> Observable<NotificationFrequencyEnum> {
+	public func notificationFrequency() -> Observable<NotificationFrequencyEnum> {
 		notificationSettingsRepository.notificationFrequency()
 	}
 
-	func notificationStartTime() -> Observable<TimePeriod> {
+    public func notificationStartTime() -> Observable<TimePeriod> {
 		notificationSettingsRepository.notificationStartTime()
 	}
 
-	func notificationEndTime() -> Observable<TimePeriod> {
+    public func notificationEndTime() -> Observable<TimePeriod> {
 		notificationSettingsRepository.notificationEndTime()
 	}
 }

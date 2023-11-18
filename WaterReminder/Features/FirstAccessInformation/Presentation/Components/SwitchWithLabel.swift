@@ -9,19 +9,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Common
+import Core
 
 open class SwitchWithLabel: ProgrammaticView {
 
 	lazy var switchView = {
 		let uiSwitch = UISwitch()
-		uiSwitch.onTintColor = .blue
+        uiSwitch.onTintColor = AppColorGroup.primary.color
 		return uiSwitch
 	}()
 
 	lazy var label = {
 		let label = UILabel()
         label.font = .body
-		label.textColor = .white
+        label.textColor = AppColorGroup.background.onColor
 		return label
 	}()
 

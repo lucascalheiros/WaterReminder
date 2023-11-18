@@ -8,6 +8,7 @@
 import RxSwift
 import RxCocoa
 import Common
+import WaterReminderNotificationDomain
 
 class PeriodSelectorDelegate {
 	let disposeBag = DisposeBag()

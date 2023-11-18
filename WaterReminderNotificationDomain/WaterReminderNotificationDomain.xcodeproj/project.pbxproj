@@ -10,6 +10,18 @@
 		17AE2B862B030F170049F554 /* WaterReminderNotificationDomain.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B852B030F170049F554 /* WaterReminderNotificationDomain.docc */; };
 		17AE2B8C2B030F170049F554 /* WaterReminderNotificationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2B812B030F170049F554 /* WaterReminderNotificationDomain.framework */; };
 		17AE2B912B030F170049F554 /* WaterReminderNotificationDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B902B030F170049F554 /* WaterReminderNotificationDomainTests.swift */; };
+		17AE2BAE2B0311DF0049F554 /* WaterReminderNotificationDomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B9B2B0311DF0049F554 /* WaterReminderNotificationDomainAssembly.swift */; };
+		17AE2BB92B0313360049F554 /* WaterReminderNotificationManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2BB82B0313360049F554 /* WaterReminderNotificationManagerImpl.swift */; };
+		17AE2BBB2B03135A0049F554 /* WaterReminderNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2BBA2B03135A0049F554 /* WaterReminderNotificationManager.swift */; };
+		17AE2BBF2B0313730049F554 /* ScheduleWaterReminderNotificationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2BBC2B0313730049F554 /* ScheduleWaterReminderNotificationsUseCase.swift */; };
+		17AE2BC02B0313730049F554 /* GetNotificationSettingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2BBD2B0313730049F554 /* GetNotificationSettingsUseCase.swift */; };
+		17AE2BC12B0313730049F554 /* ManageNotificationSettingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2BBE2B0313730049F554 /* ManageNotificationSettingsUseCase.swift */; };
+		17AE2BC42B0313A40049F554 /* NotificationSettingsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2BC32B0313A40049F554 /* NotificationSettingsRepositoryProtocol.swift */; };
+		17AE2BC72B0314490049F554 /* NotificationFrequencyEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2BC52B0314490049F554 /* NotificationFrequencyEnum.swift */; };
+		17AE2BC82B0314490049F554 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2BC62B0314490049F554 /* NotificationSettings.swift */; };
+		17AE2BCA2B0314EB0049F554 /* NotificationSettingsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2BC92B0314EB0049F554 /* NotificationSettingsRepositoryImpl.swift */; };
+		4C01D503A02D25379B8584A4 /* Pods_WaterReminderNotificationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0F03673A30F9EB63DCB026E /* Pods_WaterReminderNotificationDomain.framework */; };
+		6D1A337EAD49A862C57AB850 /* Pods_WaterReminderNotificationDomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 405C1DD6846ADD40F78B3DFD /* Pods_WaterReminderNotificationDomainTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,10 +35,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E26F8F50E0DFB3D982045AD /* Pods-WaterReminderNotificationDomain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminderNotificationDomain.debug.xcconfig"; path = "Target Support Files/Pods-WaterReminderNotificationDomain/Pods-WaterReminderNotificationDomain.debug.xcconfig"; sourceTree = "<group>"; };
 		17AE2B812B030F170049F554 /* WaterReminderNotificationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WaterReminderNotificationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B852B030F170049F554 /* WaterReminderNotificationDomain.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = WaterReminderNotificationDomain.docc; sourceTree = "<group>"; };
 		17AE2B8B2B030F170049F554 /* WaterReminderNotificationDomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaterReminderNotificationDomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B902B030F170049F554 /* WaterReminderNotificationDomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterReminderNotificationDomainTests.swift; sourceTree = "<group>"; };
+		17AE2B9B2B0311DF0049F554 /* WaterReminderNotificationDomainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterReminderNotificationDomainAssembly.swift; sourceTree = "<group>"; };
+		17AE2BB82B0313360049F554 /* WaterReminderNotificationManagerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterReminderNotificationManagerImpl.swift; sourceTree = "<group>"; };
+		17AE2BBA2B03135A0049F554 /* WaterReminderNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterReminderNotificationManager.swift; sourceTree = "<group>"; };
+		17AE2BBC2B0313730049F554 /* ScheduleWaterReminderNotificationsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleWaterReminderNotificationsUseCase.swift; sourceTree = "<group>"; };
+		17AE2BBD2B0313730049F554 /* GetNotificationSettingsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNotificationSettingsUseCase.swift; sourceTree = "<group>"; };
+		17AE2BBE2B0313730049F554 /* ManageNotificationSettingsUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageNotificationSettingsUseCase.swift; sourceTree = "<group>"; };
+		17AE2BC32B0313A40049F554 /* NotificationSettingsRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsRepositoryProtocol.swift; sourceTree = "<group>"; };
+		17AE2BC52B0314490049F554 /* NotificationFrequencyEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationFrequencyEnum.swift; sourceTree = "<group>"; };
+		17AE2BC62B0314490049F554 /* NotificationSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		17AE2BC92B0314EB0049F554 /* NotificationSettingsRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettingsRepositoryImpl.swift; sourceTree = "<group>"; };
+		405C1DD6846ADD40F78B3DFD /* Pods_WaterReminderNotificationDomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterReminderNotificationDomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D96768954DFEDDF43D86B21 /* Pods-WaterReminderNotificationDomainTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminderNotificationDomainTests.debug.xcconfig"; path = "Target Support Files/Pods-WaterReminderNotificationDomainTests/Pods-WaterReminderNotificationDomainTests.debug.xcconfig"; sourceTree = "<group>"; };
+		60CC8D9C727F4BC50F636EDF /* Pods-WaterReminderNotificationDomainTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminderNotificationDomainTests.release.xcconfig"; path = "Target Support Files/Pods-WaterReminderNotificationDomainTests/Pods-WaterReminderNotificationDomainTests.release.xcconfig"; sourceTree = "<group>"; };
+		A4B45D01598A0551C684725F /* Pods-WaterReminderNotificationDomain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminderNotificationDomain.release.xcconfig"; path = "Target Support Files/Pods-WaterReminderNotificationDomain/Pods-WaterReminderNotificationDomain.release.xcconfig"; sourceTree = "<group>"; };
+		B0F03673A30F9EB63DCB026E /* Pods_WaterReminderNotificationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterReminderNotificationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C01D503A02D25379B8584A4 /* Pods_WaterReminderNotificationDomain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17AE2B8C2B030F170049F554 /* WaterReminderNotificationDomain.framework in Frameworks */,
+				6D1A337EAD49A862C57AB850 /* Pods_WaterReminderNotificationDomainTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +84,8 @@
 				17AE2B832B030F170049F554 /* WaterReminderNotificationDomain */,
 				17AE2B8F2B030F170049F554 /* WaterReminderNotificationDomainTests */,
 				17AE2B822B030F170049F554 /* Products */,
+				E6DF36329148B755B2ECA473 /* Pods */,
+				AE9BFDD41CED613AE50C6AC1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				17AE2B852B030F170049F554 /* WaterReminderNotificationDomain.docc */,
+				17AE2B9B2B0311DF0049F554 /* WaterReminderNotificationDomainAssembly.swift */,
+				17AE2BA12B0311DF0049F554 /* Data */,
+				17AE2BAD2B0311DF0049F554 /* Domain */,
+				17AE2B9E2B0311DF0049F554 /* Framework */,
 			);
 			path = WaterReminderNotificationDomain;
 			sourceTree = "<group>";
@@ -80,6 +116,105 @@
 				17AE2B902B030F170049F554 /* WaterReminderNotificationDomainTests.swift */,
 			);
 			path = WaterReminderNotificationDomainTests;
+			sourceTree = "<group>";
+		};
+		17AE2B9D2B0311DF0049F554 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				17AE2BB82B0313360049F554 /* WaterReminderNotificationManagerImpl.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		17AE2B9E2B0311DF0049F554 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				17AE2B9D2B0311DF0049F554 /* Managers */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		17AE2BA02B0311DF0049F554 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				17AE2BC92B0314EB0049F554 /* NotificationSettingsRepositoryImpl.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		17AE2BA12B0311DF0049F554 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				17AE2BA02B0311DF0049F554 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		17AE2BA62B0311DF0049F554 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				17AE2BC52B0314490049F554 /* NotificationFrequencyEnum.swift */,
+				17AE2BC62B0314490049F554 /* NotificationSettings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		17AE2BAA2B0311DF0049F554 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				17AE2BBD2B0313730049F554 /* GetNotificationSettingsUseCase.swift */,
+				17AE2BBE2B0313730049F554 /* ManageNotificationSettingsUseCase.swift */,
+				17AE2BBC2B0313730049F554 /* ScheduleWaterReminderNotificationsUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		17AE2BAC2B0311DF0049F554 /* FrameworkProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				17AE2BBA2B03135A0049F554 /* WaterReminderNotificationManager.swift */,
+			);
+			path = FrameworkProtocols;
+			sourceTree = "<group>";
+		};
+		17AE2BAD2B0311DF0049F554 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				17AE2BC22B0313A40049F554 /* RepositoryProtocols */,
+				17AE2BA62B0311DF0049F554 /* Models */,
+				17AE2BAA2B0311DF0049F554 /* UseCases */,
+				17AE2BAC2B0311DF0049F554 /* FrameworkProtocols */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		17AE2BC22B0313A40049F554 /* RepositoryProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				17AE2BC32B0313A40049F554 /* NotificationSettingsRepositoryProtocol.swift */,
+			);
+			path = RepositoryProtocols;
+			sourceTree = "<group>";
+		};
+		AE9BFDD41CED613AE50C6AC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0F03673A30F9EB63DCB026E /* Pods_WaterReminderNotificationDomain.framework */,
+				405C1DD6846ADD40F78B3DFD /* Pods_WaterReminderNotificationDomainTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E6DF36329148B755B2ECA473 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E26F8F50E0DFB3D982045AD /* Pods-WaterReminderNotificationDomain.debug.xcconfig */,
+				A4B45D01598A0551C684725F /* Pods-WaterReminderNotificationDomain.release.xcconfig */,
+				4D96768954DFEDDF43D86B21 /* Pods-WaterReminderNotificationDomainTests.debug.xcconfig */,
+				60CC8D9C727F4BC50F636EDF /* Pods-WaterReminderNotificationDomainTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +234,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17AE2B952B030F170049F554 /* Build configuration list for PBXNativeTarget "WaterReminderNotificationDomain" */;
 			buildPhases = (
+				CDAF99F45FA2F7A5D62E166B /* [CP] Check Pods Manifest.lock */,
 				17AE2B7C2B030F170049F554 /* Headers */,
 				17AE2B7D2B030F170049F554 /* Sources */,
 				17AE2B7E2B030F170049F554 /* Frameworks */,
@@ -117,6 +253,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17AE2B982B030F170049F554 /* Build configuration list for PBXNativeTarget "WaterReminderNotificationDomainTests" */;
 			buildPhases = (
+				C8BB358F3FE794B4C8C3ACEF /* [CP] Check Pods Manifest.lock */,
 				17AE2B872B030F170049F554 /* Sources */,
 				17AE2B882B030F170049F554 /* Frameworks */,
 				17AE2B892B030F170049F554 /* Resources */,
@@ -185,12 +322,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C8BB358F3FE794B4C8C3ACEF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WaterReminderNotificationDomainTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CDAF99F45FA2F7A5D62E166B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WaterReminderNotificationDomain-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		17AE2B7D2B030F170049F554 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17AE2BCA2B0314EB0049F554 /* NotificationSettingsRepositoryImpl.swift in Sources */,
+				17AE2BBB2B03135A0049F554 /* WaterReminderNotificationManager.swift in Sources */,
+				17AE2BC42B0313A40049F554 /* NotificationSettingsRepositoryProtocol.swift in Sources */,
+				17AE2BC12B0313730049F554 /* ManageNotificationSettingsUseCase.swift in Sources */,
+				17AE2BB92B0313360049F554 /* WaterReminderNotificationManagerImpl.swift in Sources */,
+				17AE2BC02B0313730049F554 /* GetNotificationSettingsUseCase.swift in Sources */,
+				17AE2BBF2B0313730049F554 /* ScheduleWaterReminderNotificationsUseCase.swift in Sources */,
+				17AE2BAE2B0311DF0049F554 /* WaterReminderNotificationDomainAssembly.swift in Sources */,
 				17AE2B862B030F170049F554 /* WaterReminderNotificationDomain.docc in Sources */,
+				17AE2BC72B0314490049F554 /* NotificationFrequencyEnum.swift in Sources */,
+				17AE2BC82B0314490049F554 /* NotificationSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +534,7 @@
 		};
 		17AE2B962B030F170049F554 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E26F8F50E0DFB3D982045AD /* Pods-WaterReminderNotificationDomain.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -351,6 +546,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -370,6 +566,7 @@
 		};
 		17AE2B972B030F170049F554 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4B45D01598A0551C684725F /* Pods-WaterReminderNotificationDomain.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -381,6 +578,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -400,7 +598,9 @@
 		};
 		17AE2B992B030F170049F554 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D96768954DFEDDF43D86B21 /* Pods-WaterReminderNotificationDomainTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -415,7 +615,9 @@
 		};
 		17AE2B9A2B030F170049F554 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60CC8D9C727F4BC50F636EDF /* Pods-WaterReminderNotificationDomainTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

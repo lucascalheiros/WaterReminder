@@ -66,7 +66,7 @@
 		172F4DA92A23E3C300318699 /* PageProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F4DA82A23E3C300318699 /* PageProviderProtocol.swift */; };
 		172F4DB02A23F2BF00318699 /* WeightPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F4DAF2A23F2BF00318699 /* WeightPickerView.swift */; };
 		172F4DB22A23F44300318699 /* WeightFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F4DB12A23F44300318699 /* WeightFormat.swift */; };
-		172F4DB42A24021C00318699 /* FirstAccessInformativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F4DB32A24021C00318699 /* FirstAccessInformativeViewController.swift */; };
+		172F4DB42A24021C00318699 /* FirstAccessInformativeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F4DB32A24021C00318699 /* FirstAccessInformativeVC.swift */; };
 		172F4DB62A240B4F00318699 /* ActivityLevelSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F4DB52A240B4F00318699 /* ActivityLevelSliderView.swift */; };
 		172F4DBB2A24122200318699 /* BaseChildPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172F4DBA2A24122200318699 /* BaseChildPageController.swift */; };
 		17318F982A8C544E00026FAD /* HomeVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17318F972A8C544E00026FAD /* HomeVC+Datasource.swift */; };
@@ -77,19 +77,15 @@
 		17395FBE2A225B660006823A /* WaterManagementRealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17395FBD2A225B660006823A /* WaterManagementRealmProvider.swift */; };
 		17395FC92A22F0030006823A /* UserInformationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17395FC82A22F0030006823A /* UserInformationObject.swift */; };
 		17395FCB2A22F5760006823A /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17395FCA2A22F5760006823A /* UserInformation.swift */; };
-		17395FCE2A23A2C40006823A /* FirstAccessPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17395FCD2A23A2C40006823A /* FirstAccessPageViewController.swift */; };
-		17395FD22A23C0920006823A /* WeightInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17395FD12A23C0920006823A /* WeightInputViewController.swift */; };
-		17395FD42A23C0B40006823A /* ActivityLevelInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17395FD32A23C0B40006823A /* ActivityLevelInputViewController.swift */; };
+		17395FCE2A23A2C40006823A /* FirstAccessPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17395FCD2A23A2C40006823A /* FirstAccessPageVC.swift */; };
+		17395FD22A23C0920006823A /* WeightInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17395FD12A23C0920006823A /* WeightInputVC.swift */; };
+		17395FD42A23C0B40006823A /* ActivityLevelInputVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17395FD32A23C0B40006823A /* ActivityLevelInputVC.swift */; };
 		17395FD62A23C0F80006823A /* AmbienceTemperatureInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17395FD52A23C0F80006823A /* AmbienceTemperatureInputViewController.swift */; };
 		17395FD82A23D8280006823A /* ConfirmationDailyConsumptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17395FD72A23D8280006823A /* ConfirmationDailyConsumptionViewController.swift */; };
 		1739DF682ADC66900023CA65 /* EditWaterSourceListVC+DragAndDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1739DF672ADC66900023CA65 /* EditWaterSourceListVC+DragAndDrop.swift */; };
 		1739DF6A2ADC86870023CA65 /* AddWaterSourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1739DF692ADC86870023CA65 /* AddWaterSourceCell.swift */; };
-		175E89922A73374600040353 /* NotificationSettingsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175E89912A73374600040353 /* NotificationSettingsRepositoryProtocol.swift */; };
-		175E89962A73394100040353 /* NotificationSettingsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175E89952A73394100040353 /* NotificationSettingsRepositoryImpl.swift */; };
+		174405E62B0855E9008952B6 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174405E52B0855E9008952B6 /* AppTheme.swift */; };
 		1763E32E2A64A20F00DA788D /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763E32D2A64A20F00DA788D /* SettingsSwitchTableViewCell.swift */; };
-		1763E3312A68CA6B00DA788D /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763E3302A68CA6B00DA788D /* NotificationSettings.swift */; };
-		1763E3332A68CD8900DA788D /* GetNotificationSettingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763E3322A68CD8900DA788D /* GetNotificationSettingsUseCase.swift */; };
-		1763E3352A68CDAE00DA788D /* ManageNotificationSettingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763E3342A68CDAE00DA788D /* ManageNotificationSettingsUseCase.swift */; };
 		1763E3392A6B2CA900DA788D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763E3382A6B2CA900DA788D /* SettingsViewModel.swift */; };
 		1763E33B2A6B2CD700DA788D /* SettingsStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763E33A2A6B2CD700DA788D /* SettingsStepper.swift */; };
 		1763E33D2A6B396A00DA788D /* SettingsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763E33C2A6B396A00DA788D /* SettingsDetailTableViewCell.swift */; };
@@ -134,6 +130,12 @@
 		17AE2B292B030E0E0049F554 /* FirstAccessFlowSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B272B030E0D0049F554 /* FirstAccessFlowSteps.swift */; };
 		17AE2B2C2B030E1B0049F554 /* MainAppFlowSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B2A2B030E1A0049F554 /* MainAppFlowSteps.swift */; };
 		17AE2B2D2B030E1B0049F554 /* MainAppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B2B2B030E1A0049F554 /* MainAppFlow.swift */; };
+		17AE2BB22B0312170049F554 /* UserInformationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2BAF2B0312170049F554 /* UserInformationDomain.framework */; };
+		17AE2BB32B0312170049F554 /* UserInformationDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2BAF2B0312170049F554 /* UserInformationDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		17AE2BB42B0312170049F554 /* WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2BB02B0312170049F554 /* WaterManagementDomain.framework */; };
+		17AE2BB52B0312170049F554 /* WaterManagementDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2BB02B0312170049F554 /* WaterManagementDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		17AE2BB62B0312170049F554 /* WaterReminderNotificationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2BB12B0312170049F554 /* WaterReminderNotificationDomain.framework */; };
+		17AE2BB72B0312170049F554 /* WaterReminderNotificationDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2BB12B0312170049F554 /* WaterReminderNotificationDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17AE682C2A08590400571ED8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE682B2A08590400571ED8 /* AppDelegate.swift */; };
 		17AE682E2A08590400571ED8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE682D2A08590400571ED8 /* SceneDelegate.swift */; };
 		17AE68302A08590400571ED8 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE682F2A08590400571ED8 /* HomeVC.swift */; };
@@ -141,10 +143,6 @@
 		17AE68432A08590500571ED8 /* WaterReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE68422A08590500571ED8 /* WaterReminderTests.swift */; };
 		17AE684D2A08590500571ED8 /* WaterReminderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE684C2A08590500571ED8 /* WaterReminderUITests.swift */; };
 		17AE684F2A08590500571ED8 /* WaterReminderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE684E2A08590500571ED8 /* WaterReminderUITestsLaunchTests.swift */; };
-		17B16AE92A4D24A3008133AC /* WaterReminderNotificationManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B16AE82A4D24A3008133AC /* WaterReminderNotificationManagerImpl.swift */; };
-		17B16AEC2A4E5E94008133AC /* ScheduleWaterReminderNotificationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B16AEB2A4E5E94008133AC /* ScheduleWaterReminderNotificationsUseCase.swift */; };
-		17B16AF12A4E6037008133AC /* NotificationFrequencyEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B16AF02A4E6037008133AC /* NotificationFrequencyEnum.swift */; };
-		17B16AF52A5063FA008133AC /* WaterReminderNotificationDomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B16AF42A5063FA008133AC /* WaterReminderNotificationDomainAssembly.swift */; };
 		17BA30162ADB56520090B959 /* HomeFlowStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA30152ADB56520090B959 /* HomeFlowStepper.swift */; };
 		17BC24502AE4319F005C7A09 /* EditWaterSourceListVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BC244F2AE4319F005C7A09 /* EditWaterSourceListVC+Datasource.swift */; };
 		17BC24552AE4538C005C7A09 /* SelectWaterSourceTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BC24542AE4538C005C7A09 /* SelectWaterSourceTypeVC.swift */; };
@@ -164,7 +162,6 @@
 		17C4930A2A1EEDA300ECBAF6 /* DailyWaterConsumptionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C493092A1EEDA300ECBAF6 /* DailyWaterConsumptionObject.swift */; };
 		17C4930C2A1EEDAB00ECBAF6 /* WaterConsumedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4930B2A1EEDAB00ECBAF6 /* WaterConsumedObject.swift */; };
 		17C4930E2A1EEDB700ECBAF6 /* WaterSourceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4930D2A1EEDB700ECBAF6 /* WaterSourceObject.swift */; };
-		17D1A68F2A4924F600A7E698 /* WaterReminderNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D1A68E2A4924F600A7E698 /* WaterReminderNotificationManager.swift */; };
 		17D3C9382A943AC800EB24D3 /* EditWaterSourceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D3C9372A943AC800EB24D3 /* EditWaterSourceListVC.swift */; };
 		17D3EDC22A523865008CEBC1 /* AmbienceTemperatureLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D3EDC12A523865008CEBC1 /* AmbienceTemperatureLevel.swift */; };
 		17E9361F2A0F19D500AAC4E5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9361E2A0F19D500AAC4E5 /* HomeViewModel.swift */; };
@@ -211,7 +208,10 @@
 			dstSubfolderSpec = 10;
 			files = (
 				17668CAF2AFF0CB900B09779 /* Components.framework in Embed Frameworks */,
+				17AE2BB32B0312170049F554 /* UserInformationDomain.framework in Embed Frameworks */,
+				17AE2BB72B0312170049F554 /* WaterReminderNotificationDomain.framework in Embed Frameworks */,
 				17668CB12AFF0CB900B09779 /* Core.framework in Embed Frameworks */,
+				17AE2BB52B0312170049F554 /* WaterManagementDomain.framework in Embed Frameworks */,
 				17668CAD2AFF0CB900B09779 /* Common.framework in Embed Frameworks */,
 				17AE2B1D2B030C060049F554 /* Settings.framework in Embed Frameworks */,
 			);
@@ -280,7 +280,7 @@
 		172F4DA82A23E3C300318699 /* PageProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageProviderProtocol.swift; sourceTree = "<group>"; };
 		172F4DAF2A23F2BF00318699 /* WeightPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightPickerView.swift; sourceTree = "<group>"; };
 		172F4DB12A23F44300318699 /* WeightFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightFormat.swift; sourceTree = "<group>"; };
-		172F4DB32A24021C00318699 /* FirstAccessInformativeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAccessInformativeViewController.swift; sourceTree = "<group>"; };
+		172F4DB32A24021C00318699 /* FirstAccessInformativeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAccessInformativeVC.swift; sourceTree = "<group>"; };
 		172F4DB52A240B4F00318699 /* ActivityLevelSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevelSliderView.swift; sourceTree = "<group>"; };
 		172F4DBA2A24122200318699 /* BaseChildPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseChildPageController.swift; sourceTree = "<group>"; };
 		17318F972A8C544E00026FAD /* HomeVC+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+Datasource.swift"; sourceTree = "<group>"; };
@@ -291,19 +291,15 @@
 		17395FBD2A225B660006823A /* WaterManagementRealmProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterManagementRealmProvider.swift; sourceTree = "<group>"; };
 		17395FC82A22F0030006823A /* UserInformationObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformationObject.swift; sourceTree = "<group>"; };
 		17395FCA2A22F5760006823A /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
-		17395FCD2A23A2C40006823A /* FirstAccessPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAccessPageViewController.swift; sourceTree = "<group>"; };
-		17395FD12A23C0920006823A /* WeightInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightInputViewController.swift; sourceTree = "<group>"; };
-		17395FD32A23C0B40006823A /* ActivityLevelInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevelInputViewController.swift; sourceTree = "<group>"; };
+		17395FCD2A23A2C40006823A /* FirstAccessPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAccessPageVC.swift; sourceTree = "<group>"; };
+		17395FD12A23C0920006823A /* WeightInputVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightInputVC.swift; sourceTree = "<group>"; };
+		17395FD32A23C0B40006823A /* ActivityLevelInputVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevelInputVC.swift; sourceTree = "<group>"; };
 		17395FD52A23C0F80006823A /* AmbienceTemperatureInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmbienceTemperatureInputViewController.swift; sourceTree = "<group>"; };
 		17395FD72A23D8280006823A /* ConfirmationDailyConsumptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationDailyConsumptionViewController.swift; sourceTree = "<group>"; };
 		1739DF672ADC66900023CA65 /* EditWaterSourceListVC+DragAndDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditWaterSourceListVC+DragAndDrop.swift"; sourceTree = "<group>"; };
 		1739DF692ADC86870023CA65 /* AddWaterSourceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWaterSourceCell.swift; sourceTree = "<group>"; };
-		175E89912A73374600040353 /* NotificationSettingsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsRepositoryProtocol.swift; sourceTree = "<group>"; };
-		175E89952A73394100040353 /* NotificationSettingsRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsRepositoryImpl.swift; sourceTree = "<group>"; };
+		174405E52B0855E9008952B6 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		1763E32D2A64A20F00DA788D /* SettingsSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchTableViewCell.swift; sourceTree = "<group>"; };
-		1763E3302A68CA6B00DA788D /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
-		1763E3322A68CD8900DA788D /* GetNotificationSettingsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotificationSettingsUseCase.swift; sourceTree = "<group>"; };
-		1763E3342A68CDAE00DA788D /* ManageNotificationSettingsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageNotificationSettingsUseCase.swift; sourceTree = "<group>"; };
 		1763E3382A6B2CA900DA788D /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		1763E33A2A6B2CD700DA788D /* SettingsStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStepper.swift; sourceTree = "<group>"; };
 		1763E33C2A6B396A00DA788D /* SettingsDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -344,6 +340,9 @@
 		17AE2B272B030E0D0049F554 /* FirstAccessFlowSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAccessFlowSteps.swift; sourceTree = "<group>"; };
 		17AE2B2A2B030E1A0049F554 /* MainAppFlowSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAppFlowSteps.swift; sourceTree = "<group>"; };
 		17AE2B2B2B030E1A0049F554 /* MainAppFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAppFlow.swift; sourceTree = "<group>"; };
+		17AE2BAF2B0312170049F554 /* UserInformationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UserInformationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17AE2BB02B0312170049F554 /* WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17AE2BB12B0312170049F554 /* WaterReminderNotificationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WaterReminderNotificationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE68282A08590400571ED8 /* WaterReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WaterReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE682B2A08590400571ED8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17AE682D2A08590400571ED8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -355,10 +354,6 @@
 		17AE68482A08590500571ED8 /* WaterReminderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaterReminderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE684C2A08590500571ED8 /* WaterReminderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterReminderUITests.swift; sourceTree = "<group>"; };
 		17AE684E2A08590500571ED8 /* WaterReminderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterReminderUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		17B16AE82A4D24A3008133AC /* WaterReminderNotificationManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterReminderNotificationManagerImpl.swift; sourceTree = "<group>"; };
-		17B16AEB2A4E5E94008133AC /* ScheduleWaterReminderNotificationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWaterReminderNotificationsUseCase.swift; sourceTree = "<group>"; };
-		17B16AF02A4E6037008133AC /* NotificationFrequencyEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFrequencyEnum.swift; sourceTree = "<group>"; };
-		17B16AF42A5063FA008133AC /* WaterReminderNotificationDomainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterReminderNotificationDomainAssembly.swift; sourceTree = "<group>"; };
 		17BA30152ADB56520090B959 /* HomeFlowStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlowStepper.swift; sourceTree = "<group>"; };
 		17BC244F2AE4319F005C7A09 /* EditWaterSourceListVC+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EditWaterSourceListVC+Datasource.swift"; sourceTree = "<group>"; };
 		17BC24542AE4538C005C7A09 /* SelectWaterSourceTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWaterSourceTypeVC.swift; sourceTree = "<group>"; };
@@ -378,7 +373,6 @@
 		17C493092A1EEDA300ECBAF6 /* DailyWaterConsumptionObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyWaterConsumptionObject.swift; sourceTree = "<group>"; };
 		17C4930B2A1EEDAB00ECBAF6 /* WaterConsumedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterConsumedObject.swift; sourceTree = "<group>"; };
 		17C4930D2A1EEDB700ECBAF6 /* WaterSourceObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterSourceObject.swift; sourceTree = "<group>"; };
-		17D1A68E2A4924F600A7E698 /* WaterReminderNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterReminderNotificationManager.swift; sourceTree = "<group>"; };
 		17D3C9372A943AC800EB24D3 /* EditWaterSourceListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWaterSourceListVC.swift; sourceTree = "<group>"; };
 		17D3EDC12A523865008CEBC1 /* AmbienceTemperatureLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbienceTemperatureLevel.swift; sourceTree = "<group>"; };
 		17E9361E2A0F19D500AAC4E5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -411,9 +405,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17AE2BB22B0312170049F554 /* UserInformationDomain.framework in Frameworks */,
 				17668CAE2AFF0CB900B09779 /* Components.framework in Frameworks */,
+				17AE2BB42B0312170049F554 /* WaterManagementDomain.framework in Frameworks */,
 				17668CAC2AFF0CB900B09779 /* Common.framework in Frameworks */,
 				17668CB02AFF0CB900B09779 /* Core.framework in Frameworks */,
+				17AE2BB62B0312170049F554 /* WaterReminderNotificationDomain.framework in Frameworks */,
 				17AE2B1C2B030C060049F554 /* Settings.framework in Frameworks */,
 				A402A7848B69CE047780138C /* Pods_WaterReminder.framework in Frameworks */,
 			);
@@ -776,29 +773,13 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
-		17395FDA2A23D8D60006823A /* Presenttation */ = {
+		17395FDA2A23D8D60006823A /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				17D3C9332A9439D100EB24D3 /* ViewController */,
 				17D3C9342A9439DB00EB24D3 /* ViewModel */,
 			);
-			path = Presenttation;
-			sourceTree = "<group>";
-		};
-		175E89932A73388F00040353 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				175E89942A73391B00040353 /* Repositories */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		175E89942A73391B00040353 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-				175E89952A73394100040353 /* NotificationSettingsRepositoryImpl.swift */,
-			);
-			path = Repositories;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		1763E32C2A64A1F600DA788D /* Components */ = {
@@ -809,14 +790,6 @@
 				1763E32D2A64A20F00DA788D /* SettingsSwitchTableViewCell.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		1763E3402A6DFE2700DA788D /* RepositoryProtocols */ = {
-			isa = PBXGroup;
-			children = (
-				175E89912A73374600040353 /* NotificationSettingsRepositoryProtocol.swift */,
-			);
-			path = RepositoryProtocols;
 			sourceTree = "<group>";
 		};
 		17668D112AFF289B00B09779 /* FirstAccessFlow */ = {
@@ -908,7 +881,6 @@
 				1721718C2A770F8C00EFD6FF /* LocalePreferencesDomain */,
 				17A35CAC2A2BA7AF003FF38A /* UserInformationDomain */,
 				17A35CAB2A2BA6DD003FF38A /* WaterManagmentDomain */,
-				17D1A68B2A4923BC00A7E698 /* WaterReminderNotificationDomain */,
 			);
 			path = SharedDomain;
 			sourceTree = "<group>";
@@ -957,12 +929,12 @@
 		17A35CB72A2BD55F003FF38A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				17395FD32A23C0B40006823A /* ActivityLevelInputViewController.swift */,
+				17395FD32A23C0B40006823A /* ActivityLevelInputVC.swift */,
 				17395FD52A23C0F80006823A /* AmbienceTemperatureInputViewController.swift */,
 				17395FD72A23D8280006823A /* ConfirmationDailyConsumptionViewController.swift */,
-				17395FCD2A23A2C40006823A /* FirstAccessPageViewController.swift */,
-				172F4DB32A24021C00318699 /* FirstAccessInformativeViewController.swift */,
-				17395FD12A23C0920006823A /* WeightInputViewController.swift */,
+				17395FCD2A23A2C40006823A /* FirstAccessPageVC.swift */,
+				172F4DB32A24021C00318699 /* FirstAccessInformativeVC.swift */,
+				17395FD12A23C0920006823A /* WeightInputVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1060,6 +1032,7 @@
 			children = (
 				17668CF72AFF260700B09779 /* Assets.xcassets */,
 				17668CF62AFF260700B09779 /* Localizable.xcstrings */,
+				174405E52B0855E9008952B6 /* AppTheme.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1159,33 +1132,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		17B16AE72A4D2484008133AC /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				17B16AE82A4D24A3008133AC /* WaterReminderNotificationManagerImpl.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		17B16AEA2A4E5E66008133AC /* UseCases */ = {
-			isa = PBXGroup;
-			children = (
-				17B16AEB2A4E5E94008133AC /* ScheduleWaterReminderNotificationsUseCase.swift */,
-				1763E3322A68CD8900DA788D /* GetNotificationSettingsUseCase.swift */,
-				1763E3342A68CDAE00DA788D /* ManageNotificationSettingsUseCase.swift */,
-			);
-			path = UseCases;
-			sourceTree = "<group>";
-		};
-		17B16AEF2A4E6024008133AC /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				17B16AF02A4E6037008133AC /* NotificationFrequencyEnum.swift */,
-				1763E3302A68CA6B00DA788D /* NotificationSettings.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		17BC24532AE452B6005C7A09 /* SelectWaterSourceTypeVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1254,44 +1200,6 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
-		17D1A68B2A4923BC00A7E698 /* WaterReminderNotificationDomain */ = {
-			isa = PBXGroup;
-			children = (
-				175E89932A73388F00040353 /* Data */,
-				17D1A68D2A49240900A7E698 /* Domain */,
-				17D1A68C2A4923E900A7E698 /* Framework */,
-				17B16AF42A5063FA008133AC /* WaterReminderNotificationDomainAssembly.swift */,
-			);
-			path = WaterReminderNotificationDomain;
-			sourceTree = "<group>";
-		};
-		17D1A68C2A4923E900A7E698 /* Framework */ = {
-			isa = PBXGroup;
-			children = (
-				17B16AE72A4D2484008133AC /* Managers */,
-			);
-			path = Framework;
-			sourceTree = "<group>";
-		};
-		17D1A68D2A49240900A7E698 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				1763E3402A6DFE2700DA788D /* RepositoryProtocols */,
-				17B16AEF2A4E6024008133AC /* Models */,
-				17B16AEA2A4E5E66008133AC /* UseCases */,
-				17D1A6902A49252300A7E698 /* FrameworkProtocols */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		17D1A6902A49252300A7E698 /* FrameworkProtocols */ = {
-			isa = PBXGroup;
-			children = (
-				17D1A68E2A4924F600A7E698 /* WaterReminderNotificationManager.swift */,
-			);
-			path = FrameworkProtocols;
-			sourceTree = "<group>";
-		};
 		17D3C9332A9439D100EB24D3 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1339,7 +1247,7 @@
 			children = (
 				1700EDDE2AE57AE3003FA5EC /* Domain */,
 				17A4940B2A3FB36400B25CE5 /* Flow */,
-				17395FDA2A23D8D60006823A /* Presenttation */,
+				17395FDA2A23D8D60006823A /* Presentation */,
 				17A4941A2A3FBD1B00B25CE5 /* HomeAssembly.swift */,
 			);
 			path = Home;
@@ -1379,6 +1287,9 @@
 		9BCD0976D0A0FB05A7F659A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17AE2BAF2B0312170049F554 /* UserInformationDomain.framework */,
+				17AE2BB02B0312170049F554 /* WaterManagementDomain.framework */,
+				17AE2BB12B0312170049F554 /* WaterReminderNotificationDomain.framework */,
 				17AE2B1B2B030C060049F554 /* Settings.framework */,
 				17668CA92AFF0CB900B09779 /* Common.framework */,
 				17668CAA2AFF0CB900B09779 /* Components.framework */,
@@ -1651,7 +1562,6 @@
 				17A494112A3FB5C700B25CE5 /* StatisticsFlow.swift in Sources */,
 				172171A72A7B33AF00EFD6FF /* NotificationFrequencyPickerView.swift in Sources */,
 				17A35CA92A2B947D003FF38A /* AppContainer.swift in Sources */,
-				175E89922A73374600040353 /* NotificationSettingsRepositoryProtocol.swift in Sources */,
 				17A4940F2A3FB5B800B25CE5 /* SettingsFlow.swift in Sources */,
 				172171702A76F5AC00EFD6FF /* SectionItemProtocol.swift in Sources */,
 				171A674D2AF5C86C00B174C3 /* GetConsumedWaterPercentageUseCaseImpl.swift in Sources */,
@@ -1681,7 +1591,6 @@
 				172171792A76F6AC00EFD6FF /* SettingsViewController+PresentPeriodSelector.swift in Sources */,
 				171A67422AF54DDA00B174C3 /* CreateWaterSourceDelegate.swift in Sources */,
 				17E936372A11C0A100AAC4E5 /* SettingsViewController.swift in Sources */,
-				17B16AF12A4E6037008133AC /* NotificationFrequencyEnum.swift in Sources */,
 				171A674B2AF5C82600B174C3 /* GetConsumedWaterPercentageUseCase.swift in Sources */,
 				17A494132A3FB6B600B25CE5 /* HomeFlowSteps.swift in Sources */,
 				17C4929B2A192BCE00ECBAF6 /* WaterConsumedRepositoryImpl.swift in Sources */,
@@ -1698,14 +1607,13 @@
 				17E9362F2A11B6CE00AAC4E5 /* DailyWaterConsumptionRepositoryProtocol.swift in Sources */,
 				1710B5D82A328D4B004A6385 /* UserInformationDomainAssembly.swift in Sources */,
 				173426DB2A146116007D475B /* WaterSourceRepositoryProtocol.swift in Sources */,
-				17B16AEC2A4E5E94008133AC /* ScheduleWaterReminderNotificationsUseCase.swift in Sources */,
 				172F4DA92A23E3C300318699 /* PageProviderProtocol.swift in Sources */,
 				172171C82A7FFACC00EFD6FF /* WaterWithFormat.swift in Sources */,
 				176D58622AD82D7900206125 /* HomeSections.swift in Sources */,
 				17BC245D2AE4C08C005C7A09 /* WaterSourceSettingCell.swift in Sources */,
 				17AE68302A08590400571ED8 /* HomeVC.swift in Sources */,
 				1710B5D22A3254D3004A6385 /* SwitchWithLabel.swift in Sources */,
-				17395FD42A23C0B40006823A /* ActivityLevelInputViewController.swift in Sources */,
+				17395FD42A23C0B40006823A /* ActivityLevelInputVC.swift in Sources */,
 				17C4930C2A1EEDAB00ECBAF6 /* WaterConsumedObject.swift in Sources */,
 				173426E42A146879007D475B /* WaterSourceRepositoryImpl.swift in Sources */,
 				17A35CA32A2B8F63003FF38A /* FirstAccessInformationAssembly.swift in Sources */,
@@ -1716,16 +1624,15 @@
 				1710B5DA2A328E54004A6385 /* WaterManagementDomainAssembly.swift in Sources */,
 				17C492992A192B6300ECBAF6 /* WaterConsumedRepositoryProtocol.swift in Sources */,
 				17E936392A11C0B800AAC4E5 /* HistoryViewController.swift in Sources */,
+				174405E62B0855E9008952B6 /* AppTheme.swift in Sources */,
 				17FF31122A5B4CB7004857C1 /* ManageWaterSourceUseCase.swift in Sources */,
 				172F4DA32A23D93C00318699 /* FirstAccessPageProvider.swift in Sources */,
 				172171BE2A7FF70000EFD6FF /* GetWaterSourceUseCaseProtocol.swift in Sources */,
 				172171A52A7B2F6100EFD6FF /* NotificationFrequencySelectorDelegate.swift in Sources */,
 				17C0AF212AF52E9100F8E6CA /* CreateWaterSourceItemVC+WaterVolumeCell.swift in Sources */,
 				17A5C2902A8450C9002DFA20 /* HomeVC+WaterSourceListSection+Cell.swift in Sources */,
-				17B16AE92A4D24A3008133AC /* WaterReminderNotificationManagerImpl.swift in Sources */,
 				17C0AF252AF541BD00F8E6CA /* EditWaterSourceListVC+AddWaterSourceCell.swift in Sources */,
 				172171752A76F62500EFD6FF /* GeneralSectionItems.swift in Sources */,
-				1763E3312A68CA6B00DA788D /* NotificationSettings.swift in Sources */,
 				172171BC2A7FF69C00EFD6FF /* GetWaterConsumedUseCaseProtocol.swift in Sources */,
 				17A5C2922A845DD3002DFA20 /* NotificationReminderToggleDelegate.swift in Sources */,
 				1727AEB32A895EE400EEFED4 /* VolumeFormat+ExhibitionInfo.swift in Sources */,
@@ -1738,7 +1645,6 @@
 				17A4940D2A3FB5AD00B25CE5 /* HomeFlow.swift in Sources */,
 				1721718E2A770FAB00EFD6FF /* LocalePreferencesDomainAssembly.swift in Sources */,
 				17C493042A1C49A100ECBAF6 /* WaterSource.swift in Sources */,
-				175E89962A73394100040353 /* NotificationSettingsRepositoryImpl.swift in Sources */,
 				17BC24582AE4569E005C7A09 /* WaterSourceTypePicker.swift in Sources */,
 				1700EDE22AE57BE2003FA5EC /* ReorderWaterSourceUseCase.swift in Sources */,
 				172171922A770FEB00EFD6FF /* GetLocalePreferencesUseCase.swift in Sources */,
@@ -1746,7 +1652,6 @@
 				17395FD62A23C0F80006823A /* AmbienceTemperatureInputViewController.swift in Sources */,
 				17A4941B2A3FBD1B00B25CE5 /* HomeAssembly.swift in Sources */,
 				172171C42A7FF7B000EFD6FF /* RegisterVolumeFormatUseCaseProtocol.swift in Sources */,
-				1763E3352A68CDAE00DA788D /* ManageNotificationSettingsUseCase.swift in Sources */,
 				17AE2B2D2B030E1B0049F554 /* MainAppFlow.swift in Sources */,
 				1727AEA82A85C2ED00EEFED4 /* DailyConsumptionSection.swift in Sources */,
 				17A35CC62A2D2C8B003FF38A /* GetExpectedWaterConsumptionUseCase.swift in Sources */,
@@ -1762,14 +1667,13 @@
 				17AE2B2C2B030E1B0049F554 /* MainAppFlowSteps.swift in Sources */,
 				17395FC92A22F0030006823A /* UserInformationObject.swift in Sources */,
 				1727AEAC2A88035900EEFED4 /* HistoryViewModel.swift in Sources */,
-				17395FD22A23C0920006823A /* WeightInputViewController.swift in Sources */,
+				17395FD22A23C0920006823A /* WeightInputVC.swift in Sources */,
 				17D3C9382A943AC800EB24D3 /* EditWaterSourceListVC.swift in Sources */,
-				172F4DB42A24021C00318699 /* FirstAccessInformativeViewController.swift in Sources */,
+				172F4DB42A24021C00318699 /* FirstAccessInformativeVC.swift in Sources */,
 				1700EDE82AE5D3A5003FA5EC /* CreateWaterSourceItemVC+Datasource.swift in Sources */,
 				17BC24552AE4538C005C7A09 /* SelectWaterSourceTypeVC.swift in Sources */,
 				172171AC2A7C8D3000EFD6FF /* DailyWaterSelectorDelegate.swift in Sources */,
 				17395FD82A23D8280006823A /* ConfirmationDailyConsumptionViewController.swift in Sources */,
-				17D1A68F2A4924F600A7E698 /* WaterReminderNotificationManager.swift in Sources */,
 				1721716A2A75D2F700EFD6FF /* PeriodSelectorDelegate.swift in Sources */,
 				17AE682E2A08590400571ED8 /* SceneDelegate.swift in Sources */,
 				17D3EDC22A523865008CEBC1 /* AmbienceTemperatureLevel.swift in Sources */,
@@ -1784,10 +1688,9 @@
 				17C0AF272AF543B300F8E6CA /* EditWaterSourceListVC+WaterSourceEditableCell.swift in Sources */,
 				177FD3DC2A3694A800F5602F /* FirstAccessInformationPageNavigationDelegate.swift in Sources */,
 				176D585F2AD828FE00206125 /* HomeVC+WaterSourceListSection+Header.swift in Sources */,
-				17B16AF52A5063FA008133AC /* WaterReminderNotificationDomainAssembly.swift in Sources */,
 				17C4929E2A1ABC8100ECBAF6 /* DailyWaterConsumptionRepositoryImpl.swift in Sources */,
 				17C0AF232AF52EA800F8E6CA /* CreateWaterSourceItemVC+WaterSourceTypeCell.swift in Sources */,
-				17395FCE2A23A2C40006823A /* FirstAccessPageViewController.swift in Sources */,
+				17395FCE2A23A2C40006823A /* FirstAccessPageVC.swift in Sources */,
 				172171C02A7FF74800EFD6FF /* ManageWaterSourceUseCaseProtocol.swift in Sources */,
 				172F4DB22A23F44300318699 /* WeightFormat.swift in Sources */,
 				17A5C28E2A844F4A002DFA20 /* HomeVC+WaterPercentageSection+Cell.swift in Sources */,
@@ -1798,7 +1701,6 @@
 				17318F982A8C544E00026FAD /* HomeVC+Datasource.swift in Sources */,
 				172171842A76FD9E00EFD6FF /* DailyWaterSelectorModalViewController.swift in Sources */,
 				172171BA2A7FF62C00EFD6FF /* GetVolumeFormatUseCaseProtocol.swift in Sources */,
-				1763E3332A68CD8900DA788D /* GetNotificationSettingsUseCase.swift in Sources */,
 				1739DF6A2ADC86870023CA65 /* AddWaterSourceCell.swift in Sources */,
 				17BC24502AE4319F005C7A09 /* EditWaterSourceListVC+Datasource.swift in Sources */,
 				172171C22A7FF77900EFD6FF /* RegisterDailyWaterConsumptionUseCaseProtocol.swift in Sources */,

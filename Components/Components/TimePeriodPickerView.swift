@@ -1,28 +1,27 @@
 //
-//  TimeWheelPickerView.swift
+//  VerticalTimeWheelPickerView.swift
 //  WaterReminder
 //
-//  Created by Lucas Calheiros on 08/06/23.
+//  Created by Lucas Calheiros on 18/11/23.
 //
 
 import Foundation
 import UIKit
 import Common
+import Core
 
-open class TimeWheelPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
-	
+open class TimePeriodPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
+
 	open var dayTime: [TimePeriod] = Array()
-	open var valueChangeListener: ((TimeWheelPickerView) -> Void)?
+	open var valueChangeListener: ((TimePeriodPickerView) -> Void)?
 
-	open var selectedIndex: Int = 0
-    public let rotationSelfAngle: CGFloat = -90  * (.pi/180)
-    public let rotationItemAngle: CGFloat = 90  * (.pi/180)
-	
+    open var initialTimeIndex: Int = 0
+	open var finalTimeIndex: Int = 0
+
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		dataSource = self
 		delegate = self
-		transform = CGAffineTransform(rotationAngle: rotationSelfAngle)
 	}
 	
     required public init?(coder: NSCoder) {
@@ -31,45 +30,42 @@ open class TimeWheelPickerView: UIPickerView, UIPickerViewDataSource, UIPickerVi
 
     open func updateData(dayTime: [TimePeriod]) {
 		self.dayTime = dayTime
-		reloadComponent(0)
+        reloadAllComponents()
 	}
 
     open override func selectRow(_ row: Int, inComponent: Int, animated: Bool) {
-		selectedIndex = row
+        switch Sections.allCases[safe: inComponent] {
+        case .initialTime:
+            initialTimeIndex = row
+        case .finalTime:
+            finalTimeIndex = row
+        default:
+            break
+        }
 		super.selectRow(row, inComponent: inComponent, animated: animated)
 	}
 	
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-		1
+        return Sections.allCases.count
 	}
 	
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		switch component {
-		case 0:
-			return dayTime.count
-		default:
-			return 0
-		}
+        return dayTime.count
 	}
-	
+
     public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-		switch component {
-		case 0:
-			return 75
-		default:
-			return 0
-		}
+        return 40
 	}
 
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-		switch component {
-		case 0:
+        switch Sections.allCases[safe: component] {
+        case .initialTime, .finalTime:
 			return dayTime[row].hourAndMinuteAsString()
 		default:
 			return ""
 		}
 	}
-	
+
     public func pickerView(
 		_ pickerView: UIPickerView,
 		viewForRow row: Int,
@@ -81,23 +77,38 @@ open class TimeWheelPickerView: UIPickerView, UIPickerViewDataSource, UIPickerVi
 		label.text = string
 		label.textColor = DefaultComponentsTheme.componentsTheme.background.onColor
 		label.textAlignment = .center
-		label.transform = CGAffineTransform(rotationAngle: rotationItemAngle)
-		switch component {
-		case 0:
-            label.font = .boldSystemFont(ofSize: 25)
-		default:
-			break
-		}
+        label.font = UIFont.h3
 		return label
 	}
 
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-		switch component {
-		case 0:
-			selectedIndex = row
+		switch Sections.allCases[safe: component] {
+        case .initialTime:
+			initialTimeIndex = row
+            limitInitialPickerValue()
+        case .finalTime:
+            finalTimeIndex = row
+            limitFinalPickerValue()
 		default:
 			break
 		}
 		valueChangeListener?(self)
 	}
+
+    private func limitInitialPickerValue() {
+        if (initialTimeIndex > finalTimeIndex) {
+            selectRow(initialTimeIndex, inComponent: Sections.allCases.firstIndex(of: .finalTime)!, animated: true)
+        }
+    }
+
+    private func limitFinalPickerValue() {
+        if (initialTimeIndex > finalTimeIndex) {
+            selectRow(finalTimeIndex, inComponent: Sections.allCases.firstIndex(of: .initialTime)!, animated: true)
+        }
+    }
+
+    enum Sections: CaseIterable {
+        case initialTime
+        case finalTime
+    }
 }

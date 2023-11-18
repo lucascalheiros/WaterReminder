@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum NotificationFrequencyEnum: Int, CaseIterable {
+public enum NotificationFrequencyEnum: Int, CaseIterable {
 	case high
 	case medium
 	case low
 
-	func stringValue() -> String {
+    public func stringValue() -> String {
 		switch self {
 		case .high:
 			return String(localized: "generic.high")

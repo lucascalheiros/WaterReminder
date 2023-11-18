@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class WeightInputViewController: BaseChildPageController {
+class WeightInputVC: BaseChildPageController {
 	private let disposeBag = DisposeBag()
 	
 	lazy var weightPicker = {

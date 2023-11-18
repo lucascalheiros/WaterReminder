@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstAccessInformativeViewController: BaseChildPageController {
+class FirstAccessInformativeVC: BaseChildPageController {
 	
 	lazy var informativeSecondaryText = {
 		let label = UILabel()

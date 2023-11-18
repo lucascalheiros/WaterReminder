@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ManageNotificationSettingsUseCase {
+public class ManageNotificationSettingsUseCase {
 	let scheduleWaterReminderNotificationsUseCase: ScheduleWaterReminderNotificationsUseCase
 	let waterReminderNotificationManager: WaterReminderNotificationManager
 	let notificationSettingsRepository: NotificationSettingsRepositoryProtocol
@@ -22,7 +22,7 @@ class ManageNotificationSettingsUseCase {
 		self.notificationSettingsRepository = notificationSettingsRepository
 	}
 
-	func setNotificationSetting(_ notificationSettings: NotificationSettings) {
+	public func setNotificationSetting(_ notificationSettings: NotificationSettings) {
 		notificationSettingsRepository.setNotificationSettings(notificationSettings: notificationSettings)
 		if notificationSettings.isReminderEnabled {
 			scheduleWaterReminderNotificationsUseCase.scheduleNotifications(

@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		113FEA3E4D2AA7459EA8B839 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA03E727D7A71FAF295D677F /* Pods_Core.framework */; };
+		174405EA2B0856CE008952B6 /* AppColorGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174405E92B0856CE008952B6 /* AppColorGroup.swift */; };
 		17668C942AFF0B3800B09779 /* Core.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17668C932AFF0B3800B09779 /* Core.docc */; };
 		17668C9A2AFF0B3800B09779 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17668C8F2AFF0B3800B09779 /* Core.framework */; };
 		17668C9F2AFF0B3800B09779 /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668C9E2AFF0B3800B09779 /* CoreTests.swift */; };
 		17668CD02AFF160000B09779 /* UINavigationController+DefaultAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668CCF2AFF160000B09779 /* UINavigationController+DefaultAppearance.swift */; };
-		17668CE92AFF1B5400B09779 /* AppColorGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668CE82AFF1B5300B09779 /* AppColorGroup.swift */; };
 		17668CEB2AFF1B5A00B09779 /* UIFont+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668CEA2AFF1B5A00B09779 /* UIFont+Resources.swift */; };
 		17668CF12AFF1D0400B09779 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17668CF02AFF1D0400B09779 /* Common.framework */; };
 		17668CF22AFF1D0400B09779 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17668CF02AFF1D0400B09779 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -49,12 +49,12 @@
 
 /* Begin PBXFileReference section */
 		116BE758E76FC2A4AF048B3B /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
+		174405E92B0856CE008952B6 /* AppColorGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorGroup.swift; sourceTree = "<group>"; };
 		17668C8F2AFF0B3800B09779 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17668C932AFF0B3800B09779 /* Core.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Core.docc; sourceTree = "<group>"; };
 		17668C992AFF0B3800B09779 /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17668C9E2AFF0B3800B09779 /* CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTests.swift; sourceTree = "<group>"; };
 		17668CCF2AFF160000B09779 /* UINavigationController+DefaultAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+DefaultAppearance.swift"; sourceTree = "<group>"; };
-		17668CE82AFF1B5300B09779 /* AppColorGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorGroup.swift; sourceTree = "<group>"; };
 		17668CEA2AFF1B5A00B09779 /* UIFont+Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Resources.swift"; sourceTree = "<group>"; };
 		17668CF02AFF1D0400B09779 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2AEB2B03050A0049F554 /* ObjectToDomainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectToDomainProtocol.swift; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				17668C932AFF0B3800B09779 /* Core.docc */,
-				17668CE82AFF1B5300B09779 /* AppColorGroup.swift */,
+				174405E92B0856CE008952B6 /* AppColorGroup.swift */,
 				17668CEA2AFF1B5A00B09779 /* UIFont+Resources.swift */,
 				17668CCF2AFF160000B09779 /* UINavigationController+DefaultAppearance.swift */,
 				17AE2AF62B0309E40049F554 /* Base */,
@@ -324,7 +324,7 @@
 				17AE2AEE2B03058C0049F554 /* BaseRepository.swift in Sources */,
 				17668CEB2AFF1B5A00B09779 /* UIFont+Resources.swift in Sources */,
 				17AE2AEC2B03050A0049F554 /* ObjectToDomainProtocol.swift in Sources */,
-				17668CE92AFF1B5400B09779 /* AppColorGroup.swift in Sources */,
+				174405EA2B0856CE008952B6 /* AppColorGroup.swift in Sources */,
 				17668C942AFF0B3800B09779 /* Core.docc in Sources */,
 				17AE2AF42B0305E50049F554 /* BaseObject.swift in Sources */,
 				17668CD02AFF160000B09779 /* UINavigationController+DefaultAppearance.swift in Sources */,

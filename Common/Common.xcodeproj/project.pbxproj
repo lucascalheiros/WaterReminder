@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		174405EE2B085719008952B6 /* ThemedColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174405EC2B085719008952B6 /* ThemedColor.swift */; };
+		174405EF2B085719008952B6 /* ThemedColorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174405ED2B085719008952B6 /* ThemedColorProtocol.swift */; };
 		17668C4C2AFF09F600B09779 /* Common.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17668C4B2AFF09F600B09779 /* Common.docc */; };
 		17668C522AFF09F700B09779 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17668C472AFF09F600B09779 /* Common.framework */; };
 		17668C572AFF09F700B09779 /* CommonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668C562AFF09F700B09779 /* CommonTests.swift */; };
@@ -39,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		0DB53809B6301E6273607124 /* Pods_CommonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		174405EC2B085719008952B6 /* ThemedColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedColor.swift; sourceTree = "<group>"; };
+		174405ED2B085719008952B6 /* ThemedColorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemedColorProtocol.swift; sourceTree = "<group>"; };
 		17668C472AFF09F600B09779 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17668C4B2AFF09F600B09779 /* Common.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Common.docc; sourceTree = "<group>"; };
 		17668C512AFF09F700B09779 /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		174405EB2B085703008952B6 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				174405ED2B085719008952B6 /* ThemedColorProtocol.swift */,
+				174405EC2B085719008952B6 /* ThemedColor.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		17668C3D2AFF09F600B09779 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +120,7 @@
 		17668C492AFF09F600B09779 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				174405EB2B085703008952B6 /* Theme */,
 				17668C4B2AFF09F600B09779 /* Common.docc */,
 				17668CDA2AFF167400B09779 /* Foundation */,
 				17668CDB2AFF168700B09779 /* RxSwift */,
@@ -345,7 +359,9 @@
 				17668CC22AFF0F2700B09779 /* UIEdgeInsets+Shorthand.swift in Sources */,
 				17668C4C2AFF09F600B09779 /* Common.docc in Sources */,
 				17668CCB2AFF108100B09779 /* CollectionExt.swift in Sources */,
+				174405EE2B085719008952B6 /* ThemedColor.swift in Sources */,
 				17668CCC2AFF108100B09779 /* ScopedExtensions.swift in Sources */,
+				174405EF2B085719008952B6 /* ThemedColorProtocol.swift in Sources */,
 				17668CDD2AFF172A00B09779 /* ProgramaticView.swift in Sources */,
 				17668CD82AFF161600B09779 /* UIView+AddTapListener.swift in Sources */,
 				17668CD62AFF161600B09779 /* UIView+AddConstrainedSubview.swift in Sources */,

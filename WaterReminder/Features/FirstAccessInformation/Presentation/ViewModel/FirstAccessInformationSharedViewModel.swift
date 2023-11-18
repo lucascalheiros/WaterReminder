@@ -9,6 +9,7 @@ import RxRelay
 import RxSwift
 import RxFlow
 import Common
+import WaterReminderNotificationDomain
 
 class FirstAccessInformationSharedViewModel {
 	private let disposeBag = DisposeBag()

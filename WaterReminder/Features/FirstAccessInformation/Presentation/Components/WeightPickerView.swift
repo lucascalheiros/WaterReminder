@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Core
 
 class WeightPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
 	
@@ -92,7 +93,7 @@ class WeightPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelega
 		let string = self.pickerView(pickerView, titleForRow: row, forComponent: component) ?? ""
 		let label = view as? UILabel ?? UILabel()
 		label.text = string
-		label.textColor = .white
+		label.textColor = AppColorGroup.background.onColor
 		label.textAlignment = .center
 		switch component {
 		case 0:

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RxSwift
 
-class FirstAccessPageViewController: UIPageViewController {
+class FirstAccessPageVC: UIPageViewController {
 	let pageProvider: PageProviderProtocol
 	let firstAccessInformationViewModel: FirstAccessInformationSharedViewModel
 
@@ -129,7 +129,7 @@ class FirstAccessPageViewController: UIPageViewController {
 	}
 }
 
-extension FirstAccessPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+extension FirstAccessPageVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 	func pageViewController(
 		_ pageViewController: UIPageViewController,
 		viewControllerBefore viewController: UIViewController

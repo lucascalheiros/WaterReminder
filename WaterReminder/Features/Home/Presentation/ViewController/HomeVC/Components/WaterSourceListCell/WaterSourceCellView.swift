@@ -19,14 +19,14 @@ class WaterSourceCellView: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .h4
-        label.textColor = .darkGray
+        label.textColor = AppColorGroup.surface.onColor
         return label
     }()
 
     private lazy var volumeLabel: UILabel = {
         let label = UILabel()
         label.font = .h3
-        label.textColor = .darkGray
+        label.textColor = AppColorGroup.surface.onColor
         return label
     }()
 

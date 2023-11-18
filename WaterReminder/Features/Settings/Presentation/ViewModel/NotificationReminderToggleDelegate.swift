@@ -8,6 +8,7 @@
 import RxSwift
 import RxRelay
 import Common
+import WaterReminderNotificationDomain
 
 class NotificationReminderToggleDelegate {
 	let disposeBag = DisposeBag()

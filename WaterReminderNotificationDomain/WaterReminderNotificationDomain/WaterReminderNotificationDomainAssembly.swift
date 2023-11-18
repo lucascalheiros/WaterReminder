@@ -8,8 +8,11 @@
 import Swinject
 import SwinjectAutoregistration
 
-class WaterReminderNotificationDomainAssembly: Assembly {
-	func assemble(container: Container) {
+public class WaterReminderNotificationDomainAssembly: Assembly {
+
+    public init() {}
+
+	public func assemble(container: Container) {
 		container.autoregister(
 			WaterReminderNotificationManager.self,
 			initializer: WaterReminderNotificationManagerImpl.init

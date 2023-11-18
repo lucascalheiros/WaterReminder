@@ -1,5 +1,5 @@
 //
-//  ConfirmationDailyConsumptionVC.swift
+//  ConfirmationDailyConsumptionViewController.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 14/05/23.
@@ -33,7 +33,7 @@ class ConfirmationDailyConsumptionVC: BaseChildPageController {
 		]
 		button.setTitleTextAttributes(attributes, for: .normal)
 		button.setTitleTextAttributes(attributes, for: .selected)
-        button.selectedSegmentTintColor = AppColorGroup.primary.color
+		button.selectedSegmentTintColor = .blue
 		button.rx.selectedSegmentIndex.bind {
 			let format = (VolumeFormat(rawValue: $0) ?? VolumeFormat.metric)
 			self.dailyWaterEditText.suffix.text = format.formatDisplay
@@ -53,20 +53,29 @@ class ConfirmationDailyConsumptionVC: BaseChildPageController {
 		return button
 	}()
 
-    private lazy var timePeriodSelector = {
-        let picker = TimePeriodPickerView()
-        picker.updateData(dayTime: firstAccessInformationViewModel.timePeriodFifteenMinutesSpaced)
-        picker.selectRow(firstAccessInformationViewModel.initialTimeIndex.value, inComponent: 0, animated: false)
-        picker.selectRow(firstAccessInformationViewModel.finalTimeIndex.value, inComponent: 1, animated: false)
-        picker.rx.itemSelected.map { _ in
-            return picker
-        }.bind { [weak self] picker in
-            self?.firstAccessInformationViewModel.initialTimeIndex.accept(picker.initialTimeIndex)
-            self?.firstAccessInformationViewModel.finalTimeIndex.accept(picker.finalTimeIndex)
-        }
-            .disposed(by: disposeBag)
-        return picker
-    }()
+	private lazy var initialNotificationTime = {
+		let picker = TimeWheelPickerView()
+		picker.updateData(dayTime: firstAccessInformationViewModel.timePeriodFifteenMinutesSpaced)
+		picker.selectRow(firstAccessInformationViewModel.initialTimeIndex.value, inComponent: 0, animated: false)
+		picker.rx.itemSelected.map { _ in
+			self.limitInitialPickerValue()
+			return picker.selectedIndex
+		}.bind(to: firstAccessInformationViewModel.initialTimeIndex)
+			.disposed(by: disposeBag)
+		return picker
+	}()
+
+	private lazy var finalNotificationTime = {
+		let picker = TimeWheelPickerView()
+		picker.updateData(dayTime: firstAccessInformationViewModel.timePeriodFifteenMinutesSpaced)
+		picker.selectRow(firstAccessInformationViewModel.finalTimeIndex.value, inComponent: 0, animated: false)
+		picker.rx.itemSelected.map { _ in
+			self.limitFinalPickerValue()
+			return picker.selectedIndex
+		}.bind(to: firstAccessInformationViewModel.finalTimeIndex)
+			.disposed(by: disposeBag)
+		return picker
+	}()
 
 	private lazy var shouldRemindSwitch = {
 		let uiSwitch = SwitchWithLabel()
@@ -98,8 +107,9 @@ class ConfirmationDailyConsumptionVC: BaseChildPageController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		firstAccessInformationViewModel.shouldRemind.subscribe(onNext : { [weak self] bool in
-            self?.timePeriodSelector.isHidden = !bool
+		firstAccessInformationViewModel.shouldRemind.subscribe(onNext : { bool in
+			self.initialNotificationTime.isHidden = !bool
+			self.finalNotificationTime.isHidden = !bool
 		}).disposed(by: disposeBag)
 
 		firstAccessInformationViewModel.scheduleNotificationOnConfirmEvent.subscribe(onNext: { _ in
@@ -120,7 +130,8 @@ class ConfirmationDailyConsumptionVC: BaseChildPageController {
 			viewWrapper,
 			dailyWaterEditText,
 			confirmationBtn,
-            timePeriodSelector,
+			initialNotificationTime,
+			finalNotificationTime,
 			shouldRemindSwitch,
 			volumeFormatSegmentationControl
 		)
@@ -140,10 +151,15 @@ class ConfirmationDailyConsumptionVC: BaseChildPageController {
 			dailyWaterEditText.widthAnchor.constraint(equalToConstant: 180),
 			dailyWaterEditText.heightAnchor.constraint(equalToConstant: 60),
 
-            timePeriodSelector.bottomAnchor.constraint(equalTo: shouldRemindSwitch.topAnchor, constant: -16),
-            timePeriodSelector.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            timePeriodSelector.widthAnchor.constraint(equalToConstant: 300),
-            timePeriodSelector.heightAnchor.constraint(equalToConstant: 150),
+			initialNotificationTime.bottomAnchor.constraint(equalTo: shouldRemindSwitch.topAnchor, constant: -offsetForRotation(300, 75) - 91),
+			initialNotificationTime.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			initialNotificationTime.widthAnchor.constraint(equalToConstant: 75),
+			initialNotificationTime.heightAnchor.constraint(equalToConstant: 300),
+
+			finalNotificationTime.bottomAnchor.constraint(equalTo: shouldRemindSwitch.topAnchor, constant: -offsetForRotation(300, 75) - 16),
+			finalNotificationTime.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			finalNotificationTime.widthAnchor.constraint(equalToConstant: 75),
+			finalNotificationTime.heightAnchor.constraint(equalToConstant: 300),
 
 			shouldRemindSwitch.bottomAnchor.constraint(equalTo: confirmationBtn.topAnchor, constant: -32),
 			shouldRemindSwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -155,6 +171,22 @@ class ConfirmationDailyConsumptionVC: BaseChildPageController {
 			volumeFormatSegmentationControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			volumeFormatSegmentationControl.topAnchor.constraint(equalTo: dailyWaterEditText.bottomAnchor, constant: 8)
 		])
+	}
+
+	func limitInitialPickerValue() {
+		if (initialNotificationTime.selectedIndex > finalNotificationTime.selectedIndex) {
+			finalNotificationTime.selectRow(initialNotificationTime.selectedIndex, inComponent: 0, animated: true)
+		}
+	}
+
+	func limitFinalPickerValue() {
+		if (finalNotificationTime.selectedIndex < initialNotificationTime.selectedIndex) {
+			initialNotificationTime.selectRow(finalNotificationTime.selectedIndex, inComponent: 0, animated: true)
+		}
+	}
+
+	func offsetForRotation(_ finalWidth: CGFloat, _ finalHeight: CGFloat) -> CGFloat {
+		-(finalWidth - finalHeight) / 2
 	}
 
 	func onConfirmPressed() {

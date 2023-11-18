@@ -7,6 +7,7 @@
 
 import RxSwift
 import RxCocoa
+import WaterReminderNotificationDomain
 
 class NotificationFrequencySelectorDelegate {
 	let disposeBag = DisposeBag()

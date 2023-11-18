@@ -36,7 +36,7 @@ public class FirstAccessFlow: Flow {
 	}
 
 	private func navigateToFirstAccessTutorial() -> FlowContributors {
-		let viewController = container.resolve(FirstAccessPageViewController.self)!
+		let viewController = container.resolve(FirstAccessPageVC.self)!
 		self.rootViewController.pushViewController(viewController, animated: false)
 		return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: container.resolve(FirstAccessInformationStepper.self)!))
 	}

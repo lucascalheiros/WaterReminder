@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class ActivityLevelInputViewController: BaseChildPageController {
+class ActivityLevelInputVC: BaseChildPageController {
 	private let disposeBag = DisposeBag()
 
 	lazy var activityLevelSlider = {

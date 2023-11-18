@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 class FirstAccessPageProvider: PageProviderProtocol {
-	let firstAccessInformative: FirstAccessInformativeViewController
-	let weightInputViewController: WeightInputViewController
-	let activityLevelInputViewController: ActivityLevelInputViewController
-	let ambienceTemperatureInputViewController: AmbienceTemperatureInputViewController
-	let confirmationDailyConsumptionViewController: ConfirmationDailyConsumptionViewController
+	let firstAccessInformative: FirstAccessInformativeVC
+	let weightInputViewController: WeightInputVC
+	let activityLevelInputViewController: ActivityLevelInputVC
+	let ambienceTemperatureInputViewController: AmbienceTemperatureInputVC
+	let confirmationDailyConsumptionViewController: ConfirmationDailyConsumptionVC
 	let count = 5
 
-	internal init(firstAccessInformative: FirstAccessInformativeViewController, weightInputViewController: WeightInputViewController, activityLevelInputViewController: ActivityLevelInputViewController, ambienceTemperatureInputViewController: AmbienceTemperatureInputViewController, confirmationDailyConsumptionViewController: ConfirmationDailyConsumptionViewController) {
+	internal init(firstAccessInformative: FirstAccessInformativeVC, weightInputViewController: WeightInputVC, activityLevelInputViewController: ActivityLevelInputVC, ambienceTemperatureInputViewController: AmbienceTemperatureInputVC, confirmationDailyConsumptionViewController: ConfirmationDailyConsumptionVC) {
 		self.firstAccessInformative = firstAccessInformative
 		self.weightInputViewController = weightInputViewController
 		self.activityLevelInputViewController = activityLevelInputViewController
@@ -43,15 +43,15 @@ class FirstAccessPageProvider: PageProviderProtocol {
 	
 	func indexFor(viewController: UIViewController) -> Int? {
 		switch viewController {
-		case is FirstAccessInformativeViewController:
+		case is FirstAccessInformativeVC:
 			return 0
-		case is WeightInputViewController:
+		case is WeightInputVC:
 			return 1
-		case is ActivityLevelInputViewController:
+		case is ActivityLevelInputVC:
 			return 2
-		case is AmbienceTemperatureInputViewController:
+		case is AmbienceTemperatureInputVC:
 			return 3
-		case is ConfirmationDailyConsumptionViewController:
+		case is ConfirmationDailyConsumptionVC:
 			return 4
 		default:
 			return nil
