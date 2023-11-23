@@ -8,8 +8,29 @@
 import Components
 import Core
 import Common
+import UIKit
 
 public class AppTheme: ThemeProtocol {
+    public var h1: UIFont = .h1
+
+    public var h2: UIFont = .h2
+
+    public var h3: UIFont = .h3
+
+    public var h4: UIFont = .h4
+
+    public var body: UIFont = .body
+
+    public var caption: UIFont = .caption
+
+    public var screenTitle: UIFont = .screenTitle
+
+    public var sectionTitle: UIFont = .sectionTitle
+
+    public var buttonBig: UIFont = .buttonBig
+
+    public var buttonDefault: UIFont = .buttonDefault
+
     public var primary: ThemedColorProtocol = AppColorGroup.primary
 
     public var secondary: ThemedColorProtocol = AppColorGroup.secondary

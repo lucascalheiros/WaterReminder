@@ -27,13 +27,13 @@ open class CircularProgressView: UIView {
 		}
 	}
 
-    public var emptyColor: UIColor = DefaultComponentsTheme.componentsTheme.primary.onColor {
+    public var emptyColor: UIColor = DefaultComponentsTheme.current.primary.onColor {
 		didSet {
 			createCircularPath()
 		}
 	}
 
-    public var filledColor: UIColor = DefaultComponentsTheme.componentsTheme.primary.color {
+    public var filledColor: UIColor = DefaultComponentsTheme.current.primary.color {
 		didSet {
 			createCircularPath()
 		}

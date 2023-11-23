@@ -20,6 +20,8 @@
 		17AE2AEE2B03058C0049F554 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2AED2B03058C0049F554 /* BaseRepository.swift */; };
 		17AE2AF02B0305B10049F554 /* RealmProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2AEF2B0305B10049F554 /* RealmProviderProtocol.swift */; };
 		17AE2AF42B0305E50049F554 /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2AF32B0305E50049F554 /* BaseObject.swift */; };
+		17B0AF762B0ACD1A00E33270 /* FirstAccessFlowSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF702B0ACD0300E33270 /* FirstAccessFlowSteps.swift */; };
+		17B0AF792B0ACD1A00E33270 /* MainAppFlowSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF732B0ACD0300E33270 /* MainAppFlowSteps.swift */; };
 		DFA425AEAC05E420B79D2FA1 /* Pods_CoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE965EE55A3ACC7EC6C2E22 /* Pods_CoreTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		17AE2AED2B03058C0049F554 /* BaseRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
 		17AE2AEF2B0305B10049F554 /* RealmProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmProviderProtocol.swift; sourceTree = "<group>"; };
 		17AE2AF32B0305E50049F554 /* BaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
+		17B0AF702B0ACD0300E33270 /* FirstAccessFlowSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAccessFlowSteps.swift; sourceTree = "<group>"; };
+		17B0AF732B0ACD0300E33270 /* MainAppFlowSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAppFlowSteps.swift; sourceTree = "<group>"; };
 		39876B85B202247C79A11B76 /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
 		476C184296318AF7EF045BAB /* Pods-CoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreTests.debug.xcconfig"; path = "Target Support Files/Pods-CoreTests/Pods-CoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BE965EE55A3ACC7EC6C2E22 /* Pods_CoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +117,7 @@
 		17668C912AFF0B3800B09779 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				17B0AF752B0ACD0300E33270 /* SharedFlow */,
 				17668C932AFF0B3800B09779 /* Core.docc */,
 				174405E92B0856CE008952B6 /* AppColorGroup.swift */,
 				17668CEA2AFF1B5A00B09779 /* UIFont+Resources.swift */,
@@ -139,6 +144,31 @@
 				17AE2AEF2B0305B10049F554 /* RealmProviderProtocol.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		17B0AF712B0ACD0300E33270 /* FirstAccessFlow */ = {
+			isa = PBXGroup;
+			children = (
+				17B0AF702B0ACD0300E33270 /* FirstAccessFlowSteps.swift */,
+			);
+			path = FirstAccessFlow;
+			sourceTree = "<group>";
+		};
+		17B0AF742B0ACD0300E33270 /* MainAppFlow */ = {
+			isa = PBXGroup;
+			children = (
+				17B0AF732B0ACD0300E33270 /* MainAppFlowSteps.swift */,
+			);
+			path = MainAppFlow;
+			sourceTree = "<group>";
+		};
+		17B0AF752B0ACD0300E33270 /* SharedFlow */ = {
+			isa = PBXGroup;
+			children = (
+				17B0AF712B0ACD0300E33270 /* FirstAccessFlow */,
+				17B0AF742B0ACD0300E33270 /* MainAppFlow */,
+			);
+			path = SharedFlow;
 			sourceTree = "<group>";
 		};
 		C68CDFB2568E2DBCC275B4F4 /* Frameworks */ = {
@@ -329,6 +359,8 @@
 				17AE2AF42B0305E50049F554 /* BaseObject.swift in Sources */,
 				17668CD02AFF160000B09779 /* UINavigationController+DefaultAppearance.swift in Sources */,
 				17AE2AF02B0305B10049F554 /* RealmProviderProtocol.swift in Sources */,
+				17B0AF792B0ACD1A00E33270 /* MainAppFlowSteps.swift in Sources */,
+				17B0AF762B0ACD1A00E33270 /* FirstAccessFlowSteps.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

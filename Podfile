@@ -67,6 +67,10 @@ end
 
 target 'Settings' do
   project 'Settings/Settings'
+  rxSwift
+  rxFlow
+  realm
+  swinject
   target 'SettingsTests' do
     inherit! :search_paths
   end
@@ -77,6 +81,56 @@ target 'WaterReminderNotificationDomain' do
   swinject
   rxSwift
   target 'WaterReminderNotificationDomainTests' do
+    inherit! :search_paths
+  end
+end
+
+target 'WaterManagementDomain' do
+  project 'WaterManagementDomain/WaterManagementDomain'
+  swinject
+  rxSwift
+  realm
+  target 'WaterManagementDomainTests' do
+    inherit! :search_paths
+  end
+end
+
+target 'UserInformationDomain' do
+  project 'UserInformationDomain/UserInformationDomain'
+  swinject
+  rxSwift
+  realm
+  target 'UserInformationDomainTests' do
+    inherit! :search_paths
+  end
+end
+
+target 'Home' do
+  project 'Home/Home'
+  swinject
+  rxSwift
+  realm
+  target 'HomeTests' do
+    inherit! :search_paths
+  end
+end
+
+target 'FirstAccess' do
+  project 'FirstAccess/FirstAccess'
+  swinject
+  rxSwift
+  realm
+  target 'FirstAccessTests' do
+    inherit! :search_paths
+  end
+end
+
+target 'History' do
+  project 'History/History'
+  swinject
+  rxSwift
+  realm
+  target 'HistoryTests' do
     inherit! :search_paths
   end
 end

@@ -120,10 +120,10 @@
 		17668C492AFF09F600B09779 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				174405EB2B085703008952B6 /* Theme */,
 				17668C4B2AFF09F600B09779 /* Common.docc */,
 				17668CDA2AFF167400B09779 /* Foundation */,
 				17668CDB2AFF168700B09779 /* RxSwift */,
+				174405EB2B085703008952B6 /* Theme */,
 				17668CD92AFF166400B09779 /* UIKit */,
 			);
 			path = Common;

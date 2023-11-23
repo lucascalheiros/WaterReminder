@@ -13,6 +13,7 @@
       }
     },
     "createWaterSource.alertdescription.enterWaterVolume.%@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -265,6 +266,7 @@
       }
     },
     "home.screenTitle" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -275,6 +277,7 @@
       }
     },
     "home.volume.remaining.%@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

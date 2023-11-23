@@ -75,7 +75,7 @@ open class TimePeriodPickerView: UIPickerView, UIPickerViewDataSource, UIPickerV
 		let string = self.pickerView(pickerView, titleForRow: row, forComponent: component) ?? ""
 		let label = view as? UILabel ?? UILabel()
 		label.text = string
-		label.textColor = DefaultComponentsTheme.componentsTheme.background.onColor
+		label.textColor = DefaultComponentsTheme.current.background.onColor
 		label.textAlignment = .center
         label.font = UIFont.h3
 		return label

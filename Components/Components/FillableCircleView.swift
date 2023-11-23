@@ -13,13 +13,13 @@ class FillableCircleView: UIView {
     private let mFilledView: UIView = UIView()
     private var mHeightConstraint: NSLayoutConstraint?
 
-    var emptyColor: UIColor = DefaultComponentsTheme.componentsTheme.primary.onColor  {
+    var emptyColor: UIColor = DefaultComponentsTheme.current.primary.onColor  {
         didSet {
             backgroundColor = emptyColor
         }
     }
 
-    var filledColor: UIColor = DefaultComponentsTheme.componentsTheme.primary.color {
+    var filledColor: UIColor = DefaultComponentsTheme.current.primary.color {
         didSet {
             mFilledView.backgroundColor = filledColor
         }
