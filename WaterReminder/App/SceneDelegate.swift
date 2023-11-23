@@ -9,6 +9,15 @@ import UIKit
 import Swinject
 import RxFlow
 import RxSwift
+import WaterReminderNotificationDomain
+import Components
+import Settings
+import WaterManagementDomain
+import UserInformationDomain
+import FirstAccess
+import Core
+import Home
+import History
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCenterDelegate {
 
@@ -18,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 	lazy var coordinator = FlowCoordinator()
 	let disposeBag = DisposeBag()
 
-	var appFlow: FirstAccessFlow!
+	var appFlow: RootFlow!
 
 	func assembleModuleContainers(container: Container) {
 		WaterReminderNotificationDomainAssembly().assemble(container: container)
@@ -28,7 +37,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 		HomeAssembly().assemble(container: container)
 		SettingsAssembly().assemble(container: container)
 		HistoryAssembly().assemble(container: container)
-		LocalePreferencesDomainAssembly().assemble(container: container)
 	}
 
 	func scene(
@@ -45,6 +53,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		let window = UIWindow(windowScene: windowScene)
 
+        DefaultComponentsTheme.current = AppTheme()
+
 		assembleModuleContainers(container: container)
 
 		self.coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
@@ -55,7 +65,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 			print("did navigate to flow=\(flow) and step=\(step)")
 		}).disposed(by: self.disposeBag)
 
-		appFlow = FirstAccessFlow(container: container)
+		appFlow = RootFlow(container: container)
 
 		// TODO add splash and refactor to include this decision there.
 		let getDailyWaterConsumptionUseCase = container.resolve(GetDailyWaterConsumptionUseCaseProtocol.self)

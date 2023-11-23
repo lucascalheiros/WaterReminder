@@ -1,29 +1,29 @@
 PODS:
-  - Realm (10.37.0):
-    - Realm/Headers (= 10.37.0)
-  - Realm/Headers (10.37.0)
-  - RealmSwift (10.37.0):
-    - Realm (= 10.37.0)
-  - RxCocoa (6.5.0):
-    - RxRelay (= 6.5.0)
-    - RxSwift (= 6.5.0)
+  - Realm (10.40.2):
+    - Realm/Headers (= 10.40.2)
+  - Realm/Headers (10.40.2)
+  - RealmSwift (10.40.2):
+    - Realm (= 10.40.2)
+  - RxCocoa (6.6.0):
+    - RxRelay (= 6.6.0)
+    - RxSwift (= 6.6.0)
   - RxFlow (2.13.0):
     - RxCocoa (>= 6.0.0)
     - RxSwift (>= 6.0.0)
-  - RxRealm (5.0.4):
-    - Realm (~> 10.21)
-    - RealmSwift (~> 10.21)
+  - RxRealm (5.0.6):
+    - Realm (~> 10.40.1)
+    - RealmSwift (~> 10.40.1)
     - RxCocoa (~> 6.1)
     - RxSwift (~> 6.1)
-  - RxRelay (6.5.0):
-    - RxSwift (= 6.5.0)
-  - RxSwift (6.5.0)
-  - RxSwiftExt (6.0.1):
-    - RxSwiftExt/Core (= 6.0.1)
-    - RxSwiftExt/RxCocoa (= 6.0.1)
-  - RxSwiftExt/Core (6.0.1):
+  - RxRelay (6.6.0):
+    - RxSwift (= 6.6.0)
+  - RxSwift (6.6.0)
+  - RxSwiftExt (6.2.1):
+    - RxSwiftExt/Core (= 6.2.1)
+    - RxSwiftExt/RxCocoa (= 6.2.1)
+  - RxSwiftExt/Core (6.2.1):
     - RxSwift (~> 6.0)
-  - RxSwiftExt/RxCocoa (6.0.1):
+  - RxSwiftExt/RxCocoa (6.2.1):
     - RxCocoa (~> 6.0)
     - RxSwiftExt/Core
   - Swinject (2.8.3)
@@ -31,12 +31,12 @@ PODS:
     - Swinject (~> 2.8.3)
 
 DEPENDENCIES:
-  - RealmSwift (~> 10)
-  - RxCocoa (= 6.5.0)
+  - RealmSwift (~> 10.40.1)
+  - RxCocoa (= 6.6.0)
   - RxFlow (= 2.13.0)
-  - RxRealm (= 5.0.4)
-  - RxSwift (= 6.5.0)
-  - RxSwiftExt (= 6.0.1)
+  - RxRealm (from `https://github.com/RxSwiftCommunity/RxRealm.git`, branch `main`)
+  - RxSwift (= 6.6.0)
+  - RxSwiftExt (= 6.2.1)
   - Swinject (= 2.8.3)
   - SwinjectAutoregistration (= 2.8.3)
 
@@ -46,25 +46,34 @@ SPEC REPOS:
     - RealmSwift
     - RxCocoa
     - RxFlow
-    - RxRealm
     - RxRelay
     - RxSwift
     - RxSwiftExt
     - Swinject
     - SwinjectAutoregistration
 
+EXTERNAL SOURCES:
+  RxRealm:
+    :branch: main
+    :git: https://github.com/RxSwiftCommunity/RxRealm.git
+
+CHECKOUT OPTIONS:
+  RxRealm:
+    :commit: 363c9a5595e3e99fcc435286078bc327ddb79bc8
+    :git: https://github.com/RxSwiftCommunity/RxRealm.git
+
 SPEC CHECKSUMS:
-  Realm: 9c5fc6f8f5cb70b299f2e3064d2b9f6cb0f1523d
-  RealmSwift: 7be7bb45911c16400dd1bfce3a01764ecb4cae7a
-  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  Realm: 731e86d9388287b18e36b0beb2493fc4845ce8a2
+  RealmSwift: c2a1059ba52e1e08467b1253b1d4ab354ef3177b
+  RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
   RxFlow: 52f6f6379918392c1ea8cb62d8dcf2df9a5463dd
-  RxRealm: 666c8785327fe2fff972a3093b35dc7055c1ca38
-  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
-  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
-  RxSwiftExt: d61c4b9b06e0a448041b1c659e0f1b5c5a035afc
+  RxRealm: ec29970dc65e379e659871344e46c98bf05ddef6
+  RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
+  RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
+  RxSwiftExt: 43aaacb6a4d3c69c55e9d1cf4f79920043d13583
   Swinject: 893c9a543000ac2f10ee4cbaf0933c6992c935d5
   SwinjectAutoregistration: e3ee378dc458acf78d176fc7fec3902603452667
 
-PODFILE CHECKSUM: 8465b6de0e4c6ab60f652c3d4c14d09481a93d16
+PODFILE CHECKSUM: 3f29391fef57891b38b5edeb7faf69804ed47eeb
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.13.0
