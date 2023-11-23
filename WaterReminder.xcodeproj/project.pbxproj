@@ -110,7 +110,7 @@
 		17AE684E2A08590500571ED8 /* WaterReminderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterReminderUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		17B0AF6C2B0ACCB300E33270 /* FirstAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirstAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AF7F2B0ACEBE00E33270 /* MainAppFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAppFlow.swift; sourceTree = "<group>"; };
-		17B0AF862B0AD1C800E33270 /* RootFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootFlow.swift; path = Resources/RootFlow.swift; sourceTree = "<group>"; };
+		17B0AF862B0AD1C800E33270 /* RootFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootFlow.swift; sourceTree = "<group>"; };
 		17B0AFF72B0DA28C00E33270 /* Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AFFA2B0DA29400E33270 /* History.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = History.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CB561B306A05A225B35159 /* Pods-WaterReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminder.debug.xcconfig"; path = "Target Support Files/Pods-WaterReminder/Pods-WaterReminder.debug.xcconfig"; sourceTree = "<group>"; };
@@ -208,10 +208,9 @@
 		17AE682A2A08590400571ED8 /* WaterReminder */ = {
 			isa = PBXGroup;
 			children = (
-				17B0AF7F2B0ACEBE00E33270 /* MainAppFlow.swift */,
-				17B0AF862B0AD1C800E33270 /* RootFlow.swift */,
 				17AE68392A08590500571ED8 /* Info.plist */,
 				17A35CA12A2B8E11003FF38A /* App */,
+				17BD79F32B0EDC6600F16C32 /* Flow */,
 				17AE0B5B2AFB115F00361E04 /* Resources */,
 			);
 			path = WaterReminder;
@@ -233,6 +232,15 @@
 				17AE684E2A08590500571ED8 /* WaterReminderUITestsLaunchTests.swift */,
 			);
 			path = WaterReminderUITests;
+			sourceTree = "<group>";
+		};
+		17BD79F32B0EDC6600F16C32 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				17B0AF7F2B0ACEBE00E33270 /* MainAppFlow.swift */,
+				17B0AF862B0AD1C800E33270 /* RootFlow.swift */,
+			);
+			path = Flow;
 			sourceTree = "<group>";
 		};
 		9BCD0976D0A0FB05A7F659A8 /* Frameworks */ = {
