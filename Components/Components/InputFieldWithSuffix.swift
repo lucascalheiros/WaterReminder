@@ -49,7 +49,7 @@ open class InputFieldWithSuffix: UITextField, UITextFieldDelegate {
 
 	public lazy var suffix = {
 		let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = DefaultComponentsTheme.current.h4
 		label.textColor = textColor?.withAlphaComponent(0.7)
 		return label
 	}()
@@ -68,7 +68,7 @@ open class InputFieldWithSuffix: UITextField, UITextFieldDelegate {
 		delegate = self
 		borderStyle = .none
 		textAlignment = .center
-        font = .boldSystemFont(ofSize: 25)
+        font = DefaultComponentsTheme.current.h3
         textColor = DefaultComponentsTheme.current.background.onColor
 		keyboardType = .decimalPad
 		borderStyle = .none

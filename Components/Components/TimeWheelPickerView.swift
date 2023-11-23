@@ -84,7 +84,8 @@ open class TimeWheelPickerView: UIPickerView, UIPickerViewDataSource, UIPickerVi
 		label.transform = CGAffineTransform(rotationAngle: rotationItemAngle)
 		switch component {
 		case 0:
-            label.font = .boldSystemFont(ofSize: 25)
+            label.font = DefaultComponentsTheme.current.h3
+
 		default:
 			break
 		}
