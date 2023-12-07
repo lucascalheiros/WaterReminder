@@ -15,10 +15,13 @@ class ManageNotificationsVC: UITableViewController {
     typealias DataSource = UITableViewDiffableDataSource<Sections, SectionItems>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Sections, SectionItems>
 
-    var bag = Set<AnyCancellable>()
+    static func newInstance(manageNotificationsViewModel: ManageNotificationsViewModel) -> ManageNotificationsVC {
+        ManageNotificationsVC(manageNotificationsViewModel: manageNotificationsViewModel)
+    }
 
     let manageNotificationsViewModel: ManageNotificationsViewModel
 
+    lazy var bag = Set<AnyCancellable>()
     lazy var diffableDatasource: DataSource = makeDatasource()
 
     init(manageNotificationsViewModel: ManageNotificationsViewModel) {
@@ -30,17 +33,20 @@ class ManageNotificationsVC: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    static func newInstance(manageNotificationsViewModel: ManageNotificationsViewModel) -> ManageNotificationsVC {
-        ManageNotificationsVC(manageNotificationsViewModel: manageNotificationsViewModel)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareConfiguration()
+        observeViewModel()
+    }
+
+    func prepareConfiguration() {
         title = String(localized: "manageNotifications.title", table: "Settings")
         view.backgroundColor = AppColorGroup.background.color
-
         tableView.dataSource = diffableDatasource
+        registerCells()
+    }
 
+    func observeViewModel() {
         manageNotificationsViewModel.$fixedNotification.combineLatest(manageNotificationsViewModel.$weekDaysState)
             .receive(on: DispatchQueue.main)
             .sink { notifications, weekDays in
@@ -50,8 +56,6 @@ class ManageNotificationsVC: UITableViewController {
                     [.addFixedNotification]
                 )
 
-        }.store(in: &bag)
-
-        registerCells()
+            }.store(in: &bag)
     }
 }

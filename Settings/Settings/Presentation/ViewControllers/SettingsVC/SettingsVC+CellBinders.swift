@@ -10,7 +10,7 @@ import RxCocoa
 import Common
 
 extension SettingsVC {
-    func bindDailyWaterGoalCell(_ sectionItem: any SectionItem) -> ((SettingsDetailTableViewCell) -> Void) {
+    func bindDailyWaterGoalCell(_ sectionItem: any SectionItemProtocol) -> ((SettingsDetailTableViewCell) -> Void) {
          return { detailCell in
             detailCell.dispose()
             detailCell.titleLabel.text = sectionItem.itemTitle()
@@ -24,7 +24,7 @@ extension SettingsVC {
         }
     }
 
-    func bindNotificationEnabledCell(_ sectionItem: any SectionItem) -> ((SettingsSwitchTableViewCell) -> Void) {
+    func bindNotificationEnabledCell(_ sectionItem: any SectionItemProtocol) -> ((SettingsSwitchTableViewCell) -> Void) {
         return { switchCell in
             switchCell.titleLabel.text = sectionItem.itemTitle()
             switchCell.dispose()
@@ -42,7 +42,7 @@ extension SettingsVC {
         }
     }
 
-    func bindTimePeriodCell(_ sectionItem: any SectionItem) -> ((SettingsDetailTableViewCell) -> Void) {
+    func bindTimePeriodCell(_ sectionItem: any SectionItemProtocol) -> ((SettingsDetailTableViewCell) -> Void) {
         return { detailCell in
             detailCell.titleLabel.text = sectionItem.itemTitle()
             detailCell.detailLabel.textColor = .blue
@@ -55,7 +55,7 @@ extension SettingsVC {
         }
     }
 
-    func bindNotificationFrequencyCell(_ sectionItem: any SectionItem) -> ((SettingsDetailTableViewCell) -> Void) {
+    func bindNotificationFrequencyCell(_ sectionItem: any SectionItemProtocol) -> ((SettingsDetailTableViewCell) -> Void) {
         return { detailCell in
             detailCell.titleLabel.text = sectionItem.itemTitle()
             detailCell.detailLabel.font = .body
@@ -68,7 +68,7 @@ extension SettingsVC {
         }
     }
 
-    func bindManageNotificationsCell(_ sectionItem: any SectionItem) -> ((SettingsDetailTableViewCell) -> Void) {
+    func bindManageNotificationsCell(_ sectionItem: any SectionItemProtocol) -> ((SettingsDetailTableViewCell) -> Void) {
         return { detailCell in
             detailCell.titleLabel.text = sectionItem.itemTitle()
         }

@@ -75,76 +75,15 @@ extension ManageNotificationsVC {
                 switch sectionItem {
 
                 case .weekDaysItem(let weekDay):
-                    return tableView.dequeueIdentifiableCell(indexPath) { (cell: SettingsSwitchTableViewCell) in
-                        cell.titleLabel.text = weekDay.weekDay.exhibitionName
-                        cell.switchView.isOn = weekDay.enabled
-                        cell.style = .onlySwitch
-                        cell.onSwitchChanged = {
-                            weekDay.enabled = $0
-                            self.manageNotificationsViewModel.saveWeekDayState(NotificationWeekDaysState(weekDay.weekDay, weekDay.enabled))
-                        }
-                        cell.selectionStyle = .none
-                    }
+                    return tableView.dequeueIdentifiableCell(indexPath, self.bindWeekDayModel(weekDay))
 
                 case .fixedNotificationItem(let fixedNotification):
-                    return tableView.dequeueIdentifiableCell(indexPath) { (cell: SettingsSwitchTableViewCell) in
-                        cell.titleLabel.text = fixedNotification.timePeriod.hourAndMinuteAsString()
-                        cell.switchView.isOn = fixedNotification.enabled
-                        cell.style = .switchAndDelete
-                        cell.onSwitchChanged = {
-                            fixedNotification.enabled = $0
-                            self.manageNotificationsViewModel.saveFixedNotificationState(FixedNotifications(fixedNotification.timePeriod, fixedNotification.enabled))
-                        }
-                        cell.onDeleteTapped = {
-                            self.manageNotificationsViewModel.deleteFixedNotification(fixedNotification.timePeriod)
-                        }
-                        cell.selectionStyle = .none
-                    }
+                    return tableView.dequeueIdentifiableCell(indexPath, self.bindFixedNotificationModel(fixedNotification))
 
                 case .addFixedNotification:
                     return tableView.dequeueIdentifiableCell(indexPath) { (_: SettingsAddItemCell) in }
                 }
             })
         return dataSource
-    }
-
-    enum Sections: CaseIterable {
-        case weekDays
-        case fixedNotifications
-    }
-
-    enum SectionItems: Hashable {
-        case weekDaysItem(WeekDayUIModel)
-        case fixedNotificationItem(FixedNotificationUIModel)
-        case addFixedNotification
-
-        static func == (lhs: ManageNotificationsVC.SectionItems, rhs: ManageNotificationsVC.SectionItems) -> Bool {
-            switch lhs {
-
-            case .weekDaysItem(let weekDay):
-                switch rhs {
-                case .weekDaysItem(let weekDayOther):
-                    return weekDay == weekDayOther
-                default:
-                    return false
-                }
-
-            case .fixedNotificationItem(let fixedNotification):
-                switch rhs {
-                case .fixedNotificationItem(let fixedNotificationOther):
-                    return fixedNotification == fixedNotificationOther
-                default:
-                    return false
-                }
-            case .addFixedNotification:
-                switch rhs {
-                case .addFixedNotification:
-                    return true
-                default:
-                    return false
-                }
-            }
-        }
-
     }
 }

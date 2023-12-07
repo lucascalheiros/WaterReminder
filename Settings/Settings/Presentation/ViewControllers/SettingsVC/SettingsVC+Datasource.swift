@@ -33,6 +33,7 @@ extension SettingsVC {
         let cell: UITableViewCell
         let sectionItem = sectionItemFromIndexPath(indexPath)
         switch sectionItem {
+            
         case GeneralSectionItems.dailyWaterVolume:
             cell = tableView.dequeueIdentifiableCell(indexPath, bindDailyWaterGoalCell(sectionItem))
 
@@ -72,7 +73,7 @@ extension SettingsVC {
         return UITableView.automaticDimension
     }
 
-    private func sectionItemFromIndexPath(_ indexPath: IndexPath) -> any SectionItem {
+    private func sectionItemFromIndexPath(_ indexPath: IndexPath) -> any SectionItemProtocol {
         let section = SettingsSections.allCases[indexPath.section]
         return section.sectionItems()[indexPath.row]
     }

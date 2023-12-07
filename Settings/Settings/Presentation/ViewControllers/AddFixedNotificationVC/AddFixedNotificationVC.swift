@@ -46,11 +46,15 @@ class AddFixedNotificationVC: UIViewController {
     }
 
     override func viewDidLoad() {
+        prepareConfiguration()
+        prepareConstraints()
+    }
+
+    func prepareConfiguration() {
         title = String(localized: "addFixedNotification.title", table: "Settings")
         view.backgroundColor = AppColorGroup.background.color
         navigationItem.leftBarButtonItem = cancel
         navigationItem.rightBarButtonItem = confirm
-        prepareConstraints()
     }
 
     func prepareConstraints() {

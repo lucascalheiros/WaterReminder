@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-protocol SectionItemProtocol {
+protocol SectionItemProtocol: CaseIterable {
 	func itemTitle() -> String
 }
-
-typealias SectionItem = SectionItemProtocol & CaseIterable
