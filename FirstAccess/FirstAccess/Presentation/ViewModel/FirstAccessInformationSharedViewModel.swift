@@ -84,7 +84,13 @@ class FirstAccessInformationSharedViewModel {
 			startTime: timePeriodFifteenMinutesSpaced[initialTimeIndex.value],
 			endTime: timePeriodFifteenMinutesSpaced[finalTimeIndex.value]
 		)
-		manageNotificationSettingsUseCase.setNotificationSetting(notificationSettings)
+		Task {
+			do {
+				try await manageNotificationSettingsUseCase.setNotificationSetting(notificationSettings)
+			} catch {
+				
+			}
+		}
 		self.completeProcess()
 	}
 

@@ -18,8 +18,15 @@ extension CreateWaterSourceItemVC {
         )
         if let cell = cell as? WaterSourceTypeSettingCell {
             cell.titleLabel.text = String(localized: "createWaterSource.cellTitle.volume")
-            cell.detailLabel.text = waterWithFormat.exhibitionValueWithFormat()
-            cell.detailLabel.textColor = AppColorGroup.primary.color
+
+            waterWithFormat.subscribe {
+                cell.detailLabel.text = $0.exhibitionValueWithFormat()
+            }.disposed(by: cell.disposeBag)
+
+            waterSourceType.subscribe {
+                cell.detailLabel.textColor = $0.color
+            }.disposed(by: cell.disposeBag)
+
         }
         cell.selectionStyle = .none
         return cell
@@ -29,9 +36,8 @@ extension CreateWaterSourceItemVC {
         guard let index = EditWaterSourceItemOptions.allCases.firstIndex(of: .waterVolume), volume > 0 else {
             return
         }
-        let volumeFormat = waterWithFormat.volumeFormat
-        self.waterWithFormat = WaterWithFormat(waterInML: Int(volumeFormat.toMetric(volume)), volumeFormat: volumeFormat)
-        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        let volumeFormat = waterWithFormat.value.volumeFormat
+        self.waterWithFormat.accept(WaterWithFormat(waterInML: Int(volumeFormat.toMetric(volume)), volumeFormat: volumeFormat))
     }
 
     func presentWaterVolumeInput(_ volume: WaterWithFormat) {

@@ -17,8 +17,12 @@ extension CreateWaterSourceItemVC: WaterSourceTypeSelector {
         )
         if let cell = cell as? WaterSourceTypeSettingCell {
             cell.titleLabel.text = String(localized: "createWaterSource.cellTitle.waterSourceType")
-            cell.detailLabel.text = waterSourceType.exhibitionName
-            cell.detailLabel.textColor = waterSourceType.color
+
+            waterSourceType.subscribe {
+                cell.detailLabel.text = $0.exhibitionName
+                cell.detailLabel.textColor = $0.color
+            }.disposed(by: cell.disposeBag)
+
         }
         cell.selectionStyle = .none
         return cell
@@ -28,8 +32,7 @@ extension CreateWaterSourceItemVC: WaterSourceTypeSelector {
         guard let index = EditWaterSourceItemOptions.allCases.firstIndex(of: .waterSourceType) else {
             return
         }
-        waterSourceType = type
-        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        waterSourceType.accept(type)
     }
 
     func presentWaterTypeSelector(_ type: WaterSourceType) {

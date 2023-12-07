@@ -9,4 +9,6 @@ import RxFlow
 
 public enum SettingsFlowSteps: Step {
 	case settings
+    case manageNotifications
+    case addFixedNotification
 }

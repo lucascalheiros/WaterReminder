@@ -22,6 +22,7 @@
 		17668CE52AFF178500B09779 /* TimeWheelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668CDF2AFF178400B09779 /* TimeWheelPickerView.swift */; };
 		17668CED2AFF1CF500B09779 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17668CEC2AFF1CF500B09779 /* Common.framework */; };
 		17668CEE2AFF1CF500B09779 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17668CEC2AFF1CF500B09779 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		179380C42B1AB14600D4EAC4 /* DayTimeSelectorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179380C32B1AB14600D4EAC4 /* DayTimeSelectorPickerView.swift */; };
 		D3BC50EECD8BE98AF91D480E /* Pods_ComponentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66F01F87093EE543DC10BE3 /* Pods_ComponentsTests.framework */; };
 		DAF65BC629F5A258D879F268 /* Pods_Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E02EB776EB77D41D0FC9304 /* Pods_Components.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		17668CE02AFF178400B09779 /* InputFieldWithSuffix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldWithSuffix.swift; sourceTree = "<group>"; };
 		17668CE12AFF178500B09779 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		17668CEC2AFF1CF500B09779 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		179380C32B1AB14600D4EAC4 /* DayTimeSelectorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTimeSelectorPickerView.swift; sourceTree = "<group>"; };
 		49DE7AC6DCEB1E26D4D2AAD6 /* Pods-ComponentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentsTests.debug.xcconfig"; path = "Target Support Files/Pods-ComponentsTests/Pods-ComponentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		58AE4964CCBC1113F4AC9210 /* Pods-ComponentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentsTests.release.xcconfig"; path = "Target Support Files/Pods-ComponentsTests/Pods-ComponentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		7848D903E5FD94D0DF1AFCE0 /* Pods-Components.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Components.debug.xcconfig"; path = "Target Support Files/Pods-Components/Pods-Components.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,11 +134,12 @@
 			children = (
 				17668C6F2AFF0A1A00B09779 /* Components.docc */,
 				17668CE12AFF178500B09779 /* CircularProgressView.swift */,
-				175F92C62B08FEFE00758C50 /* SwitchWithLabel.swift */,
+				179380C32B1AB14600D4EAC4 /* DayTimeSelectorPickerView.swift */,
 				17668CDE2AFF178400B09779 /* FillableCircleView.swift */,
 				17668CE02AFF178400B09779 /* InputFieldWithSuffix.swift */,
-				17668CDF2AFF178400B09779 /* TimeWheelPickerView.swift */,
+				175F92C62B08FEFE00758C50 /* SwitchWithLabel.swift */,
 				175F92BE2B08ECF800758C50 /* TimePeriodPickerView.swift */,
+				17668CDF2AFF178400B09779 /* TimeWheelPickerView.swift */,
 				174405E02B084EF2008952B6 /* Theme */,
 			);
 			path = Components;
@@ -339,6 +342,7 @@
 				175F92C32B08FD4C00758C50 /* ThemeColorsProtocol.swift in Sources */,
 				174405DD2B084E89008952B6 /* DefaultComponentsTheme.swift in Sources */,
 				17668CE32AFF178500B09779 /* InputFieldWithSuffix.swift in Sources */,
+				179380C42B1AB14600D4EAC4 /* DayTimeSelectorPickerView.swift in Sources */,
 				175F92C72B08FEFE00758C50 /* SwitchWithLabel.swift in Sources */,
 				17668CE52AFF178500B09779 /* TimeWheelPickerView.swift in Sources */,
 			);

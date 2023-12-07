@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import Common
-import Core
 
 open class TimePeriodPickerView: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
 
@@ -77,7 +76,7 @@ open class TimePeriodPickerView: UIPickerView, UIPickerViewDataSource, UIPickerV
 		label.text = string
 		label.textColor = DefaultComponentsTheme.current.background.onColor
 		label.textAlignment = .center
-        label.font = UIFont.h3
+        label.font = DefaultComponentsTheme.current.h3
 		return label
 	}
 

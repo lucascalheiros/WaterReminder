@@ -13,13 +13,13 @@ public class SettingsAssembly: Assembly {
 
 	public func assemble(container: Container) {
 		container.autoregister(
-			SettingsViewController.self,
-            initializer: SettingsViewController.newInstance
+			SettingsVC.self,
+            initializer: SettingsVC.newInstance
         )
 		container.autoregister(
 			SettingsStepper.self,
 			initializer: SettingsStepper.init
-		).inObjectScope(.container)
+		).inObjectScope(.weak)
 		container.autoregister(
 			SettingsViewModel.self,
 			initializer: SettingsViewModel.init
@@ -39,6 +39,22 @@ public class SettingsAssembly: Assembly {
 		container.autoregister(
 			NotificationReminderToggleDelegate.self,
 			initializer: NotificationReminderToggleDelegate.init
+		)
+        container.autoregister(
+            ManageNotificationsVC.self,
+            initializer: ManageNotificationsVC.newInstance
+        )
+        container.autoregister(
+            ManageNotificationsViewModel.self,
+            initializer: ManageNotificationsViewModel.init
+        )
+        container.autoregister(
+            AddFixedNotificationVC.self,
+            initializer: AddFixedNotificationVC.newInstance
+        )
+		container.autoregister(
+			AddFixedNotificationViewModel.self,
+			initializer: AddFixedNotificationViewModel.init
 		)
 	}
 }

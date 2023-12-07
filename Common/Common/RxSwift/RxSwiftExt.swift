@@ -7,15 +7,12 @@
 
 import RxSwift
 
-public extension Observable {
-    func safeAsSingle() -> Single<Element> {
-        self.take(1).asSingle()
-    }
-}
-
 public extension ObservableType {
     func filterNotNull<T>() -> Observable<T> where Element == T? {
         return self.compactMap { $0 }
     }
-}
 
+    func safeAsSingle() -> Single<Element> {
+        self.take(1).asSingle()
+    }
+}

@@ -7,8 +7,11 @@
 
 import UIKit
 import Core
+import Common
+import RxSwift
 
-class WaterSourceTypeSettingCell: UITableViewCell {
+class WaterSourceTypeSettingCell: IdentifiableUITableViewCell {
+    var disposeBag = DisposeBag()
 
 	static let identifier = "WaterSourceTypeSettingCell"
 
@@ -36,6 +39,12 @@ class WaterSourceTypeSettingCell: UITableViewCell {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        disposeBag = DisposeBag()
+    }
 
 	func prepareConfiguration() {
 		preservesSuperviewLayoutMargins = false

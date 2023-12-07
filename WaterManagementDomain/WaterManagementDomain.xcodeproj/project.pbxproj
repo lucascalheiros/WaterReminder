@@ -48,6 +48,8 @@
 		175F93772B09024300758C50 /* DailyWaterConsumptionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93452B09020F00758C50 /* DailyWaterConsumptionObject.swift */; };
 		175F93782B09024300758C50 /* WaterSourceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93472B09020F00758C50 /* WaterSourceObject.swift */; };
 		175F93792B09024300758C50 /* WaterConsumedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93462B09020F00758C50 /* WaterConsumedObject.swift */; };
+		17871D412B1A63230022D0E9 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D402B1A63230022D0E9 /* Core.framework */; };
+		17871D422B1A63230022D0E9 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D402B1A63230022D0E9 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17AE2B3D2B030E840049F554 /* WaterManagementDomain.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B3C2B030E840049F554 /* WaterManagementDomain.docc */; };
 		17AE2B432B030E840049F554 /* WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2B382B030E840049F554 /* WaterManagementDomain.framework */; };
 		17AE2B482B030E840049F554 /* WaterManagementDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B472B030E840049F554 /* WaterManagementDomainTests.swift */; };
@@ -64,6 +66,20 @@
 			remoteInfo = WaterManagementDomain;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		17871D432B1A63230022D0E9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				17871D422B1A63230022D0E9 /* Core.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		175F931C2B09020F00758C50 /* WaterManagementDomainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterManagementDomainAssembly.swift; sourceTree = "<group>"; };
@@ -109,6 +125,7 @@
 		175F934E2B09020F00758C50 /* WaterSourceRepositoryImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterSourceRepositoryImpl.swift; sourceTree = "<group>"; };
 		175F937A2B0902DC00758C50 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		175F937E2B0902EF00758C50 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17871D402B1A63230022D0E9 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B382B030E840049F554 /* WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B3C2B030E840049F554 /* WaterManagementDomain.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = WaterManagementDomain.docc; sourceTree = "<group>"; };
 		17AE2B422B030E840049F554 /* WaterManagementDomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaterManagementDomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				508DC4DF9F9FB2EAD229BD31 /* Pods_WaterManagementDomain.framework in Frameworks */,
+				17871D412B1A63230022D0E9 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +336,7 @@
 		851244F091C757692DD04526 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17871D402B1A63230022D0E9 /* Core.framework */,
 				175F937E2B0902EF00758C50 /* Core.framework */,
 				175F937A2B0902DC00758C50 /* Common.framework */,
 				7E5A8033B52F3341BA52D606 /* Pods_WaterManagementDomain.framework */,
@@ -360,6 +379,7 @@
 				17AE2B342B030E840049F554 /* Sources */,
 				17AE2B352B030E840049F554 /* Frameworks */,
 				17AE2B362B030E840049F554 /* Resources */,
+				17871D432B1A63230022D0E9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

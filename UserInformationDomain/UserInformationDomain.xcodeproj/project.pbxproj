@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17871D2E2B1A62A30022D0E9 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D2D2B1A62A30022D0E9 /* Core.framework */; };
+		17871D2F2B1A62A30022D0E9 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D2D2B1A62A30022D0E9 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17AE2B622B030EF50049F554 /* UserInformationDomain.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B612B030EF50049F554 /* UserInformationDomain.docc */; };
 		17AE2B682B030EF50049F554 /* UserInformationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2B5D2B030EF50049F554 /* UserInformationDomain.framework */; };
 		17AE2B6D2B030EF50049F554 /* UserInformationDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B6C2B030EF50049F554 /* UserInformationDomainTests.swift */; };
@@ -36,7 +38,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		17871D302B1A62A30022D0E9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				17871D2F2B1A62A30022D0E9 /* Core.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		17871D2D2B1A62A30022D0E9 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B5D2B030EF50049F554 /* UserInformationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserInformationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B612B030EF50049F554 /* UserInformationDomain.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = UserInformationDomain.docc; sourceTree = "<group>"; };
 		17AE2B672B030EF50049F554 /* UserInformationDomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserInformationDomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7612A99C4DDA77131598EAD /* Pods_UserInformationDomain.framework in Frameworks */,
+				17871D2E2B1A62A30022D0E9 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +223,7 @@
 		49CA35B65D74CEBE815DE51C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17871D2D2B1A62A30022D0E9 /* Core.framework */,
 				EAFF99DBC951A5786E93FCF6 /* Pods_UserInformationDomain.framework */,
 				80A17C59BE2720977E14EDF6 /* Pods_UserInformationDomainTests.framework */,
 			);
@@ -245,6 +264,7 @@
 				17AE2B592B030EF50049F554 /* Sources */,
 				17AE2B5A2B030EF50049F554 /* Frameworks */,
 				17AE2B5B2B030EF50049F554 /* Resources */,
+				17871D302B1A62A30022D0E9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -35,19 +35,55 @@ public class SettingsFlow: Flow {
 
 		case .settings:
 			return navigateToSettings()
-		}
+
+        case .manageNotifications:
+            return presentManageNotifications()
+
+        case .addFixedNotification:
+            return presentAddFixedNotification()
+        }
 	}
 
 	private func navigateToSettings() -> FlowContributors {
-		let viewController = container.resolve(SettingsViewController.self)!
-		viewController.navigationItem.title = String(localized: "settings.screenTitle")
+		let viewController = container.resolve(SettingsVC.self)!
+		viewController.navigationItem.title = String(localized: "settings.screenTitle", table: "Settings")
 		rootViewController.pushViewController(viewController, animated: false)
 		return .one(
 			flowContributor: .contribute(
 				withNextPresentable: viewController,
-				withNextStepper: OneStepper(withSingleStep: SettingsFlowSteps.settings)
+				withNextStepper: container.resolve(SettingsStepper.self)!
 			)
 		)
 	}
+
+    private func presentManageNotifications() -> FlowContributors {
+        let viewController = container.resolve(ManageNotificationsVC.self)!
+        let nav = UINavigationController(rootViewController: viewController)
+        nav.modalPresentationStyle = .pageSheet
+        nav.setDefaultAppearance()
+
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.large()]
+        }
+
+        rootViewController.present(nav, animated: true, completion: nil)
+
+        return .none
+    }
+
+    private func presentAddFixedNotification() -> FlowContributors {
+        let viewController = container.resolve(AddFixedNotificationVC.self)!
+        let nav = UINavigationController(rootViewController: viewController)
+        nav.modalPresentationStyle = .pageSheet
+        nav.setDefaultAppearance()
+
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        
+        rootViewController.visibleViewController?.present(nav, animated: true, completion: nil)
+
+        return .none
+    }
 
 }

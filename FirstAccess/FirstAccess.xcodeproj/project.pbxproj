@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17871D452B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D442B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework */; };
+		17871D462B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D442B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17B0AF322B0A8CAC00E33270 /* FirstAccess.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF312B0A8CAC00E33270 /* FirstAccess.docc */; };
 		17B0AF382B0A8CAC00E33270 /* FirstAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B0AF2D2B0A8CAC00E33270 /* FirstAccess.framework */; };
 		17B0AF3D2B0A8CAC00E33270 /* FirstAccessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF3C2B0A8CAC00E33270 /* FirstAccessTests.swift */; };
@@ -49,6 +51,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				17B0AF7C2B0ACD7300E33270 /* Core.framework in Embed Frameworks */,
+				17871D462B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		17871D442B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AF2D2B0A8CAC00E33270 /* FirstAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirstAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AF312B0A8CAC00E33270 /* FirstAccess.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = FirstAccess.docc; sourceTree = "<group>"; };
 		17B0AF372B0A8CAC00E33270 /* FirstAccessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstAccessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17871D452B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework in Frameworks */,
 				499416BF8C5F31DFA98CDA87 /* Pods_FirstAccess.framework in Frameworks */,
 				17B0AF7B2B0ACD7300E33270 /* Core.framework in Frameworks */,
 			);
@@ -228,6 +233,7 @@
 		D4177E7703BEEB1065C2DF47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17871D442B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework */,
 				17B0AF7A2B0ACD7300E33270 /* Core.framework */,
 				BDD7D011210838195557C053 /* Pods_FirstAccess.framework */,
 				BF7C093EBAC615319BF4ADC2 /* Pods_FirstAccessTests.framework */,

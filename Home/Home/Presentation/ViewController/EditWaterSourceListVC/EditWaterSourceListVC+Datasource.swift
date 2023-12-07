@@ -10,11 +10,11 @@ import UIKit
 import WaterManagementDomain
 
 extension EditWaterSourceListVC {
-
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection sectionIndex: Int) -> Int {
 		switch Sections.allCases[safe: sectionIndex] {
 		case .main:
 			return self.waterSourceList.count
+
 		default:
 			return 0
 		}
@@ -28,27 +28,22 @@ extension EditWaterSourceListVC {
 		switch Sections.allCases[safe: indexPath.section] {
 		case .main:
 			return getCellForMainSection(tableView, indexPath)
+
 		default:
-			return UITableViewCell()
+			fatalError("Section not implemented")
 		}
 	}
 
 	func registerCells() {
-		tableView.register(
-			WaterSourceEditableCell.self,
-			forCellReuseIdentifier: WaterSourceEditableCell.identifier
-		)
-
-		tableView.register(
-			AddWaterSourceCell.self,
-			forCellReuseIdentifier: AddWaterSourceCell.identifier
-		)
+        tableView.registerIdentifiableCell(WaterSourceEditableCell.self)
+        tableView.registerIdentifiableCell(AddWaterSourceCell.self)
 	}
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch getItemForIndexPath(indexPath) {
         case .add:
             presentAddWaterSource()
+
         default:
             break
         }
@@ -58,6 +53,7 @@ extension EditWaterSourceListVC {
 		switch Sections.allCases[safe: indexPath.section] {
 		case .main:
 			return self.waterSourceList[safe: indexPath.row]
+
 		default:
 			return nil
 		}
@@ -66,11 +62,13 @@ extension EditWaterSourceListVC {
 	func getCellForMainSection(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
 		switch getItemForIndexPath(indexPath) {
 		case .waterSourceItem(let waterSource):
-            return getWaterSourceEditableCell(indexPath, waterSource)
-		case .add:
-			return getAddWaterSourceCell(indexPath)
-		default:
-			return UITableViewCell()
+            return tableView.dequeueIdentifiableCell(indexPath, bindWaterSourceEditableCell(waterSource))
+		
+        case .add:
+            return tableView.dequeueIdentifiableCell(indexPath, bindAddWaterSourceCell())
+
+        default:
+            fatalError("Cell not implemented")
 		}
 	}
 
@@ -80,12 +78,14 @@ extension EditWaterSourceListVC {
 		switch getItemForIndexPath(sourceIndexPath) {
 		case .waterSourceItem(let waterSource):
 			sourceId = waterSource.id
+
 		default:
 			return
 		}
 		switch getItemForIndexPath(destinationIndexPath) {
 		case .waterSourceItem(let waterSource):
 			destId = waterSource.id
+
 		default:
 			return
 		}
@@ -100,6 +100,7 @@ extension EditWaterSourceListVC {
             switch $0 {
             case .waterSourceItem(let item):
                 return item.id == waterSource.id
+
             default:
                 return false
             }
@@ -130,5 +131,4 @@ extension EditWaterSourceListVC {
 		case waterSourceItem(WaterSource)
 		case add
 	}
-	
 }

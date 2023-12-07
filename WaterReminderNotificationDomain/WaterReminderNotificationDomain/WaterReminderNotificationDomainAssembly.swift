@@ -16,22 +16,38 @@ public class WaterReminderNotificationDomainAssembly: Assembly {
 		container.autoregister(
 			WaterReminderNotificationManager.self,
 			initializer: WaterReminderNotificationManagerImpl.init
-		)
+        ).inObjectScope(.weak)
 		container.autoregister(
 			ScheduleWaterReminderNotificationsUseCase.self,
 			initializer: ScheduleWaterReminderNotificationsUseCase.init
-		)
+        ).inObjectScope(.weak)
 		container.autoregister(
 			GetNotificationSettingsUseCase.self,
 			initializer: GetNotificationSettingsUseCase.init
-		)
+        ).inObjectScope(.weak)
 		container.autoregister(
 			ManageNotificationSettingsUseCase.self,
 			initializer: ManageNotificationSettingsUseCase.init
-		)
+        ).inObjectScope(.weak)
+        container.autoregister(
+            NotificationSettingsRepository.self,
+            initializer: NotificationSettingsRepositoryImpl.init
+        ).inObjectScope(.weak)
+        container.autoregister(
+            ManageFixedNotificationsUseCase.self,
+            initializer: ManageFixedNotificationsUseCase.init
+        ).inObjectScope(.weak)
 		container.autoregister(
-			NotificationSettingsRepositoryProtocol.self,
-			initializer: NotificationSettingsRepositoryImpl.init
-		)
+            GetFixedNotificationsUseCase.self,
+			initializer: GetFixedNotificationsUseCase.init
+        ).inObjectScope(.weak)
+        container.autoregister(
+            GetWeekDaysNotificationUseCase.self,
+            initializer: GetWeekDaysNotificationUseCase.init
+        ).inObjectScope(.weak)
+        container.autoregister(
+            ManageWeekDaysNotificationUseCase.self,
+            initializer: ManageWeekDaysNotificationUseCase.init
+        ).inObjectScope(.weak)
 	}
 }
