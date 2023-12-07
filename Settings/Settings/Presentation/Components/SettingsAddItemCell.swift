@@ -35,7 +35,7 @@ class SettingsAddItemCell: IdentifiableUITableViewCell {
         separatorInset = UIEdgeInsets.zero
         layoutMargins = UIEdgeInsets.zero
         selectionStyle = .none
-        titleLabel.text = SettingsString.addFixedNotificationsAdd.string()
+        titleLabel.text = String(localized: "manageNotifications.addFixedNotification")
     }
 
     private func prepareConstraints() {

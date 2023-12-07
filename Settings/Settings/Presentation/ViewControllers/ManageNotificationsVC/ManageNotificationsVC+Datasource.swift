@@ -21,10 +21,10 @@ extension ManageNotificationsVC {
         switch section {
         
         case .fixedNotifications:
-            header.setTitle(text: SettingsString.manageNotificationsByDay.string())
+            header.setTitle(text:  String(localized: "manageNotifications.section.notificationsByDay"))
 
         case .weekDays:
-            header.setTitle(text: SettingsString.manageNotificationsWeekDay.string())
+            header.setTitle(text: String(localized: "manageNotifications.section.weekDays"))
 
         case .none:
             return nil

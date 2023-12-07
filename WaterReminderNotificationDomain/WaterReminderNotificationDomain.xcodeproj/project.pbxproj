@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170AC8862B215F5300CEDB34 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 170AC8852B215F5300CEDB34 /* Localizable.xcstrings */; };
 		17871D2A2B1A62820022D0E9 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D292B1A62820022D0E9 /* Common.framework */; };
 		17871D2B2B1A62820022D0E9 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D292B1A62820022D0E9 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		179519692B16E7BD00AAB8D7 /* GetFixedNotificationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179519682B16E7BD00AAB8D7 /* GetFixedNotificationsUseCase.swift */; };
 		1795196B2B16E7F600AAB8D7 /* ManageFixedNotificationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1795196A2B16E7F600AAB8D7 /* ManageFixedNotificationsUseCase.swift */; };
-		17A906642B200DA60034CE32 /* Notification.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 17A9065D2B200BCB0034CE32 /* Notification.xcstrings */; };
 		17ADE4C62B1EAC34001E9DDF /* ManageWeekDaysNotificationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ADE4C52B1EAC34001E9DDF /* ManageWeekDaysNotificationUseCase.swift */; };
 		17AE2B862B030F170049F554 /* WaterReminderNotificationDomain.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B852B030F170049F554 /* WaterReminderNotificationDomain.docc */; };
 		17AE2B8C2B030F170049F554 /* WaterReminderNotificationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2B812B030F170049F554 /* WaterReminderNotificationDomain.framework */; };
@@ -61,10 +61,10 @@
 
 /* Begin PBXFileReference section */
 		0E26F8F50E0DFB3D982045AD /* Pods-WaterReminderNotificationDomain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminderNotificationDomain.debug.xcconfig"; path = "Target Support Files/Pods-WaterReminderNotificationDomain/Pods-WaterReminderNotificationDomain.debug.xcconfig"; sourceTree = "<group>"; };
+		170AC8852B215F5300CEDB34 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = ../../../Settings/Settings/Resources/Localizable.xcstrings; sourceTree = "<group>"; };
 		17871D292B1A62820022D0E9 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		179519682B16E7BD00AAB8D7 /* GetFixedNotificationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFixedNotificationsUseCase.swift; sourceTree = "<group>"; };
 		1795196A2B16E7F600AAB8D7 /* ManageFixedNotificationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageFixedNotificationsUseCase.swift; sourceTree = "<group>"; };
-		17A9065D2B200BCB0034CE32 /* Notification.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = Notification.xcstrings; path = ../../../WaterReminder/Resources/Notification.xcstrings; sourceTree = "<group>"; };
 		17ADE4C52B1EAC34001E9DDF /* ManageWeekDaysNotificationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageWeekDaysNotificationUseCase.swift; sourceTree = "<group>"; };
 		17AE2B812B030F170049F554 /* WaterReminderNotificationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WaterReminderNotificationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B852B030F170049F554 /* WaterReminderNotificationDomain.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = WaterReminderNotificationDomain.docc; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		17A9065B2B200A0E0034CE32 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				17A9065D2B200BCB0034CE32 /* Notification.xcstrings */,
+				170AC8852B215F5300CEDB34 /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -373,7 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17A906642B200DA60034CE32 /* Notification.xcstrings in Resources */,
+				170AC8862B215F5300CEDB34 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

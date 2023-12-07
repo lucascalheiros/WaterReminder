@@ -17,9 +17,7 @@
 		17668CB12AFF0CB900B09779 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17668CAB2AFF0CB900B09779 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17668CF92AFF260700B09779 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17668CF72AFF260700B09779 /* Assets.xcassets */; };
 		17A35CA92A2B947D003FF38A /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A35CA82A2B947D003FF38A /* AppContainer.swift */; };
-		17A906602B200BFD0034CE32 /* Notification.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 17A9065F2B200BF80034CE32 /* Notification.xcstrings */; };
 		17A906632B200D2B0034CE32 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 17668CF62AFF260700B09779 /* Localizable.xcstrings */; };
-		17A9066D2B200E960034CE32 /* Settings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 17A9066C2B200E920034CE32 /* Settings.xcstrings */; };
 		17AE2B1C2B030C060049F554 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2B1B2B030C060049F554 /* Settings.framework */; };
 		17AE2B1D2B030C060049F554 /* Settings.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2B1B2B030C060049F554 /* Settings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17AE2BB22B0312170049F554 /* UserInformationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2BAF2B0312170049F554 /* UserInformationDomain.framework */; };
@@ -93,11 +91,9 @@
 		17668CA92AFF0CB900B09779 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17668CAA2AFF0CB900B09779 /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17668CAB2AFF0CB900B09779 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		17668CF62AFF260700B09779 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = ../../Core/Core/Localizable.xcstrings; sourceTree = "<group>"; };
+		17668CF62AFF260700B09779 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = ../../Settings/Settings/Resources/Localizable.xcstrings; sourceTree = "<group>"; };
 		17668CF72AFF260700B09779 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17A35CA82A2B947D003FF38A /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
-		17A9065F2B200BF80034CE32 /* Notification.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Notification.xcstrings; sourceTree = "<group>"; };
-		17A9066C2B200E920034CE32 /* Settings.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Settings.xcstrings; sourceTree = "<group>"; };
 		17AE2B1B2B030C060049F554 /* Settings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Settings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2BAF2B0312170049F554 /* UserInformationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UserInformationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2BB02B0312170049F554 /* WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,8 +179,6 @@
 				174405E52B0855E9008952B6 /* AppTheme.swift */,
 				17668CF72AFF260700B09779 /* Assets.xcassets */,
 				17668CF62AFF260700B09779 /* Localizable.xcstrings */,
-				17A9065F2B200BF80034CE32 /* Notification.xcstrings */,
-				17A9066C2B200E920034CE32 /* Settings.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -410,11 +404,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17A906602B200BFD0034CE32 /* Notification.xcstrings in Resources */,
 				17668CF92AFF260700B09779 /* Assets.xcassets in Resources */,
 				17A906632B200D2B0034CE32 /* Localizable.xcstrings in Resources */,
 				17AE68382A08590500571ED8 /* LaunchScreen.storyboard in Resources */,
-				17A9066D2B200E960034CE32 /* Settings.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

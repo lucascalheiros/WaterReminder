@@ -46,7 +46,7 @@ public class SettingsFlow: Flow {
 
 	private func navigateToSettings() -> FlowContributors {
 		let viewController = container.resolve(SettingsVC.self)!
-        viewController.navigationItem.title = SettingsString.settingsTitle.string()
+        viewController.navigationItem.title = String(localized: "settings.screenTitle")
 		rootViewController.pushViewController(viewController, animated: false)
 		return .one(
 			flowContributor: .contribute(

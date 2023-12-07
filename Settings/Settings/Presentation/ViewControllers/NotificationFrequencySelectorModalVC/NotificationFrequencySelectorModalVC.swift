@@ -22,11 +22,11 @@ class NotificationFrequencySelectorModalVC: UIViewController {
 		return picker
 	}()
 
-    lazy var cancel = UIBarButtonItem(title: SettingsString.cancel.string(), primaryAction: .init(handler: { _ in
+    lazy var cancel = UIBarButtonItem(title: String(localized: "generic.cancel"), primaryAction: .init(handler: { _ in
 		self.dismiss(animated: true)
 	}))
 
-	lazy var confirm = UIBarButtonItem(title: SettingsString.confirm.string(), image: nil, primaryAction: .init(handler: { _ in
+	lazy var confirm = UIBarButtonItem(title: String(localized: "generic.confirm"), image: nil, primaryAction: .init(handler: { _ in
 		let index = self.notificationFrequencyPickerView.selectedRow(inComponent: 0)
 		self.notificationFrequencySelectorDelegate.setNotificationFrequency(
 			frequency: self.notificationFrequencyPickerView.notificationFrequencyCases[index]

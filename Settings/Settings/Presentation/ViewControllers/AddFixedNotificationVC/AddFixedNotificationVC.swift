@@ -20,7 +20,7 @@ class AddFixedNotificationVC: UIViewController {
     lazy var dayTimeSelector = DayTimeSelectorPickerView()
 
     lazy var cancel = {
-        let btn = UIBarButtonItem(title: SettingsString.cancel.string(), primaryAction: .init(handler: { _ in
+        let btn = UIBarButtonItem(title: String(localized: "generic.cancel"), primaryAction: .init(handler: { _ in
             self.dismiss(animated: true)
         }))
         btn.tintColor = .white
@@ -28,7 +28,7 @@ class AddFixedNotificationVC: UIViewController {
     }()
 
     lazy var confirm = {
-        let btn = UIBarButtonItem(title: SettingsString.confirm.string(), image: nil, primaryAction: .init(handler: { _ in
+        let btn = UIBarButtonItem(title: String(localized: "generic.confirm"), image: nil, primaryAction: .init(handler: { _ in
             self.addFixedNotificationViewModel.addFixedNotification(self.dayTimeSelector.dayTime)
             self.dismiss(animated: true)
         }))
@@ -51,7 +51,7 @@ class AddFixedNotificationVC: UIViewController {
     }
 
     func prepareConfiguration() {
-        title = SettingsString.addFixedNotificationsTitle.string()
+        title = String(localized: "addFixedNotification.title")
         view.backgroundColor = AppColorGroup.background.color
         navigationItem.leftBarButtonItem = cancel
         navigationItem.rightBarButtonItem = confirm

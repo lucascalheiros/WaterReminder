@@ -40,7 +40,7 @@ class ManageNotificationsVC: UITableViewController {
     }
 
     func prepareConfiguration() {
-        title = SettingsString.manageNotificationsTitle.string()
+        title = String(localized: "manageNotifications.title")
         view.backgroundColor = AppColorGroup.background.color
         tableView.dataSource = diffableDatasource
         registerCells()

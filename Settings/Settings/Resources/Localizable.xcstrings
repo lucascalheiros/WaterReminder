@@ -12,6 +12,9 @@
         }
       }
     },
+    "addFixedNotification.title" : {
+
+    },
     "createWaterSource.alertdescription.enterWaterVolume.%@" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -111,6 +114,9 @@
         }
       }
     },
+    "generic.friday" : {
+
+    },
     "generic.high" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -155,6 +161,9 @@
         }
       }
     },
+    "generic.monday" : {
+
+    },
     "generic.next" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -188,6 +197,9 @@
         }
       }
     },
+    "generic.saturday" : {
+
+    },
     "generic.soda" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -198,6 +210,9 @@
           }
         }
       }
+    },
+    "generic.sunday" : {
+
     },
     "generic.tea" : {
       "extractionState" : "manual",
@@ -210,6 +225,9 @@
         }
       }
     },
+    "generic.thursday" : {
+
+    },
     "generic.today" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -221,6 +239,9 @@
         }
       }
     },
+    "generic.tuesday" : {
+
+    },
     "generic.water" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -231,6 +252,9 @@
           }
         }
       }
+    },
+    "generic.wednesday" : {
+
     },
     "generic.yesterday" : {
       "extractionState" : "manual",
@@ -297,6 +321,15 @@
           }
         }
       }
+    },
+    "manageNotifications.section.notificationsByDay" : {
+
+    },
+    "manageNotifications.section.weekDays" : {
+
+    },
+    "manageNotifications.title" : {
+
     },
     "notification.message" : {
       "extractionState" : "manual",

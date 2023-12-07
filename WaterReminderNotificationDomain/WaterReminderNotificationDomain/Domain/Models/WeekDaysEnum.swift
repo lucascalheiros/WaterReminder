@@ -19,19 +19,19 @@ public enum WeekDaysEnum: Int, CaseIterable, Codable {
             switch self {
 
             case .sunday:
-                String(localized: "generic.sunday", table: "Notification")
+                String(localized: "generic.sunday")
             case .monday:
-                String(localized: "generic.monday", table: "Notification")
+                String(localized: "generic.monday")
             case .tuesday:
-                String(localized: "generic.tuesday", table: "Notification")
+                String(localized: "generic.tuesday")
             case .wednesday:
-                String(localized: "generic.wednesday", table: "Notification")
+                String(localized: "generic.wednesday")
             case .thursday:
-                String(localized: "generic.thursday", table: "Notification")
+                String(localized: "generic.thursday")
             case .friday:
-                String(localized: "generic.friday", table: "Notification")
+                String(localized: "generic.friday")
             case .saturday:
-                String(localized: "generic.saturday", table: "Notification")
+                String(localized: "generic.saturday")
             }
         }
     }

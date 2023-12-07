@@ -10,7 +10,7 @@
 		170AC87A2B214EF800CEDB34 /* ManageNotificationsVC+CellBinders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170AC8792B214EF800CEDB34 /* ManageNotificationsVC+CellBinders.swift */; };
 		170AC87C2B2150A000CEDB34 /* ManageNotificationsVC+Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170AC87B2B2150A000CEDB34 /* ManageNotificationsVC+Sections.swift */; };
 		170AC87E2B2150D600CEDB34 /* SettingsVC+Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170AC87D2B2150D600CEDB34 /* SettingsVC+Sections.swift */; };
-		170AC8802B21555100CEDB34 /* SettingsString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170AC87F2B21555100CEDB34 /* SettingsString.swift */; };
+		170AC8822B215E9D00CEDB34 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 170AC8812B215E9900CEDB34 /* Localizable.xcstrings */; };
 		175F92EB2B0900FF00758C50 /* SettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92EA2B0900FF00758C50 /* SettingsAssembly.swift */; };
 		175F92F22B09011C00758C50 /* NotificationReminderToggleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92EC2B09011C00758C50 /* NotificationReminderToggleDelegate.swift */; };
 		175F92F32B09011C00758C50 /* SettingsStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92ED2B09011C00758C50 /* SettingsStepper.swift */; };
@@ -38,7 +38,6 @@
 		179380C62B1AB48D00D4EAC4 /* AddFixedNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179380C52B1AB48D00D4EAC4 /* AddFixedNotificationVC.swift */; };
 		179519672B16DE1400AAB8D7 /* ManageNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179519662B16DE1400AAB8D7 /* ManageNotificationsViewModel.swift */; };
 		17973F8C2B124B4D003E88D7 /* SettingsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17973F8B2B124B4D003E88D7 /* SettingsSectionHeaderView.swift */; };
-		17A9066B2B200E830034CE32 /* Settings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 17A9066A2B200E830034CE32 /* Settings.xcstrings */; };
 		17AE2B062B030BE10049F554 /* Settings.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B052B030BE10049F554 /* Settings.docc */; };
 		17AE2B0C2B030BE10049F554 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2B012B030BE10049F554 /* Settings.framework */; };
 		17AE2B112B030BE10049F554 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B102B030BE10049F554 /* SettingsTests.swift */; };
@@ -80,7 +79,7 @@
 		170AC8792B214EF800CEDB34 /* ManageNotificationsVC+CellBinders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManageNotificationsVC+CellBinders.swift"; sourceTree = "<group>"; };
 		170AC87B2B2150A000CEDB34 /* ManageNotificationsVC+Sections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManageNotificationsVC+Sections.swift"; sourceTree = "<group>"; };
 		170AC87D2B2150D600CEDB34 /* SettingsVC+Sections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Sections.swift"; sourceTree = "<group>"; };
-		170AC87F2B21555100CEDB34 /* SettingsString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsString.swift; sourceTree = "<group>"; };
+		170AC8812B215E9900CEDB34 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		175F92EA2B0900FF00758C50 /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
 		175F92EC2B09011C00758C50 /* NotificationReminderToggleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationReminderToggleDelegate.swift; sourceTree = "<group>"; };
 		175F92ED2B09011C00758C50 /* SettingsStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsStepper.swift; sourceTree = "<group>"; };
@@ -108,7 +107,6 @@
 		179380C52B1AB48D00D4EAC4 /* AddFixedNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFixedNotificationVC.swift; sourceTree = "<group>"; };
 		179519662B16DE1400AAB8D7 /* ManageNotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageNotificationsViewModel.swift; sourceTree = "<group>"; };
 		17973F8B2B124B4D003E88D7 /* SettingsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionHeaderView.swift; sourceTree = "<group>"; };
-		17A9066A2B200E830034CE32 /* Settings.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Settings.xcstrings; path = ../../../WaterReminder/Resources/Settings.xcstrings; sourceTree = "<group>"; };
 		17AE2B012B030BE10049F554 /* Settings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Settings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B052B030BE10049F554 /* Settings.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Settings.docc; sourceTree = "<group>"; };
 		17AE2B0B2B030BE10049F554 /* SettingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SettingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,8 +255,7 @@
 		17A906692B200E750034CE32 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				170AC87F2B21555100CEDB34 /* SettingsString.swift */,
-				17A9066A2B200E830034CE32 /* Settings.xcstrings */,
+				170AC8812B215E9900CEDB34 /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -446,7 +443,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17A9066B2B200E830034CE32 /* Settings.xcstrings in Resources */,
+				170AC8822B215E9D00CEDB34 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,7 +531,6 @@
 				17973F8C2B124B4D003E88D7 /* SettingsSectionHeaderView.swift in Sources */,
 				17BD79F92B0EED4800F16C32 /* ManageNotificationsVC.swift in Sources */,
 				17AE2B062B030BE10049F554 /* Settings.docc in Sources */,
-				170AC8802B21555100CEDB34 /* SettingsString.swift in Sources */,
 				179519672B16DE1400AAB8D7 /* ManageNotificationsViewModel.swift in Sources */,
 				175F92F22B09011C00758C50 /* NotificationReminderToggleDelegate.swift in Sources */,
 				170AC87C2B2150A000CEDB34 /* ManageNotificationsVC+Sections.swift in Sources */,

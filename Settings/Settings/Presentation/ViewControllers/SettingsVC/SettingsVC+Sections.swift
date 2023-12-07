@@ -14,7 +14,7 @@ extension SettingsVC {
         func itemTitle() -> String {
             switch self {
             case .dailyWaterVolume:
-                return SettingsString.settingsWaterGoal.string()
+                return String(localized: "settings.section.general.goal")
             }
         }
     }
@@ -26,10 +26,10 @@ extension SettingsVC {
         func itemTitle() -> String {
             switch self {
             case .notificationEnabled:
-                return SettingsString.settingsNotificationEnabled.string()
+                return String(localized: "settings.section.notifications.notificationEnabled")
 
             case .manageNotifications:
-                return SettingsString.settingsNotificationManage.string()
+                return String(localized: "settings.section.notifications.manage")
 
             }
         }
@@ -42,9 +42,9 @@ extension SettingsVC {
         func sectionTitle() -> String {
             switch self {
             case .general:
-                return SettingsString.settingsSectionGeneral.string()
+                return String(localized: "settings.section.general")
             case .notification:
-                return SettingsString.settingsSectionNotifications.string()
+                return String(localized: "settings.section.notifications")
             }
         }
 
