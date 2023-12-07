@@ -7,11 +7,12 @@
 
 import UIKit
 import WaterManagementDomain
+import RxRelay
 
 class CreateWaterSourceItemVC: UITableViewController {
 
-    var waterSourceType = WaterSourceType.water
-    var waterWithFormat = WaterWithFormat(waterInML: 500, volumeFormat: .metric)
+    var waterSourceType = BehaviorRelay(value: WaterSourceType.water)
+    var waterWithFormat = BehaviorRelay(value: WaterWithFormat(waterInML: 500, volumeFormat: .metric))
     var createWaterSourceDelegate: CreateWaterSourceDelegate?
 
     lazy var cancel = {
@@ -24,7 +25,7 @@ class CreateWaterSourceItemVC: UITableViewController {
 
     lazy var confirm = {
         let btn = UIBarButtonItem(title: String(localized: "generic.confirm"), image: nil, primaryAction: .init(handler: { _ in
-            self.createWaterSourceDelegate?.onCreateWaterSource(self.waterWithFormat.waterInML, self.waterSourceType)
+            self.createWaterSourceDelegate?.onCreateWaterSource(self.waterWithFormat.value.waterInML, self.waterSourceType.value)
             self.dismiss(animated: true)
         }))
         btn.tintColor = .white

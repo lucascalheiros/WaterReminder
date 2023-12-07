@@ -7,15 +7,21 @@
 
 import Foundation
 import Common
+import Combine
 
 class ScheduleWaterReminderNotificationsUseCase {
 	private let waterReminderNotificationManager: WaterReminderNotificationManager
+	private let notificationSettingsRepository: NotificationSettingsRepository
 
-	init(waterReminderNotificationManager: WaterReminderNotificationManager) {
+	init(
+		waterReminderNotificationManager: WaterReminderNotificationManager,
+		notificationSettingsRepository: NotificationSettingsRepository
+	) {
 		self.waterReminderNotificationManager = waterReminderNotificationManager
+		self.notificationSettingsRepository = notificationSettingsRepository
 	}
 
-	func scheduleNotifications(startTime: TimePeriod, endTime: TimePeriod, frequency: NotificationFrequencyEnum) {
+	private func scheduleNotifications(startTime: TimePeriod, endTime: TimePeriod, frequency: NotificationFrequencyEnum) {
 		waterReminderNotificationManager.clearAllWaterReminderNotifications()
 		let intervalPeriod = frequency.timePeriod()
 		let intervalTimes = (endTime - startTime) / intervalPeriod
@@ -27,17 +33,32 @@ class ScheduleWaterReminderNotificationsUseCase {
 			waterReminderNotificationManager.scheduleReminder(title: String(localized: "notification.title"), message: String(localized: "notification.message"), date: date)
 		}
 	}
-}
 
-extension NotificationFrequencyEnum {
-	func timePeriod() -> TimePeriod {
-		switch (self) {
-		case .high:
-			return TimePeriod(hour: 1, minute: 30)
-		case .medium:
-			return TimePeriod(hour: 2)
-		case .low:
-			return TimePeriod(hour: 3)
+	private func scheduleNotifications(timePeriodList: [TimePeriod], weekDays: [WeekDaysEnum]) {
+		waterReminderNotificationManager.clearAllWaterReminderNotifications()
+		for weekDay in weekDays {
+			for reminderTime in timePeriodList {
+				var date = DateComponents()
+				date.hour = reminderTime.hour
+				date.minute = reminderTime.minute
+				date.weekday = weekDay.rawValue
+				waterReminderNotificationManager.scheduleReminder(title: String(localized: "notification.title"), message: String(localized: "notification.message"), date: date)
+			}
+		}
+	}
+
+	func scheduleNotifications() async throws {
+		let isEnabled = try await notificationSettingsRepository.isReminderNotificationEnabled.awaitFirst()
+		if isEnabled {
+			let timePeriodList = try await notificationSettingsRepository.fixedNotifications.awaitFirst().filter { $0.enabled }.map { $0.timePeriod }
+			let excludedWeekDays = try await notificationSettingsRepository.notificationWeekDaysState.awaitFirst().filter { !$0.enabled }.map { $0.weekDay }
+			let weekDays = WeekDaysEnum.allCases.filter { !excludedWeekDays.contains($0) }
+			scheduleNotifications(
+				timePeriodList: timePeriodList,
+				weekDays: weekDays
+				)
+		} else {
+			waterReminderNotificationManager.clearAllWaterReminderNotifications()
 		}
 	}
 }

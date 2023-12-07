@@ -47,15 +47,12 @@ class EditWaterSourceListVC: UITableViewController {
 		super.viewDidLoad()
 
 		prepareConfiguration()
-		registerCells()
-		configureDragAndDrop()
 		loadTableData()
 	}
 
 	func prepareConfiguration() {
 		view.backgroundColor = .systemTeal
+        registerCells()
+        configureDragAndDrop()
 	}
-
-
 }
-

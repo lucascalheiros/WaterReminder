@@ -49,19 +49,19 @@ public class DefaultComponentsTheme: ThemeProtocol {
     }
 
     public var screenTitle: UIFont {
-        .h4
+        self.h4
     }
 
     public var sectionTitle: UIFont {
-        .h4
+        self.h4
     }
 
     public var buttonBig: UIFont {
-        .h4
+        self.h4
     }
 
     public var buttonDefault: UIFont {
-        .body
+        self.body
     }
 
 

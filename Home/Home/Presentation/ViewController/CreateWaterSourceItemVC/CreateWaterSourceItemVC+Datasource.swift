@@ -37,9 +37,9 @@ extension CreateWaterSourceItemVC {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch getItem(indexPath) {
         case .waterSourceType:
-            presentWaterTypeSelector(waterSourceType)
+            presentWaterTypeSelector(waterSourceType.value)
         case .waterVolume:
-            presentWaterVolumeInput(waterWithFormat)
+            presentWaterVolumeInput(waterWithFormat.value)
         case .none:
             break
         }

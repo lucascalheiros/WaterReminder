@@ -24,8 +24,11 @@ class WaterReminderNotificationManagerImpl: WaterReminderNotificationManager {
 
 		let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
 
-		let request = UNNotificationRequest(identifier: waterReminderIdentifier(date: date),
-											content: content, trigger: trigger)
+		let request = UNNotificationRequest(
+			identifier: waterReminderIdentifier(date: date),
+			content: content,
+			trigger: trigger
+		)
 
 		let notificationCenter = UNUserNotificationCenter.current()
 		notificationCenter.add(request) { (error) in
@@ -33,6 +36,11 @@ class WaterReminderNotificationManagerImpl: WaterReminderNotificationManager {
 				print(error?.localizedDescription ?? "")
 			}
 		}
+        notificationCenter.getPendingNotificationRequests(completionHandler: { requests in
+            for request in requests {
+                print(request)
+            }
+        })
 	}
 
 	func removeReminder(reminderId: String) {

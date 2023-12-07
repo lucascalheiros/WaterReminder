@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TimePeriod: Comparable, Codable {
+public struct TimePeriod: Comparable, Codable, Hashable {
 	public let hour: Int
     public let minute: Int
     public let second: Int

@@ -8,8 +8,9 @@
 import UIKit
 import Core
 import WaterManagementDomain
+import Common
 
-class WaterSourceEditableCell: UITableViewCell {
+class WaterSourceEditableCell: IdentifiableUITableViewCell {
 
 	static let identifier = "WaterSourceEditableCell"
 
@@ -65,7 +66,7 @@ class WaterSourceEditableCell: UITableViewCell {
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		configure()
+		prepareConfiguration()
 		prepareConstraints()
     }
 	
@@ -73,7 +74,7 @@ class WaterSourceEditableCell: UITableViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	private func configure() {
+	private func prepareConfiguration() {
 		contentView.backgroundColor = AppColorGroup.surface.color
 		separatorInset = UIEdgeInsets.zero
 		layoutMargins = UIEdgeInsets.zero

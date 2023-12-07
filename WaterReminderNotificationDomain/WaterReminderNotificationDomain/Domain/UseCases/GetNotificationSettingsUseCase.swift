@@ -5,32 +5,32 @@
 //  Created by Lucas Calheiros on 19/07/23.
 //
 
-import RxSwift
+import Combine
 import Common
 
 public class GetNotificationSettingsUseCase {
-	let notificationSettingsRepository: NotificationSettingsRepositoryProtocol
+	let notificationSettingsRepository: NotificationSettingsRepository
 
 	init(
-		notificationSettingsRepository: NotificationSettingsRepositoryProtocol
+		notificationSettingsRepository: NotificationSettingsRepository
 	) {
 		self.notificationSettingsRepository = notificationSettingsRepository
 	}
 
-    public func isReminderNotificationEnabled() -> Observable<Bool> {
-		notificationSettingsRepository.isReminderNotificationEnabled()
+    public func isReminderNotificationEnabled() -> AnyPublisher<Bool, Never> {
+		notificationSettingsRepository.isReminderNotificationEnabled
 	}
 
-	public func notificationFrequency() -> Observable<NotificationFrequencyEnum> {
-		notificationSettingsRepository.notificationFrequency()
+	public func notificationFrequency() -> AnyPublisher<NotificationFrequencyEnum, Never> {
+		notificationSettingsRepository.notificationFrequency
 	}
 
-    public func notificationStartTime() -> Observable<TimePeriod> {
-		notificationSettingsRepository.notificationStartTime()
+    public func notificationStartTime() -> AnyPublisher<TimePeriod, Never> {
+		notificationSettingsRepository.notificationStartTime
 	}
 
-    public func notificationEndTime() -> Observable<TimePeriod> {
-		notificationSettingsRepository.notificationEndTime()
+    public func notificationEndTime() -> AnyPublisher<TimePeriod, Never> {
+		notificationSettingsRepository.notificationEndTime
 	}
 }
 

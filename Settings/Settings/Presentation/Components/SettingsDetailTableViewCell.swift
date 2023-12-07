@@ -9,9 +9,15 @@ import UIKit
 import RxCocoa
 import RxSwift
 import Core
+import Common
+import Combine
 
-class SettingsDetailTableViewCell: UITableViewCell {
+class SettingsDetailTableViewCell: IdentifiableUITableViewCell {
+
+    static let identifier = "SettingsDetailTableViewCell"
+
 	var disposeBag = DisposeBag()
+    var bag = Set<AnyCancellable>()
 
 	lazy var titleLabel: UILabel = {
 		let label = UILabel()

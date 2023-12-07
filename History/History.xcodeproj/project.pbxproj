@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17871D322B1A62C70022D0E9 /* Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D312B1A62C70022D0E9 /* Components.framework */; };
+		17871D332B1A62C70022D0E9 /* Components.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D312B1A62C70022D0E9 /* Components.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17B0AF0E2B0A8C5900E33270 /* History.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF0D2B0A8C5900E33270 /* History.docc */; };
 		17B0AF142B0A8C5900E33270 /* History.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B0AF092B0A8C5900E33270 /* History.framework */; };
 		17B0AF192B0A8C5900E33270 /* HistoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF182B0A8C5900E33270 /* HistoryTests.swift */; };
@@ -31,8 +33,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		17871D342B1A62C70022D0E9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				17871D332B1A62C70022D0E9 /* Components.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0FB5044ECD5801D3E1C6E1BA /* Pods_History.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_History.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17871D312B1A62C70022D0E9 /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AF092B0A8C5900E33270 /* History.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = History.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AF0D2B0A8C5900E33270 /* History.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = History.docc; sourceTree = "<group>"; };
 		17B0AF132B0A8C5900E33270 /* HistoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HistoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17871D322B1A62C70022D0E9 /* Components.framework in Frameworks */,
 				A77B96F342E3E08ABC9A465E /* Pods_History.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,6 +176,7 @@
 		8DF531F11EDA51866CE63794 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17871D312B1A62C70022D0E9 /* Components.framework */,
 				0FB5044ECD5801D3E1C6E1BA /* Pods_History.framework */,
 				1C50A1530B28C7DC219578F9 /* Pods_HistoryTests.framework */,
 			);
@@ -198,6 +217,7 @@
 				17B0AF052B0A8C5900E33270 /* Sources */,
 				17B0AF062B0A8C5900E33270 /* Frameworks */,
 				17B0AF072B0A8C5900E33270 /* Resources */,
+				17871D342B1A62C70022D0E9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

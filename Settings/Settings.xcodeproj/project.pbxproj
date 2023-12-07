@@ -14,16 +14,13 @@
 		175F92F52B09011C00758C50 /* NotificationFrequencySelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92EF2B09011C00758C50 /* NotificationFrequencySelectorDelegate.swift */; };
 		175F92F62B09011C00758C50 /* PeriodSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92F02B09011C00758C50 /* PeriodSelectorDelegate.swift */; };
 		175F92F72B09011C00758C50 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92F12B09011C00758C50 /* SettingsViewModel.swift */; };
-		175F92FE2B09015A00758C50 /* SettingsViewController+NotificationCellsBind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92F82B09015A00758C50 /* SettingsViewController+NotificationCellsBind.swift */; };
-		175F92FF2B09015A00758C50 /* SettingsViewController+PresentNotificationFrequencySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92F92B09015A00758C50 /* SettingsViewController+PresentNotificationFrequencySelector.swift */; };
-		175F93002B09015A00758C50 /* SettingsViewController+PresentPeriodSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92FA2B09015A00758C50 /* SettingsViewController+PresentPeriodSelector.swift */; };
-		175F93012B09015A00758C50 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92FB2B09015A00758C50 /* SettingsViewController.swift */; };
-		175F93022B09015A00758C50 /* SettingsViewController+PresentDailyWaterGoalSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92FC2B09015A00758C50 /* SettingsViewController+PresentDailyWaterGoalSelector.swift */; };
-		175F93032B09015A00758C50 /* SettingsViewController+GeneralCellsBind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92FD2B09015A00758C50 /* SettingsViewController+GeneralCellsBind.swift */; };
+		175F92FE2B09015A00758C50 /* SettingsVC+CellBinders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92F82B09015A00758C50 /* SettingsVC+CellBinders.swift */; };
+		175F93012B09015A00758C50 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92FB2B09015A00758C50 /* SettingsVC.swift */; };
+		175F93022B09015A00758C50 /* SettingsVC+SelectHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92FC2B09015A00758C50 /* SettingsVC+SelectHandlers.swift */; };
 		175F93052B09016100758C50 /* SectionItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93042B09016100758C50 /* SectionItemProtocol.swift */; };
-		175F93092B09016900758C50 /* PeriodSelectorModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93062B09016900758C50 /* PeriodSelectorModalViewController.swift */; };
-		175F930A2B09016900758C50 /* DailyWaterSelectorModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93072B09016900758C50 /* DailyWaterSelectorModalViewController.swift */; };
-		175F930B2B09016900758C50 /* NotificationFrequencySelectorModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93082B09016900758C50 /* NotificationFrequencySelectorModalViewController.swift */; };
+		175F93092B09016900758C50 /* PeriodSelectorModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93062B09016900758C50 /* PeriodSelectorModalVC.swift */; };
+		175F930A2B09016900758C50 /* DailyWaterSelectorModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93072B09016900758C50 /* DailyWaterSelectorModalVC.swift */; };
+		175F930B2B09016900758C50 /* NotificationFrequencySelectorModalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93082B09016900758C50 /* NotificationFrequencySelectorModalVC.swift */; };
 		175F930F2B09017000758C50 /* GeneralSectionItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F930C2B09017000758C50 /* GeneralSectionItems.swift */; };
 		175F93102B09017000758C50 /* NotificationSectionItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F930D2B09017000758C50 /* NotificationSectionItems.swift */; };
 		175F93112B09017000758C50 /* SettingsSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F930E2B09017000758C50 /* SettingsSections.swift */; };
@@ -32,9 +29,22 @@
 		175F93172B09017800758C50 /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93142B09017800758C50 /* SettingsSwitchTableViewCell.swift */; };
 		175F931A2B09018600758C50 /* SettingsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93182B09018600758C50 /* SettingsFlow.swift */; };
 		175F931B2B09018600758C50 /* SettingsFlowSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93192B09018600758C50 /* SettingsFlowSteps.swift */; };
+		17871D362B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D352B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework */; };
+		17871D372B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D352B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		17871D3A2B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D392B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework */; };
+		17871D3B2B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D392B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		179380C22B1A9F5800D4EAC4 /* SettingsAddItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179380C12B1A9F5800D4EAC4 /* SettingsAddItemCell.swift */; };
+		179380C62B1AB48D00D4EAC4 /* AddFixedNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179380C52B1AB48D00D4EAC4 /* AddFixedNotificationVC.swift */; };
+		179519672B16DE1400AAB8D7 /* ManageNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179519662B16DE1400AAB8D7 /* ManageNotificationsViewModel.swift */; };
+		17973F8C2B124B4D003E88D7 /* SettingsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17973F8B2B124B4D003E88D7 /* SettingsSectionHeaderView.swift */; };
+		17A9066B2B200E830034CE32 /* Settings.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 17A9066A2B200E830034CE32 /* Settings.xcstrings */; };
 		17AE2B062B030BE10049F554 /* Settings.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B052B030BE10049F554 /* Settings.docc */; };
 		17AE2B0C2B030BE10049F554 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2B012B030BE10049F554 /* Settings.framework */; };
 		17AE2B112B030BE10049F554 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B102B030BE10049F554 /* SettingsTests.swift */; };
+		17BD79F52B0EE8D300F16C32 /* SettingsVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BD79F42B0EE8D300F16C32 /* SettingsVC+Datasource.swift */; };
+		17BD79F92B0EED4800F16C32 /* ManageNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BD79F82B0EED4800F16C32 /* ManageNotificationsVC.swift */; };
+		17BD79FB2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BD79FA2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift */; };
+		17ED03052B1B809600BA33B7 /* AddFixedNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ED03042B1B809600BA33B7 /* AddFixedNotificationViewModel.swift */; };
 		2EDD4AE1DD4717116D9277F1 /* Pods_Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31BA7263DFEC32BC05C0E11 /* Pods_Settings.framework */; };
 		E02FCE9E2B237247F7773CAD /* Pods_SettingsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA9687BFF758CF47B67BD97 /* Pods_SettingsTests.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +59,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		17871D382B1A62DA0022D0E9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				17871D372B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework in Embed Frameworks */,
+				17871D3B2B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		02769E2D5BFB78270BB9929A /* Pods-SettingsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SettingsTests.debug.xcconfig"; path = "Target Support Files/Pods-SettingsTests/Pods-SettingsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		175F92EA2B0900FF00758C50 /* SettingsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAssembly.swift; sourceTree = "<group>"; };
@@ -58,16 +83,13 @@
 		175F92EF2B09011C00758C50 /* NotificationFrequencySelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationFrequencySelectorDelegate.swift; sourceTree = "<group>"; };
 		175F92F02B09011C00758C50 /* PeriodSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodSelectorDelegate.swift; sourceTree = "<group>"; };
 		175F92F12B09011C00758C50 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		175F92F82B09015A00758C50 /* SettingsViewController+NotificationCellsBind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+NotificationCellsBind.swift"; sourceTree = "<group>"; };
-		175F92F92B09015A00758C50 /* SettingsViewController+PresentNotificationFrequencySelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+PresentNotificationFrequencySelector.swift"; sourceTree = "<group>"; };
-		175F92FA2B09015A00758C50 /* SettingsViewController+PresentPeriodSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+PresentPeriodSelector.swift"; sourceTree = "<group>"; };
-		175F92FB2B09015A00758C50 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		175F92FC2B09015A00758C50 /* SettingsViewController+PresentDailyWaterGoalSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+PresentDailyWaterGoalSelector.swift"; sourceTree = "<group>"; };
-		175F92FD2B09015A00758C50 /* SettingsViewController+GeneralCellsBind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+GeneralCellsBind.swift"; sourceTree = "<group>"; };
+		175F92F82B09015A00758C50 /* SettingsVC+CellBinders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+CellBinders.swift"; sourceTree = "<group>"; };
+		175F92FB2B09015A00758C50 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		175F92FC2B09015A00758C50 /* SettingsVC+SelectHandlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+SelectHandlers.swift"; sourceTree = "<group>"; };
 		175F93042B09016100758C50 /* SectionItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionItemProtocol.swift; sourceTree = "<group>"; };
-		175F93062B09016900758C50 /* PeriodSelectorModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodSelectorModalViewController.swift; sourceTree = "<group>"; };
-		175F93072B09016900758C50 /* DailyWaterSelectorModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyWaterSelectorModalViewController.swift; sourceTree = "<group>"; };
-		175F93082B09016900758C50 /* NotificationFrequencySelectorModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationFrequencySelectorModalViewController.swift; sourceTree = "<group>"; };
+		175F93062B09016900758C50 /* PeriodSelectorModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodSelectorModalVC.swift; sourceTree = "<group>"; };
+		175F93072B09016900758C50 /* DailyWaterSelectorModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyWaterSelectorModalVC.swift; sourceTree = "<group>"; };
+		175F93082B09016900758C50 /* NotificationFrequencySelectorModalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationFrequencySelectorModalVC.swift; sourceTree = "<group>"; };
 		175F930C2B09017000758C50 /* GeneralSectionItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralSectionItems.swift; sourceTree = "<group>"; };
 		175F930D2B09017000758C50 /* NotificationSectionItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSectionItems.swift; sourceTree = "<group>"; };
 		175F930E2B09017000758C50 /* SettingsSections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSections.swift; sourceTree = "<group>"; };
@@ -78,10 +100,21 @@
 		175F93192B09018600758C50 /* SettingsFlowSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFlowSteps.swift; sourceTree = "<group>"; };
 		175F93812B09031B00758C50 /* WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		175F93822B09031B00758C50 /* WaterReminderNotificationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WaterReminderNotificationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17871D352B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17871D392B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WaterReminderNotificationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		179380C12B1A9F5800D4EAC4 /* SettingsAddItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAddItemCell.swift; sourceTree = "<group>"; };
+		179380C52B1AB48D00D4EAC4 /* AddFixedNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFixedNotificationVC.swift; sourceTree = "<group>"; };
+		179519662B16DE1400AAB8D7 /* ManageNotificationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageNotificationsViewModel.swift; sourceTree = "<group>"; };
+		17973F8B2B124B4D003E88D7 /* SettingsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionHeaderView.swift; sourceTree = "<group>"; };
+		17A9066A2B200E830034CE32 /* Settings.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Settings.xcstrings; path = ../../../WaterReminder/Resources/Settings.xcstrings; sourceTree = "<group>"; };
 		17AE2B012B030BE10049F554 /* Settings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Settings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B052B030BE10049F554 /* Settings.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Settings.docc; sourceTree = "<group>"; };
 		17AE2B0B2B030BE10049F554 /* SettingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SettingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B102B030BE10049F554 /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
+		17BD79F42B0EE8D300F16C32 /* SettingsVC+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Datasource.swift"; sourceTree = "<group>"; };
+		17BD79F82B0EED4800F16C32 /* ManageNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageNotificationsVC.swift; sourceTree = "<group>"; };
+		17BD79FA2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManageNotificationsVC+Datasource.swift"; sourceTree = "<group>"; };
+		17ED03042B1B809600BA33B7 /* AddFixedNotificationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFixedNotificationViewModel.swift; sourceTree = "<group>"; };
 		7ECAB27A228BAC271F038264 /* Pods-Settings.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Settings.debug.xcconfig"; path = "Target Support Files/Pods-Settings/Pods-Settings.debug.xcconfig"; sourceTree = "<group>"; };
 		B8103F62BCE6AE9B23C1DEE0 /* Pods-SettingsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SettingsTests.release.xcconfig"; path = "Target Support Files/Pods-SettingsTests/Pods-SettingsTests.release.xcconfig"; sourceTree = "<group>"; };
 		BFA9687BFF758CF47B67BD97 /* Pods_SettingsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SettingsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +127,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17871D3A2B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework in Frameworks */,
 				2EDD4AE1DD4717116D9277F1 /* Pods_Settings.framework in Frameworks */,
+				17871D362B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +150,7 @@
 			children = (
 				175F93182B09018600758C50 /* SettingsFlow.swift */,
 				175F93192B09018600758C50 /* SettingsFlowSteps.swift */,
+				175F92ED2B09011C00758C50 /* SettingsStepper.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -124,7 +160,9 @@
 			children = (
 				175F93122B09017800758C50 /* NotificationFrequencyPickerView.swift */,
 				175F93132B09017800758C50 /* SettingsDetailTableViewCell.swift */,
+				17973F8B2B124B4D003E88D7 /* SettingsSectionHeaderView.swift */,
 				175F93142B09017800758C50 /* SettingsSwitchTableViewCell.swift */,
+				179380C12B1A9F5800D4EAC4 /* SettingsAddItemCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -139,14 +177,12 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		175F92DC2B0900B500758C50 /* Modal */ = {
+		175F92DC2B0900B500758C50 /* PeriodSelectorModalVC */ = {
 			isa = PBXGroup;
 			children = (
-				175F93072B09016900758C50 /* DailyWaterSelectorModalViewController.swift */,
-				175F93082B09016900758C50 /* NotificationFrequencySelectorModalViewController.swift */,
-				175F93062B09016900758C50 /* PeriodSelectorModalViewController.swift */,
+				175F93062B09016900758C50 /* PeriodSelectorModalVC.swift */,
 			);
-			path = Modal;
+			path = PeriodSelectorModalVC;
 			sourceTree = "<group>";
 		};
 		175F92DE2B0900B500758C50 /* Protocols */ = {
@@ -160,15 +196,12 @@
 		175F92DF2B0900B500758C50 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				175F92FB2B09015A00758C50 /* SettingsViewController.swift */,
-				175F92FD2B09015A00758C50 /* SettingsViewController+GeneralCellsBind.swift */,
-				175F92F82B09015A00758C50 /* SettingsViewController+NotificationCellsBind.swift */,
-				175F92FC2B09015A00758C50 /* SettingsViewController+PresentDailyWaterGoalSelector.swift */,
-				175F92F92B09015A00758C50 /* SettingsViewController+PresentNotificationFrequencySelector.swift */,
-				175F92FA2B09015A00758C50 /* SettingsViewController+PresentPeriodSelector.swift */,
-				175F92D82B0900B500758C50 /* Enums */,
-				175F92DC2B0900B500758C50 /* Modal */,
-				175F92DE2B0900B500758C50 /* Protocols */,
+				179380C72B1AB49400D4EAC4 /* AddFixedNotificationVC */,
+				1766D7952B1282C9009F17EC /* DailyWaterSelectorModalVC */,
+				17BD79F72B0EED3100F16C32 /* ManageNotificationsVC */,
+				1766D7962B1282E1009F17EC /* NotificationFrequencySelectorModalVC */,
+				175F92DC2B0900B500758C50 /* PeriodSelectorModalVC */,
+				17BD79F62B0EED1400F16C32 /* SettingsVC */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -176,12 +209,10 @@
 		175F92E62B0900B500758C50 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				175F92EE2B09011C00758C50 /* DailyWaterSelectorDelegate.swift */,
-				175F92EF2B09011C00758C50 /* NotificationFrequencySelectorDelegate.swift */,
-				175F92EC2B09011C00758C50 /* NotificationReminderToggleDelegate.swift */,
-				175F92F02B09011C00758C50 /* PeriodSelectorDelegate.swift */,
-				175F92ED2B09011C00758C50 /* SettingsStepper.swift */,
+				17ED03042B1B809600BA33B7 /* AddFixedNotificationViewModel.swift */,
+				179519662B16DE1400AAB8D7 /* ManageNotificationsViewModel.swift */,
 				175F92F12B09011C00758C50 /* SettingsViewModel.swift */,
+				1766D78F2B127F2B009F17EC /* Delegates */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -194,6 +225,49 @@
 				175F92E62B0900B500758C50 /* ViewModel */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		1766D78F2B127F2B009F17EC /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				175F92EE2B09011C00758C50 /* DailyWaterSelectorDelegate.swift */,
+				175F92EF2B09011C00758C50 /* NotificationFrequencySelectorDelegate.swift */,
+				175F92EC2B09011C00758C50 /* NotificationReminderToggleDelegate.swift */,
+				175F92F02B09011C00758C50 /* PeriodSelectorDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		1766D7952B1282C9009F17EC /* DailyWaterSelectorModalVC */ = {
+			isa = PBXGroup;
+			children = (
+				175F93072B09016900758C50 /* DailyWaterSelectorModalVC.swift */,
+			);
+			path = DailyWaterSelectorModalVC;
+			sourceTree = "<group>";
+		};
+		1766D7962B1282E1009F17EC /* NotificationFrequencySelectorModalVC */ = {
+			isa = PBXGroup;
+			children = (
+				175F93082B09016900758C50 /* NotificationFrequencySelectorModalVC.swift */,
+			);
+			path = NotificationFrequencySelectorModalVC;
+			sourceTree = "<group>";
+		};
+		179380C72B1AB49400D4EAC4 /* AddFixedNotificationVC */ = {
+			isa = PBXGroup;
+			children = (
+				179380C52B1AB48D00D4EAC4 /* AddFixedNotificationVC.swift */,
+			);
+			path = AddFixedNotificationVC;
+			sourceTree = "<group>";
+		};
+		17A906692B200E750034CE32 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				17A9066A2B200E830034CE32 /* Settings.xcstrings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		17AE2AF72B030BE10049F554 = {
@@ -219,10 +293,11 @@
 		17AE2B032B030BE10049F554 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				17AE2B052B030BE10049F554 /* Settings.docc */,
 				175F92EA2B0900FF00758C50 /* SettingsAssembly.swift */,
 				175F92CA2B0900B500758C50 /* Flow */,
 				175F92E72B0900B500758C50 /* Presentation */,
-				17AE2B052B030BE10049F554 /* Settings.docc */,
+				17A906692B200E750034CE32 /* Resources */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -233,6 +308,28 @@
 				17AE2B102B030BE10049F554 /* SettingsTests.swift */,
 			);
 			path = SettingsTests;
+			sourceTree = "<group>";
+		};
+		17BD79F62B0EED1400F16C32 /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				175F92FB2B09015A00758C50 /* SettingsVC.swift */,
+				175F92F82B09015A00758C50 /* SettingsVC+CellBinders.swift */,
+				17BD79F42B0EE8D300F16C32 /* SettingsVC+Datasource.swift */,
+				175F92FC2B09015A00758C50 /* SettingsVC+SelectHandlers.swift */,
+				175F92D82B0900B500758C50 /* Enums */,
+				175F92DE2B0900B500758C50 /* Protocols */,
+			);
+			path = SettingsVC;
+			sourceTree = "<group>";
+		};
+		17BD79F72B0EED3100F16C32 /* ManageNotificationsVC */ = {
+			isa = PBXGroup;
+			children = (
+				17BD79F82B0EED4800F16C32 /* ManageNotificationsVC.swift */,
+				17BD79FA2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift */,
+			);
+			path = ManageNotificationsVC;
 			sourceTree = "<group>";
 		};
 		34C392F2DDBA053BB1CF1BEA /* Pods */ = {
@@ -250,6 +347,8 @@
 		9FCDE4278B08DA4BBA1475D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17871D392B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework */,
+				17871D352B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework */,
 				175F93812B09031B00758C50 /* WaterManagementDomain.framework */,
 				175F93822B09031B00758C50 /* WaterReminderNotificationDomain.framework */,
 				F31BA7263DFEC32BC05C0E11 /* Pods_Settings.framework */,
@@ -280,6 +379,7 @@
 				17AE2AFD2B030BE10049F554 /* Sources */,
 				17AE2AFE2B030BE10049F554 /* Frameworks */,
 				17AE2AFF2B030BE10049F554 /* Resources */,
+				17871D382B1A62DA0022D0E9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -351,6 +451,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17A9066B2B200E830034CE32 /* Settings.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,30 +516,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17BD79FB2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift in Sources */,
 				175F92F62B09011C00758C50 /* PeriodSelectorDelegate.swift in Sources */,
-				175F930B2B09016900758C50 /* NotificationFrequencySelectorModalViewController.swift in Sources */,
+				179380C62B1AB48D00D4EAC4 /* AddFixedNotificationVC.swift in Sources */,
+				175F930B2B09016900758C50 /* NotificationFrequencySelectorModalVC.swift in Sources */,
+				179380C22B1A9F5800D4EAC4 /* SettingsAddItemCell.swift in Sources */,
 				175F92F32B09011C00758C50 /* SettingsStepper.swift in Sources */,
-				175F93092B09016900758C50 /* PeriodSelectorModalViewController.swift in Sources */,
+				17BD79F52B0EE8D300F16C32 /* SettingsVC+Datasource.swift in Sources */,
+				17ED03052B1B809600BA33B7 /* AddFixedNotificationViewModel.swift in Sources */,
+				175F93092B09016900758C50 /* PeriodSelectorModalVC.swift in Sources */,
 				175F93052B09016100758C50 /* SectionItemProtocol.swift in Sources */,
 				175F931A2B09018600758C50 /* SettingsFlow.swift in Sources */,
-				175F930A2B09016900758C50 /* DailyWaterSelectorModalViewController.swift in Sources */,
+				175F930A2B09016900758C50 /* DailyWaterSelectorModalVC.swift in Sources */,
 				175F92F52B09011C00758C50 /* NotificationFrequencySelectorDelegate.swift in Sources */,
-				175F93002B09015A00758C50 /* SettingsViewController+PresentPeriodSelector.swift in Sources */,
 				175F92F42B09011C00758C50 /* DailyWaterSelectorDelegate.swift in Sources */,
-				175F93022B09015A00758C50 /* SettingsViewController+PresentDailyWaterGoalSelector.swift in Sources */,
+				175F93022B09015A00758C50 /* SettingsVC+SelectHandlers.swift in Sources */,
 				175F92EB2B0900FF00758C50 /* SettingsAssembly.swift in Sources */,
 				175F931B2B09018600758C50 /* SettingsFlowSteps.swift in Sources */,
-				175F93032B09015A00758C50 /* SettingsViewController+GeneralCellsBind.swift in Sources */,
 				175F930F2B09017000758C50 /* GeneralSectionItems.swift in Sources */,
-				175F92FE2B09015A00758C50 /* SettingsViewController+NotificationCellsBind.swift in Sources */,
+				175F92FE2B09015A00758C50 /* SettingsVC+CellBinders.swift in Sources */,
 				175F93172B09017800758C50 /* SettingsSwitchTableViewCell.swift in Sources */,
+				17973F8C2B124B4D003E88D7 /* SettingsSectionHeaderView.swift in Sources */,
+				17BD79F92B0EED4800F16C32 /* ManageNotificationsVC.swift in Sources */,
 				17AE2B062B030BE10049F554 /* Settings.docc in Sources */,
+				179519672B16DE1400AAB8D7 /* ManageNotificationsViewModel.swift in Sources */,
 				175F92F22B09011C00758C50 /* NotificationReminderToggleDelegate.swift in Sources */,
 				175F93152B09017800758C50 /* NotificationFrequencyPickerView.swift in Sources */,
 				175F93112B09017000758C50 /* SettingsSections.swift in Sources */,
-				175F92FF2B09015A00758C50 /* SettingsViewController+PresentNotificationFrequencySelector.swift in Sources */,
 				175F92F72B09011C00758C50 /* SettingsViewModel.swift in Sources */,
-				175F93012B09015A00758C50 /* SettingsViewController.swift in Sources */,
+				175F93012B09015A00758C50 /* SettingsVC.swift in Sources */,
 				175F93102B09017000758C50 /* NotificationSectionItems.swift in Sources */,
 				175F93162B09017800758C50 /* SettingsDetailTableViewCell.swift in Sources */,
 			);
