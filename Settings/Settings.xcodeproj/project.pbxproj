@@ -37,14 +37,14 @@
 		17AE2B112B030BE10049F554 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B102B030BE10049F554 /* SettingsTests.swift */; };
 		17BD79FB2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BD79FA2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift */; };
 		17ED03052B1B809600BA33B7 /* AddFixedNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ED03042B1B809600BA33B7 /* AddFixedNotificationViewModel.swift */; };
-		27EE31DC1F17366F5869430A /* SettingsSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE34740B61C8E27D8A37DD /* SettingsSelectionTableViewCell.swift */; };
-		27EE357EBF4D1121E1AE14C2 /* SettingsVC+SelectHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3992840572130D65F0A2 /* SettingsVC+SelectHandlers.swift */; };
-		27EE37CAC9A0BD786BEBCB9D /* SettingsVC+CellBinders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3762DF2A72168DBD3684 /* SettingsVC+CellBinders.swift */; };
-		27EE38AE6137A955E6E0145B /* SettingsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE331EF9A558A70717CCED /* SettingsDetailTableViewCell.swift */; };
-		27EE39331569A9ABA1AFA727 /* SettingsVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3D484C92D948E5B57934 /* SettingsVC+Datasource.swift */; };
-		27EE3AEDC40612BE6A0E58C9 /* SettingsVC+Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE38023AC06204AB3AFBC5 /* SettingsVC+Sections.swift */; };
-		27EE3BCD6C8AAED4807E4B04 /* ManageNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3CCDF15EE38173F96B04 /* ManageNotificationsVC.swift */; };
-		27EE3F3F3CE64212A59F4945 /* DailyWaterSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE36EF7F42497869B16761 /* DailyWaterSelectorDelegate.swift */; };
+		27EE324795C56290DFD19E82 /* SettingsSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3A1F1D3411CFEE6CF88B /* SettingsSelectionTableViewCell.swift */; };
+		27EE35355BECB93DFC2984D2 /* ManageNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3DFB9F07FB20DF35CA17 /* ManageNotificationsVC.swift */; };
+		27EE35DED1CDBCF72A5458F2 /* DailyWaterSelectorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3CFB0EAC658EB297B2C6 /* DailyWaterSelectorDelegate.swift */; };
+		27EE3736DEE14B7569291171 /* SettingsDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3DF2E0278AD04261D005 /* SettingsDetailTableViewCell.swift */; };
+		27EE376A5846527BE8B48912 /* SettingsVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3BC1C6CC54F13EB34DE5 /* SettingsVC+Datasource.swift */; };
+		27EE38AD43381BCF0003E9A6 /* SettingsVC+SelectHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3B33BC4731315DB510BA /* SettingsVC+SelectHandlers.swift */; };
+		27EE3E88038EC640D6FA6DCC /* SettingsVC+CellBinders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3DD18D7F8B080A6BE0B4 /* SettingsVC+CellBinders.swift */; };
+		27EE3F4C2B5A2EAACD9B4F3E /* SettingsVC+Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE32A26DEC4393C2C6CA8C /* SettingsVC+Sections.swift */; };
 		2EDD4AE1DD4717116D9277F1 /* Pods_Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31BA7263DFEC32BC05C0E11 /* Pods_Settings.framework */; };
 		E02FCE9E2B237247F7773CAD /* Pods_SettingsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA9687BFF758CF47B67BD97 /* Pods_SettingsTests.framework */; };
 /* End PBXBuildFile section */
@@ -107,14 +107,14 @@
 		17AE2B102B030BE10049F554 /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
 		17BD79FA2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManageNotificationsVC+Datasource.swift"; sourceTree = "<group>"; };
 		17ED03042B1B809600BA33B7 /* AddFixedNotificationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFixedNotificationViewModel.swift; sourceTree = "<group>"; };
-		27EE331EF9A558A70717CCED /* SettingsDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDetailTableViewCell.swift; sourceTree = "<group>"; };
-		27EE34740B61C8E27D8A37DD /* SettingsSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSelectionTableViewCell.swift; sourceTree = "<group>"; };
-		27EE36EF7F42497869B16761 /* DailyWaterSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyWaterSelectorDelegate.swift; sourceTree = "<group>"; };
-		27EE3762DF2A72168DBD3684 /* SettingsVC+CellBinders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+CellBinders.swift"; sourceTree = "<group>"; };
-		27EE38023AC06204AB3AFBC5 /* SettingsVC+Sections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Sections.swift"; sourceTree = "<group>"; };
-		27EE3992840572130D65F0A2 /* SettingsVC+SelectHandlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+SelectHandlers.swift"; sourceTree = "<group>"; };
-		27EE3CCDF15EE38173F96B04 /* ManageNotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageNotificationsVC.swift; sourceTree = "<group>"; };
-		27EE3D484C92D948E5B57934 /* SettingsVC+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Datasource.swift"; sourceTree = "<group>"; };
+		27EE32A26DEC4393C2C6CA8C /* SettingsVC+Sections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Sections.swift"; sourceTree = "<group>"; };
+		27EE3A1F1D3411CFEE6CF88B /* SettingsSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		27EE3B33BC4731315DB510BA /* SettingsVC+SelectHandlers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+SelectHandlers.swift"; sourceTree = "<group>"; };
+		27EE3BC1C6CC54F13EB34DE5 /* SettingsVC+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Datasource.swift"; sourceTree = "<group>"; };
+		27EE3CFB0EAC658EB297B2C6 /* DailyWaterSelectorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyWaterSelectorDelegate.swift; sourceTree = "<group>"; };
+		27EE3DD18D7F8B080A6BE0B4 /* SettingsVC+CellBinders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+CellBinders.swift"; sourceTree = "<group>"; };
+		27EE3DF2E0278AD04261D005 /* SettingsDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDetailTableViewCell.swift; sourceTree = "<group>"; };
+		27EE3DFB9F07FB20DF35CA17 /* ManageNotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageNotificationsVC.swift; sourceTree = "<group>"; };
 		7ECAB27A228BAC271F038264 /* Pods-Settings.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Settings.debug.xcconfig"; path = "Target Support Files/Pods-Settings/Pods-Settings.debug.xcconfig"; sourceTree = "<group>"; };
 		B8103F62BCE6AE9B23C1DEE0 /* Pods-SettingsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SettingsTests.release.xcconfig"; path = "Target Support Files/Pods-SettingsTests/Pods-SettingsTests.release.xcconfig"; sourceTree = "<group>"; };
 		BFA9687BFF758CF47B67BD97 /* Pods_SettingsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SettingsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,8 +162,8 @@
 				179380C12B1A9F5800D4EAC4 /* SettingsAddItemCell.swift */,
 				17973F8B2B124B4D003E88D7 /* SettingsSectionHeaderView.swift */,
 				175F93142B09017800758C50 /* SettingsSwitchTableViewCell.swift */,
-				27EE331EF9A558A70717CCED /* SettingsDetailTableViewCell.swift */,
-				27EE34740B61C8E27D8A37DD /* SettingsSelectionTableViewCell.swift */,
+				27EE3DF2E0278AD04261D005 /* SettingsDetailTableViewCell.swift */,
+				27EE3A1F1D3411CFEE6CF88B /* SettingsSelectionTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -224,7 +224,7 @@
 				175F92EF2B09011C00758C50 /* NotificationFrequencySelectorDelegate.swift */,
 				175F92EC2B09011C00758C50 /* NotificationReminderToggleDelegate.swift */,
 				175F92F02B09011C00758C50 /* PeriodSelectorDelegate.swift */,
-				27EE36EF7F42497869B16761 /* DailyWaterSelectorDelegate.swift */,
+				27EE3CFB0EAC658EB297B2C6 /* DailyWaterSelectorDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -305,10 +305,10 @@
 			children = (
 				175F92FB2B09015A00758C50 /* SettingsVC.swift */,
 				175F92DE2B0900B500758C50 /* Protocols */,
-				27EE3762DF2A72168DBD3684 /* SettingsVC+CellBinders.swift */,
-				27EE3D484C92D948E5B57934 /* SettingsVC+Datasource.swift */,
-				27EE38023AC06204AB3AFBC5 /* SettingsVC+Sections.swift */,
-				27EE3992840572130D65F0A2 /* SettingsVC+SelectHandlers.swift */,
+				27EE3DD18D7F8B080A6BE0B4 /* SettingsVC+CellBinders.swift */,
+				27EE3BC1C6CC54F13EB34DE5 /* SettingsVC+Datasource.swift */,
+				27EE32A26DEC4393C2C6CA8C /* SettingsVC+Sections.swift */,
+				27EE3B33BC4731315DB510BA /* SettingsVC+SelectHandlers.swift */,
 			);
 			path = SettingsVC;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 				170AC8792B214EF800CEDB34 /* ManageNotificationsVC+CellBinders.swift */,
 				17BD79FA2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift */,
 				170AC87B2B2150A000CEDB34 /* ManageNotificationsVC+Sections.swift */,
-				27EE3CCDF15EE38173F96B04 /* ManageNotificationsVC.swift */,
+				27EE3DFB9F07FB20DF35CA17 /* ManageNotificationsVC.swift */,
 			);
 			path = ManageNotificationsVC;
 			sourceTree = "<group>";
@@ -531,14 +531,14 @@
 				175F93152B09017800758C50 /* NotificationFrequencyPickerView.swift in Sources */,
 				175F92F72B09011C00758C50 /* SettingsViewModel.swift in Sources */,
 				175F93012B09015A00758C50 /* SettingsVC.swift in Sources */,
-				27EE38AE6137A955E6E0145B /* SettingsDetailTableViewCell.swift in Sources */,
-				27EE31DC1F17366F5869430A /* SettingsSelectionTableViewCell.swift in Sources */,
-				27EE3BCD6C8AAED4807E4B04 /* ManageNotificationsVC.swift in Sources */,
-				27EE37CAC9A0BD786BEBCB9D /* SettingsVC+CellBinders.swift in Sources */,
-				27EE39331569A9ABA1AFA727 /* SettingsVC+Datasource.swift in Sources */,
-				27EE3AEDC40612BE6A0E58C9 /* SettingsVC+Sections.swift in Sources */,
-				27EE357EBF4D1121E1AE14C2 /* SettingsVC+SelectHandlers.swift in Sources */,
-				27EE3F3F3CE64212A59F4945 /* DailyWaterSelectorDelegate.swift in Sources */,
+				27EE3736DEE14B7569291171 /* SettingsDetailTableViewCell.swift in Sources */,
+				27EE324795C56290DFD19E82 /* SettingsSelectionTableViewCell.swift in Sources */,
+				27EE35355BECB93DFC2984D2 /* ManageNotificationsVC.swift in Sources */,
+				27EE3E88038EC640D6FA6DCC /* SettingsVC+CellBinders.swift in Sources */,
+				27EE376A5846527BE8B48912 /* SettingsVC+Datasource.swift in Sources */,
+				27EE3F4C2B5A2EAACD9B4F3E /* SettingsVC+Sections.swift in Sources */,
+				27EE38AD43381BCF0003E9A6 /* SettingsVC+SelectHandlers.swift in Sources */,
+				27EE35DED1CDBCF72A5458F2 /* DailyWaterSelectorDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

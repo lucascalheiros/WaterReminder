@@ -310,11 +310,32 @@
 			path = WaterReminder.xcworkspace/xcuserdata/lucascalheiros.xcuserdatad/xcschemes;
 			sourceTree = "<group>";
 		};
+		27EE39EC80F83DF55D6223F8 /* 72 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 72;
+			sourceTree = "<group>";
+		};
 		27EE3A0F2BD09364463FC8A9 /* a9 */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = a9;
+			sourceTree = "<group>";
+		};
+		27EE3A40375A62723681FDCA /* c6 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = c6;
+			sourceTree = "<group>";
+		};
+		27EE3A8EA3DD3415165345CE /* 85 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 85;
 			sourceTree = "<group>";
 		};
 		27EE3B21343B4806248BC2D2 /* d9 */ = {
@@ -352,6 +373,9 @@
 				27EE34CFDD55E73DEDA2CA13 /* b9 */,
 				27EE337A8DF8C942F2A1F62F /* c4 */,
 				27EE34E398FDE9310C45674C /* 8d */,
+				27EE3A40375A62723681FDCA /* c6 */,
+				27EE39EC80F83DF55D6223F8 /* 72 */,
+				27EE3A8EA3DD3415165345CE /* 85 */,
 			);
 			name = objects;
 			path = .git/objects;

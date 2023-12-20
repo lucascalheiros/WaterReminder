@@ -52,7 +52,7 @@
 		17AE2B3D2B030E840049F554 /* WaterManagementDomain.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B3C2B030E840049F554 /* WaterManagementDomain.docc */; };
 		17AE2B432B030E840049F554 /* WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2B382B030E840049F554 /* WaterManagementDomain.framework */; };
 		17AE2B482B030E840049F554 /* WaterManagementDomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B472B030E840049F554 /* WaterManagementDomainTests.swift */; };
-		27EE342DE5FCB1F9DBA6AFB6 /* VolumeFormat+ExhibitionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE30315304F58F10602B7C /* VolumeFormat+ExhibitionInfo.swift */; };
+		27EE384AF5BE4124219F0A80 /* VolumeFormat+ExhibitionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE34FDFC1561F6CC34962D /* VolumeFormat+ExhibitionInfo.swift */; };
 		508DC4DF9F9FB2EAD229BD31 /* Pods_WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E5A8033B52F3341BA52D606 /* Pods_WaterManagementDomain.framework */; };
 		7ED9E23ECDEFCDEFAEA52020 /* Pods_WaterManagementDomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FAF7A92FA7F505EC224B287 /* Pods_WaterManagementDomainTests.framework */; };
 /* End PBXBuildFile section */
@@ -130,7 +130,7 @@
 		17AE2B422B030E840049F554 /* WaterManagementDomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WaterManagementDomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B472B030E840049F554 /* WaterManagementDomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterManagementDomainTests.swift; sourceTree = "<group>"; };
 		1D01786FB5B9F6D3E53A20A7 /* Pods-WaterManagementDomain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterManagementDomain.debug.xcconfig"; path = "Target Support Files/Pods-WaterManagementDomain/Pods-WaterManagementDomain.debug.xcconfig"; sourceTree = "<group>"; };
-		27EE30315304F58F10602B7C /* VolumeFormat+ExhibitionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VolumeFormat+ExhibitionInfo.swift"; sourceTree = "<group>"; };
+		27EE34FDFC1561F6CC34962D /* VolumeFormat+ExhibitionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VolumeFormat+ExhibitionInfo.swift"; sourceTree = "<group>"; };
 		6FAF7A92FA7F505EC224B287 /* Pods_WaterManagementDomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterManagementDomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E5A8033B52F3341BA52D606 /* Pods_WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA555CFE0E74DE0F19D9DF9C /* Pods-WaterManagementDomainTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterManagementDomainTests.debug.xcconfig"; path = "Target Support Files/Pods-WaterManagementDomainTests/Pods-WaterManagementDomainTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 			children = (
 				175F93262B09020F00758C50 /* VolumeFormat+Conversion.swift */,
 				175F93282B09020F00758C50 /* WaterSourceType+ExhibitionInfo.swift */,
-				27EE30315304F58F10602B7C /* VolumeFormat+ExhibitionInfo.swift */,
+				27EE34FDFC1561F6CC34962D /* VolumeFormat+ExhibitionInfo.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -556,7 +556,7 @@
 				175F93662B09022800758C50 /* VolumeFormatRepositoryProtocol.swift in Sources */,
 				175F93792B09024300758C50 /* WaterConsumedObject.swift in Sources */,
 				175F935A2B09021E00758C50 /* RegisterVolumeFormatUseCase.swift in Sources */,
-				27EE342DE5FCB1F9DBA6AFB6 /* VolumeFormat+ExhibitionInfo.swift in Sources */,
+				27EE384AF5BE4124219F0A80 /* VolumeFormat+ExhibitionInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
