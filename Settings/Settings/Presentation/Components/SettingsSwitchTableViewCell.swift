@@ -21,7 +21,7 @@ class SettingsSwitchTableViewCell: IdentifiableUITableViewCell {
     static let identifier = "SettingsSwitchTableViewCell"
 
 	var disposeBag = DisposeBag()
-    var bag = Set<AnyCancellable>()
+    var cancellableBag = Set<AnyCancellable>()
 
     var style: Style = .onlySwitch {
         didSet {
@@ -99,7 +99,7 @@ class SettingsSwitchTableViewCell: IdentifiableUITableViewCell {
 
 	func dispose() {
 		disposeBag = DisposeBag()
-        bag.removeAll()
+        cancellableBag.removeAll()
 	}
 
 	@objc private func onSwitchValueChanged(_ uiSwitch: UISwitch) {

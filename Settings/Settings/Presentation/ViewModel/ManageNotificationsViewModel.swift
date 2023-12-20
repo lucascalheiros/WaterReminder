@@ -10,7 +10,7 @@ import WaterReminderNotificationDomain
 import Combine
 
 class ManageNotificationsViewModel {
-    var bag = Set<AnyCancellable>()
+    var cancellableBag = Set<AnyCancellable>()
 
     @Published var fixedNotification: [FixedNotificationUIModel] = []
     @Published var weekDaysState: [WeekDayUIModel] = []
@@ -49,7 +49,7 @@ class ManageNotificationsViewModel {
                 self.weekDayUIState[weekDayRaw] = uiModel
                 return uiModel
             }
-        }.store(in: &bag)
+        }.store(in: &cancellableBag)
         self.getFixedNotificationsUseCase.fixedNotifications().sink {
             self.fixedNotification =  $0
                 .sorted(by: { $0.timePeriod < $1.timePeriod })
@@ -59,7 +59,7 @@ class ManageNotificationsViewModel {
                     self.fixedNotificationUIState[timePeriodInSec] = uiModel
                     return uiModel
                 }
-        }.store(in: &bag)
+        }.store(in: &cancellableBag)
     }
 
     func addFixedNotification() {

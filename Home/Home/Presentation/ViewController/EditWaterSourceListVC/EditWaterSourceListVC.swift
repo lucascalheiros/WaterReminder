@@ -19,7 +19,7 @@ class EditWaterSourceListVC: UITableViewController {
     }
 
 	let disposeBag = DisposeBag()
-    var bag = Set<AnyCancellable>()
+    var cancellableBag = Set<AnyCancellable>()
 
     let editWaterSourceListViewModel: EditWaterSourceListViewModel
 

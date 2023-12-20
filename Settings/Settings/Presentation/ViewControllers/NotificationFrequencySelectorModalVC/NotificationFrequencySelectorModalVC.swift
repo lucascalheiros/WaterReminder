@@ -13,7 +13,7 @@ import Combine
 
 class NotificationFrequencySelectorModalVC: UIViewController {
 	var disposeBag = DisposeBag()
-    var bag = Set<AnyCancellable>()
+    var cancellableBag = Set<AnyCancellable>()
 
 	let notificationFrequencySelectorDelegate: NotificationFrequencySelectorDelegate
 
@@ -48,7 +48,7 @@ class NotificationFrequencySelectorModalVC: UIViewController {
 
 		notificationFrequencySelectorDelegate.notificationFrequency.sink {
 				self.notificationFrequencyPickerView.selectRow($0.rawValue, inComponent: 0, animated: true)
-        }.store(in: &bag)
+        }.store(in: &cancellableBag)
 
 		view.backgroundColor = AppColorGroup.primary.color
 		cancel.tintColor = .blue

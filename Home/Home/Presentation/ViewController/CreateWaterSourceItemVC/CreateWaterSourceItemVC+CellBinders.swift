@@ -15,7 +15,7 @@ extension CreateWaterSourceItemVC {
         createWaterSourceItemViewModel.$waterSourceType.sink {
             cell.detailLabel.text = $0.exhibitionName
             cell.detailLabel.textColor = $0.color
-        }.store(in: &cell.bag)
+        }.store(in: &cell.cancellableBag)
 
         cell.selectionStyle = .none
     }
@@ -23,11 +23,11 @@ extension CreateWaterSourceItemVC {
     func bindWaterSourceVolumeCell(_ cell: WaterSourceTypeSettingCell) {
         createWaterSourceItemViewModel.waterWithFormat.sink {
             cell.detailLabel.text = $0.exhibitionValueWithFormat()
-        }.store(in: &cell.bag)
+        }.store(in: &cell.cancellableBag)
 
         createWaterSourceItemViewModel.$waterSourceType.sink {
             cell.detailLabel.textColor = $0.color
-        }.store(in: &cell.bag)
+        }.store(in: &cell.cancellableBag)
 
         cell.titleLabel.text = String(localized: "createWaterSource.cellTitle.volume")
         cell.selectionStyle = .none

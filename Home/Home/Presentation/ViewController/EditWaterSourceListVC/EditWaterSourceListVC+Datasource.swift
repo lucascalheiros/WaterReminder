@@ -106,11 +106,11 @@ extension EditWaterSourceListVC {
     func observeViewModel() {
         editWaterSourceListViewModel.removeItemNotifier.sink {
             self.tableView.deleteRows(at: [IndexPath(row: $0, section: 0)], with: .automatic)
-        }.store(in: &bag)
+        }.store(in: &cancellableBag)
 
         editWaterSourceListViewModel.updateListNotifier.sink { _ in
             self.tableView.reloadData()
-        }.store(in: &bag)
+        }.store(in: &cancellableBag)
     }
 
 	enum Sections: CaseIterable {

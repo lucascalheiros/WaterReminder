@@ -21,7 +21,7 @@ class ManageNotificationsVC: UITableViewController {
 
     let manageNotificationsViewModel: ManageNotificationsViewModel
 
-    var bag = Set<AnyCancellable>()
+    var cancellableBag = Set<AnyCancellable>()
     lazy var diffableDatasource: DataSource = makeDatasource()
 
     init(manageNotificationsViewModel: ManageNotificationsViewModel) {
@@ -56,6 +56,6 @@ class ManageNotificationsVC: UITableViewController {
                     [.addFixedNotification]
                 )
 
-            }.store(in: &bag)
+            }.store(in: &cancellableBag)
     }
 }

@@ -15,7 +15,7 @@ import Combine
 
 class PeriodSelectorModalVC: UIViewController {
     var disposeBag = DisposeBag()
-    var bag = Set<AnyCancellable>()
+    var cancellableBag = Set<AnyCancellable>()
 
     let periodSelectorDelegate: PeriodSelectorDelegate
 
@@ -81,13 +81,13 @@ class PeriodSelectorModalVC: UIViewController {
             let index = self.timeToIndex(time)
             self.initialTimeIndex.accept(index)
             self.initialNotificationTime.selectRow(self.timeToIndex(time), inComponent: 0, animated: true)
-        }.store(in: &bag)
+        }.store(in: &cancellableBag)
 
         periodSelectorDelegate.finalTime.sink { time in
             let index = self.timeToIndex(time)
             self.finalTimeIndex.accept(index)
             self.finalNotificationTime.selectRow(index, inComponent: 0, animated: true)
-        }.store(in: &bag)
+        }.store(in: &cancellableBag)
 
         view.backgroundColor = AppColorGroup.primary.color
         cancel.tintColor = .blue

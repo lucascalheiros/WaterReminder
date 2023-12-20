@@ -59,7 +59,7 @@ extension SettingsVC {
 
             self.settingsViewModel.notificationReminderToggleDelegate.isNotificationReminderEnabled.sink {
                 switchCell.switchView.setOn($0, animated: true)
-            }.store(in: &switchCell.bag)
+            }.store(in: &switchCell.cancellableBag)
         }
     }
 
@@ -72,7 +72,7 @@ extension SettingsVC {
             self.settingsViewModel.periodSelectorDelegate.periodInterval.sink {
                 let attributedString = NSMutableAttributedString.init(string: $0)
                 detailCell.detailLabel.attributedText = attributedString
-            }.store(in: &detailCell.bag)
+            }.store(in: &detailCell.cancellableBag)
         }
     }
 
@@ -85,7 +85,7 @@ extension SettingsVC {
             self.settingsViewModel.notificationFrequencySelectorDelegate.notificationFrequency.sink {
                 let attributedString = NSMutableAttributedString.init(string: $0.stringValue())
                 detailCell.detailLabel.attributedText = attributedString
-            }.store(in: &detailCell.bag)
+            }.store(in: &detailCell.cancellableBag)
         }
     }
 

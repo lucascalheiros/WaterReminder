@@ -18,7 +18,7 @@ class SettingsSelectionTableViewCell: IdentifiableUITableViewCell {
 
     static let identifier = "SettingsSelectionTableViewCell"
 
-    var bag = Set<AnyCancellable>()
+    var cancellableBag = Set<AnyCancellable>()
     var disposeBag = DisposeBag()
 
 	lazy var titleLabel: UILabel = {
@@ -69,7 +69,7 @@ class SettingsSelectionTableViewCell: IdentifiableUITableViewCell {
 	}
 
 	func dispose() {
-        bag.removeAll()
+        cancellableBag.removeAll()
         disposeBag = DisposeBag()
 	}
 }

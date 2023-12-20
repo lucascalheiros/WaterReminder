@@ -17,7 +17,7 @@ class SettingsDetailTableViewCell: IdentifiableUITableViewCell {
     static let identifier = "SettingsDetailTableViewCell"
 
 	var disposeBag = DisposeBag()
-    var bag = Set<AnyCancellable>()
+    var cancellableBag = Set<AnyCancellable>()
 
 	lazy var titleLabel: UILabel = {
 		let label = UILabel()
@@ -60,7 +60,7 @@ class SettingsDetailTableViewCell: IdentifiableUITableViewCell {
 	}
 
 	func dispose() {
-        bag.removeAll()
+        cancellableBag.removeAll()
 		disposeBag = DisposeBag()
 	}
 }
