@@ -37,6 +37,9 @@ public class HomeFlow: Flow {
 			return navigateToHome()
 		case .waterSourceEditor:
 			return waterSourceModal()
+        case .createWaterSource:
+            return createWaterSourceModel()
+
 		}
 	}
 
@@ -50,13 +53,28 @@ public class HomeFlow: Flow {
 	private func waterSourceModal() -> FlowContributors {
 		let viewController = container.resolve(EditWaterSourceListVC.self)!
 		let nav = UINavigationController(rootViewController: viewController)
-		nav.modalPresentationStyle = .pageSheet
+        nav.setDefaultAppearance()
+        nav.modalPresentationStyle = .pageSheet
 
 		if let sheet = nav.sheetPresentationController {
 			sheet.detents = [.large()]
 		}
 
-		rootViewController.present(nav, animated: true, completion: nil)
+        rootViewController.visibleViewController?.present(nav, animated: true, completion: nil)
 		return .none
 	}
+
+    private func createWaterSourceModel() -> FlowContributors {
+        let viewController = container.resolve(CreateWaterSourceItemVC.self)!
+        let nav = UINavigationController(rootViewController: viewController)
+        nav.setDefaultAppearance()
+        nav.modalPresentationStyle = .pageSheet
+
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.large()]
+        }
+
+        rootViewController.visibleViewController?.present(nav, animated: true, completion: nil)
+        return .none
+    }
 }

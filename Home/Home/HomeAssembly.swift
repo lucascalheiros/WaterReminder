@@ -33,5 +33,16 @@ public class HomeAssembly: Assembly {
             ReorderWaterSourceUseCase.self,
             initializer: ReorderWaterSourceUseCaseImpl.init
         )
+        container.autoregister(
+            CreateWaterSourceItemVC.self, 
+            initializer: CreateWaterSourceItemVC.newInstance
+        )
+        container.autoregister(
+            CreateWaterSourceItemViewModel.self,
+            initializer: CreateWaterSourceItemViewModel.init
+        )
+        container.autoregister(
+            EditWaterSourceListViewModel.self,
+            initializer: EditWaterSourceListViewModel.init)
     }
 }

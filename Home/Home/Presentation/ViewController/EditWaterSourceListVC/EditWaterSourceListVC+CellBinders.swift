@@ -15,8 +15,8 @@ extension EditWaterSourceListVC {
     
     func bindWaterSourceEditableCell(_ waterSource: WaterSource) -> ((WaterSourceEditableCell) -> Void) {
         return { cell in
-            cell.bindData(waterSource: waterSource, volumeFormat: self.volumeFormat)
-            cell.waterSourceDeleteDelegate = self
+            cell.bindData(waterSource: waterSource, volumeFormat: self.editWaterSourceListViewModel.volumeFormat)
+            cell.waterSourceDeleteDelegate = self.editWaterSourceListViewModel
         }
     }
 }

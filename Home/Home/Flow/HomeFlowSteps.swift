@@ -10,4 +10,5 @@ import RxFlow
 public enum HomeFlowSteps: Step {
 	case home
 	case waterSourceEditor
+    case createWaterSource
 }

@@ -60,6 +60,7 @@ class SettingsDetailTableViewCell: IdentifiableUITableViewCell {
 	}
 
 	func dispose() {
+        bag.removeAll()
 		disposeBag = DisposeBag()
 	}
 }

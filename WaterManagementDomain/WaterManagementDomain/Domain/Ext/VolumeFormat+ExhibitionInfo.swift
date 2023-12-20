@@ -8,7 +8,7 @@
 import Foundation
 
 public extension VolumeFormat {
-	public var formatDisplay: String {
+    var formatDisplay: String {
 		switch self {
 		case .metric:
 			return "ml"
@@ -17,7 +17,7 @@ public extension VolumeFormat {
 		}
 	}
 
-	public var localizedDisplay: String {
+    var localizedDisplay: String {
 		switch self {
 		case .metric:
 			return "ml"

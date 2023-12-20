@@ -12,6 +12,7 @@ extension SettingsVC {
     func registerCells() {
         tableView.registerIdentifiableCell(SettingsDetailTableViewCell.self)
         tableView.registerIdentifiableCell(SettingsSwitchTableViewCell.self)
+        tableView.registerIdentifiableCell(SettingsSelectionTableViewCell.self)
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,6 +38,9 @@ extension SettingsVC {
         case GeneralSectionItems.dailyWaterVolume:
             cell = tableView.dequeueIdentifiableCell(indexPath, bindDailyWaterGoalCell(sectionItem))
 
+        case GeneralSectionItems.volumeFormat:
+            cell = tableView.dequeueIdentifiableCell(indexPath, bindVolumeFormat(sectionItem))
+
         case NotificationSectionItems.notificationEnabled:
             cell = tableView.dequeueIdentifiableCell(indexPath, bindNotificationEnabledCell(sectionItem))
 
@@ -60,6 +64,9 @@ extension SettingsVC {
         switch sectionItem {
         case GeneralSectionItems.dailyWaterVolume:
             self.presentDailyWaterGoalSelector()
+
+        case GeneralSectionItems.volumeFormat:
+            self.presentVolumeFormatSelector()
 
         case NotificationSectionItems.manageNotifications:
             self.presentNotificationManager()

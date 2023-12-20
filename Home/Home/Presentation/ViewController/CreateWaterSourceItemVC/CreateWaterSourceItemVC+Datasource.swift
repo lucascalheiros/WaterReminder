@@ -8,6 +8,9 @@
 import UIKit
 
 extension CreateWaterSourceItemVC {
+    func registerCells() {
+        tableView.registerIdentifiableCell(WaterSourceTypeSettingCell.self)
+    }
 
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection sectionIndex: Int) -> Int {
 		switch Sections.allCases[safe: sectionIndex] {
@@ -26,31 +29,24 @@ extension CreateWaterSourceItemVC {
         let item = getItem(indexPath)
         switch item {
         case .waterVolume:
-            return getWaterSourceVolumeCell(indexPath)
+            return tableView.dequeueIdentifiableCell(indexPath, bindWaterSourceVolumeCell) 
         case .waterSourceType:
-            return getWaterSourceTypeCell(indexPath)
+            return tableView.dequeueIdentifiableCell(indexPath, bindWaterSourceTypeCell)
         default:
-            return UITableViewCell()
+            fatalError("UITableCell not implemented")
         }
 	}
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch getItem(indexPath) {
         case .waterSourceType:
-            presentWaterTypeSelector(waterSourceType.value)
+            presentWaterTypeSelector(createWaterSourceItemViewModel.waterSourceType)
         case .waterVolume:
-            presentWaterVolumeInput(waterWithFormat.value)
+            presentWaterVolumeInput(createWaterSourceItemViewModel.getCurrentWaterWithFormat())
         case .none:
             break
         }
     }
-
-	func registerCells() {
-		tableView.register(
-			WaterSourceTypeSettingCell.self,
-			forCellReuseIdentifier: WaterSourceTypeSettingCell.identifier
-		)
-	}
 
     private func getItem(_ indexPath: IndexPath) -> SectionOption? {
         switch Sections.allCases[safe: indexPath.section] {

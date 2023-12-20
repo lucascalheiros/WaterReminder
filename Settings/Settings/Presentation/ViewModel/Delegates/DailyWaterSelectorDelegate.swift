@@ -20,11 +20,13 @@ class DailyWaterSelectorDelegate {
 	lazy var volumeWithFormat = {
 		Observable.combineLatest(
 			getDailyWaterConsumptionUseCase.lastDailyWaterConsumption(),
-			getVolumeFormatUseCase.volumeFormat()
+            volumeFormat
 		) { lastDailyWaterConsumption, volumeFormat in
 			WaterWithFormat(waterInML: lastDailyWaterConsumption?.expectedVolume ?? 0, volumeFormat: volumeFormat)
 		}
 	}()
+
+    lazy var volumeFormat = getVolumeFormatUseCase.volumeFormat()
 
 	init(
 		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol,
@@ -44,4 +46,8 @@ class DailyWaterSelectorDelegate {
 			.subscribe().disposed(by: disposeBag)
 		registerVolumeFormatUseCase.setVolumeFormat(format)
 	}
+
+    func setFormat(_ format: VolumeFormat) {
+        registerVolumeFormatUseCase.setVolumeFormat(format)
+    }
 }

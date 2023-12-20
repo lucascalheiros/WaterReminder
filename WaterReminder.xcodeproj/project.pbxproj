@@ -194,6 +194,7 @@
 				9BCD0976D0A0FB05A7F659A8 /* Frameworks */,
 				27EE39188091AA22F267F5F4 /* xcschemes */,
 				27EE3477B93A20725B1F6B65 /* .fleet */,
+				27EE3FDC4EF1CAE8E883AB57 /* objects */,
 			);
 			sourceTree = "<group>";
 		};
@@ -245,11 +246,60 @@
 			path = Flow;
 			sourceTree = "<group>";
 		};
+		27EE32BB736EA74D59E00103 /* b4 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = b4;
+			sourceTree = "<group>";
+		};
+		27EE337A8DF8C942F2A1F62F /* c4 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = c4;
+			sourceTree = "<group>";
+		};
 		27EE3477B93A20725B1F6B65 /* .fleet */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = .fleet;
+			sourceTree = "<group>";
+		};
+		27EE34CFDD55E73DEDA2CA13 /* b9 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = b9;
+			sourceTree = "<group>";
+		};
+		27EE34E398FDE9310C45674C /* 8d */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 8d;
+			sourceTree = "<group>";
+		};
+		27EE3604047F1CAB739E2A3B /* 0e */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 0e;
+			sourceTree = "<group>";
+		};
+		27EE369C4AC086E0C78B0317 /* 2c */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 2c;
+			sourceTree = "<group>";
+		};
+		27EE36F0EC8BB82E6F199BB0 /* 5a */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 5a;
 			sourceTree = "<group>";
 		};
 		27EE39188091AA22F267F5F4 /* xcschemes */ = {
@@ -258,6 +308,53 @@
 			);
 			name = xcschemes;
 			path = WaterReminder.xcworkspace/xcuserdata/lucascalheiros.xcuserdatad/xcschemes;
+			sourceTree = "<group>";
+		};
+		27EE3A0F2BD09364463FC8A9 /* a9 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = a9;
+			sourceTree = "<group>";
+		};
+		27EE3B21343B4806248BC2D2 /* d9 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = d9;
+			sourceTree = "<group>";
+		};
+		27EE3D3C740906C82EB1F8D5 /* f6 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = f6;
+			sourceTree = "<group>";
+		};
+		27EE3DE3E176DAFA65B22C58 /* 3e */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 3e;
+			sourceTree = "<group>";
+		};
+		27EE3FDC4EF1CAE8E883AB57 /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				27EE3D3C740906C82EB1F8D5 /* f6 */,
+				27EE32BB736EA74D59E00103 /* b4 */,
+				27EE3B21343B4806248BC2D2 /* d9 */,
+				27EE3604047F1CAB739E2A3B /* 0e */,
+				27EE369C4AC086E0C78B0317 /* 2c */,
+				27EE3DE3E176DAFA65B22C58 /* 3e */,
+				27EE3A0F2BD09364463FC8A9 /* a9 */,
+				27EE36F0EC8BB82E6F199BB0 /* 5a */,
+				27EE34CFDD55E73DEDA2CA13 /* b9 */,
+				27EE337A8DF8C942F2A1F62F /* c4 */,
+				27EE34E398FDE9310C45674C /* 8d */,
+			);
+			name = objects;
+			path = .git/objects;
 			sourceTree = "<group>";
 		};
 		9BCD0976D0A0FB05A7F659A8 /* Frameworks */ = {

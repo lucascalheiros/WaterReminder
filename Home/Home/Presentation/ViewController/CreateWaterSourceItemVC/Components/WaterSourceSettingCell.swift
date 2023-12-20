@@ -9,8 +9,10 @@ import UIKit
 import Core
 import Common
 import RxSwift
+import Combine
 
 class WaterSourceTypeSettingCell: IdentifiableUITableViewCell {
+    var bag = Set<AnyCancellable>()
     var disposeBag = DisposeBag()
 
 	static let identifier = "WaterSourceTypeSettingCell"
@@ -42,7 +44,7 @@ class WaterSourceTypeSettingCell: IdentifiableUITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-
+        bag.removeAll()
         disposeBag = DisposeBag()
     }
 
