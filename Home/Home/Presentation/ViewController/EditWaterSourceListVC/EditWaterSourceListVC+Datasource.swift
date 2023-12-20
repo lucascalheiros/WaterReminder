@@ -13,7 +13,7 @@ extension EditWaterSourceListVC {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection sectionIndex: Int) -> Int {
 		switch Sections.allCases[safe: sectionIndex] {
 		case .main:
-			return self.waterSourceList.count
+			return editWaterSourceListViewModel.exhibitionList.count
 
 		default:
 			return 0
@@ -42,17 +42,17 @@ extension EditWaterSourceListVC {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch getItemForIndexPath(indexPath) {
         case .add:
-            presentAddWaterSource()
+            editWaterSourceListViewModel.showCreateWaterSource()
 
         default:
             break
         }
     }
 
-	func getItemForIndexPath(_ indexPath: IndexPath) -> WaterSourceSectionItems? {
+    func getItemForIndexPath(_ indexPath: IndexPath) -> EditWaterSourceListViewModel.WaterSourceSectionItems? {
 		switch Sections.allCases[safe: indexPath.section] {
 		case .main:
-			return self.waterSourceList[safe: indexPath.row]
+			return editWaterSourceListViewModel.exhibitionList[safe: indexPath.row]
 
 		default:
 			return nil
@@ -92,43 +92,28 @@ extension EditWaterSourceListVC {
 		guard let sourceId = sourceId, let destId = destId else {
 			return
 		}
-		self.reorderWaterSourceUseCase.reorderWaterSources(sourceId: sourceId, destinationId: destId).subscribe().disposed(by: disposeBag)
+        editWaterSourceListViewModel.swapWaterSourcePositions(sourceId, destId)
 	}
 
     func removeWaterSourceItem(_ waterSource: WaterSource) {
-        guard let index = self.waterSourceList.firstIndex(where: {
-            switch $0 {
-            case .waterSourceItem(let item):
-                return item.id == waterSource.id
-
-            default:
-                return false
-            }
-        }) else {
-            loadTableData()
-            return
-        }
-        self.waterSourceList.remove(at: index)
-        self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-        self.loadTableData(reloadTable: false)
+        editWaterSourceListViewModel.removeWaterSourceItem(waterSource)
     }
 
     func loadTableData(reloadTable: Bool = true) {
-		waterSourceListObservable.safeAsSingle().subscribe(onSuccess: {
-            self.waterSourceList = $0.waterSourceList.map({ .waterSourceItem($0) }) + [.add]
-            self.volumeFormat = $0.volumeFormat
-            if reloadTable {
-                self.tableView.reloadData()
-            }
-		}).disposed(by: disposeBag)
+        editWaterSourceListViewModel.loadTableData(reloadTable: reloadTable)
 	}
+
+    func observeViewModel() {
+        editWaterSourceListViewModel.removeItemNotifier.sink {
+            self.tableView.deleteRows(at: [IndexPath(row: $0, section: 0)], with: .automatic)
+        }.store(in: &bag)
+
+        editWaterSourceListViewModel.updateListNotifier.sink { _ in
+            self.tableView.reloadData()
+        }.store(in: &bag)
+    }
 
 	enum Sections: CaseIterable {
 		case main
-	}
-
-	enum WaterSourceSectionItems {
-		case waterSourceItem(WaterSource)
-		case add
 	}
 }

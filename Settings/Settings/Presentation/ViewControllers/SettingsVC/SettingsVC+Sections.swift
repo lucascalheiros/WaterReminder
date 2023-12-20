@@ -10,11 +10,16 @@ import Foundation
 extension SettingsVC {
     enum GeneralSectionItems: SectionItemProtocol {
         case dailyWaterVolume
+        case volumeFormat
 
         func itemTitle() -> String {
             switch self {
+
             case .dailyWaterVolume:
-                return String(localized: "settings.section.general.goal")
+                return String(localized: "Daily Goal")
+
+            case .volumeFormat:
+                return String(localized: "Volume Format")
             }
         }
     }
@@ -25,12 +30,12 @@ extension SettingsVC {
 
         func itemTitle() -> String {
             switch self {
+
             case .notificationEnabled:
                 return String(localized: "settings.section.notifications.notificationEnabled")
 
             case .manageNotifications:
                 return String(localized: "settings.section.notifications.manage")
-
             }
         }
     }
@@ -41,8 +46,10 @@ extension SettingsVC {
 
         func sectionTitle() -> String {
             switch self {
+
             case .general:
                 return String(localized: "settings.section.general")
+
             case .notification:
                 return String(localized: "settings.section.notifications")
             }
@@ -50,8 +57,10 @@ extension SettingsVC {
 
         func sectionItems() -> [any SectionItemProtocol] {
             switch self {
+
             case .general:
                 return GeneralSectionItems.allCases
+
             case .notification:
                 return NotificationSectionItems.allCases
             }

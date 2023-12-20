@@ -13,7 +13,14 @@
       }
     },
     "addFixedNotification.title" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Fixed Notification"
+          }
+        }
+      }
     },
     "createWaterSource.alertdescription.enterWaterVolume.%@" : {
       "extractionState" : "stale",
@@ -70,6 +77,9 @@
         }
       }
     },
+    "Daily Goal" : {
+
+    },
     "editWaterSourceList.cellTitle.add" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -115,7 +125,14 @@
       }
     },
     "generic.friday" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Friday"
+          }
+        }
+      }
     },
     "generic.high" : {
       "extractionState" : "manual",
@@ -162,7 +179,14 @@
       }
     },
     "generic.monday" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monday"
+          }
+        }
+      }
     },
     "generic.next" : {
       "extractionState" : "manual",
@@ -198,7 +222,14 @@
       }
     },
     "generic.saturday" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saturday"
+          }
+        }
+      }
     },
     "generic.soda" : {
       "extractionState" : "manual",
@@ -212,7 +243,14 @@
       }
     },
     "generic.sunday" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sunday"
+          }
+        }
+      }
     },
     "generic.tea" : {
       "extractionState" : "manual",
@@ -226,7 +264,14 @@
       }
     },
     "generic.thursday" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thursday"
+          }
+        }
+      }
     },
     "generic.today" : {
       "extractionState" : "manual",
@@ -240,7 +285,14 @@
       }
     },
     "generic.tuesday" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tuesday"
+          }
+        }
+      }
     },
     "generic.water" : {
       "extractionState" : "manual",
@@ -254,7 +306,14 @@
       }
     },
     "generic.wednesday" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wednesday"
+          }
+        }
+      }
     },
     "generic.yesterday" : {
       "extractionState" : "manual",
@@ -323,13 +382,34 @@
       }
     },
     "manageNotifications.section.notificationsByDay" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Notifications"
+          }
+        }
+      }
     },
     "manageNotifications.section.weekDays" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekdays Enabled"
+          }
+        }
+      }
     },
     "manageNotifications.title" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Notifications"
+          }
+        }
+      }
     },
     "notification.message" : {
       "extractionState" : "manual",
@@ -381,7 +461,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Daily water goal"
+            "value" : "Daily Goal"
           }
         }
       }
@@ -536,6 +616,20 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "26-30º"
+          }
+        }
+      }
+    },
+    "Volume Format" : {
+
+    },
+    "Water Volume Format" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume Format"
           }
         }
       }

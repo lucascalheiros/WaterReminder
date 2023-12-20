@@ -11,9 +11,11 @@ import RxRelay
 
 class CreateWaterSourceItemVC: UITableViewController {
 
-    var waterSourceType = BehaviorRelay(value: WaterSourceType.water)
-    var waterWithFormat = BehaviorRelay(value: WaterWithFormat(waterInML: 500, volumeFormat: .metric))
-    var createWaterSourceDelegate: CreateWaterSourceDelegate?
+    static func newInstance(createWaterSourceItemViewModel: CreateWaterSourceItemViewModel) -> CreateWaterSourceItemVC {
+        CreateWaterSourceItemVC(createWaterSourceItemViewModel: createWaterSourceItemViewModel)
+    }
+
+    let createWaterSourceItemViewModel: CreateWaterSourceItemViewModel
 
     lazy var cancel = {
         let btn = UIBarButtonItem(title: String(localized: "generic.cancel"), primaryAction: .init(handler: { _ in
@@ -25,14 +27,15 @@ class CreateWaterSourceItemVC: UITableViewController {
 
     lazy var confirm = {
         let btn = UIBarButtonItem(title: String(localized: "generic.confirm"), image: nil, primaryAction: .init(handler: { _ in
-            self.createWaterSourceDelegate?.onCreateWaterSource(self.waterWithFormat.value.waterInML, self.waterSourceType.value)
+            self.createWaterSourceItemViewModel.saveWaterSource()
             self.dismiss(animated: true)
         }))
         btn.tintColor = .white
         return btn
     }()
 
-	init() {
+	init(createWaterSourceItemViewModel: CreateWaterSourceItemViewModel) {
+        self.createWaterSourceItemViewModel = createWaterSourceItemViewModel
 		super.init(style: .insetGrouped)
 		self.title = String(localized: "createWaterSource.screenTitle")
 	}

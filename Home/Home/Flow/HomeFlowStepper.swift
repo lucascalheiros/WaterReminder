@@ -20,5 +20,8 @@ internal class HomeFlowStepper: Stepper {
 	func showWaterSourceModal() {
 		steps.accept(HomeFlowSteps.waterSourceEditor)
 	}
-}
 
+    func showCreateWaterSource() {
+        steps.accept(HomeFlowSteps.createWaterSource)
+    }
+}

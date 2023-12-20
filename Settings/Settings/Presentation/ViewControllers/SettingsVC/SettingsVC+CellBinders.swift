@@ -8,6 +8,7 @@
 import RxSwift
 import RxCocoa
 import Common
+import WaterManagementDomain
 
 extension SettingsVC {
     func bindDailyWaterGoalCell(_ sectionItem: any SectionItemProtocol) -> ((SettingsDetailTableViewCell) -> Void) {
@@ -21,6 +22,26 @@ extension SettingsVC {
                 let attributedString = NSMutableAttributedString.init(string: $0.exhibitionValueWithFormat())
                 detailCell.detailLabel.attributedText = attributedString
             }).disposed(by: detailCell.disposeBag)
+        }
+    } 
+
+    func bindVolumeFormat(_ sectionItem: any SectionItemProtocol) -> ((SettingsSelectionTableViewCell) -> Void) {
+         return { detailCell in
+            detailCell.dispose()
+            detailCell.titleLabel.text = sectionItem.itemTitle()
+
+             self.settingsViewModel.dailyWaterSelectorDelegate.volumeFormat.subscribe(onNext: {currentFormat in
+                 var menuChildren: [UIMenuElement] = []
+                 for format in VolumeFormat.allCases {
+                     menuChildren.append(UIAction(
+                        title: format.localizedDisplay,
+                        state: currentFormat == format ? .on : .off,
+                        handler: {_ in
+                         self.settingsViewModel.dailyWaterSelectorDelegate.setFormat(format)
+                     }))
+                 }
+                 detailCell.button.menu = UIMenu(options: .displayInline, children: menuChildren)
+             }).disposed(by: detailCell.disposeBag)
         }
     }
 
