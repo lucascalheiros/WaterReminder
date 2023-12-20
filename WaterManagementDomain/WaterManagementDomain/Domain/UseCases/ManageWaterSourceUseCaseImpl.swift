@@ -1,5 +1,5 @@
 //
-//  ManageWaterSourceUseCase.swift
+//  ManageWaterSourceUseCaseImpl.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 09/07/23.
@@ -7,11 +7,11 @@
 
 import RxSwift
 
-internal class ManageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol {
+internal class ManageWaterSourceUseCaseImpl: ManageWaterSourceUseCase {
     
-	let waterSourceRepository: WaterSourceRepositoryProtocol
+	let waterSourceRepository: WaterSourceRepository
 
-	init(waterSourceRepository: WaterSourceRepositoryProtocol) {
+	init(waterSourceRepository: WaterSourceRepository) {
 		self.waterSourceRepository = waterSourceRepository
 	}
 

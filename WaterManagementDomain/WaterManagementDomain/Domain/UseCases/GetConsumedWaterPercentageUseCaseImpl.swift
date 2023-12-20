@@ -9,14 +9,14 @@ import RxSwift
 
 class GetConsumedWaterPercentageUseCaseImpl: GetConsumedWaterPercentageUseCase {
 
-    private let getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol
-    private let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
+    private let getWaterConsumedUseCase: GetWaterConsumedUseCase
+    private let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
 
     private lazy var expectedWaterVolume: Observable<Float> = getDailyWaterConsumptionUseCase.getDailyWaterConsumptionList().map { ($0.last?.expectedVolume ?? 0).toFloat() }
 
     init(
-        getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol,
-        getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
+        getWaterConsumedUseCase: GetWaterConsumedUseCase,
+        getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
     ) {
         self.getWaterConsumedUseCase = getWaterConsumedUseCase
         self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase

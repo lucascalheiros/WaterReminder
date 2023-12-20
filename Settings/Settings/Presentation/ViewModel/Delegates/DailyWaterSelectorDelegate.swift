@@ -12,9 +12,9 @@ import WaterManagementDomain
 class DailyWaterSelectorDelegate {
 	let disposeBag = DisposeBag()
 
-	private let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
+	private let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
 	private let registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCaseProtocol
-	private let getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol
+	private let getVolumeFormatUseCase: GetVolumeFormatUseCase
 	private let registerVolumeFormatUseCase: RegisterVolumeFormatUseCaseProtocol
 
 	lazy var volumeWithFormat = {
@@ -29,9 +29,9 @@ class DailyWaterSelectorDelegate {
     lazy var volumeFormat = getVolumeFormatUseCase.volumeFormat()
 
 	init(
-		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol,
+		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase,
 		registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCaseProtocol,
-		getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol,
+		getVolumeFormatUseCase: GetVolumeFormatUseCase,
 		registerVolumeFormatUseCase: RegisterVolumeFormatUseCaseProtocol
 	) {
 		self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase

@@ -1,5 +1,5 @@
 //
-//  GetDailyWaterConsumptionUseCase.swift
+//  GetDailyWaterConsumptionUseCaseImpl.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 07/07/23.
@@ -7,11 +7,11 @@
 
 import RxSwift
 
-internal class GetDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol {
-	let dailyWaterConsumptionRepository: DailyWaterConsumptionRepositoryProtocol
+internal class GetDailyWaterConsumptionUseCaseImpl: GetDailyWaterConsumptionUseCase {
+	let dailyWaterConsumptionRepository: DailyWaterConsumptionRepository
 
 	init(
-		dailyWaterConsumptionRepository: DailyWaterConsumptionRepositoryProtocol
+		dailyWaterConsumptionRepository: DailyWaterConsumptionRepository
 	) {
 		self.dailyWaterConsumptionRepository = dailyWaterConsumptionRepository
 	}

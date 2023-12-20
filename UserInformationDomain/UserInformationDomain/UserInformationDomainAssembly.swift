@@ -14,7 +14,7 @@ public class UserInformationDomainAssembly: Assembly {
 
 	public func assemble(container: Container) {
 		container.autoregister(
-			UserInformationRepositoryProtocol.self,
+			UserInformationRepository.self,
 			initializer: UserInformationRepostoryImpl.init
 		)
 		container.autoregister(

@@ -1,5 +1,5 @@
 //
-//  GetWaterSourceUseCase.swift
+//  GetWaterSourceUseCaseImpl.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 09/07/23.
@@ -7,13 +7,13 @@
 
 import RxSwift
 
-internal class GetWaterSourceUseCase: GetWaterSourceUseCaseProtocol {
-	let waterSourceRepository: WaterSourceRepositoryProtocol
-    let getVolumeUseCase: GetVolumeFormatUseCaseProtocol
+internal class GetWaterSourceUseCaseImpl: GetWaterSourceUseCase {
+	let waterSourceRepository: WaterSourceRepository
+    let getVolumeUseCase: GetVolumeFormatUseCase
 
 	init(
-        waterSourceRepository: WaterSourceRepositoryProtocol,
-        getVolumeUseCase: GetVolumeFormatUseCaseProtocol
+        waterSourceRepository: WaterSourceRepository,
+        getVolumeUseCase: GetVolumeFormatUseCase
     ) {
 		self.waterSourceRepository = waterSourceRepository
         self.getVolumeUseCase = getVolumeUseCase

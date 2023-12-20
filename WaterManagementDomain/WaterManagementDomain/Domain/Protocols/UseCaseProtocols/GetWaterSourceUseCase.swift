@@ -1,5 +1,5 @@
 //
-//  GetWaterSourceUseCaseProtocol.swift
+//  GetWaterSourceUseCase.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 06/08/23.
@@ -7,7 +7,7 @@
 
 import RxSwift
 
-public protocol GetWaterSourceUseCaseProtocol {
+public protocol GetWaterSourceUseCase {
 	func getWaterSourceList() -> Observable<[WaterSource]>
     func getWaterSourceListWithVolumeFormat() -> Observable<WaterSourceListWithVolumeFormat> 
 }

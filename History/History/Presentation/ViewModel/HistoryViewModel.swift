@@ -11,9 +11,9 @@ import WaterManagementDomain
 
 class HistoryViewModel {
     let disposeBag = DisposeBag()
-    let getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol
-    let getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol
-    let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
+    let getWaterConsumedUseCase: GetWaterConsumedUseCase
+    let getVolumeFormatUseCase: GetVolumeFormatUseCase
+    let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
     let getConsumedWaterPercentageUseCase: GetConsumedWaterPercentageUseCase
 
     lazy var todayWaterConsumedList = {
@@ -42,9 +42,9 @@ class HistoryViewModel {
     }()
 
     init(
-        getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol,
-        getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol,
-        getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol,
+        getWaterConsumedUseCase: GetWaterConsumedUseCase,
+        getVolumeFormatUseCase: GetVolumeFormatUseCase,
+        getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase,
         getConsumedWaterPercentageUseCase: GetConsumedWaterPercentageUseCase
     ) {
         self.getWaterConsumedUseCase = getWaterConsumedUseCase

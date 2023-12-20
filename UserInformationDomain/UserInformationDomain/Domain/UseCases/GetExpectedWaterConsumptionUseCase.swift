@@ -9,11 +9,11 @@ import Foundation
 import RxSwift
 
 public class GetExpectedWaterConsumptionUseCase {
-	private let userInformationRepository: UserInformationRepositoryProtocol
+	private let userInformationRepository: UserInformationRepository
 	private let multiplierConstantFactor = 0.030
 	private let activityLevelMultiplierFactor = 0.020 / 7
 
-	internal init(userInformationRepository: UserInformationRepositoryProtocol) {
+	internal init(userInformationRepository: UserInformationRepository) {
 		self.userInformationRepository = userInformationRepository
 	}
 

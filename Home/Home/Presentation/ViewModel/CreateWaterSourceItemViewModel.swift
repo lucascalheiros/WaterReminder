@@ -12,8 +12,8 @@ import RxSwift
 class CreateWaterSourceItemViewModel {
 
     let disposeBag: DisposeBag = DisposeBag()
-    let getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol
-    let manageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol
+    let getVolumeFormatUseCase: GetVolumeFormatUseCase
+    let manageWaterSourceUseCase: ManageWaterSourceUseCase
 
     @Published var waterSourceType = WaterSourceType.water
     @Published var waterInMl = 500
@@ -23,7 +23,7 @@ class CreateWaterSourceItemViewModel {
         WaterWithFormat(waterInML: $0, volumeFormat: $1)
     }
 
-    init(getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol, manageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol) {
+    init(getVolumeFormatUseCase: GetVolumeFormatUseCase, manageWaterSourceUseCase: ManageWaterSourceUseCase) {
         self.getVolumeFormatUseCase = getVolumeFormatUseCase
         self.manageWaterSourceUseCase = manageWaterSourceUseCase
 

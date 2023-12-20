@@ -8,9 +8,9 @@
 import Foundation
 
 class RegisterUserInformationUseCase {
-	let userInformationRepository: UserInformationRepositoryProtocol
+	let userInformationRepository: UserInformationRepository
 
-	internal init(userInformationRepository: UserInformationRepositoryProtocol) {
+	internal init(userInformationRepository: UserInformationRepository) {
 		self.userInformationRepository = userInformationRepository
 	}
 

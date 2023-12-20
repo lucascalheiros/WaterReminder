@@ -1,5 +1,5 @@
 //
-//  GetWaterConsumedUseCase.swift
+//  GetWaterConsumedUseCaseImpl.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 09/07/23.
@@ -9,13 +9,13 @@ import RxSwift
 import Common
 import Foundation
 
-internal class GetWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol {
-	let waterConsumedRepository: WaterConsumedRepositoryProtocol
-	let getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol
+internal class GetWaterConsumedUseCaseImpl: GetWaterConsumedUseCase {
+	let waterConsumedRepository: WaterConsumedRepository
+	let getVolumeFormatUseCase: GetVolumeFormatUseCase
 
 	init(
-		waterConsumedRepository: WaterConsumedRepositoryProtocol,
-		getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol
+		waterConsumedRepository: WaterConsumedRepository,
+		getVolumeFormatUseCase: GetVolumeFormatUseCase
 	) {
 		self.waterConsumedRepository = waterConsumedRepository
 		self.getVolumeFormatUseCase = getVolumeFormatUseCase

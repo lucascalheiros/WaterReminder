@@ -11,7 +11,7 @@ import RealmSwift
 import RxRealm
 import Core
 
-internal class WaterSourceRepositoryImpl: BaseRepository<WaterSourceObject>, WaterSourceRepositoryProtocol {
+internal class WaterSourceRepositoryImpl: BaseRepository<WaterSourceObject>, WaterSourceRepository {
     private var waterSourceList = [
         WaterSource(volume: 250, waterSourceType: .water),
         WaterSource(volume: 500, waterSourceType: .water),

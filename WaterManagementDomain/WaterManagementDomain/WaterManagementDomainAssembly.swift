@@ -18,19 +18,19 @@ public class WaterManagementDomainAssembly: Assembly {
 
 	func assembleRepositories(_ container: Container) {
 		container.autoregister(
-			DailyWaterConsumptionRepositoryProtocol.self,
+			DailyWaterConsumptionRepository.self,
 			initializer: DailyWaterConsumptionRepositoryImpl.init
 		)
 		container.autoregister(
-			WaterSourceRepositoryProtocol.self,
+			WaterSourceRepository.self,
 			initializer: WaterSourceRepositoryImpl.init
 		)
 		container.autoregister(
-			WaterConsumedRepositoryProtocol.self,
+			WaterConsumedRepository.self,
 			initializer: WaterConsumedRepositoryImpl.init
 		)
 		container.autoregister(
-			VolumeFormatRepositoryProtocol.self,
+			VolumeFormatRepository.self,
 			initializer: VolumeFormatRepositoryImpl.init
 		)
 	}
@@ -38,39 +38,39 @@ public class WaterManagementDomainAssembly: Assembly {
 	func assembleUseCases(_ container: Container) {
 		container.autoregister(
 			RegisterDailyWaterConsumptionUseCaseProtocol.self,
-			initializer: RegisterDailyWaterConsumptionUseCase.init
+			initializer: RegisterDailyWaterConsumptionUseCaseImpl.init
 		)
 		container.autoregister(
-			GetDailyWaterConsumptionUseCaseProtocol.self,
-			initializer: GetDailyWaterConsumptionUseCase.init
+			GetDailyWaterConsumptionUseCase.self,
+			initializer: GetDailyWaterConsumptionUseCaseImpl.init
 		)
 		container.autoregister(
 			RegisterWaterConsumedUseCaseProtocol.self,
-			initializer: RegisterWaterConsumedUseCase.init
+			initializer: RegisterWaterConsumedUseCaseImpl.init
 		)
 		container.autoregister(
-			ManageWaterSourceUseCaseProtocol.self,
-			initializer: ManageWaterSourceUseCase.init
+			ManageWaterSourceUseCase.self,
+			initializer: ManageWaterSourceUseCaseImpl.init
 		)
 		container.autoregister(
-			GetDailyWaterConsumptionUseCaseProtocol.self,
-			initializer: GetDailyWaterConsumptionUseCase.init
+			GetDailyWaterConsumptionUseCase.self,
+			initializer: GetDailyWaterConsumptionUseCaseImpl.init
 		)
 		container.autoregister(
-			GetWaterSourceUseCaseProtocol.self,
-			initializer: GetWaterSourceUseCase.init
+			GetWaterSourceUseCase.self,
+			initializer: GetWaterSourceUseCaseImpl.init
 		)
 		container.autoregister(
-			GetWaterConsumedUseCaseProtocol.self,
-			initializer: GetWaterConsumedUseCase.init
+			GetWaterConsumedUseCase.self,
+			initializer: GetWaterConsumedUseCaseImpl.init
 		)
 		container.autoregister(
-			GetVolumeFormatUseCaseProtocol.self,
-			initializer: GetVolumeFormatUseCase.init
+			GetVolumeFormatUseCase.self,
+			initializer: GetVolumeFormatUseCaseImpl.init
 		)
         container.autoregister(
             RegisterVolumeFormatUseCaseProtocol.self,
-            initializer: RegisterVolumeFormatUseCase.init
+            initializer: RegisterVolumeFormatUseCaseImpl.init
         )
         container.autoregister(
             GetConsumedWaterPercentageUseCase.self,

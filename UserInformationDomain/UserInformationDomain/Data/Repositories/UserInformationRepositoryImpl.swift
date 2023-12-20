@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import Core
 
-class UserInformationRepostoryImpl: BaseRepository<UserInformationObject>, UserInformationRepositoryProtocol {
+class UserInformationRepostoryImpl: BaseRepository<UserInformationObject>, UserInformationRepository {
 
 	init() {
 		super.init(UserInformationRealmProvider())

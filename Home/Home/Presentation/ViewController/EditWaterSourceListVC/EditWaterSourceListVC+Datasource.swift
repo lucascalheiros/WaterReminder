@@ -99,10 +99,6 @@ extension EditWaterSourceListVC {
         editWaterSourceListViewModel.removeWaterSourceItem(waterSource)
     }
 
-    func loadTableData(reloadTable: Bool = true) {
-        editWaterSourceListViewModel.loadTableData(reloadTable: reloadTable)
-	}
-
     func observeViewModel() {
         editWaterSourceListViewModel.removeItemNotifier.sink {
             self.tableView.deleteRows(at: [IndexPath(row: $0, section: 0)], with: .automatic)

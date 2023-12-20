@@ -7,7 +7,7 @@
 
 import RxSwift
 
-internal class VolumeFormatRepositoryImpl: VolumeFormatRepositoryProtocol {
+internal class VolumeFormatRepositoryImpl: VolumeFormatRepository {
 	private lazy var defaults = UserDefaults.standard
 
 	private var volumeFormatKVO: NSKeyValueObservation?

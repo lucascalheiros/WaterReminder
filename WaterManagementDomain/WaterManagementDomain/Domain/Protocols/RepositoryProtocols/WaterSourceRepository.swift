@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-protocol WaterSourceRepositoryProtocol {
+protocol WaterSourceRepository {
     func getWaterSourceList() -> Observable<[WaterSource]>
 	func createWaterSource(waterSource: WaterSource) -> Completable
     func updateWaterSourcePinState(waterSource: WaterSource, isPinned: Bool) -> Completable

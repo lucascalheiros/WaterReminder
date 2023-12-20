@@ -13,8 +13,8 @@ import Combine
 class EditWaterSourceListViewModel: WaterSourceDeleteDelegate {
     
     let disposeBag = DisposeBag()
-    let getWaterSourceUseCase: GetWaterSourceUseCaseProtocol
-    let manageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol
+    let getWaterSourceUseCase: GetWaterSourceUseCase
+    let manageWaterSourceUseCase: ManageWaterSourceUseCase
     let reorderWaterSourceUseCase: ReorderWaterSourceUseCase
     let homeFlowStepper: HomeFlowStepper
 
@@ -25,9 +25,9 @@ class EditWaterSourceListViewModel: WaterSourceDeleteDelegate {
     let updateListNotifier = PassthroughSubject<Void, Never>()
 
     init(
-        getWaterSourceUseCase: GetWaterSourceUseCaseProtocol,
+        getWaterSourceUseCase: GetWaterSourceUseCase,
         reorderWaterSourceUseCase: ReorderWaterSourceUseCase,
-        manageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol,
+        manageWaterSourceUseCase: ManageWaterSourceUseCase,
         homeFlowStepper: HomeFlowStepper
     ) {
         self.getWaterSourceUseCase = getWaterSourceUseCase

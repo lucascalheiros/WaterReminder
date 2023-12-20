@@ -7,7 +7,7 @@
 
 import RxSwift
 
-protocol DailyWaterConsumptionRepositoryProtocol {
+protocol DailyWaterConsumptionRepository {
     func getDailyWaterConsumptionList() -> Observable<[DailyWaterConsumption]>
     func setDailyWaterConsumption(_ expectedConsumption: Int) -> Completable
 }

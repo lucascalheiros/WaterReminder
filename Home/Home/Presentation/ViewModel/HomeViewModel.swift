@@ -12,12 +12,12 @@ import RealmSwift
 import WaterManagementDomain
 
 class HomeViewModel {
-	let manageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol
-	let getWaterSourceUseCase: GetWaterSourceUseCaseProtocol
+	let manageWaterSourceUseCase: ManageWaterSourceUseCase
+	let getWaterSourceUseCase: GetWaterSourceUseCase
 	let registerWaterConsumedUseCase: RegisterWaterConsumedUseCaseProtocol
 	let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
-	let getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol
-	let getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol
+	let getWaterConsumedUseCase: GetWaterConsumedUseCase
+	let getVolumeFormatUseCase: GetVolumeFormatUseCase
 	let homeFlowStepper: HomeFlowStepper
 
 	lazy var waterSourceList = { getWaterSourceUseCase.getWaterSourceList() }()
@@ -70,11 +70,11 @@ class HomeViewModel {
 
 	init (
 		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol,
-		getWaterConsumedUseCase: GetWaterConsumedUseCaseProtocol,
+		getWaterConsumedUseCase: GetWaterConsumedUseCase,
 		registerWaterConsumedUseCase: RegisterWaterConsumedUseCaseProtocol,
-		manageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol,
-		getWaterSourceUseCase: GetWaterSourceUseCaseProtocol,
-		getVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol,
+		manageWaterSourceUseCase: ManageWaterSourceUseCase,
+		getWaterSourceUseCase: GetWaterSourceUseCase,
+		getVolumeFormatUseCase: GetVolumeFormatUseCase,
 		homeFlowStepper: HomeFlowStepper,
         getConsumedWaterPercentageUseCase: GetConsumedWaterPercentageUseCase
 	) {

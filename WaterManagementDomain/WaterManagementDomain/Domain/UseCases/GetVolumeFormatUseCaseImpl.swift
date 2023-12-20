@@ -1,5 +1,5 @@
 //
-//  GetVolumeFormatUseCase.swift
+//  GetVolumeFormatUseCaseImpl.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 06/08/23.
@@ -7,10 +7,10 @@
 
 import RxSwift
 
-internal class GetVolumeFormatUseCase: GetVolumeFormatUseCaseProtocol {
-	let volumeFormatRepositoryProtocol: VolumeFormatRepositoryProtocol
+internal class GetVolumeFormatUseCaseImpl: GetVolumeFormatUseCase {
+	let volumeFormatRepositoryProtocol: VolumeFormatRepository
 
-	init(volumeFormatRepositoryProtocol: VolumeFormatRepositoryProtocol) {
+	init(volumeFormatRepositoryProtocol: VolumeFormatRepository) {
 		self.volumeFormatRepositoryProtocol = volumeFormatRepositoryProtocol
 	}
 

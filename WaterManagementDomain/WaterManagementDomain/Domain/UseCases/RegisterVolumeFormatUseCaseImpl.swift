@@ -7,10 +7,10 @@
 
 import Foundation
 
-internal class RegisterVolumeFormatUseCase: RegisterVolumeFormatUseCaseProtocol {
-	let volumeFormatRepositoryProtocol: VolumeFormatRepositoryProtocol
+internal class RegisterVolumeFormatUseCaseImpl: RegisterVolumeFormatUseCaseProtocol {
+	let volumeFormatRepositoryProtocol: VolumeFormatRepository
 
-	init(volumeFormatRepositoryProtocol: VolumeFormatRepositoryProtocol) {
+	init(volumeFormatRepositoryProtocol: VolumeFormatRepository) {
 		self.volumeFormatRepositoryProtocol = volumeFormatRepositoryProtocol
 	}
 

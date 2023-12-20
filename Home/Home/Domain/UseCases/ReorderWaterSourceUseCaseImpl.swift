@@ -10,10 +10,10 @@ import WaterManagementDomain
 
 class ReorderWaterSourceUseCaseImpl: ReorderWaterSourceUseCase {
 
-	private let getWaterSourceUseCase: GetWaterSourceUseCaseProtocol
-	private let manageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol
+	private let getWaterSourceUseCase: GetWaterSourceUseCase
+	private let manageWaterSourceUseCase: ManageWaterSourceUseCase
 
-	init(getWaterSourceUseCase: GetWaterSourceUseCaseProtocol, manageWaterSourceUseCase: ManageWaterSourceUseCaseProtocol) {
+	init(getWaterSourceUseCase: GetWaterSourceUseCase, manageWaterSourceUseCase: ManageWaterSourceUseCase) {
 		self.getWaterSourceUseCase = getWaterSourceUseCase
 		self.manageWaterSourceUseCase = manageWaterSourceUseCase
 	}

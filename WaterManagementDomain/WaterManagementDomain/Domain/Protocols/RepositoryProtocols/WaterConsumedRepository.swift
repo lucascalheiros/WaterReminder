@@ -8,9 +8,7 @@
 import Foundation
 import RxSwift
 
-protocol WaterConsumedRepositoryProtocol {
-
+protocol WaterConsumedRepository {
     func getWaterConsumedList() -> Observable<[WaterConsumed]>
 	func registerWaterConsumption(waterVolume: Int, sourceType: WaterSourceType) -> Completable
-
 }

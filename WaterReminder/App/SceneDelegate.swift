@@ -68,7 +68,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
 		appFlow = RootFlow(container: container)
 
 		// TODO add splash and refactor to include this decision there.
-		let getDailyWaterConsumptionUseCase = container.resolve(GetDailyWaterConsumptionUseCaseProtocol.self)
+		let getDailyWaterConsumptionUseCase = container.resolve(GetDailyWaterConsumptionUseCase.self)
 		getDailyWaterConsumptionUseCase?.lastDailyWaterConsumption().safeAsSingle().subscribe(onSuccess: {
 			let step = $0 == nil ? FirstAccessFlowSteps.firstAccessUserInformationIsRequired : FirstAccessFlowSteps.firstAccessUserInformationAlreadyProvided
 			self.coordinator.coordinate(flow: self.appFlow, with: OneStepper(withSingleStep: step))

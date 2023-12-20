@@ -1,5 +1,5 @@
 //
-//  RegisterWaterConsumedUseCase.swift
+//  RegisterWaterConsumedUseCaseImpl.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 09/07/23.
@@ -7,10 +7,10 @@
 
 import RxSwift
 
-internal class RegisterWaterConsumedUseCase: RegisterWaterConsumedUseCaseProtocol {
-	let waterConsumedRepository: WaterConsumedRepositoryProtocol
+internal class RegisterWaterConsumedUseCaseImpl: RegisterWaterConsumedUseCaseProtocol {
+	let waterConsumedRepository: WaterConsumedRepository
 
-	init(waterConsumedRepository: WaterConsumedRepositoryProtocol) {
+	init(waterConsumedRepository: WaterConsumedRepository) {
 		self.waterConsumedRepository = waterConsumedRepository
 	}
 

@@ -15,7 +15,6 @@
 		17B0AECF2B0A831D00E33270 /* UserInformationDomainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AECE2B0A831D00E33270 /* UserInformationDomainAssembly.swift */; };
 		17B0AED02B0A833700E33270 /* RegisterUserInformationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEC32B0A831D00E33270 /* RegisterUserInformationUseCase.swift */; };
 		17B0AED12B0A833700E33270 /* GetExpectedWaterConsumptionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEC22B0A831D00E33270 /* GetExpectedWaterConsumptionUseCase.swift */; };
-		17B0AED22B0A833D00E33270 /* UserInformationRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEC02B0A831D00E33270 /* UserInformationRepositoryProtocol.swift */; };
 		17B0AED32B0A834300E33270 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEBE2B0A831D00E33270 /* UserInformation.swift */; };
 		17B0AED42B0A834C00E33270 /* AmbienceTemperatureLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEBA2B0A831D00E33270 /* AmbienceTemperatureLevel.swift */; };
 		17B0AED52B0A834C00E33270 /* WeightFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEBC2B0A831D00E33270 /* WeightFormat.swift */; };
@@ -24,6 +23,7 @@
 		17B0AED82B0A83CF00E33270 /* UserInformationRealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEC92B0A831D00E33270 /* UserInformationRealmProvider.swift */; };
 		17B0AED92B0A83D700E33270 /* AmbienceTemperatureRangeEmbeddedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEC62B0A831D00E33270 /* AmbienceTemperatureRangeEmbeddedObject.swift */; };
 		17B0AEDA2B0A83D700E33270 /* UserInformationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEC72B0A831D00E33270 /* UserInformationObject.swift */; };
+		27EE31090661B646FD9A66A5 /* UserInformationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3F03BCD851EEF6E2CF6E /* UserInformationRepository.swift */; };
 		DFBE95DFF19B9C782DF307B6 /* Pods_UserInformationDomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A17C59BE2720977E14EDF6 /* Pods_UserInformationDomainTests.framework */; };
 		E7612A99C4DDA77131598EAD /* Pods_UserInformationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFF99DBC951A5786E93FCF6 /* Pods_UserInformationDomain.framework */; };
 /* End PBXBuildFile section */
@@ -62,7 +62,6 @@
 		17B0AEBB2B0A831D00E33270 /* TemperatureFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureFormat.swift; sourceTree = "<group>"; };
 		17B0AEBC2B0A831D00E33270 /* WeightFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightFormat.swift; sourceTree = "<group>"; };
 		17B0AEBE2B0A831D00E33270 /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
-		17B0AEC02B0A831D00E33270 /* UserInformationRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationRepositoryProtocol.swift; sourceTree = "<group>"; };
 		17B0AEC22B0A831D00E33270 /* GetExpectedWaterConsumptionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExpectedWaterConsumptionUseCase.swift; sourceTree = "<group>"; };
 		17B0AEC32B0A831D00E33270 /* RegisterUserInformationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserInformationUseCase.swift; sourceTree = "<group>"; };
 		17B0AEC62B0A831D00E33270 /* AmbienceTemperatureRangeEmbeddedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbienceTemperatureRangeEmbeddedObject.swift; sourceTree = "<group>"; };
@@ -70,6 +69,7 @@
 		17B0AEC92B0A831D00E33270 /* UserInformationRealmProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformationRealmProvider.swift; sourceTree = "<group>"; };
 		17B0AECB2B0A831D00E33270 /* UserInformationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationRepositoryImpl.swift; sourceTree = "<group>"; };
 		17B0AECE2B0A831D00E33270 /* UserInformationDomainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformationDomainAssembly.swift; sourceTree = "<group>"; };
+		27EE3F03BCD851EEF6E2CF6E /* UserInformationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformationRepository.swift; sourceTree = "<group>"; };
 		3B5E7F62E2D506369E4242A3 /* Pods-UserInformationDomainTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserInformationDomainTests.debug.xcconfig"; path = "Target Support Files/Pods-UserInformationDomainTests/Pods-UserInformationDomainTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4808E3B16933938486FB7D1F /* Pods-UserInformationDomain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserInformationDomain.debug.xcconfig"; path = "Target Support Files/Pods-UserInformationDomain/Pods-UserInformationDomain.debug.xcconfig"; sourceTree = "<group>"; };
 		80A17C59BE2720977E14EDF6 /* Pods_UserInformationDomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserInformationDomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,7 +160,7 @@
 		17B0AEC12B0A831D00E33270 /* RepositoryProtocols */ = {
 			isa = PBXGroup;
 			children = (
-				17B0AEC02B0A831D00E33270 /* UserInformationRepositoryProtocol.swift */,
+				27EE3F03BCD851EEF6E2CF6E /* UserInformationRepository.swift */,
 			);
 			path = RepositoryProtocols;
 			sourceTree = "<group>";
@@ -405,7 +405,6 @@
 				17B0AEDA2B0A83D700E33270 /* UserInformationObject.swift in Sources */,
 				17B0AED32B0A834300E33270 /* UserInformation.swift in Sources */,
 				17AE2B622B030EF50049F554 /* UserInformationDomain.docc in Sources */,
-				17B0AED22B0A833D00E33270 /* UserInformationRepositoryProtocol.swift in Sources */,
 				17B0AECF2B0A831D00E33270 /* UserInformationDomainAssembly.swift in Sources */,
 				17B0AED42B0A834C00E33270 /* AmbienceTemperatureLevel.swift in Sources */,
 				17B0AED52B0A834C00E33270 /* WeightFormat.swift in Sources */,
@@ -413,6 +412,7 @@
 				17B0AED82B0A83CF00E33270 /* UserInformationRealmProvider.swift in Sources */,
 				17B0AED72B0A83C900E33270 /* UserInformationRepositoryImpl.swift in Sources */,
 				17B0AED92B0A83D700E33270 /* AmbienceTemperatureRangeEmbeddedObject.swift in Sources */,
+				27EE31090661B646FD9A66A5 /* UserInformationRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
