@@ -1,76 +1,16 @@
 //
-//  HistoryViewController.swift
-//  WaterReminder
+//  HistoryVC+Datasource.swift
+//  History
 //
-//  Created by Lucas Calheiros on 14/05/23.
+//  Created by Lucas Calheiros on 19/12/23.
 //
 
-import UIKit
-import RxSwift
-import RxCocoa
 import WaterManagementDomain
+import UIKit
 
-class HistoryViewController: UICollectionViewController {
+extension HistoryVC {
     typealias DataSource = UICollectionViewDiffableDataSource<Sections, WaterConsumed>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Sections, WaterConsumed>
-
-	let disposeBag = DisposeBag()
-	let historyViewModel: HistoryViewModel
-
-    lazy var diffableDatasource: DataSource  = makeDatasource()
-
-	var todayWaterConsumedList: [WaterConsumed] = []
-
-	init(historyViewModel: HistoryViewModel) {
-		self.historyViewModel = historyViewModel
-		let layout = UICollectionViewFlowLayout()
-		layout.scrollDirection = .vertical
-		super.init(collectionViewLayout: layout)
-	}
-
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
-    static func newInstance(historyViewModel: HistoryViewModel) -> HistoryViewController {
-        HistoryViewController(historyViewModel: historyViewModel)
-    }
-
-	override func viewDidLoad() {
-		super.viewDidLoad()
-
-        prepareConfiguration()
-        loadData()
-	}
-
-    func loadData() {
-        historyViewModel.waterConsumedByDay.subscribe(onNext: {
-            self.applySnapshot(waterConsumedByDay: $0, animatingDifferences: true)
-        }).disposed(by: disposeBag)
-    }
-
-    func prepareConfiguration() {
-        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        configuration.backgroundColor = .systemTeal
-        configuration.showsSeparators = true
-        configuration.separatorConfiguration.bottomSeparatorInsets = NSDirectionalEdgeInsets()
-        configuration.headerMode = .supplementary
-
-        // TODO Default height for section is 17.6667, so there is a warning for constraint satisfaction
-        //    inside TodayConsumptionSection as ios (awfully) does not provide a way to set the section
-        //    height using UICollectionLayoutListConfiguration, fix in the future, lowest priority since its
-        //    functioning correctly
-        collectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: configuration)
-        view.backgroundColor = .systemTeal
-        collectionView.backgroundColor = .systemTeal
-
-        // Set the data source and delegate
-        collectionView.dataSource = diffableDatasource
-        collectionView.delegate = self
-
-        registerCells()
-        configureHeader()
-    }
 
     func registerCells() {
         collectionView.register(
@@ -134,6 +74,25 @@ class HistoryViewController: UICollectionViewController {
                 return cell
             })
         return dataSource
+    }
+
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        contextMenuConfigurationForItemAt indexPath: IndexPath,
+        point: CGPoint
+    ) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { suggestedActions in
+            let deleteAction = UIAction(
+                title: String(localized: "Delete"),
+                image: UIImage(systemName: "trash"),
+                attributes: .destructive) { _ in
+                    if let waterConsumed = self.diffableDatasource.itemIdentifier(for: indexPath) {
+                        self.historyViewModel.deleteWaterConsumed(waterConsumed)
+                    }
+            }
+
+            return UIMenu(children: [deleteAction])
+        }
     }
 
     enum Sections: Hashable {

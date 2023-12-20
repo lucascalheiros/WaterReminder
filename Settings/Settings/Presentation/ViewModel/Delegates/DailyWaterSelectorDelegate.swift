@@ -13,9 +13,9 @@ class DailyWaterSelectorDelegate {
 	let disposeBag = DisposeBag()
 
 	private let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
-	private let registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCaseProtocol
+	private let registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase
 	private let getVolumeFormatUseCase: GetVolumeFormatUseCase
-	private let registerVolumeFormatUseCase: RegisterVolumeFormatUseCaseProtocol
+	private let registerVolumeFormatUseCase: RegisterVolumeFormatUseCase
 
 	lazy var volumeWithFormat = {
 		Observable.combineLatest(
@@ -30,9 +30,9 @@ class DailyWaterSelectorDelegate {
 
 	init(
 		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase,
-		registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCaseProtocol,
+		registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase,
 		getVolumeFormatUseCase: GetVolumeFormatUseCase,
-		registerVolumeFormatUseCase: RegisterVolumeFormatUseCaseProtocol
+		registerVolumeFormatUseCase: RegisterVolumeFormatUseCase
 	) {
 		self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
 		self.registerDailyWaterConsumptionUseCase = registerDailyWaterConsumptionUseCase

@@ -23,7 +23,6 @@ extension CreateWaterSourceItemVC: WaterSourceTypeSelector {
             textField.textAlignment = .center
         }
         alert.addAction(UIAlertAction(title: String(localized: "generic.ok"), style: .default, handler: { [weak alert, weak self] _ in
-            let format = volume.volumeFormat
             guard let newVolume = Float(alert?.textFields?.first?.text ?? "0") else {
                 return
             }

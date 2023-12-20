@@ -10,6 +10,7 @@ import RxRelay
 import RxSwift
 import RxSwiftExt
 import Core
+import Components
 import WaterManagementDomain
 
 class DailyConsumptionCell: UICollectionViewCell {
@@ -18,22 +19,22 @@ class DailyConsumptionCell: UICollectionViewCell {
 
 	private lazy var titleLabel: UILabel = {
 		let label = UILabel()
-        label.font = .body
-		label.textColor = .darkGray
+        label.font = DefaultComponentsTheme.current.body
+		label.textColor = DefaultComponentsTheme.current.surface.onColor
 		return label
 	}()
 
 	private lazy var volumeLabel: UILabel = {
 		let label = UILabel()
-		label.font = .body
-		label.textColor = .darkGray
+		label.font = DefaultComponentsTheme.current.body
+		label.textColor = DefaultComponentsTheme.current.surface.onColor
 		return label
 	}()
 
 	private lazy var timeLabel: UILabel = {
 		let label = UILabel()
-		label.font = .body
-		label.textColor = .darkGray
+        label.font = DefaultComponentsTheme.current.body
+        label.textColor = DefaultComponentsTheme.current.surface.onColor
 		return label
 	}()
 
@@ -44,7 +45,7 @@ class DailyConsumptionCell: UICollectionViewCell {
 		super.init(frame: frame)
 
 		contentView.addConstrainedSubviews(titleLabel, volumeLabel, timeLabel)
-		contentView.backgroundColor = AppColorGroup.surface.color
+        contentView.backgroundColor = DefaultComponentsTheme.current.surface.color
 
 		observeRelays()
 

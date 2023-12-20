@@ -15,6 +15,7 @@ class HistoryViewModel {
     let getVolumeFormatUseCase: GetVolumeFormatUseCase
     let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
     let getConsumedWaterPercentageUseCase: GetConsumedWaterPercentageUseCase
+    let manageWaterConsumedUseCase: ManageWaterConsumedUseCase
 
     lazy var todayWaterConsumedList = {
         let currentDate = Date()
@@ -45,12 +46,14 @@ class HistoryViewModel {
         getWaterConsumedUseCase: GetWaterConsumedUseCase,
         getVolumeFormatUseCase: GetVolumeFormatUseCase,
         getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase,
-        getConsumedWaterPercentageUseCase: GetConsumedWaterPercentageUseCase
+        getConsumedWaterPercentageUseCase: GetConsumedWaterPercentageUseCase,
+        manageWaterConsumedUseCase: ManageWaterConsumedUseCase
     ) {
         self.getWaterConsumedUseCase = getWaterConsumedUseCase
         self.getVolumeFormatUseCase = getVolumeFormatUseCase
         self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
         self.getConsumedWaterPercentageUseCase = getConsumedWaterPercentageUseCase
+        self.manageWaterConsumedUseCase = manageWaterConsumedUseCase
         getVolumeFormatUseCase.volumeFormat()
             .bind(to: volumeFormat).disposed(by: disposeBag)
         getWaterConsumedUseCase.getWaterConsumedVolumeToday()
@@ -84,6 +87,10 @@ class HistoryViewModel {
             let volume = waterConsumedList.map { $0.volume }.reduce(0, +)
             return WaterWithFormat(waterInML: volume, volumeFormat: $0)
         }
+    }
+
+    func deleteWaterConsumed(_ waterConsumed: WaterConsumed) {
+        manageWaterConsumedUseCase.deleteWaterConsumed(waterConsumed).subscribe().disposed(by: disposeBag)
     }
 
 }

@@ -42,10 +42,6 @@ class EditWaterSourceListVC: UITableViewController {
 		observeViewModel()
 	}
 
-    override func viewWillAppear(_ animated: Bool) {
-        loadTableData()
-    }
-
 	func prepareConfiguration() {
 		view.backgroundColor = .systemTeal
         registerCells()

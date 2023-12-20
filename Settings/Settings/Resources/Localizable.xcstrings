@@ -13,6 +13,7 @@
       }
     },
     "addFixedNotification.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -77,9 +78,6 @@
         }
       }
     },
-    "Daily Goal" : {
-
-    },
     "editWaterSourceList.cellTitle.add" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -125,6 +123,7 @@
       }
     },
     "generic.friday" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -179,6 +178,7 @@
       }
     },
     "generic.monday" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -222,6 +222,7 @@
       }
     },
     "generic.saturday" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -243,6 +244,7 @@
       }
     },
     "generic.sunday" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -264,6 +266,7 @@
       }
     },
     "generic.thursday" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -285,6 +288,7 @@
       }
     },
     "generic.tuesday" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -306,6 +310,7 @@
       }
     },
     "generic.wednesday" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -382,6 +387,7 @@
       }
     },
     "manageNotifications.section.notificationsByDay" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -392,6 +398,7 @@
       }
     },
     "manageNotifications.section.weekDays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -402,6 +409,7 @@
       }
     },
     "manageNotifications.title" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -619,9 +627,6 @@
           }
         }
       }
-    },
-    "Volume Format" : {
-
     },
     "Water Volume Format" : {
       "extractionState" : "stale",

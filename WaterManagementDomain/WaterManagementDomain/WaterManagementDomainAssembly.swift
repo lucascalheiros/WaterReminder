@@ -37,7 +37,7 @@ public class WaterManagementDomainAssembly: Assembly {
 
 	func assembleUseCases(_ container: Container) {
 		container.autoregister(
-			RegisterDailyWaterConsumptionUseCaseProtocol.self,
+			RegisterDailyWaterConsumptionUseCase.self,
 			initializer: RegisterDailyWaterConsumptionUseCaseImpl.init
 		)
 		container.autoregister(
@@ -45,8 +45,8 @@ public class WaterManagementDomainAssembly: Assembly {
 			initializer: GetDailyWaterConsumptionUseCaseImpl.init
 		)
 		container.autoregister(
-			RegisterWaterConsumedUseCaseProtocol.self,
-			initializer: RegisterWaterConsumedUseCaseImpl.init
+			ManageWaterConsumedUseCase.self,
+			initializer: ManageWaterConsumedUseCaseImpl.init
 		)
 		container.autoregister(
 			ManageWaterSourceUseCase.self,
@@ -69,7 +69,7 @@ public class WaterManagementDomainAssembly: Assembly {
 			initializer: GetVolumeFormatUseCaseImpl.init
 		)
         container.autoregister(
-            RegisterVolumeFormatUseCaseProtocol.self,
+            RegisterVolumeFormatUseCase.self,
             initializer: RegisterVolumeFormatUseCaseImpl.init
         )
         container.autoregister(

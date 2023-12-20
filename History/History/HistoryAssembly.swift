@@ -13,8 +13,8 @@ public class HistoryAssembly: Assembly {
 
     public func assemble(container: Container) {
 		container.autoregister(
-			HistoryViewController.self,
-            initializer: HistoryViewController.newInstance
+			HistoryVC.self,
+            initializer: HistoryVC.newInstance
 		)
 		container.autoregister(
 			HistoryViewModel.self,
