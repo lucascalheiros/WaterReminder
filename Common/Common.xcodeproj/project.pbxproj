@@ -28,6 +28,7 @@
 		17668CE72AFF18CB00B09779 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668CE62AFF18CB00B09779 /* TimePeriod.swift */; };
 		17973F882B123F98003E88D7 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17973F872B123F98003E88D7 /* Identifiable.swift */; };
 		17973F8A2B123FE7003E88D7 /* UITableView+IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17973F892B123FE7003E88D7 /* UITableView+IdentifiableCell.swift */; };
+		27EE380EE6BDB14C97B36950 /* UICollectionView+IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE384DBD03192937D5C2E5 /* UICollectionView+IdentifiableCell.swift */; };
 		3BDB3FB6F1DA3C4C9F5C6C79 /* Pods_Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57738A545497E22B8E3501B2 /* Pods_Common.framework */; };
 		BB60A7C62CADBB4CA05D337F /* Pods_CommonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB53809B6301E6273607124 /* Pods_CommonTests.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		17668CE62AFF18CB00B09779 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		17973F872B123F98003E88D7 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
 		17973F892B123FE7003E88D7 /* UITableView+IdentifiableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+IdentifiableCell.swift"; sourceTree = "<group>"; };
+		27EE384DBD03192937D5C2E5 /* UICollectionView+IdentifiableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+IdentifiableCell.swift"; sourceTree = "<group>"; };
 		57738A545497E22B8E3501B2 /* Pods_Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5864246A20F62AAF612C41A3 /* Pods-Common.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Common.release.xcconfig"; path = "Target Support Files/Pods-Common/Pods-Common.release.xcconfig"; sourceTree = "<group>"; };
 		642BB82875187324075B1E9E /* Pods-Common.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Common.debug.xcconfig"; path = "Target Support Files/Pods-Common/Pods-Common.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,12 +169,13 @@
 			children = (
 				17668CDC2AFF172A00B09779 /* ProgramaticView.swift */,
 				17668CCD2AFF159C00B09779 /* SimplifiedGestureRecognizer.swift */,
+				27EE384DBD03192937D5C2E5 /* UICollectionView+IdentifiableCell.swift */,
 				17668CC12AFF0F2700B09779 /* UIEdgeInsets+Shorthand.swift */,
 				17668CD22AFF161600B09779 /* UIStackView+AddConstrainedArrangedSubview.swift */,
+				17973F892B123FE7003E88D7 /* UITableView+IdentifiableCell.swift */,
 				17668CD32AFF161600B09779 /* UIView+AddConstrainedSubview.swift */,
 				17668CD42AFF161600B09779 /* UIView+AddTapListener.swift */,
 				17668CD12AFF161600B09779 /* UIViewController+HideKeyboardWhenTappedOut.swift */,
-				17973F892B123FE7003E88D7 /* UITableView+IdentifiableCell.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				17668CDD2AFF172A00B09779 /* ProgramaticView.swift in Sources */,
 				17668CD82AFF161600B09779 /* UIView+AddTapListener.swift in Sources */,
 				17668CD62AFF161600B09779 /* UIView+AddConstrainedSubview.swift in Sources */,
+				27EE380EE6BDB14C97B36950 /* UICollectionView+IdentifiableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,5 +10,6 @@ import RxSwift
 
 protocol WaterConsumedRepository {
     func getWaterConsumedList() -> Observable<[WaterConsumed]>
-	func registerWaterConsumption(waterVolume: Int, sourceType: WaterSourceType) -> Completable
+    func registerWaterConsumption(waterVolume: Int, sourceType: WaterSourceType) -> Completable
+    func deleteWaterConsumed(_ waterConsumed: WaterConsumed) -> Completable
 }

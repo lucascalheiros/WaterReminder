@@ -30,4 +30,7 @@ internal class WaterConsumedRepositoryImpl: BaseRepository<WaterConsumedObject>,
         )
     }
     
+    func deleteWaterConsumed(_ waterConsumed: WaterConsumed) -> RxSwift.Completable {
+        delete(waterConsumed.toDataObject()._id)
+    }
 }

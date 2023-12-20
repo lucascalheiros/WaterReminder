@@ -6,7 +6,7 @@
 //
 
 public extension VolumeFormat {
-	public func toMetric(_ volume: Float) -> Float {
+    func toMetric(_ volume: Float) -> Float {
 		switch self {
 		case .metric:
 			return volume
@@ -17,7 +17,7 @@ public extension VolumeFormat {
 		}
 	}
 
-	public func fromMetric(_ volume: Float) -> Float {
+    func fromMetric(_ volume: Float) -> Float {
 		switch self {
 		case .metric:
 			return volume

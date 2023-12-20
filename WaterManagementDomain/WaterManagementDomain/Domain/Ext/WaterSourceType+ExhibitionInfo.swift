@@ -8,14 +8,14 @@
 import UIKit
 
 public extension WaterSourceType {
-    public var color: UIColor {
+    var color: UIColor {
 		switch self {
 		default:
             return UIColor(named: self.rawValue)!
 		}
 	}
 
-    public var exhibitionName: String {
+    var exhibitionName: String {
 		switch self {
 		case .water:
 			return String(localized: "generic.water")

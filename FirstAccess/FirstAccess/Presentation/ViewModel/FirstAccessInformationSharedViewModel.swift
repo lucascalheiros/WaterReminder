@@ -18,7 +18,7 @@ class FirstAccessInformationSharedViewModel {
 	private let disposeBag = DisposeBag()
 
 	private let expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase
-	private let registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCaseProtocol
+	private let registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase
 	private let manageNotificationSettingsUseCase: ManageNotificationSettingsUseCase
 
 	let pageNavigationDelegate = FirstAccessInformationPageNavigationDelegate()
@@ -55,7 +55,7 @@ class FirstAccessInformationSharedViewModel {
 
 	internal init(
 		expectedWaterConsumptionUseCase: GetExpectedWaterConsumptionUseCase,
-		registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCaseProtocol,
+		registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase,
 		manageNotificationSettingsUseCase: ManageNotificationSettingsUseCase,
 		stepper: FirstAccessInformationStepper
 	) {

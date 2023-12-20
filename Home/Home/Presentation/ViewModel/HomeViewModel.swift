@@ -14,8 +14,8 @@ import WaterManagementDomain
 class HomeViewModel {
 	let manageWaterSourceUseCase: ManageWaterSourceUseCase
 	let getWaterSourceUseCase: GetWaterSourceUseCase
-	let registerWaterConsumedUseCase: RegisterWaterConsumedUseCaseProtocol
-	let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol
+	let registerWaterConsumedUseCase: ManageWaterConsumedUseCase
+	let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
 	let getWaterConsumedUseCase: GetWaterConsumedUseCase
 	let getVolumeFormatUseCase: GetVolumeFormatUseCase
 	let homeFlowStepper: HomeFlowStepper
@@ -69,9 +69,9 @@ class HomeViewModel {
 
 
 	init (
-		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCaseProtocol,
+		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase,
 		getWaterConsumedUseCase: GetWaterConsumedUseCase,
-		registerWaterConsumedUseCase: RegisterWaterConsumedUseCaseProtocol,
+		registerWaterConsumedUseCase: ManageWaterConsumedUseCase,
 		manageWaterSourceUseCase: ManageWaterSourceUseCase,
 		getWaterSourceUseCase: GetWaterSourceUseCase,
 		getVolumeFormatUseCase: GetVolumeFormatUseCase,
