@@ -10,5 +10,5 @@ import RxSwift
 public protocol GetWaterConsumedUseCase {
 	func getWaterConsumedVolumeByPeriod(_ startPeriod: Date, _ endPeriod: Date) -> Observable<WaterWithFormat>
 	func getWaterConsumedVolumeToday() -> Observable<WaterWithFormat>
-	func getWaterConsumedList(_ startPeriod: Date, _ endPeriod: Date) -> Observable<[WaterConsumed]>
+	func getWaterConsumedList(_ startPeriod: Date?, _ endPeriod: Date?) -> Observable<[WaterConsumed]>
 }

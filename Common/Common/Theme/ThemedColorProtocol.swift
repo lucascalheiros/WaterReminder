@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 public protocol ThemedColorProtocol {
     var color: UIColor { get }
