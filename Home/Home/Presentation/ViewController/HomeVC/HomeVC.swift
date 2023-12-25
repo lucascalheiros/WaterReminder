@@ -10,6 +10,10 @@ import RxSwift
 import Swinject
 
 class HomeVC: UIViewController {
+    static func newInstance(viewModel: HomeViewModel) -> HomeVC {
+        HomeVC(viewModel: viewModel)
+    }
+
 	let disposeBag = DisposeBag()
 
 	let sections = HomeSections.allCases
@@ -38,21 +42,28 @@ class HomeVC: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-    static func newInstance(viewModel: HomeViewModel) -> HomeVC {
-        HomeVC(viewModel: viewModel)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        listenLifecycle()
 		prepareConfiguration()
 		prepareConstraints()
     }
 
-	func prepareConfiguration() {
+    private func listenLifecycle() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+
+    @objc func appMovedToForeground() {
+        viewModel.updateDayIfNecessary()
+    }
+
+    private func prepareConfiguration() {
 		view.backgroundColor = .systemTeal
 	}
 
-	func prepareConstraints() {
+    private func prepareConstraints() {
 		view.addConstrainedSubviews(waterContainerTableView)
 
 		NSLayoutConstraint.activate([
