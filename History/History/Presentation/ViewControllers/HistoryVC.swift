@@ -10,18 +10,18 @@ import RxSwift
 import RxCocoa
 import WaterManagementDomain
 import Components
+import Combine
 
 class HistoryVC: UICollectionViewController {
     static func newInstance(historyViewModel: HistoryViewModel) -> HistoryVC {
         HistoryVC(historyViewModel: historyViewModel)
     }
 
+    var cancellableBag = Set<AnyCancellable>()
 	let disposeBag = DisposeBag()
 	let historyViewModel: HistoryViewModel
 
     lazy var diffableDatasource: DataSource = makeDatasource()
-
-	var todayWaterConsumedList: [WaterConsumed] = []
 
 	init(historyViewModel: HistoryViewModel) {
 		self.historyViewModel = historyViewModel
@@ -42,9 +42,9 @@ class HistoryVC: UICollectionViewController {
 	}
 
     func loadData() {
-        historyViewModel.waterConsumedByDay.subscribe(onNext: {
+        historyViewModel.waterConsumedByDay.sink {
             self.applySnapshot(waterConsumedByDay: $0, animatingDifferences: true)
-        }).disposed(by: disposeBag)
+        }.store(in: &cancellableBag)
     }
 
     func prepareConfiguration() {

@@ -44,10 +44,14 @@ internal class GetWaterConsumedUseCaseImpl: GetWaterConsumedUseCase {
 		}
 	}
 	
-	func getWaterConsumedList(_ startPeriod: Date, _ endPeriod: Date) -> Observable<[WaterConsumed]> {
+	func getWaterConsumedList(_ startPeriod: Date? = nil, _ endPeriod: Date? = nil) -> Observable<[WaterConsumed]> {
 		return waterConsumedRepository.getWaterConsumedList()
 			.map {
-				$0.filter { startPeriod < $0.consumptionTime && $0.consumptionTime < endPeriod }
+                $0.filter { item in
+                    let inStartPeriod = startPeriod.unwrapLet { $0 < item.consumptionTime } ?? true
+                    let inEndPeriod = endPeriod.unwrapLet { item.consumptionTime < $0 } ?? true
+                    return inStartPeriod && inEndPeriod
+                }
 			}
 	}
 }

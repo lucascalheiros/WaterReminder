@@ -8,6 +8,7 @@
 import RxRelay
 import RxSwift
 import WaterManagementDomain
+import Combine
 
 class HistoryViewModel {
     let disposeBag = DisposeBag()
@@ -17,30 +18,16 @@ class HistoryViewModel {
     let getConsumedWaterPercentageUseCase: GetConsumedWaterPercentageUseCase
     let manageWaterConsumedUseCase: ManageWaterConsumedUseCase
 
-    lazy var todayWaterConsumedList = {
-        let currentDate = Date()
-        let startOfDay = currentDate.startOfDay
-        let endOfDay = currentDate.endOfDay
-        return getWaterConsumedUseCase.getWaterConsumedList(startOfDay, endOfDay)
-    }()
+    @Published var volumeFormat: VolumeFormat?
+    @Published var todayConsumedVolume: WaterWithFormat?
+    @Published var expectedWaterVolume: Float = 0
+    @Published var waterConsumedList: [WaterConsumed] = []
+    @Published var daysBeingShown: Int = 7
+    lazy var waterConsumedByDay = $waterConsumedList.map {
+        Dictionary(grouping: $0.reversed(), by: { $0.consumptionTime.startOfDay })
+    }
 
-    lazy var volumeFormat = BehaviorRelay<VolumeFormat?>(value: nil)
-
-    lazy var todayConsumedVolume = BehaviorRelay<WaterWithFormat?>(value: nil)
-
-    lazy var todayConsumedWaterPercentage: Observable<[PercentageWithWaterSourceType]> = {
-        getConsumedWaterPercentageUseCase.dailyConsumedWaterPercentageWithWaterType(date: Date())
-    }()
-
-    var daysBeingShown = BehaviorRelay(value: 7)
-
-    var waterConsumedByDay = BehaviorRelay<[Date:[WaterConsumed]]>(value: [:])
-
-    lazy var expectedWaterVolumeRelay = {
-        let expectedWaterVolumeRelay = BehaviorRelay<Float>(value: 0)
-        getDailyWaterConsumptionUseCase.lastDailyWaterConsumption().map { $0?.expectedVolume.toFloat() ?? 0}.bind(to: expectedWaterVolumeRelay).disposed(by: disposeBag)
-        return expectedWaterVolumeRelay
-    }()
+    let historyChartModel = HistoryChartViewModel()
 
     init(
         getWaterConsumedUseCase: GetWaterConsumedUseCase,
@@ -54,39 +41,44 @@ class HistoryViewModel {
         self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
         self.getConsumedWaterPercentageUseCase = getConsumedWaterPercentageUseCase
         self.manageWaterConsumedUseCase = manageWaterConsumedUseCase
+
+        observeData()
+    }
+
+    private func observeData() {
         getVolumeFormatUseCase.volumeFormat()
-            .bind(to: volumeFormat).disposed(by: disposeBag)
+            .bind { [weak self] in
+                self?.volumeFormat = $0
+                self?.historyChartModel.volumeFormat = $0
+            }.disposed(by: disposeBag)
         getWaterConsumedUseCase.getWaterConsumedVolumeToday()
-            .bind(to: todayConsumedVolume).disposed(by: disposeBag)
-
-        loadDaysOfHistory(numberOfDays: 7)
+            .bind { [weak self] in self?.todayConsumedVolume = $0 }.disposed(by: disposeBag)
+        getDailyWaterConsumptionUseCase.lastDailyWaterConsumption().map { $0?.expectedVolume.toFloat() ?? 0}
+            .bind { [weak self] in
+                self?.expectedWaterVolume = $0
+                self?.historyChartModel.expectedWaterVolume = $0
+            }.disposed(by: disposeBag)
+        getWaterConsumedUseCase.getWaterConsumedList(nil, nil)
+            .bind { [weak self] in
+                self?.waterConsumedList = $0
+                self?.historyChartModel.waterConsumedList = $0
+            }.disposed(by: disposeBag)
     }
 
-    func loadDaysOfHistory(numberOfDays: Int) {
-        let currentDate = Date()
-        let endOfPeriod = currentDate.endOfDay
-        var dateComponent = DateComponents()
-        dateComponent.day = -numberOfDays
-        let startOfPeriod = Calendar.current.date(byAdding: dateComponent, to: currentDate)!.startOfDay
-        getWaterConsumedUseCase.getWaterConsumedList(startOfPeriod, endOfPeriod).map {
-            Dictionary(grouping: $0.reversed(), by: { $0.consumptionTime.startOfDay })
-        }.bind(to: waterConsumedByDay).disposed(by: disposeBag)
-    }
-
-    func waterPercentageWithTypeByDay(_ date: Date) -> Observable<[PercentageWithWaterSourceType]> {
-        Observable.combineLatest(waterConsumedByDay, expectedWaterVolumeRelay).map {
+    func waterPercentageWithTypeByDay(_ date: Date) -> AnyPublisher<[PercentageWithWaterSourceType], Never> {
+        waterConsumedByDay.combineLatest($expectedWaterVolume).map {
             self.getConsumedWaterPercentageUseCase.waterPercentageWithTypeByConsumedList(expectedWaterVolume: $1, waterConsumedList: $0[date.startOfDay] ?? [])
-        }
+        }.eraseToAnyPublisher()
     }   
 
-    func waterConsumedByDay(_ date: Date) -> Observable<WaterWithFormat> {
-        Observable.combineLatest(volumeFormat.filterNotNull(), waterConsumedByDay).compactMap {
-            guard let waterConsumedList = $1[date.startOfDay] else {
+    func waterConsumedByDay(_ date: Date) -> AnyPublisher<WaterWithFormat, Never> {
+        $volumeFormat.combineLatest(waterConsumedByDay).compactMap {
+            guard let waterConsumedList = $1[date.startOfDay], let volumeFormat = $0 else {
                 return nil
             }
             let volume = waterConsumedList.map { $0.volume }.reduce(0, +)
-            return WaterWithFormat(waterInML: volume, volumeFormat: $0)
-        }
+            return WaterWithFormat(waterInML: volume, volumeFormat: volumeFormat)
+        }.eraseToAnyPublisher()
     }
 
     func deleteWaterConsumed(_ waterConsumed: WaterConsumed) {

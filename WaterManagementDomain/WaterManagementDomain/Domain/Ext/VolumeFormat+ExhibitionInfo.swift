@@ -11,20 +11,31 @@ public extension VolumeFormat {
     var formatDisplay: String {
 		switch self {
 		case .metric:
-			return "ml"
+            return String(localized: "ml")
 		case .imperial_uk, .imperial_us:
-			return "oz"
+            return String(localized: "oz")
 		}
 	}
 
     var localizedDisplay: String {
 		switch self {
 		case .metric:
-			return "ml"
+            return String(localized: "ml")
 		case .imperial_uk:
-			return "oz UK"
+            return String(localized: "oz UK")
 		case .imperial_us:
-			return "oz US"
+            return String(localized: "oz US")
 		}
 	}
+
+    var localizedFullDisplay: String {
+        switch self {
+        case .metric:
+            return String(localized: "Metric")
+        case .imperial_uk:
+            return String(localized: "Imperial UK")
+        case .imperial_us:
+            return String(localized: "Imperial US")
+        }
+    }
 }

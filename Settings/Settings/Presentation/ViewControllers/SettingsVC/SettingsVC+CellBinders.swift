@@ -34,7 +34,7 @@ extension SettingsVC {
                  var menuChildren: [UIMenuElement] = []
                  for format in VolumeFormat.allCases {
                      menuChildren.append(UIAction(
-                        title: format.localizedDisplay,
+                        title: format.localizedFullDisplay,
                         state: currentFormat == format ? .on : .off,
                         handler: {_ in
                          self.settingsViewModel.dailyWaterSelectorDelegate.setFormat(format)

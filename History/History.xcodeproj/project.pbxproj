@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1704AB8C2B327D1400D601BA /* Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1704AB8B2B327D1400D601BA /* Components.framework */; };
 		1704AB8D2B327D1400D601BA /* Components.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1704AB8B2B327D1400D601BA /* Components.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1712072F2B351DAB008BE78F /* HistoryChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712072E2B351DAB008BE78F /* HistoryChart.swift */; };
+		1767D1392B39D85900EB21C7 /* HistoryChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1767D1382B39D85900EB21C7 /* HistoryChartViewModel.swift */; };
 		17B0AF0E2B0A8C5900E33270 /* History.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF0D2B0A8C5900E33270 /* History.docc */; };
 		17B0AF142B0A8C5900E33270 /* History.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B0AF092B0A8C5900E33270 /* History.framework */; };
 		17B0AF192B0A8C5900E33270 /* HistoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF182B0A8C5900E33270 /* HistoryTests.swift */; };
@@ -18,6 +20,8 @@
 		17B0AF9A2B0DA1D700E33270 /* DailyConsumptionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF8B2B0DA19A00E33270 /* DailyConsumptionSection.swift */; };
 		17B0AF9B2B0DA1D700E33270 /* DailyConsumptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF8C2B0DA19A00E33270 /* DailyConsumptionCell.swift */; };
 		17B0AF9C2B0DA1D700E33270 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF902B0DA19A00E33270 /* HistoryViewModel.swift */; };
+		17C6EAC02B38918100658D4A /* WaterConsumptionChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6EABF2B38918100658D4A /* WaterConsumptionChartCell.swift */; };
+		17C6EAC22B38A92100658D4A /* EmptyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6EAC12B38A92100658D4A /* EmptyHeader.swift */; };
 		27EE3A2540B1B4CF46B524C9 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3C0F4AA3D6855884EE37 /* HistoryVC.swift */; };
 		27EE3D8EF73510FCB0CAD793 /* HistoryVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE341E001E687074DA1BA0 /* HistoryVC+Datasource.swift */; };
 		73529AFF5A5DB71E59270D78 /* Pods_HistoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C50A1530B28C7DC219578F9 /* Pods_HistoryTests.framework */; };
@@ -51,6 +55,8 @@
 /* Begin PBXFileReference section */
 		0FB5044ECD5801D3E1C6E1BA /* Pods_History.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_History.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1704AB8B2B327D1400D601BA /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1712072E2B351DAB008BE78F /* HistoryChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryChart.swift; sourceTree = "<group>"; };
+		1767D1382B39D85900EB21C7 /* HistoryChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryChartViewModel.swift; sourceTree = "<group>"; };
 		17871D312B1A62C70022D0E9 /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AF092B0A8C5900E33270 /* History.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = History.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AF0D2B0A8C5900E33270 /* History.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = History.docc; sourceTree = "<group>"; };
@@ -62,6 +68,8 @@
 		17B0AF902B0DA19A00E33270 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		17B0AF932B0DA19A00E33270 /* StatisticsFlowSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsFlowSteps.swift; sourceTree = "<group>"; };
 		17B0AF942B0DA19A00E33270 /* StatisticsFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsFlow.swift; sourceTree = "<group>"; };
+		17C6EABF2B38918100658D4A /* WaterConsumptionChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterConsumptionChartCell.swift; sourceTree = "<group>"; };
+		17C6EAC12B38A92100658D4A /* EmptyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyHeader.swift; sourceTree = "<group>"; };
 		1C50A1530B28C7DC219578F9 /* Pods_HistoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HistoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EE341E001E687074DA1BA0 /* HistoryVC+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HistoryVC+Datasource.swift"; sourceTree = "<group>"; };
 		27EE3C0F4AA3D6855884EE37 /* HistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
@@ -93,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1767D1372B39D83400EB21C7 /* HistoryChart */ = {
+			isa = PBXGroup;
+			children = (
+				1712072E2B351DAB008BE78F /* HistoryChart.swift */,
+				1767D1382B39D85900EB21C7 /* HistoryChartViewModel.swift */,
+			);
+			path = HistoryChart;
+			sourceTree = "<group>";
+		};
 		17B0AEFF2B0A8C5900E33270 = {
 			isa = PBXGroup;
 			children = (
@@ -135,8 +152,11 @@
 		17B0AF8D2B0DA19A00E33270 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				1767D1372B39D83400EB21C7 /* HistoryChart */,
 				17B0AF8B2B0DA19A00E33270 /* DailyConsumptionSection.swift */,
+				17C6EAC12B38A92100658D4A /* EmptyHeader.swift */,
 				17B0AF8C2B0DA19A00E33270 /* DailyConsumptionCell.swift */,
+				17C6EABF2B38918100658D4A /* WaterConsumptionChartCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -358,15 +378,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C6EAC22B38A92100658D4A /* EmptyHeader.swift in Sources */,
 				17B0AF9A2B0DA1D700E33270 /* DailyConsumptionSection.swift in Sources */,
 				17B0AF982B0DA1CE00E33270 /* StatisticsFlow.swift in Sources */,
 				17B0AF972B0DA19A00E33270 /* HistoryAssembly.swift in Sources */,
+				1712072F2B351DAB008BE78F /* HistoryChart.swift in Sources */,
 				17B0AF9B2B0DA1D700E33270 /* DailyConsumptionCell.swift in Sources */,
 				17B0AF992B0DA1CE00E33270 /* StatisticsFlowSteps.swift in Sources */,
 				17B0AF0E2B0A8C5900E33270 /* History.docc in Sources */,
 				17B0AF9C2B0DA1D700E33270 /* HistoryViewModel.swift in Sources */,
 				27EE3D8EF73510FCB0CAD793 /* HistoryVC+Datasource.swift in Sources */,
+				17C6EAC02B38918100658D4A /* WaterConsumptionChartCell.swift in Sources */,
 				27EE3A2540B1B4CF46B524C9 /* HistoryVC.swift in Sources */,
+				1767D1392B39D85900EB21C7 /* HistoryChartViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

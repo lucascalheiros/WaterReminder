@@ -11,9 +11,11 @@ import RxRelay
 import Common
 import Components
 import WaterManagementDomain
+import Combine
 
 class DailyConsumptionSection: UICollectionReusableView {
     static let identifier = "DailyConsumptionSection"
+    var cancellableBag = Set<AnyCancellable>()
 	let disposeBag = DisposeBag()
 
     lazy var titleLabel: UILabel = {
@@ -44,13 +46,9 @@ class DailyConsumptionSection: UICollectionReusableView {
 		return cpv
 	}()
 
-	let percentageWithWaterSourceTypeList = BehaviorRelay<[PercentageWithWaterSourceType]>(value: [])
-	let consumedVolume = BehaviorRelay<WaterWithFormat?>(value: nil)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        prepareConfiguration()
         prepareConstraints()
     }
 
@@ -58,14 +56,21 @@ class DailyConsumptionSection: UICollectionReusableView {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    
+        cancellableBag.removeAll()
+        circularProgressView.clear()
+    }
+
     func bindData(
         date: Date,
-        percentageWithWaterSourceTypeList: Observable<[PercentageWithWaterSourceType]>,
-        consumedVolume: Observable<WaterWithFormat>
+        percentageWithWaterSourceTypeList: AnyPublisher<[PercentageWithWaterSourceType], Never>,
+        consumedVolume: AnyPublisher<WaterWithFormat, Never>
     ) {
         setSectionDate(date)
-        percentageWithWaterSourceTypeList.bind(to: self.percentageWithWaterSourceTypeList).disposed(by: self.disposeBag)
-        consumedVolume.bind(to: self.consumedVolume).disposed(by: self.disposeBag)
+        percentageWithWaterSourceTypeList.sink(receiveValue: setWaterPercentage).store(in: &cancellableBag)
+        consumedVolume.sink(receiveValue: setConsumedVolume).store(in: &cancellableBag)
     }
 
     func setSectionDate(_ date: Date) {
@@ -93,11 +98,6 @@ class DailyConsumptionSection: UICollectionReusableView {
         if let volumeWithFormat {
             self.volumeLabel.text = volumeWithFormat.exhibitionValueWithFormat()
         }
-    }
-
-    func prepareConfiguration() {
-        percentageWithWaterSourceTypeList.subscribe(onNext: setWaterPercentage).disposed(by: disposeBag)
-        consumedVolume.subscribe(onNext: setConsumedVolume).disposed(by: disposeBag)
     }
 
     func prepareConstraints() {

@@ -54,6 +54,13 @@ open class CircularProgressView: UIView {
 		createCircularPath()
 	}
 
+    public func clear() {
+        mPercentageAndColorList = []
+        mProgressShapeDict = [:]
+        layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        self.layoutIfNeeded()
+    }
+
     public func createCircularPath() {
 		addCircleShapeLayer(shapeLayer: mEmptyCircleLayer, color: emptyColor.cgColor, drawPercentage: 1.0)
         addCircleShapeLayer(shapeLayer: mNextShapeLayer, color: emptyColor.cgColor, drawPercentage: 0)
