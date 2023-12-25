@@ -7,7 +7,7 @@
 
 import UIKit
 
-public typealias IdentifiableUITableViewCell = UITableViewCell & Identifiable
+public typealias IdentifiableUITableViewCell = UITableViewCell & IdentifiableCell
 
 public extension UITableView {
     func registerIdentifiableCell<T: IdentifiableUITableViewCell>(_ cellClass: T.Type) {

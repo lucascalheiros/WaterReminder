@@ -27,7 +27,7 @@
 		17668CDD2AFF172A00B09779 /* ProgramaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668CDC2AFF172A00B09779 /* ProgramaticView.swift */; };
 		17668CE72AFF18CB00B09779 /* TimePeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668CE62AFF18CB00B09779 /* TimePeriod.swift */; };
 		1767D1362B39C4DD00EB21C7 /* Publisher+filterNotNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1767D1352B39C4DD00EB21C7 /* Publisher+filterNotNull.swift */; };
-		17973F882B123F98003E88D7 /* Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17973F872B123F98003E88D7 /* Identifiable.swift */; };
+		17973F882B123F98003E88D7 /* IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17973F872B123F98003E88D7 /* IdentifiableCell.swift */; };
 		17973F8A2B123FE7003E88D7 /* UITableView+IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17973F892B123FE7003E88D7 /* UITableView+IdentifiableCell.swift */; };
 		17C6EABE2B38880C00658D4A /* UIColor+Conversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6EABD2B38880C00658D4A /* UIColor+Conversions.swift */; };
 		27EE380EE6BDB14C97B36950 /* UICollectionView+IdentifiableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE384DBD03192937D5C2E5 /* UICollectionView+IdentifiableCell.swift */; };
@@ -68,7 +68,7 @@
 		17668CDC2AFF172A00B09779 /* ProgramaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramaticView.swift; sourceTree = "<group>"; };
 		17668CE62AFF18CB00B09779 /* TimePeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePeriod.swift; sourceTree = "<group>"; };
 		1767D1352B39C4DD00EB21C7 /* Publisher+filterNotNull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+filterNotNull.swift"; sourceTree = "<group>"; };
-		17973F872B123F98003E88D7 /* Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifiable.swift; sourceTree = "<group>"; };
+		17973F872B123F98003E88D7 /* IdentifiableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableCell.swift; sourceTree = "<group>"; };
 		17973F892B123FE7003E88D7 /* UITableView+IdentifiableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+IdentifiableCell.swift"; sourceTree = "<group>"; };
 		17C6EABD2B38880C00658D4A /* UIColor+Conversions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Conversions.swift"; sourceTree = "<group>"; };
 		27EE384DBD03192937D5C2E5 /* UICollectionView+IdentifiableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+IdentifiableCell.swift"; sourceTree = "<group>"; };
@@ -144,7 +144,6 @@
 				17668C4B2AFF09F600B09779 /* Common.docc */,
 				170AC8762B21482800CEDB34 /* Combine */,
 				17668CDA2AFF167400B09779 /* Foundation */,
-				17973F862B123F81003E88D7 /* Protocols */,
 				17668CDB2AFF168700B09779 /* RxSwift */,
 				174405EB2B085703008952B6 /* Theme */,
 				17668CD92AFF166400B09779 /* UIKit */,
@@ -172,6 +171,7 @@
 		17668CD92AFF166400B09779 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				17973F862B123F81003E88D7 /* Protocols */,
 				17668CDC2AFF172A00B09779 /* ProgramaticView.swift */,
 				17668CCD2AFF159C00B09779 /* SimplifiedGestureRecognizer.swift */,
 				27EE384DBD03192937D5C2E5 /* UICollectionView+IdentifiableCell.swift */,
@@ -209,7 +209,7 @@
 		17973F862B123F81003E88D7 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				17973F872B123F98003E88D7 /* Identifiable.swift */,
+				17973F872B123F98003E88D7 /* IdentifiableCell.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -383,7 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17973F882B123F98003E88D7 /* Identifiable.swift in Sources */,
+				17973F882B123F98003E88D7 /* IdentifiableCell.swift in Sources */,
 				17668CC92AFF108100B09779 /* ConvenienceNumberConversions.swift in Sources */,
 				17C6EABE2B38880C00658D4A /* UIColor+Conversions.swift in Sources */,
 				17668CE72AFF18CB00B09779 /* TimePeriod.swift in Sources */,

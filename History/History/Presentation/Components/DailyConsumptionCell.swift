@@ -12,7 +12,7 @@ import WaterManagementDomain
 import Common
 import Combine
 
-class DailyConsumptionCell: UICollectionViewCell, Identifiable {
+class DailyConsumptionCell: IdentifiableUICollectionViewCell {
     static let identifier = "DailyConsumptionCell"
 	var cancellableBag = Set<AnyCancellable>()
 

@@ -152,11 +152,11 @@
 		17B0AF8D2B0DA19A00E33270 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				1767D1372B39D83400EB21C7 /* HistoryChart */,
+				17B0AF8C2B0DA19A00E33270 /* DailyConsumptionCell.swift */,
 				17B0AF8B2B0DA19A00E33270 /* DailyConsumptionSection.swift */,
 				17C6EAC12B38A92100658D4A /* EmptyHeader.swift */,
-				17B0AF8C2B0DA19A00E33270 /* DailyConsumptionCell.swift */,
 				17C6EABF2B38918100658D4A /* WaterConsumptionChartCell.swift */,
+				1767D1372B39D83400EB21C7 /* HistoryChart */,
 			);
 			path = Components;
 			sourceTree = "<group>";

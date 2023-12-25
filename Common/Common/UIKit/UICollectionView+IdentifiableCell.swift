@@ -7,7 +7,7 @@
 
 import UIKit
 
-public typealias IdentifiableUICollectionViewCell = Identifiable & UICollectionViewCell
+public typealias IdentifiableUICollectionViewCell = IdentifiableCell & UICollectionViewCell
 
 public extension UICollectionView {
     func registerIdentifiableCell<T: IdentifiableUICollectionViewCell>(_ cellClass: T.Type) {

@@ -160,10 +160,10 @@
 			children = (
 				175F93122B09017800758C50 /* NotificationFrequencyPickerView.swift */,
 				179380C12B1A9F5800D4EAC4 /* SettingsAddItemCell.swift */,
-				17973F8B2B124B4D003E88D7 /* SettingsSectionHeaderView.swift */,
-				175F93142B09017800758C50 /* SettingsSwitchTableViewCell.swift */,
 				27EE3DF2E0278AD04261D005 /* SettingsDetailTableViewCell.swift */,
+				17973F8B2B124B4D003E88D7 /* SettingsSectionHeaderView.swift */,
 				27EE3A1F1D3411CFEE6CF88B /* SettingsSelectionTableViewCell.swift */,
+				175F93142B09017800758C50 /* SettingsSwitchTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -304,11 +304,11 @@
 			isa = PBXGroup;
 			children = (
 				175F92FB2B09015A00758C50 /* SettingsVC.swift */,
-				175F92DE2B0900B500758C50 /* Protocols */,
 				27EE3DD18D7F8B080A6BE0B4 /* SettingsVC+CellBinders.swift */,
 				27EE3BC1C6CC54F13EB34DE5 /* SettingsVC+Datasource.swift */,
 				27EE32A26DEC4393C2C6CA8C /* SettingsVC+Sections.swift */,
 				27EE3B33BC4731315DB510BA /* SettingsVC+SelectHandlers.swift */,
+				175F92DE2B0900B500758C50 /* Protocols */,
 			);
 			path = SettingsVC;
 			sourceTree = "<group>";

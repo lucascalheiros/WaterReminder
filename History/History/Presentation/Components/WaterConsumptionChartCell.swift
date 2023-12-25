@@ -16,7 +16,7 @@ import SwiftUI
 import Common
 import Combine
 
-class WaterConsumptionChartCell: UICollectionViewCell, Identifiable {
+class WaterConsumptionChartCell: IdentifiableUICollectionViewCell {
     static let identifier = "WaterConsumptionChartCell"
     var cancellableBag = Set<AnyCancellable>()
 	let disposeBag = DisposeBag()
