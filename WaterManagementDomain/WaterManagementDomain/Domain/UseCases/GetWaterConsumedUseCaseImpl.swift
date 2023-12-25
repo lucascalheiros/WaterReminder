@@ -28,13 +28,6 @@ internal class GetWaterConsumedUseCaseImpl: GetWaterConsumedUseCase {
 		)
 	}
 
-	func getWaterConsumedVolumeToday() -> Observable<WaterWithFormat> {
-		let currentDate = Date()
-		let startOfDay = currentDate.startOfDay
-		let endOfDay = currentDate.endOfDay
-		return getWaterConsumedVolumeByPeriod(startOfDay, endOfDay)
-	}
-
 	private func wrapWithFormat(_ waterInMl: Observable<Int>) -> Observable<WaterWithFormat> {
 		return Observable.combineLatest(
 			waterInMl,

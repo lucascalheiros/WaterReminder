@@ -18,6 +18,7 @@ class HomeViewModel {
 	let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
 	let getWaterConsumedUseCase: GetWaterConsumedUseCase
 	let getVolumeFormatUseCase: GetVolumeFormatUseCase
+    let getConsumedWaterPercentageUseCase: GetConsumedWaterPercentageUseCase
 	let homeFlowStepper: HomeFlowStepper
 
 	lazy var waterSourceList = { getWaterSourceUseCase.getWaterSourceList() }()
@@ -27,9 +28,12 @@ class HomeViewModel {
 			$0?.expectedVolume ?? 0
 		}
 	}()
+    lazy var todayEndOfDay = BehaviorRelay(value: Date().endOfDay)
 
-	lazy var currentWaterConsumedInML = {
-		getWaterConsumedUseCase.getWaterConsumedVolumeToday()
+    lazy var currentWaterConsumedInML: Observable<WaterWithFormat> = {
+        todayEndOfDay.distinctUntilChanged().flatMap { [weak self] in
+            self?.getWaterConsumedUseCase.getWaterConsumedVolumeByPeriod($0.startOfDay, $0.endOfDay) ?? Observable.empty()
+        }
 	}()
 
 	lazy var consumedPercentage: Observable<Double> = {
@@ -66,7 +70,10 @@ class HomeViewModel {
 	private let disposeBag = DisposeBag()
 
     lazy var todayConsumedWaterPercentageByWaterType = BehaviorRelay<[PercentageWithWaterSourceType]>(value: [])
-
+    lazy var dailyConsumedWaterPercentageWithWaterType = {
+        todayEndOfDay.distinctUntilChanged().flatMap(getConsumedWaterPercentageUseCase.dailyConsumedWaterPercentageWithWaterType)
+            .bind(to: todayConsumedWaterPercentageByWaterType)
+    }()
 
 	init (
 		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase,
@@ -85,12 +92,17 @@ class HomeViewModel {
 		self.getWaterSourceUseCase = getWaterSourceUseCase
 		self.getVolumeFormatUseCase = getVolumeFormatUseCase
 		self.homeFlowStepper = homeFlowStepper
-
-        getConsumedWaterPercentageUseCase.dailyConsumedWaterPercentageWithWaterType(date: Date())
-            .bind(to: todayConsumedWaterPercentageByWaterType)
-            .disposed(by: disposeBag)
-
+        self.getConsumedWaterPercentageUseCase = getConsumedWaterPercentageUseCase
+        observeData()
 	}
+
+    func updateDayIfNecessary() {
+        todayEndOfDay.accept(Date().endOfDay)
+    }
+
+    private func observeData() {
+        dailyConsumedWaterPercentageWithWaterType.disposed(by: disposeBag)
+    }
 
 	func addWaterVolume(waterSource: WaterSource) {
 		registerWaterConsumedUseCase.registerWaterConsumption(

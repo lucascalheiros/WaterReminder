@@ -19,10 +19,8 @@ class HistoryViewModel {
     let manageWaterConsumedUseCase: ManageWaterConsumedUseCase
 
     @Published var volumeFormat: VolumeFormat?
-    @Published var todayConsumedVolume: WaterWithFormat?
     @Published var expectedWaterVolume: Float = 0
     @Published var waterConsumedList: [WaterConsumed] = []
-    @Published var daysBeingShown: Int = 7
     lazy var waterConsumedByDay = $waterConsumedList.map {
         Dictionary(grouping: $0.reversed(), by: { $0.consumptionTime.startOfDay })
     }
@@ -41,7 +39,6 @@ class HistoryViewModel {
         self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
         self.getConsumedWaterPercentageUseCase = getConsumedWaterPercentageUseCase
         self.manageWaterConsumedUseCase = manageWaterConsumedUseCase
-
         observeData()
     }
 
@@ -51,8 +48,6 @@ class HistoryViewModel {
                 self?.volumeFormat = $0
                 self?.historyChartModel.volumeFormat = $0
             }.disposed(by: disposeBag)
-        getWaterConsumedUseCase.getWaterConsumedVolumeToday()
-            .bind { [weak self] in self?.todayConsumedVolume = $0 }.disposed(by: disposeBag)
         getDailyWaterConsumptionUseCase.lastDailyWaterConsumption().map { $0?.expectedVolume.toFloat() ?? 0}
             .bind { [weak self] in
                 self?.expectedWaterVolume = $0
