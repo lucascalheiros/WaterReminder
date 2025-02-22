@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 public struct WaterConsumed: Hashable, Codable {
-
     public var id: Int64?
     public var volume: Int
     public var consumptionTime: Date

@@ -29,6 +29,10 @@ public extension Double {
 	func toString() -> String {
 		String(self)
 	}
+
+    var float: Float {
+        Float(self)
+    }
 }
 
 public extension String {

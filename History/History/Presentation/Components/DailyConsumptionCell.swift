@@ -89,10 +89,12 @@ class DailyConsumptionCell: IdentifiableUICollectionViewCell {
     
     private func updateUI() {
         guard let systemFormat, let consumedCupInfo else { return }
+        let hydrationVolume = Volume(consumedCupInfo.hydrationVolume, .milliliters).to(systemFormat)
+        let volume = Volume(consumedCupInfo.consumedCup.volume, .milliliters).to(systemFormat)
         titleLabel.text = consumedCupInfo.drink.name
         titleLabel.textColor = consumedCupInfo.drink.color
         volumeLabel.textColor = consumedCupInfo.drink.color
-        volumeLabel.text = Volume(consumedCupInfo.consumedCup.volume, .milliliters).to(systemFormat).formattedValueAndUnit
+        volumeLabel.text = hydrationVolume == volume ? "\(volume.formattedValueAndUnit)" : "\(volume.formattedValueAndUnit) (\(hydrationVolume.formattedValue))"
         timeLabel.text = consumedCupInfo.consumedCup.consumptionTime.formatted(date: .omitted, time: .shortened)
     }
 }

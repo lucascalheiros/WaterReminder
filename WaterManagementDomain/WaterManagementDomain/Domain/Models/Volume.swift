@@ -5,7 +5,7 @@
 //  Created by Lucas Calheiros on 05/02/25.
 //
 
-public struct Volume {
+public struct Volume: Equatable {
     public var value: Double
     public var unit: VolumeUnit {
         didSet {
