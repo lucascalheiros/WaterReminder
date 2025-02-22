@@ -49,23 +49,24 @@ class WaterReminderNotificationManagerImpl: WaterReminderNotificationManager {
 		center.removeDeliveredNotifications(withIdentifiers: [reminderId])
 	}
 
-	func clearAllWaterReminderNotifications() {
+	func clearAllWaterReminderNotifications() async {
 		let center = UNUserNotificationCenter.current()
 
-		center.getPendingNotificationRequests { (requests) in
-			let filteredRequests = requests.filter { $0.content.categoryIdentifier == WaterReminderNotificationManagerImpl.waterReminderCategory }
+        let pendingRequests = await center.pendingNotificationRequests()
 
-			let identifiers = filteredRequests.map { $0.identifier }
+        let pendingIdentifiers = pendingRequests
+            .filter { $0.content.categoryIdentifier == WaterReminderNotificationManagerImpl.waterReminderCategory }
+            .map { $0.identifier }
 
-			center.removePendingNotificationRequests(withIdentifiers: identifiers)
-		}
+        center.removePendingNotificationRequests(withIdentifiers: pendingIdentifiers)
 
-		center.getDeliveredNotifications { (requests) in
-			let filteredRequests = requests.filter { $0.request.content.categoryIdentifier == WaterReminderNotificationManagerImpl.waterReminderCategory }
+        let deliveredRequests = await center.deliveredNotifications()
 
-			let identifiers = filteredRequests.map { $0.request.identifier }
+        let deliveredIdentifiers = deliveredRequests
+            .filter { $0.request.content.categoryIdentifier == WaterReminderNotificationManagerImpl.waterReminderCategory }
+            .map { $0.request.identifier }
 
-			center.removeDeliveredNotifications(withIdentifiers: identifiers)
-		}
+        center.removeDeliveredNotifications(withIdentifiers: deliveredIdentifiers)
+
 	}
 }

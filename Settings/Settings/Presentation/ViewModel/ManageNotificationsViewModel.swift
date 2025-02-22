@@ -37,7 +37,7 @@ class ManageNotificationsViewModel {
         self.manageWeekDaysNotificationUseCase = manageWeekDaysNotificationUseCase
         self.manageFixedNotificationsUseCase = manageFixedNotificationsUseCase
 
-        self.getNotificationWeekDaysStateUseCase.notificationWeekDaysState().sink {
+        self.getNotificationWeekDaysStateUseCase.notificationWeekDaysState().sinkUI {
             $0.forEach {
                 let weekDayRaw = $0.weekDay.rawValue
                 let uiModel = self.weekDayUIState[weekDayRaw] ?? WeekDayUIModel($0)
@@ -50,7 +50,7 @@ class ManageNotificationsViewModel {
                 return uiModel
             }
         }.store(in: &cancellableBag)
-        self.getFixedNotificationsUseCase.fixedNotifications().sink {
+        self.getFixedNotificationsUseCase.fixedNotifications().sinkUI {
             self.fixedNotification =  $0
                 .sorted(by: { $0.timePeriod < $1.timePeriod })
                 .map {

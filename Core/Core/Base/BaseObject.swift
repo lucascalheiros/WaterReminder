@@ -5,7 +5,6 @@
 //  Created by Lucas Calheiros on 27/05/23.
 //
 
-import RealmSwift
 
 open class _BaseObject: Object {
     @Persisted(primaryKey: true) open var _id: ObjectId

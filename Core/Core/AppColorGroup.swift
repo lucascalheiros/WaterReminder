@@ -20,18 +20,18 @@ public enum AppColorGroup: String, CaseIterable, ThemedColorProtocol {
     case background
 
     public var color: UIColor {
-        switch self {
-        default:
-            return UIColor(named: rawValue)!
-        }
+        return loadColor(named: rawValue)
     }
 
     public var onColor: UIColor {
-        switch self {
-        default:
-            return UIColor(named: "on" + rawValue.capitalized)!
-        }
+        return loadColor(named: "on" + rawValue.capitalized)
     }
 
-    
+    private func loadColor(named name: String) -> UIColor {
+        guard let color = UIColor(named: name) else {
+            return .clear
+        }
+        return color
+    }
 }
+

@@ -8,6 +8,7 @@
 import UIKit
 import WaterManagementDomain
 import RxRelay
+import Components
 
 class CreateWaterSourceItemVC: UITableViewController {
 
@@ -21,7 +22,7 @@ class CreateWaterSourceItemVC: UITableViewController {
         let btn = UIBarButtonItem(title: String(localized: "generic.cancel"), primaryAction: .init(handler: { _ in
             self.dismiss(animated: true)
         }))
-        btn.tintColor = .white
+        btn.tintColor = DefaultComponentsTheme.current.background.onColor
         return btn
     }()
 
@@ -30,7 +31,7 @@ class CreateWaterSourceItemVC: UITableViewController {
             self.createWaterSourceItemViewModel.saveWaterSource()
             self.dismiss(animated: true)
         }))
-        btn.tintColor = .white
+        btn.tintColor = DefaultComponentsTheme.current.background.onColor
         return btn
     }()
 
@@ -52,7 +53,9 @@ class CreateWaterSourceItemVC: UITableViewController {
 	}
 
 	func prepareConfiguration() {
-		view.backgroundColor = .systemTeal
+        view.backgroundColor = DefaultComponentsTheme.current.background.color
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = DefaultComponentsTheme.current.surface.onColor
         navigationItem.leftBarButtonItem = cancel
         navigationItem.rightBarButtonItem = confirm
 	}

@@ -5,20 +5,15 @@
 //  Created by Lucas Calheiros on 22/05/23.
 //
 
-import RealmSwift
+import Foundation
+import UIKit
 
-public struct WaterConsumed: Hashable {
+public struct WaterConsumed: Hashable, Codable {
 
-    public let id: String?
-    public let volume: Int
-    public let consumptionTime: Date
-    public let waterSourceType: WaterSourceType
-    
-    internal init(id: String? = nil, volume: Int, consumptionTime: Date, waterSourceType: WaterSourceType) {
-        self.id = id
-        self.volume = volume
-        self.consumptionTime = consumptionTime
-        self.waterSourceType = waterSourceType
-    }
-    
+    public var id: Int64?
+    public var volume: Int
+    public var consumptionTime: Date
+    public var drinkId: Int64
 }
+
+

@@ -31,7 +31,7 @@ public class HomeAssembly: Assembly {
         ).inObjectScope(.weak)
         container.autoregister(
             ReorderWaterSourceUseCase.self,
-            initializer: ReorderWaterSourceUseCaseImpl.init
+            initializer: ReorderWaterSourceUseCase.init
         )
         container.autoregister(
             CreateWaterSourceItemVC.self, 
@@ -44,5 +44,23 @@ public class HomeAssembly: Assembly {
         container.autoregister(
             EditWaterSourceListViewModel.self,
             initializer: EditWaterSourceListViewModel.init)
+        container.autoregister(
+            AddDrinkVC.self,
+            initializer: AddDrinkVC.init)
+        container.autoregister(
+            AddDrinkViewModel.self,
+            initializer: AddDrinkViewModel.init)
+        container.register(DrinkShortcutVC.self) { r, drink in
+            DrinkShortcutVC(drink: drink, viewModel: r.resolve(DrinkShortcutViewModel.self)!)
+        }
+        container.autoregister(
+            DrinkShortcutViewModel.self,
+            initializer: DrinkShortcutViewModel.init)
+        container.autoregister(
+            GetDefaultDrinkShortcutsInfoUseCase.self,
+            initializer: GetDefaultDrinkShortcutsInfoUseCase.init)
+        container.autoregister(
+            GetSortedWaterSourceUseCase.self,
+            initializer: GetSortedWaterSourceUseCase.init)
     }
 }

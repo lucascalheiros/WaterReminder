@@ -40,7 +40,10 @@ extension CreateWaterSourceItemVC {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch getItem(indexPath) {
         case .waterSourceType:
-            presentWaterTypeSelector(createWaterSourceItemViewModel.waterSourceType)
+            guard let drink = createWaterSourceItemViewModel.drink else {
+                return
+            }
+            presentWaterTypeSelector(drink, createWaterSourceItemViewModel.drinks)
         case .waterVolume:
             presentWaterVolumeInput(createWaterSourceItemViewModel.getCurrentWaterWithFormat())
         case .none:
@@ -59,9 +62,9 @@ extension CreateWaterSourceItemVC {
 
     private typealias SectionOption = EditWaterSourceItemOptions
 
-	enum EditWaterSourceItemOptions: CaseIterable {
+	private enum EditWaterSourceItemOptions: CaseIterable {
+        case waterVolume
 		case waterSourceType
-		case waterVolume
 	}
 
 	private enum Sections: CaseIterable {

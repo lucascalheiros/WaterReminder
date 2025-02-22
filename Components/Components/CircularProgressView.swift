@@ -16,7 +16,7 @@ open class CircularProgressView: UIView {
 
 	private var mEmptyCircleLayer = CAShapeLayer()
     private var mNextShapeLayer = CAShapeLayer()
-	private var mProgressShapeDict: [CGColor: CAShapeLayer] = [:]
+    private var mProgressShapeDict: [CGColor: CAShapeLayer] = [:]
 	private var mPercentageAndColorList: [PercentageAndColor] = []
 
 	private var mPercentage: CGFloat = 0.0
@@ -27,7 +27,7 @@ open class CircularProgressView: UIView {
 		}
 	}
 
-    public var emptyColor: UIColor = DefaultComponentsTheme.current.primary.onColor {
+    public var emptyColor: UIColor = DefaultComponentsTheme.current.primary.onColor.withAlphaComponent(0.5) {
 		didSet {
 			createCircularPath()
 		}
@@ -62,16 +62,16 @@ open class CircularProgressView: UIView {
     }
 
     public func createCircularPath() {
-		addCircleShapeLayer(shapeLayer: mEmptyCircleLayer, color: emptyColor.cgColor, drawPercentage: 1.0)
-        addCircleShapeLayer(shapeLayer: mNextShapeLayer, color: emptyColor.cgColor, drawPercentage: 0)
+		addCircleShapeLayer(shapeLayer: mEmptyCircleLayer, color: emptyColor, drawPercentage: 1.0)
+        addCircleShapeLayer(shapeLayer: mNextShapeLayer, color: emptyColor, drawPercentage: 0)
         var percentageDrawed: CGFloat = 0
 		mPercentageAndColorList.map { percentageAndColor in
-            let shape = mProgressShapeDict[percentageAndColor.color] ?? {
+            let shape = mProgressShapeDict[percentageAndColor.color.cgColor] ?? {
                 let tempShapeLayer = mNextShapeLayer
                 mNextShapeLayer = CAShapeLayer()
                 return tempShapeLayer
             }()
-            mProgressShapeDict[percentageAndColor.color] = shape
+            mProgressShapeDict[percentageAndColor.color.cgColor] = shape
             percentageDrawed += percentageAndColor.percentage
             return CircleShapeParams(shapeLayer: shape, color: percentageAndColor.color, drawPercentage: percentageDrawed)
         }.reversed().forEach {
@@ -89,13 +89,13 @@ open class CircularProgressView: UIView {
 		)
 	}
 
-    public func addCircleShapeLayer(shapeLayer: CAShapeLayer, color: CGColor, drawPercentage: CGFloat) {
+    public func addCircleShapeLayer(shapeLayer: CAShapeLayer, color: UIColor, drawPercentage: CGFloat) {
 		shapeLayer.path = circularPath().cgPath
 		shapeLayer.fillColor = UIColor.clear.cgColor
 		shapeLayer.lineCap = .round
 		shapeLayer.lineWidth = lineWidth
 		shapeLayer.strokeEnd = drawPercentage
-		shapeLayer.strokeColor = color
+        shapeLayer.strokeColor = color.cgColor
 		layer.addSublayer(shapeLayer)
 	}
 
@@ -109,7 +109,7 @@ open class CircularProgressView: UIView {
 
     struct CircleShapeParams {
         let shapeLayer: CAShapeLayer
-        let color: CGColor
+        let color: UIColor
         let drawPercentage: CGFloat
     }
 
@@ -117,9 +117,9 @@ open class CircularProgressView: UIView {
 
 public struct PercentageAndColor {
 	public let percentage: CGFloat
-    public let color: CGColor
+    public let color: UIColor
 
-    public init(percentage: CGFloat, color: CGColor) {
+    public init(percentage: CGFloat, color: UIColor) {
         self.percentage = percentage
         self.color = color
     }

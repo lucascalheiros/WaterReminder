@@ -15,13 +15,66 @@ extension SettingsVC {
         tableView.registerIdentifiableCell(SettingsSelectionTableViewCell.self)
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        SettingsSections.allCases.count
+    func applySnapshot(animatingDifferences: Bool = true) {
+        var snapshot = Snapshot()
+        snapshot.appendSections(SettingsSections.allCases)
+        snapshot.appendItems(GeneralSectionItems.allCases.map { .general($0) }, toSection: .general)
+        snapshot.appendItems(NotificationSectionItems.allCases.map { .notification($0) }, toSection: .notification)
+        snapshot.appendItems(ProfileSectionItems.allCases.map { .profile($0) }, toSection: .profile)
+        diffableDatasource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection sectionIndex: Int) -> Int {
-        let section = SettingsSections.allCases[sectionIndex]
-        return section.sectionItems().count
+    func makeDatasource() -> DataSource {
+        let dataSource = DataSource(
+            tableView: self.tableView,
+            cellProvider: { (tableView, indexPath, item) ->
+                UITableViewCell? in
+                let cell: UITableViewCell
+                switch item {
+
+                case .general(let generalItem):
+                    switch generalItem {
+
+                    case GeneralSectionItems.dailyWaterVolume:
+                        cell = tableView.dequeueIdentifiableCell(indexPath, self.bindDailyWaterGoalCell(generalItem))
+
+                    case GeneralSectionItems.volumeFormat:
+                        cell = tableView.dequeueIdentifiableCell(indexPath, self.bindVolumeFormat(generalItem))
+
+                    case GeneralSectionItems.theme:
+                        cell = tableView.dequeueIdentifiableCell(indexPath, self.bindTheme(generalItem))
+                    }
+
+                case .notification(let notificationItem):
+                    switch notificationItem {
+
+                    case NotificationSectionItems.notificationEnabled:
+                        cell = tableView.dequeueIdentifiableCell(indexPath, self.bindNotificationEnabledCell(notificationItem))
+
+                    case NotificationSectionItems.manageNotifications:
+                        cell = tableView.dequeueIdentifiableCell(indexPath, self.bindManageNotificationsCell(notificationItem))
+                    }
+
+                case .profile(let profileItem):
+                    switch profileItem {
+                        
+                    case ProfileSectionItems.weight:
+                        cell = tableView.dequeueIdentifiableCell(indexPath, self.bindWeightCell(profileItem))
+
+                    case ProfileSectionItems.activityLevel:
+                        cell = tableView.dequeueIdentifiableCell(indexPath, self.bindActivityLevelCell(profileItem))
+
+                    case ProfileSectionItems.temperatureLevel:
+                        cell = tableView.dequeueIdentifiableCell(indexPath, self.bindTemperatureLevelCell(profileItem))
+
+                    case ProfileSectionItems.calculatedIntake:
+                        cell = tableView.dequeueIdentifiableCell(indexPath, self.bindCalculatedIntateCell(profileItem))
+                    }
+                }
+                cell.selectionStyle = .none
+                return cell
+            })
+        return dataSource
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection sectionIndex: Int) -> UIView? {
@@ -30,33 +83,8 @@ extension SettingsVC {
         return header
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell
-        let sectionItem = sectionItemFromIndexPath(indexPath)
-        switch sectionItem {
-            
-        case GeneralSectionItems.dailyWaterVolume:
-            cell = tableView.dequeueIdentifiableCell(indexPath, bindDailyWaterGoalCell(sectionItem))
-
-        case GeneralSectionItems.volumeFormat:
-            cell = tableView.dequeueIdentifiableCell(indexPath, bindVolumeFormat(sectionItem))
-
-        case NotificationSectionItems.notificationEnabled:
-            cell = tableView.dequeueIdentifiableCell(indexPath, bindNotificationEnabledCell(sectionItem))
-
-        case NotificationSectionItems.manageNotifications:
-            cell = tableView.dequeueIdentifiableCell(indexPath, bindManageNotificationsCell(sectionItem))
-
-        default:
-            fatalError("sectionItem \(sectionItem) has not been implemented")
-        }
-        cell.selectionStyle = .none
-
-        return cell
-    }
-
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40.0
+        return 50.0
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -71,17 +99,26 @@ extension SettingsVC {
         case NotificationSectionItems.manageNotifications:
             self.presentNotificationManager()
 
+        case ProfileSectionItems.weight:
+            self.presentWeightPicker()
+
+        case ProfileSectionItems.calculatedIntake:
+            self.presentCalculatedIntakeConfirmation()
+
         default:
             return
         }
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return 44
     }
 
     private func sectionItemFromIndexPath(_ indexPath: IndexPath) -> any SectionItemProtocol {
         let section = SettingsSections.allCases[indexPath.section]
         return section.sectionItems()[indexPath.row]
     }
+
+    typealias DataSource = UITableViewDiffableDataSource<SettingsSections, SettingsItem>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<SettingsSections, SettingsItem>
 }

@@ -73,18 +73,18 @@ extension EditWaterSourceListVC {
 	}
 
 	func swapDataPositions(_ sourceIndexPath: IndexPath, _ destinationIndexPath: IndexPath) {
-		let sourceId: String?
-		let destId: String?
+        let sourceId: Int64?
+		let destId: Int64?
 		switch getItemForIndexPath(sourceIndexPath) {
 		case .waterSourceItem(let waterSource):
-			sourceId = waterSource.id
+            sourceId = waterSource.cup.id
 
 		default:
 			return
 		}
 		switch getItemForIndexPath(destinationIndexPath) {
 		case .waterSourceItem(let waterSource):
-			destId = waterSource.id
+            destId = waterSource.cup.id
 
 		default:
 			return
@@ -100,12 +100,15 @@ extension EditWaterSourceListVC {
     }
 
     func observeViewModel() {
-        editWaterSourceListViewModel.removeItemNotifier.sink {
+        editWaterSourceListViewModel.removeItemNotifier.sinkUI {
             self.tableView.deleteRows(at: [IndexPath(row: $0, section: 0)], with: .automatic)
         }.store(in: &cancellableBag)
 
-        editWaterSourceListViewModel.updateListNotifier.sink { _ in
-            self.tableView.reloadData()
+        editWaterSourceListViewModel.updateListNotifier.sinkUI { _ in
+            UIView.transition(with: self.tableView,
+                              duration: 0.35,
+                              options: .transitionCrossDissolve,
+                              animations: { self.tableView.reloadData() })
         }.store(in: &cancellableBag)
     }
 

@@ -13,10 +13,14 @@ extension EditWaterSourceListVC {
         return { _ in }
     }
     
-    func bindWaterSourceEditableCell(_ waterSource: WaterSource) -> ((WaterSourceEditableCell) -> Void) {
+    func bindWaterSourceEditableCell(_ cupInfo: CupInfo) -> ((WaterSourceEditableCell) -> Void) {
         return { cell in
-            cell.bindData(waterSource: waterSource, volumeFormat: self.editWaterSourceListViewModel.volumeFormat)
-            cell.waterSourceDeleteDelegate = self.editWaterSourceListViewModel
+            cell.waterSource = cupInfo
+            self.editWaterSourceListViewModel.volumeFormat
+                .map { Optional($0) }
+                .assign(to: \.volumeFormat, on: cell)
+                .store(in: &cell.cancellableBag)
+            cell.onDeleteWaterSource = self.editWaterSourceListViewModel.onDeleteWaterSource
         }
     }
 }

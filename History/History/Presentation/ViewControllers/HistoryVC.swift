@@ -6,11 +6,11 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+
 import WaterManagementDomain
 import Components
 import Combine
+import Core
 
 class HistoryVC: UICollectionViewController {
     static func newInstance(historyViewModel: HistoryViewModel) -> HistoryVC {
@@ -18,7 +18,6 @@ class HistoryVC: UICollectionViewController {
     }
 
     var cancellableBag = Set<AnyCancellable>()
-	let disposeBag = DisposeBag()
 	let historyViewModel: HistoryViewModel
 
     lazy var diffableDatasource: DataSource = makeDatasource()
@@ -42,7 +41,7 @@ class HistoryVC: UICollectionViewController {
 	}
 
     func loadData() {
-        historyViewModel.waterConsumedByDay.sink {
+        historyViewModel.waterConsumedByDay.sinkUI {
             self.applySnapshot(waterConsumedByDay: $0, animatingDifferences: true)
         }.store(in: &cancellableBag)
     }
@@ -53,6 +52,7 @@ class HistoryVC: UICollectionViewController {
         configuration.showsSeparators = true
         configuration.separatorConfiguration.bottomSeparatorInsets = NSDirectionalEdgeInsets()
         configuration.headerMode = .supplementary
+        configuration.separatorConfiguration.color = AppColorGroup.surface.onColor
 
         // TODO Default height for section is 17.6667, so there is a warning for constraint satisfaction
         //    inside TodayConsumptionSection as ios (awfully) does not provide a way to set the section

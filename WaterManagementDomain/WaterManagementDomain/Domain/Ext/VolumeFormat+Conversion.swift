@@ -1,11 +1,11 @@
 //
-//  VolumeFormat+Conversion.swift
+//  SystemFormat+Conversion.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 03/08/23.
 //
 
-public extension VolumeFormat {
+public extension SystemFormat {
     func toMetric(_ volume: Float) -> Float {
 		switch self {
 		case .metric:

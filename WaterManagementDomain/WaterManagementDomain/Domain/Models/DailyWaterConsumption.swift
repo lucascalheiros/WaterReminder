@@ -5,15 +5,15 @@
 //  Created by Lucas Calheiros on 22/05/23.
 //
 
-import RealmSwift
+import Foundation
 
-public struct DailyWaterConsumption {
+public struct DailyWaterConsumption: Codable {
 
-    public let id: String?
+    public let id: Int64?
     public let expectedVolume: Int
     public let date: Date
 
-    internal init(id: String? = nil, expectedVolume: Int, date: Date) {
+    internal init(id: Int64? = nil, expectedVolume: Int, date: Date) {
         self.id = id
         self.expectedVolume = expectedVolume
         self.date = date

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import RxSwift
+import Combine
 
 public class GetExpectedWaterConsumptionUseCase {
 	private let userInformationRepository: UserInformationRepository
@@ -17,14 +17,14 @@ public class GetExpectedWaterConsumptionUseCase {
 		self.userInformationRepository = userInformationRepository
 	}
 
-	public func getExpectedWaterConsumptionByCurrentUserInformation() -> Observable<ExpectedWaterConsumptionState> {
+    public func getExpectedWaterConsumptionByCurrentUserInformation() -> AnyPublisher<ExpectedWaterConsumptionState, any Error> {
 		userInformationRepository.getUserInformationList().map {
 			if let userInformation = $0.max(by: { $0.date < $1.date }) {
 				return self.calculateExpectedWaterConsumptionFromUserInformation(userInformation)
 			} else {
 				return .unableToInfer
 			}
-		}
+        }.eraseToAnyPublisher()
 	}
 
 	public func calculateExpectedWaterConsumptionFromUserInformation(
@@ -33,7 +33,7 @@ public class GetExpectedWaterConsumptionUseCase {
 		guard let weightInGrams = userInformation.weightInGrams?.toDouble() else {
 			return .unableToInfer
 		}
-		guard let activityLevel = userInformation.activityLevelInWeekDays?.toDouble() else {
+        guard let activityLevel = userInformation.activityLevel?.waterFactor else {
 			return .unableToInfer
 		}
 		guard let intakeFromAmbienceLevel = (userInformation.ambienceTemperatureLevel.run {
@@ -58,6 +58,22 @@ public class GetExpectedWaterConsumptionUseCase {
 			return 0
 		}
 	}
+}
+
+extension ActivityLevel {
+    var waterFactor: Double {
+        switch self {
+
+        case .none:
+            0
+        case .light:
+            2
+        case .moderate:
+            4
+        case .heavy:
+            7
+        }
+    }
 }
 
 public enum ExpectedWaterConsumptionState {

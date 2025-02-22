@@ -6,20 +6,34 @@
 //
 
 import Foundation
-import RxSwift
+import Combine
 import Core
+import GRDB
 
-class UserInformationRepostoryImpl: BaseRepository<UserInformationObject>, UserInformationRepository {
+class UserInformationRepostoryImpl: UserInformationRepository {
 
-	init() {
-		super.init(UserInformationRealmProvider())
+    let dbQueue: DatabaseQueue
+
+    init(_ dbQueue: DatabaseQueue) {
+        self.dbQueue = dbQueue
+    }
+
+    func getUserInformationList() -> AnyPublisher<[UserInformation], any Error> {
+        return ValueObservation.tracking { db in
+            try UserInformation.fetchAll(db)
+        }
+        .publisher(in: dbQueue)
+        .eraseToAnyPublisher()
 	}
 
-	func getUserInformationList() -> Observable<[UserInformation]> {
-		list()
+    func saveUserInformation(_ userInformation: UserInformation) async throws  {
+        try await dbQueue.write { db in
+            try userInformation.save(db)
+        }
 	}
+}
 
-	func saveUserInformation(userInformation: UserInformation) -> Completable {
-		save(UserInformationObject(userInformation: userInformation))
-	}
+
+extension UserInformation: FetchableRecord, PersistableRecord {
+
 }

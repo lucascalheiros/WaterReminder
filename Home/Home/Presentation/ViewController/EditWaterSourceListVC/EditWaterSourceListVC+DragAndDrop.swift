@@ -59,7 +59,7 @@ extension EditWaterSourceListVC: UITableViewDragDelegate, UITableViewDropDelegat
 		switch getItemForIndexPath(indexPath) {
 		case .waterSourceItem(let waterSource):
 			let dragItem = UIDragItem(itemProvider: NSItemProvider())
-			dragItem.localObject = waterSource.id
+            dragItem.localObject = waterSource.cup.id
 			return [ dragItem ]
 		default:
 			return []

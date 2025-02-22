@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import RxCocoa
-import RxSwift
 import Core
 import Common
 import Combine
@@ -19,11 +17,11 @@ class SettingsSelectionTableViewCell: IdentifiableUITableViewCell {
     static let identifier = "SettingsSelectionTableViewCell"
 
     var cancellableBag = Set<AnyCancellable>()
-    var disposeBag = DisposeBag()
 
 	lazy var titleLabel: UILabel = {
 		let label = UILabel()
         label.textColor = DefaultComponentsTheme.current.surface.onColor
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
 		return label
 	}()
 
@@ -33,10 +31,26 @@ class SettingsSelectionTableViewCell: IdentifiableUITableViewCell {
         button.titleLabel?.font = DefaultComponentsTheme.current.buttonDefault
         button.showsMenuAsPrimaryAction = true
         button.changesSelectionAsPrimaryAction = true
+        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         return button
 	}()
 
-	lazy var rightArrow: UIImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
+    lazy var rightArrow: UIImageView = {
+        let view = UIImageView(image: UIImage(systemName: "chevron.right"))
+        view.tintColor = DefaultComponentsTheme.current.primary.color
+        view.isHidden = true
+        view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        return view
+    }()
+
+    lazy var horizontalStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 8
+        stack.distribution = .fill
+        stack.alignment = .center
+        return stack
+    }()
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -52,24 +66,23 @@ class SettingsSelectionTableViewCell: IdentifiableUITableViewCell {
         preservesSuperviewLayoutMargins = false
         separatorInset = UIEdgeInsets.zero
         layoutMargins = UIEdgeInsets.zero
-        backgroundColor = AppColorGroup.surface.color
+        backgroundColor = DefaultComponentsTheme.current.surface.color
     }
 
 	func prepareConstraints() {
-		contentView.addConstrainedSubviews(titleLabel, button, rightArrow)
+        contentView.addConstrainedSubviews(horizontalStackView)
+        horizontalStackView.addConstrainedArrangedSubviews(titleLabel, button, rightArrow)
 
-		NSLayoutConstraint.activate([
-			titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-			titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            button.trailingAnchor.constraint(equalTo: rightArrow.leadingAnchor, constant: -8),
-			rightArrow.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-			rightArrow.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-		])
+        NSLayoutConstraint.activate([
+            horizontalStackView.heightAnchor.constraint(equalToConstant: 44),
+            horizontalStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            horizontalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            horizontalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            horizontalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
 	}
 
 	func dispose() {
         cancellableBag.removeAll()
-        disposeBag = DisposeBag()
 	}
 }

@@ -37,17 +37,17 @@ class MainAppFlow: Flow {
 
 	private func tabBarVC() -> UITabBarController {
 		let vc = UITabBarController()
-		vc.tabBar.standardAppearance = tabBarAppearance()
-		vc.view.backgroundColor = .systemTeal
+        vc.tabBar.standardAppearance = tabBarAppearance()
+        vc.tabBar.scrollEdgeAppearance = tabBarAppearance()
 		return vc
 	}
 
 	private func tabBarItemAppearance() -> UITabBarItemAppearance {
 		let itemAppearance = UITabBarItemAppearance()
-        itemAppearance.normal.iconColor = AppColorGroup.primary.color.withAlphaComponent(0.3)
-        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppColorGroup.primary.color.withAlphaComponent(0.3)]
-		itemAppearance.selected.iconColor = AppColorGroup.primary.color
-		itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppColorGroup.primary.color]
+        itemAppearance.normal.iconColor = AppColorGroup.background.onColor
+        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppColorGroup.background.onColor]
+		itemAppearance.selected.iconColor = AppColorGroup.background.onColor
+		itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: AppColorGroup.background.onColor]
 		return itemAppearance
 	}
 
@@ -57,7 +57,8 @@ class MainAppFlow: Flow {
 		appearance.inlineLayoutAppearance = itemAppearance
 		appearance.stackedLayoutAppearance = itemAppearance
 		appearance.compactInlineLayoutAppearance = itemAppearance
-		appearance.backgroundColor = AppColorGroup.background.color
+        appearance.backgroundColor = AppColorGroup.background.color
+        appearance.shadowColor = AppColorGroup.background.onColor
 		return appearance
 	}
 	

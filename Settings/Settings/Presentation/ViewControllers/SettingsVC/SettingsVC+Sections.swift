@@ -8,18 +8,29 @@
 import Foundation
 
 extension SettingsVC {
+
+    enum SettingsItem: Hashable {
+        case general(GeneralSectionItems)
+        case notification(NotificationSectionItems)
+        case profile(ProfileSectionItems)
+    }
+
     enum GeneralSectionItems: SectionItemProtocol {
         case dailyWaterVolume
         case volumeFormat
+        case theme
 
         func itemTitle() -> String {
             switch self {
 
             case .dailyWaterVolume:
-                return String(localized: "Daily Goal")
+                String(localized: "Daily Water Intake")
 
             case .volumeFormat:
-                return String(localized: "Volume Format")
+                String(localized: "Units")
+
+            case .theme:
+                String(localized: "Theme")
             }
         }
     }
@@ -32,10 +43,32 @@ extension SettingsVC {
             switch self {
 
             case .notificationEnabled:
-                return String(localized: "settings.section.notifications.notificationEnabled")
+                String(localized: "settings.section.notifications.notificationEnabled")
 
             case .manageNotifications:
-                return String(localized: "settings.section.notifications.manage")
+                String(localized: "settings.section.notifications.manage")
+            }
+        }
+    }
+
+
+    enum ProfileSectionItems: SectionItemProtocol {
+        case weight
+        case activityLevel
+        case temperatureLevel
+        case calculatedIntake
+
+        func itemTitle() -> String {
+            switch self {
+
+            case .weight:
+                String(localized: "Weight")
+            case .activityLevel:
+                String(localized: "Activity Level")
+            case .temperatureLevel:
+                String(localized: "Temperature Level")
+            case .calculatedIntake:
+                String(localized: "Calculated Intake")
             }
         }
     }
@@ -43,15 +76,20 @@ extension SettingsVC {
     enum SettingsSections: CaseIterable {
         case general
         case notification
+        case profile
 
         func sectionTitle() -> String {
             switch self {
 
             case .general:
-                return String(localized: "settings.section.general")
+                String(localized: "settings.section.general")
 
             case .notification:
-                return String(localized: "settings.section.notifications")
+                String(localized: "settings.section.notifications")
+
+            case .profile:
+                String(localized: "Profile")
+
             }
         }
 
@@ -59,10 +97,13 @@ extension SettingsVC {
             switch self {
 
             case .general:
-                return GeneralSectionItems.allCases
+                GeneralSectionItems.allCases
 
             case .notification:
-                return NotificationSectionItems.allCases
+                NotificationSectionItems.allCases
+
+            case .profile:
+                ProfileSectionItems.allCases
             }
         }
     }

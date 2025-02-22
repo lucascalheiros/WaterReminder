@@ -5,14 +5,8 @@ workspace 'WaterReminder'
 
 
 def rxSwift
-  pod 'RxSwift', '6.6.0'
-  pod 'RxCocoa', '6.6.0'
-  pod 'RxSwiftExt', '6.2.1'
-end
-
-def realm
-  pod 'RealmSwift', '~>10.40.1'
-  pod 'RxRealm', :git => 'https://github.com/RxSwiftCommunity/RxRealm.git', :branch => 'main'
+  pod 'RxSwift', '6.8.0'
+  pod 'RxCocoa', '6.8.0'
 end
 
 def swinject
@@ -27,9 +21,9 @@ end
 target 'WaterReminder' do
   rxSwift
   rxFlow
-  realm
   swinject
-  
+  pod 'GRDB.swift'
+
   target 'WaterReminderTests' do
     inherit! :search_paths
   end
@@ -51,7 +45,6 @@ target 'Core' do
   project 'Core/Core'
   rxSwift
   rxFlow
-  realm
   swinject
   target 'CoreTests' do
     inherit! :search_paths
@@ -69,7 +62,6 @@ target 'Settings' do
   project 'Settings/Settings'
   rxSwift
   rxFlow
-  realm
   swinject
   target 'SettingsTests' do
     inherit! :search_paths
@@ -80,6 +72,7 @@ target 'WaterReminderNotificationDomain' do
   project 'WaterReminderNotificationDomain/WaterReminderNotificationDomain'
   swinject
   rxSwift
+  pod 'GRDB.swift'
   target 'WaterReminderNotificationDomainTests' do
     inherit! :search_paths
   end
@@ -89,7 +82,7 @@ target 'WaterManagementDomain' do
   project 'WaterManagementDomain/WaterManagementDomain'
   swinject
   rxSwift
-  realm
+  pod 'GRDB.swift'
   target 'WaterManagementDomainTests' do
     inherit! :search_paths
   end
@@ -99,7 +92,7 @@ target 'UserInformationDomain' do
   project 'UserInformationDomain/UserInformationDomain'
   swinject
   rxSwift
-  realm
+  pod 'GRDB.swift'
   target 'UserInformationDomainTests' do
     inherit! :search_paths
   end
@@ -109,7 +102,6 @@ target 'Home' do
   project 'Home/Home'
   swinject
   rxSwift
-  realm
   target 'HomeTests' do
     inherit! :search_paths
   end
@@ -119,7 +111,6 @@ target 'FirstAccess' do
   project 'FirstAccess/FirstAccess'
   swinject
   rxSwift
-  realm
   target 'FirstAccessTests' do
     inherit! :search_paths
   end
@@ -129,7 +120,6 @@ target 'History' do
   project 'History/History'
   swinject
   rxSwift
-  realm
   target 'HistoryTests' do
     inherit! :search_paths
   end

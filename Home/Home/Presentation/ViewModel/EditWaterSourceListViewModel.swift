@@ -10,47 +10,54 @@ import WaterManagementDomain
 import RxSwift
 import Combine
 
-class EditWaterSourceListViewModel: WaterSourceDeleteDelegate {
+class EditWaterSourceListViewModel {
     
-    let disposeBag = DisposeBag()
-    let getWaterSourceUseCase: GetWaterSourceUseCase
-    let manageWaterSourceUseCase: ManageWaterSourceUseCase
-    let reorderWaterSourceUseCase: ReorderWaterSourceUseCase
-    let homeFlowStepper: HomeFlowStepper
+    private var cancellableBag = Set<AnyCancellable>()
+    private let deleteWaterSourceUseCase: DeleteWaterSourceUseCase
+    private let reorderWaterSourceUseCase: ReorderWaterSourceUseCase
+    private let homeFlowStepper: HomeFlowStepper
+    private let getSortedWaterSourceUseCase: GetSortedWaterSourceUseCase
+    private let getVolumeFormatUseCase: GetVolumeFormatUseCase
 
     @Published var waterSourceList: [WaterSource] = []
-    @Published var volumeFormat: VolumeFormat = VolumeFormat.metric
+    lazy var volumeFormat = {
+        getVolumeFormatUseCase.execute()
+    }()
     @Published var exhibitionList: [WaterSourceSectionItems] = []
     let removeItemNotifier = PassthroughSubject<Int, Never>()
     let updateListNotifier = PassthroughSubject<Void, Never>()
 
     init(
-        getWaterSourceUseCase: GetWaterSourceUseCase,
         reorderWaterSourceUseCase: ReorderWaterSourceUseCase,
-        manageWaterSourceUseCase: ManageWaterSourceUseCase,
-        homeFlowStepper: HomeFlowStepper
+        deleteWaterSourceUseCase: DeleteWaterSourceUseCase,
+        homeFlowStepper: HomeFlowStepper,
+        getSortedWaterSourceUseCase: GetSortedWaterSourceUseCase,
+        getVolumeFormatUseCase: GetVolumeFormatUseCase
     ) {
-        self.getWaterSourceUseCase = getWaterSourceUseCase
         self.reorderWaterSourceUseCase = reorderWaterSourceUseCase
-        self.manageWaterSourceUseCase = manageWaterSourceUseCase
+        self.deleteWaterSourceUseCase = deleteWaterSourceUseCase
         self.homeFlowStepper = homeFlowStepper
-        getWaterSourceUseCase.getWaterSourceListWithVolumeFormat().subscribe(onNext: {
-            let newList: [WaterSourceSectionItems] = $0.waterSourceList.map({ .waterSourceItem($0) }) + [.add]
-            // Only update new itens inclusion, since other updates will be handled manually
-            let isNewListBigger = newList.count > self.exhibitionList.count
-            self.volumeFormat = $0.volumeFormat
+        self.getSortedWaterSourceUseCase = getSortedWaterSourceUseCase
+        self.getVolumeFormatUseCase = getVolumeFormatUseCase
+        self.collectWaterSourceUpdates()
+    }
+
+    private func collectWaterSourceUpdates() {
+        getSortedWaterSourceUseCase.execute().sinkUI { waterSourceList in
+            let newList: [WaterSourceSectionItems] = waterSourceList.map({ .waterSourceItem($0) }) + [.add]
+            let isSizeDifferent = newList.count != self.exhibitionList.count
             self.exhibitionList = newList
-            if isNewListBigger {
+            if isSizeDifferent {
                 self.updateListNotifier.send(Void())
             }
-        }).disposed(by: disposeBag)
+        }.store(in: &cancellableBag)
     }
 
     func removeWaterSourceItem(_ waterSource: WaterSource) {
         guard let index = self.exhibitionList.firstIndex(where: {
             switch $0 {
             case .waterSourceItem(let item):
-                return item.id == waterSource.id
+                return item.cup.id == waterSource.id
 
             default:
                 return false
@@ -63,11 +70,10 @@ class EditWaterSourceListViewModel: WaterSourceDeleteDelegate {
     }
 
 
-    func swapWaterSourcePositions(_ srcId: String, _ dstId: String) {
-        self.reorderWaterSourceUseCase
-            .reorderWaterSources(sourceId: srcId, destinationId: dstId)
-            .subscribe()
-            .disposed(by: disposeBag)
+    func swapWaterSourcePositions(_ srcId: Int64, _ dstId: Int64) {
+        Task {
+            try? await self.reorderWaterSourceUseCase.execute(sourceId: srcId, destinationId: dstId)
+        }
     }
 
     func showCreateWaterSource() {
@@ -75,18 +81,13 @@ class EditWaterSourceListViewModel: WaterSourceDeleteDelegate {
     }
 
     func onDeleteWaterSource(_ waterSource: WaterSource) {
-        manageWaterSourceUseCase.deleteWaterSource(waterSource: waterSource)
-            .do(onError: { error in
-                print(error)
-            })
-            .subscribe(onCompleted: { [weak self] in
-                self?.removeWaterSourceItem(waterSource)
-            })
-            .disposed(by: disposeBag)
+        Task {
+            try? await deleteWaterSourceUseCase.execute(waterSource)
+        }
     }
 
     enum WaterSourceSectionItems {
-        case waterSourceItem(WaterSource)
+        case waterSourceItem(CupInfo)
         case add
     }
 }

@@ -8,16 +8,21 @@
 import UIKit
 import Core
 import WaterManagementDomain
+import Components
 
 class SelectWaterSourceTypeVC: UIViewController {
 
 	private lazy var waterSourceTypePicker = WaterSourceTypePicker()
-    private let waterSourceTypeSelector: WaterSourceTypeSelector
 
-    init(_ defaultType: WaterSourceType, _ waterSourceTypeSelector: WaterSourceTypeSelector) {
-        self.waterSourceTypeSelector = waterSourceTypeSelector
+    var onDrinkSelected: ((Drink) -> Void)?
+
+    var drinks = [Drink]()
+
+    init(_ drink: Drink, _ drinks: [Drink]) {
+        self.drinks = drinks
         super.init(nibName: nil, bundle: nil)
-        self.waterSourceTypePicker.selectType(defaultType)
+        self.waterSourceTypePicker.drinks = drinks
+        self.waterSourceTypePicker.selectType(drink)
     }
     
     required init?(coder: NSCoder) {
@@ -31,11 +36,14 @@ class SelectWaterSourceTypeVC: UIViewController {
 	}
 
     override func viewDidDisappear(_ animated: Bool) {
-        waterSourceTypeSelector.onWaterSourceTypeChange(waterSourceTypePicker.waterSourceType)
+        guard let drink = waterSourceTypePicker.drink else {
+            return
+        }
+        onDrinkSelected?(drink)
     }
 
 	func prepareConfiguration() {
-		view.backgroundColor = .white
+        view.backgroundColor = DefaultComponentsTheme.current.surface.color
 	}
 
 	func prepareConstraints() {

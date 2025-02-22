@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Components
 
 class FirstAccessInformativeVC: BaseChildPageController {
 	
@@ -15,7 +16,7 @@ class FirstAccessInformativeVC: BaseChildPageController {
         label.font = .body
 		label.lineBreakMode = .byWordWrapping
 		label.numberOfLines = 0
-		label.textColor = .white
+        label.textColor = DefaultComponentsTheme.current.background.onColor
 		label.textAlignment = .center
 		label.translatesAutoresizingMaskIntoConstraints = false
 		containerView.addSubview(label)

@@ -22,10 +22,12 @@
 		17B0AF9C2B0DA1D700E33270 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF902B0DA19A00E33270 /* HistoryViewModel.swift */; };
 		17C6EAC02B38918100658D4A /* WaterConsumptionChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6EABF2B38918100658D4A /* WaterConsumptionChartCell.swift */; };
 		17C6EAC22B38A92100658D4A /* EmptyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C6EAC12B38A92100658D4A /* EmptyHeader.swift */; };
+		17D0439B2D52F9BD008915FE /* WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D0439A2D52F9BD008915FE /* WaterManagementDomain.framework */; };
+		17D0439C2D52F9BD008915FE /* WaterManagementDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17D0439A2D52F9BD008915FE /* WaterManagementDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27EE3A2540B1B4CF46B524C9 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3C0F4AA3D6855884EE37 /* HistoryVC.swift */; };
 		27EE3D8EF73510FCB0CAD793 /* HistoryVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE341E001E687074DA1BA0 /* HistoryVC+Datasource.swift */; };
-		73529AFF5A5DB71E59270D78 /* Pods_HistoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C50A1530B28C7DC219578F9 /* Pods_HistoryTests.framework */; };
-		A77B96F342E3E08ABC9A465E /* Pods_History.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB5044ECD5801D3E1C6E1BA /* Pods_History.framework */; };
+		8221A76EBAA6CCD270E93D59 /* Pods_HistoryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E127029CAD376D01B34C98A1 /* Pods_HistoryTests.framework */; };
+		DB0ED59BECADA854957464D3 /* Pods_History.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAE1617DE95D09C1147D88EF /* Pods_History.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				1704AB8D2B327D1400D601BA /* Components.framework in Embed Frameworks */,
+				17D0439C2D52F9BD008915FE /* WaterManagementDomain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,7 +56,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0FB5044ECD5801D3E1C6E1BA /* Pods_History.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_History.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1704AB8B2B327D1400D601BA /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1712072E2B351DAB008BE78F /* HistoryChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryChart.swift; sourceTree = "<group>"; };
 		1767D1382B39D85900EB21C7 /* HistoryChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryChartViewModel.swift; sourceTree = "<group>"; };
@@ -70,13 +72,15 @@
 		17B0AF942B0DA19A00E33270 /* StatisticsFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsFlow.swift; sourceTree = "<group>"; };
 		17C6EABF2B38918100658D4A /* WaterConsumptionChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterConsumptionChartCell.swift; sourceTree = "<group>"; };
 		17C6EAC12B38A92100658D4A /* EmptyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyHeader.swift; sourceTree = "<group>"; };
-		1C50A1530B28C7DC219578F9 /* Pods_HistoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HistoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D0439A2D52F9BD008915FE /* WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EE341E001E687074DA1BA0 /* HistoryVC+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HistoryVC+Datasource.swift"; sourceTree = "<group>"; };
 		27EE3C0F4AA3D6855884EE37 /* HistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		313956FD91980D7452937A26 /* Pods-History.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-History.debug.xcconfig"; path = "Target Support Files/Pods-History/Pods-History.debug.xcconfig"; sourceTree = "<group>"; };
 		A3DCB1B9F610032C6A26198B /* Pods-HistoryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistoryTests.release.xcconfig"; path = "Target Support Files/Pods-HistoryTests/Pods-HistoryTests.release.xcconfig"; sourceTree = "<group>"; };
+		AAE1617DE95D09C1147D88EF /* Pods_History.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_History.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8AA17C18BA16D677AAEBB80 /* Pods-HistoryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HistoryTests.debug.xcconfig"; path = "Target Support Files/Pods-HistoryTests/Pods-HistoryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE76BC1479A07E220839DB0A /* Pods-History.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-History.release.xcconfig"; path = "Target Support Files/Pods-History/Pods-History.release.xcconfig"; sourceTree = "<group>"; };
+		E127029CAD376D01B34C98A1 /* Pods_HistoryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HistoryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +88,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D0439B2D52F9BD008915FE /* WaterManagementDomain.framework in Frameworks */,
 				1704AB8C2B327D1400D601BA /* Components.framework in Frameworks */,
-				A77B96F342E3E08ABC9A465E /* Pods_History.framework in Frameworks */,
+				DB0ED59BECADA854957464D3 /* Pods_History.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17B0AF142B0A8C5900E33270 /* History.framework in Frameworks */,
-				73529AFF5A5DB71E59270D78 /* Pods_HistoryTests.framework in Frameworks */,
+				8221A76EBAA6CCD270E93D59 /* Pods_HistoryTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,10 +205,11 @@
 		8DF531F11EDA51866CE63794 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17D0439A2D52F9BD008915FE /* WaterManagementDomain.framework */,
 				1704AB8B2B327D1400D601BA /* Components.framework */,
 				17871D312B1A62C70022D0E9 /* Components.framework */,
-				0FB5044ECD5801D3E1C6E1BA /* Pods_History.framework */,
-				1C50A1530B28C7DC219578F9 /* Pods_HistoryTests.framework */,
+				AAE1617DE95D09C1147D88EF /* Pods_History.framework */,
+				E127029CAD376D01B34C98A1 /* Pods_HistoryTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -552,7 +558,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -584,7 +590,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

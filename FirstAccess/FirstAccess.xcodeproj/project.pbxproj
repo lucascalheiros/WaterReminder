@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		1704AB902B327D5A00D601BA /* UserInformationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1704AB8F2B327D5A00D601BA /* UserInformationDomain.framework */; };
 		1704AB912B327D5A00D601BA /* UserInformationDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1704AB8F2B327D5A00D601BA /* UserInformationDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		17871D452B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D442B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework */; };
+		174449EB2D5412BF00BC46F2 /* ActivityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174449EA2D5412BF00BC46F2 /* ActivityLevel.swift */; };
+		174449ED2D5412DB00BC46F2 /* TemperatureScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174449EC2D5412DB00BC46F2 /* TemperatureScale.swift */; };
+		174449EF2D5412E500BC46F2 /* TemperatureLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174449EE2D5412E500BC46F2 /* TemperatureLevel.swift */; };
 		17871D462B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D442B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17B0AF322B0A8CAC00E33270 /* FirstAccess.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF312B0A8CAC00E33270 /* FirstAccess.docc */; };
 		17B0AF382B0A8CAC00E33270 /* FirstAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B0AF2D2B0A8CAC00E33270 /* FirstAccess.framework */; };
@@ -31,8 +33,11 @@
 		17B0AF6B2B0ACC1600E33270 /* BaseChildPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF472B0ACBA400E33270 /* BaseChildPageController.swift */; };
 		17B0AF7B2B0ACD7300E33270 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B0AF7A2B0ACD7300E33270 /* Core.framework */; };
 		17B0AF7C2B0ACD7300E33270 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17B0AF7A2B0ACD7300E33270 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		499416BF8C5F31DFA98CDA87 /* Pods_FirstAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDD7D011210838195557C053 /* Pods_FirstAccess.framework */; };
-		DD24A7874E5980E075F88D5A /* Pods_FirstAccessTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7C093EBAC615319BF4ADC2 /* Pods_FirstAccessTests.framework */; };
+		17D043A12D52FA49008915FE /* WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D043A02D52FA49008915FE /* WaterManagementDomain.framework */; };
+		17D043A22D52FA49008915FE /* WaterManagementDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17D043A02D52FA49008915FE /* WaterManagementDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		17D043AC2D530F25008915FE /* ActivityLevelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D043AB2D530F10008915FE /* ActivityLevelCard.swift */; };
+		1A424057B909F8DE4203CB28 /* Pods_FirstAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 580A41742607E9704CD6047A /* Pods_FirstAccess.framework */; };
+		FB86DED394A2BC97F485B526 /* Pods_FirstAccessTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F18413D93BF3B7D9861E480 /* Pods_FirstAccessTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,7 @@
 				1704AB912B327D5A00D601BA /* UserInformationDomain.framework in Embed Frameworks */,
 				17B0AF7C2B0ACD7300E33270 /* Core.framework in Embed Frameworks */,
 				17871D462B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework in Embed Frameworks */,
+				17D043A22D52FA49008915FE /* WaterManagementDomain.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +69,9 @@
 
 /* Begin PBXFileReference section */
 		1704AB8F2B327D5A00D601BA /* UserInformationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UserInformationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		174449EA2D5412BF00BC46F2 /* ActivityLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevel.swift; sourceTree = "<group>"; };
+		174449EC2D5412DB00BC46F2 /* TemperatureScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureScale.swift; sourceTree = "<group>"; };
+		174449EE2D5412E500BC46F2 /* TemperatureLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureLevel.swift; sourceTree = "<group>"; };
 		17871D442B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AF2D2B0A8CAC00E33270 /* FirstAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FirstAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AF312B0A8CAC00E33270 /* FirstAccess.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = FirstAccess.docc; sourceTree = "<group>"; };
@@ -84,10 +93,12 @@
 		17B0AF592B0ACBA400E33270 /* FirstAccessInformationStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAccessInformationStepper.swift; sourceTree = "<group>"; };
 		17B0AF5C2B0ACBA400E33270 /* FirstAccessInformationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAccessInformationAssembly.swift; sourceTree = "<group>"; };
 		17B0AF7A2B0ACD7300E33270 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D043A02D52FA49008915FE /* WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D043AB2D530F10008915FE /* ActivityLevelCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevelCard.swift; sourceTree = "<group>"; };
 		24909EFC5E9DB079F6238872 /* Pods-FirstAccessTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstAccessTests.debug.xcconfig"; path = "Target Support Files/Pods-FirstAccessTests/Pods-FirstAccessTests.debug.xcconfig"; sourceTree = "<group>"; };
+		580A41742607E9704CD6047A /* Pods_FirstAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirstAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8EF4DE657708AEF9EC61AC /* Pods-FirstAccess.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstAccess.debug.xcconfig"; path = "Target Support Files/Pods-FirstAccess/Pods-FirstAccess.debug.xcconfig"; sourceTree = "<group>"; };
-		BDD7D011210838195557C053 /* Pods_FirstAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirstAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF7C093EBAC615319BF4ADC2 /* Pods_FirstAccessTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirstAccessTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F18413D93BF3B7D9861E480 /* Pods_FirstAccessTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirstAccessTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D538731ED8B408C9E17D38E7 /* Pods-FirstAccess.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstAccess.release.xcconfig"; path = "Target Support Files/Pods-FirstAccess/Pods-FirstAccess.release.xcconfig"; sourceTree = "<group>"; };
 		EA1E701D219C16B12603DBF0 /* Pods-FirstAccessTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirstAccessTests.release.xcconfig"; path = "Target Support Files/Pods-FirstAccessTests/Pods-FirstAccessTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,9 +109,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1704AB902B327D5A00D601BA /* UserInformationDomain.framework in Frameworks */,
-				17871D452B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework in Frameworks */,
-				499416BF8C5F31DFA98CDA87 /* Pods_FirstAccess.framework in Frameworks */,
 				17B0AF7B2B0ACD7300E33270 /* Core.framework in Frameworks */,
+				17D043A12D52FA49008915FE /* WaterManagementDomain.framework in Frameworks */,
+				1A424057B909F8DE4203CB28 /* Pods_FirstAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,13 +120,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				17B0AF382B0A8CAC00E33270 /* FirstAccess.framework in Frameworks */,
-				DD24A7874E5980E075F88D5A /* Pods_FirstAccessTests.framework in Frameworks */,
+				FB86DED394A2BC97F485B526 /* Pods_FirstAccessTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		174449E72D5412A400BC46F2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				174449EE2D5412E500BC46F2 /* TemperatureLevel.swift */,
+				174449EC2D5412DB00BC46F2 /* TemperatureScale.swift */,
+				174449EA2D5412BF00BC46F2 /* ActivityLevel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		17B0AF232B0A8CAC00E33270 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +145,7 @@
 				17B0AF2E2B0A8CAC00E33270 /* Products */,
 				5A32FC1F8CBA5E5A1DC09A5A /* Pods */,
 				D4177E7703BEEB1065C2DF47 /* Frameworks */,
+				17D043982D52F622008915FE /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +187,7 @@
 		17B0AF4B2B0ACBA400E33270 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				17D043AB2D530F10008915FE /* ActivityLevelCard.swift */,
 				17B0AF492B0ACBA400E33270 /* WeightPickerView.swift */,
 				17B0AF4A2B0ACBA400E33270 /* ActivityLevelSliderView.swift */,
 			);
@@ -213,6 +236,7 @@
 		17B0AF5B2B0ACBA400E33270 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				174449E72D5412A400BC46F2 /* Models */,
 				17B0AF482B0ACBA400E33270 /* Base */,
 				17B0AF4B2B0ACBA400E33270 /* Components */,
 				17B0AF4D2B0ACBA400E33270 /* Protocols */,
@@ -221,6 +245,14 @@
 				17B0AF5A2B0ACBA400E33270 /* ViewModel */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		17D043982D52F622008915FE /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				17871D442B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		5A32FC1F8CBA5E5A1DC09A5A /* Pods */ = {
@@ -238,11 +270,11 @@
 		D4177E7703BEEB1065C2DF47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17D043A02D52FA49008915FE /* WaterManagementDomain.framework */,
 				1704AB8F2B327D5A00D601BA /* UserInformationDomain.framework */,
-				17871D442B1A63C60022D0E9 /* Pods_WaterManagementDomain.framework */,
 				17B0AF7A2B0ACD7300E33270 /* Core.framework */,
-				BDD7D011210838195557C053 /* Pods_FirstAccess.framework */,
-				BF7C093EBAC615319BF4ADC2 /* Pods_FirstAccessTests.framework */,
+				580A41742607E9704CD6047A /* Pods_FirstAccess.framework */,
+				9F18413D93BF3B7D9861E480 /* Pods_FirstAccessTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -408,6 +440,7 @@
 				17B0AF692B0ACC1000E33270 /* WeightPickerView.swift in Sources */,
 				17B0AF322B0A8CAC00E33270 /* FirstAccess.docc in Sources */,
 				17B0AF612B0ACBF800E33270 /* ConfirmationDailyConsumptionViewController.swift in Sources */,
+				174449EF2D5412E500BC46F2 /* TemperatureLevel.swift in Sources */,
 				17B0AF5F2B0ACBEF00E33270 /* FirstAccessInformationPageNavigationDelegate.swift in Sources */,
 				17B0AF622B0ACBF800E33270 /* FirstAccessPageVC.swift in Sources */,
 				17B0AF6A2B0ACC1000E33270 /* ActivityLevelSliderView.swift in Sources */,
@@ -416,11 +449,14 @@
 				17B0AF6B2B0ACC1600E33270 /* BaseChildPageController.swift in Sources */,
 				17B0AF602B0ACBEF00E33270 /* FirstAccessInformationStepper.swift in Sources */,
 				17B0AF5D2B0ACBA400E33270 /* FirstAccessInformationAssembly.swift in Sources */,
+				17D043AC2D530F25008915FE /* ActivityLevelCard.swift in Sources */,
 				17B0AF642B0ACBF800E33270 /* ActivityLevelInputVC.swift in Sources */,
 				17B0AF5E2B0ACBEF00E33270 /* FirstAccessInformationSharedViewModel.swift in Sources */,
 				17B0AF632B0ACBF800E33270 /* WeightInputVC.swift in Sources */,
 				17B0AF672B0ACC0000E33270 /* FirstAccessPageProvider.swift in Sources */,
 				17B0AF662B0ACBF800E33270 /* AmbienceTemperatureInputViewController.swift in Sources */,
+				174449EB2D5412BF00BC46F2 /* ActivityLevel.swift in Sources */,
+				174449ED2D5412DB00BC46F2 /* TemperatureScale.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,7 +618,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -614,7 +650,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

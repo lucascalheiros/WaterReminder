@@ -6,10 +6,9 @@
 //
 
 import UIKit
-import RxCocoa
-import RxSwift
 import Common
 import Components
+import Combine
 
 class SettingsVC: UITableViewController {
     static func newInstance(settingsViewModel: SettingsViewModel) -> SettingsVC {
@@ -17,7 +16,9 @@ class SettingsVC: UITableViewController {
     }
     
     let settingsViewModel: SettingsViewModel
-	let disposeBag = DisposeBag()
+    var cancellableBag = Set<AnyCancellable>()
+
+    lazy var diffableDatasource: DataSource = makeDatasource()
 
 	init(settingsViewModel: SettingsViewModel) {
 		self.settingsViewModel = settingsViewModel
@@ -31,10 +32,14 @@ class SettingsVC: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         prepareConfiguration()
+        applySnapshot()
 	}
 
     func prepareConfiguration() {
         view.backgroundColor = DefaultComponentsTheme.current.background.color
+        tableView.dataSource = diffableDatasource
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = DefaultComponentsTheme.current.surface.onColor
         registerCells()
     }
 }

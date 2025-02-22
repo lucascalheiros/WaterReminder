@@ -18,68 +18,68 @@ import FirstAccess
 import Core
 import Home
 import History
+import Combine
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
-	lazy var container: Container = appContainer()
-	lazy var coordinator = FlowCoordinator()
-	let disposeBag = DisposeBag()
+    lazy var container: Container = appContainer()
+    lazy var coordinator = FlowCoordinator()
+    let disposeBag = DisposeBag()
+    var cancellableBag = Set<AnyCancellable>()
 
-	var appFlow: RootFlow!
+    var appFlow: RootFlow!
 
-	func assembleModuleContainers(container: Container) {
-		WaterReminderNotificationDomainAssembly().assemble(container: container)
-		FirstAccessInformationAssembly().assemble(container: container)
-		UserInformationDomainAssembly().assemble(container: container)
-		WaterManagementDomainAssembly().assemble(container: container)
-		HomeAssembly().assemble(container: container)
-		SettingsAssembly().assemble(container: container)
-		HistoryAssembly().assemble(container: container)
-	}
+    func assembleModuleContainers(container: Container) {
+        WaterReminderNotificationDomainAssembly().assemble(container: container)
+        FirstAccessInformationAssembly().assemble(container: container)
+        UserInformationDomainAssembly().assemble(container: container)
+        WaterManagementDomainAssembly().assemble(container: container)
+        HomeAssembly().assemble(container: container)
+        SettingsAssembly().assemble(container: container)
+        HistoryAssembly().assemble(container: container)
+    }
 
-	func scene(
-		_ scene: UIScene,
-		willConnectTo session: UISceneSession,
-		options connectionOptions: UIScene.ConnectionOptions
-	) {
-		// Use this method to optionally configure and attach the
-		// UIWindow `window` to the provided UIWindowScene `scene`.
-		// If using a storyboard, the `window` property will automatically
-		// be initialized and attached to the scene.
-		// This delegate does not imply the connecting scene or session
-		// are new (see `application:configurationForConnectingSceneSession` instead).
-		guard let windowScene = (scene as? UIWindowScene) else { return }
-		let window = UIWindow(windowScene: windowScene)
+    func scene(
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions
+    ) {
+        // Use this method to optionally configure and attach the
+        // UIWindow `window` to the provided UIWindowScene `scene`.
+        // If using a storyboard, the `window` property will automatically
+        // be initialized and attached to the scene.
+        // This delegate does not imply the connecting scene or session
+        // are new (see `application:configurationForConnectingSceneSession` instead).
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+
+        assembleModuleContainers(container: container)
+
+        let window = UIWindow(windowScene: windowScene)
+
+        collectTheme(window: window)
 
         DefaultComponentsTheme.current = AppTheme()
 
-		assembleModuleContainers(container: container)
+        self.coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
+            print("will navigate to flow=\(flow) and step=\(step)")
+        }).disposed(by: self.disposeBag)
 
-		self.coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
-			print("will navigate to flow=\(flow) and step=\(step)")
-		}).disposed(by: self.disposeBag)
+        self.coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
+            print("did navigate to flow=\(flow) and step=\(step)")
+        }).disposed(by: self.disposeBag)
 
-		self.coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
-			print("did navigate to flow=\(flow) and step=\(step)")
-		}).disposed(by: self.disposeBag)
+        appFlow = RootFlow(container: container)
 
-		appFlow = RootFlow(container: container)
+        self.coordinator.coordinate(flow: self.appFlow, with: OneStepper(withSingleStep: FirstAccessFlowSteps.entryPoint))
 
-		// TODO add splash and refactor to include this decision there.
-		let getDailyWaterConsumptionUseCase = container.resolve(GetDailyWaterConsumptionUseCase.self)
-		getDailyWaterConsumptionUseCase?.lastDailyWaterConsumption().safeAsSingle().subscribe(onSuccess: {
-			let step = $0 == nil ? FirstAccessFlowSteps.firstAccessUserInformationIsRequired : FirstAccessFlowSteps.firstAccessUserInformationAlreadyProvided
-			self.coordinator.coordinate(flow: self.appFlow, with: OneStepper(withSingleStep: step))
-		}).disposed(by: disposeBag)
+        Flows.use(appFlow, when: .created) { root in
+            window.rootViewController = root
+            window.makeKeyAndVisible()
+        }
 
-		Flows.use(appFlow, when: .created) { root in
-			window.rootViewController = root
-			window.makeKeyAndVisible()
-		}
-
-		self.window = window
+        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -114,8 +114,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         // to restore the scene back to its current state.
     }
 
-	func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-		completionHandler()
-	}
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+
+    private func collectTheme(window: UIWindow) {
+        container.resolve(GetCurrentThemePreferenceUseCase.self)?.execute()
+            .sinkUI {
+                switch $0 {
+
+                case .dark:
+                    window.overrideUserInterfaceStyle = .dark
+
+                case .light:
+                    window.overrideUserInterfaceStyle = .light
+
+                case .auto:
+                    window.overrideUserInterfaceStyle = .unspecified
+
+                }
+            }.store(in: &cancellableBag)
+    }
 
 }

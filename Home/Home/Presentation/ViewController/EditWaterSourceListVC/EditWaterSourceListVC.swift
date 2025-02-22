@@ -5,10 +5,11 @@
 //  Created by Lucas Calheiros on 21/08/23.
 //
 
-import RxSwift
 import UIKit
 import WaterManagementDomain
 import Combine
+import Core
+import Components
 
 class EditWaterSourceListVC: UITableViewController {
 
@@ -18,7 +19,6 @@ class EditWaterSourceListVC: UITableViewController {
         EditWaterSourceListVC(editWaterSourceListViewModel: editWaterSourceListViewModel)
     }
 
-	let disposeBag = DisposeBag()
     var cancellableBag = Set<AnyCancellable>()
 
     let editWaterSourceListViewModel: EditWaterSourceListViewModel
@@ -43,7 +43,9 @@ class EditWaterSourceListVC: UITableViewController {
 	}
 
 	func prepareConfiguration() {
-		view.backgroundColor = .systemTeal
+        view.backgroundColor = AppColorGroup.background.color
+        tableView.separatorStyle = .singleLine
+        tableView.separatorColor = DefaultComponentsTheme.current.surface.onColor
         registerCells()
         configureDragAndDrop()
 	}

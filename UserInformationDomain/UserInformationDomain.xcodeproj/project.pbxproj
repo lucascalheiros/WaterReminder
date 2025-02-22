@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		174449F12D54184B00BC46F2 /* ActivityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174449F02D54184300BC46F2 /* ActivityLevel.swift */; };
+		176284482D59614900B1CC39 /* ThemePreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176284472D59613C00B1CC39 /* ThemePreference.swift */; };
+		1762844C2D59619500B1CC39 /* GetCurrentThemePreferenceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1762844B2D59619100B1CC39 /* GetCurrentThemePreferenceUseCase.swift */; };
+		176284522D5961D100B1CC39 /* SetCurrentThemePreferenceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176284512D5961D100B1CC39 /* SetCurrentThemePreferenceUseCase.swift */; };
+		176284542D59649200B1CC39 /* ThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176284532D59648A00B1CC39 /* ThemeRepository.swift */; };
+		176284562D5964D200B1CC39 /* ThemeRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176284552D5964D200B1CC39 /* ThemeRepositoryImpl.swift */; };
+		176284582D59838900B1CC39 /* GetUserProfileInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176284572D59838000B1CC39 /* GetUserProfileInfoUseCase.swift */; };
+		176284602D59887F00B1CC39 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1762845F2D59887F00B1CC39 /* Database.swift */; };
+		176284622D59888600B1CC39 /* Migrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176284612D59888600B1CC39 /* Migrations.swift */; };
 		17871D2E2B1A62A30022D0E9 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D2D2B1A62A30022D0E9 /* Core.framework */; };
 		17871D2F2B1A62A30022D0E9 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D2D2B1A62A30022D0E9 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17AE2B622B030EF50049F554 /* UserInformationDomain.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B612B030EF50049F554 /* UserInformationDomain.docc */; };
@@ -20,12 +29,11 @@
 		17B0AED52B0A834C00E33270 /* WeightFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEBC2B0A831D00E33270 /* WeightFormat.swift */; };
 		17B0AED62B0A834C00E33270 /* TemperatureFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEBB2B0A831D00E33270 /* TemperatureFormat.swift */; };
 		17B0AED72B0A83C900E33270 /* UserInformationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AECB2B0A831D00E33270 /* UserInformationRepositoryImpl.swift */; };
-		17B0AED82B0A83CF00E33270 /* UserInformationRealmProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEC92B0A831D00E33270 /* UserInformationRealmProvider.swift */; };
-		17B0AED92B0A83D700E33270 /* AmbienceTemperatureRangeEmbeddedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEC62B0A831D00E33270 /* AmbienceTemperatureRangeEmbeddedObject.swift */; };
-		17B0AEDA2B0A83D700E33270 /* UserInformationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEC72B0A831D00E33270 /* UserInformationObject.swift */; };
+		17BBB1F02D693128005205E3 /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BBB1EF2D693125005205E3 /* Weight.swift */; };
+		17BBB1F22D693140005205E3 /* WeightUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BBB1F12D693140005205E3 /* WeightUnit.swift */; };
 		27EE31090661B646FD9A66A5 /* UserInformationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3F03BCD851EEF6E2CF6E /* UserInformationRepository.swift */; };
-		DFBE95DFF19B9C782DF307B6 /* Pods_UserInformationDomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A17C59BE2720977E14EDF6 /* Pods_UserInformationDomainTests.framework */; };
-		E7612A99C4DDA77131598EAD /* Pods_UserInformationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFF99DBC951A5786E93FCF6 /* Pods_UserInformationDomain.framework */; };
+		36DCFD2030E8D1C2A1BD2C81 /* Pods_UserInformationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F2CBCC005C9DE1527EB89EF /* Pods_UserInformationDomain.framework */; };
+		8A99EA9647D51638DAE09DB1 /* Pods_UserInformationDomainTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2251FC4777B16019D6A907DD /* Pods_UserInformationDomainTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +61,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		174449F02D54184300BC46F2 /* ActivityLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevel.swift; sourceTree = "<group>"; };
+		176284472D59613C00B1CC39 /* ThemePreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePreference.swift; sourceTree = "<group>"; };
+		1762844B2D59619100B1CC39 /* GetCurrentThemePreferenceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentThemePreferenceUseCase.swift; sourceTree = "<group>"; };
+		176284512D5961D100B1CC39 /* SetCurrentThemePreferenceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCurrentThemePreferenceUseCase.swift; sourceTree = "<group>"; };
+		176284532D59648A00B1CC39 /* ThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepository.swift; sourceTree = "<group>"; };
+		176284552D5964D200B1CC39 /* ThemeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepositoryImpl.swift; sourceTree = "<group>"; };
+		176284572D59838000B1CC39 /* GetUserProfileInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserProfileInfoUseCase.swift; sourceTree = "<group>"; };
+		1762845F2D59887F00B1CC39 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		176284612D59888600B1CC39 /* Migrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrations.swift; sourceTree = "<group>"; };
 		17871D2D2B1A62A30022D0E9 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B5D2B030EF50049F554 /* UserInformationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UserInformationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B612B030EF50049F554 /* UserInformationDomain.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = UserInformationDomain.docc; sourceTree = "<group>"; };
@@ -64,18 +81,17 @@
 		17B0AEBE2B0A831D00E33270 /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		17B0AEC22B0A831D00E33270 /* GetExpectedWaterConsumptionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExpectedWaterConsumptionUseCase.swift; sourceTree = "<group>"; };
 		17B0AEC32B0A831D00E33270 /* RegisterUserInformationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserInformationUseCase.swift; sourceTree = "<group>"; };
-		17B0AEC62B0A831D00E33270 /* AmbienceTemperatureRangeEmbeddedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbienceTemperatureRangeEmbeddedObject.swift; sourceTree = "<group>"; };
-		17B0AEC72B0A831D00E33270 /* UserInformationObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformationObject.swift; sourceTree = "<group>"; };
-		17B0AEC92B0A831D00E33270 /* UserInformationRealmProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformationRealmProvider.swift; sourceTree = "<group>"; };
 		17B0AECB2B0A831D00E33270 /* UserInformationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationRepositoryImpl.swift; sourceTree = "<group>"; };
 		17B0AECE2B0A831D00E33270 /* UserInformationDomainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformationDomainAssembly.swift; sourceTree = "<group>"; };
+		17BBB1EF2D693125005205E3 /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
+		17BBB1F12D693140005205E3 /* WeightUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightUnit.swift; sourceTree = "<group>"; };
+		2251FC4777B16019D6A907DD /* Pods_UserInformationDomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserInformationDomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27EE3F03BCD851EEF6E2CF6E /* UserInformationRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformationRepository.swift; sourceTree = "<group>"; };
 		3B5E7F62E2D506369E4242A3 /* Pods-UserInformationDomainTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserInformationDomainTests.debug.xcconfig"; path = "Target Support Files/Pods-UserInformationDomainTests/Pods-UserInformationDomainTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4808E3B16933938486FB7D1F /* Pods-UserInformationDomain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserInformationDomain.debug.xcconfig"; path = "Target Support Files/Pods-UserInformationDomain/Pods-UserInformationDomain.debug.xcconfig"; sourceTree = "<group>"; };
-		80A17C59BE2720977E14EDF6 /* Pods_UserInformationDomainTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserInformationDomainTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F2CBCC005C9DE1527EB89EF /* Pods_UserInformationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserInformationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4A4B31A3427FEDFC2A410B2 /* Pods-UserInformationDomainTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserInformationDomainTests.release.xcconfig"; path = "Target Support Files/Pods-UserInformationDomainTests/Pods-UserInformationDomainTests.release.xcconfig"; sourceTree = "<group>"; };
 		DB93E0BF360CC41713235474 /* Pods-UserInformationDomain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserInformationDomain.release.xcconfig"; path = "Target Support Files/Pods-UserInformationDomain/Pods-UserInformationDomain.release.xcconfig"; sourceTree = "<group>"; };
-		EAFF99DBC951A5786E93FCF6 /* Pods_UserInformationDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserInformationDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +99,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7612A99C4DDA77131598EAD /* Pods_UserInformationDomain.framework in Frameworks */,
 				17871D2E2B1A62A30022D0E9 /* Core.framework in Frameworks */,
+				36DCFD2030E8D1C2A1BD2C81 /* Pods_UserInformationDomain.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,13 +109,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				17AE2B682B030EF50049F554 /* UserInformationDomain.framework in Frameworks */,
-				DFBE95DFF19B9C782DF307B6 /* Pods_UserInformationDomainTests.framework in Frameworks */,
+				8A99EA9647D51638DAE09DB1 /* Pods_UserInformationDomainTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1762845E2D59887300B1CC39 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				176284612D59888600B1CC39 /* Migrations.swift */,
+				1762845F2D59887F00B1CC39 /* Database.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		17AE2B532B030EF50049F554 = {
 			isa = PBXGroup;
 			children = (
@@ -139,37 +164,38 @@
 			path = UserInformationDomainTests;
 			sourceTree = "<group>";
 		};
-		17B0AEBD2B0A831D00E33270 /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				17B0AEBA2B0A831D00E33270 /* AmbienceTemperatureLevel.swift */,
-				17B0AEBB2B0A831D00E33270 /* TemperatureFormat.swift */,
-				17B0AEBC2B0A831D00E33270 /* WeightFormat.swift */,
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
 		17B0AEBF2B0A831D00E33270 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				174449F02D54184300BC46F2 /* ActivityLevel.swift */,
+				17B0AEBA2B0A831D00E33270 /* AmbienceTemperatureLevel.swift */,
+				17B0AEBB2B0A831D00E33270 /* TemperatureFormat.swift */,
+				176284472D59613C00B1CC39 /* ThemePreference.swift */,
 				17B0AEBE2B0A831D00E33270 /* UserInformation.swift */,
+				17BBB1EF2D693125005205E3 /* Weight.swift */,
+				17B0AEBC2B0A831D00E33270 /* WeightFormat.swift */,
+				17BBB1F12D693140005205E3 /* WeightUnit.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		17B0AEC12B0A831D00E33270 /* RepositoryProtocols */ = {
+		17B0AEC12B0A831D00E33270 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				176284532D59648A00B1CC39 /* ThemeRepository.swift */,
 				27EE3F03BCD851EEF6E2CF6E /* UserInformationRepository.swift */,
 			);
-			path = RepositoryProtocols;
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		17B0AEC42B0A831D00E33270 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				176284572D59838000B1CC39 /* GetUserProfileInfoUseCase.swift */,
+				1762844B2D59619100B1CC39 /* GetCurrentThemePreferenceUseCase.swift */,
 				17B0AEC22B0A831D00E33270 /* GetExpectedWaterConsumptionUseCase.swift */,
 				17B0AEC32B0A831D00E33270 /* RegisterUserInformationUseCase.swift */,
+				176284512D5961D100B1CC39 /* SetCurrentThemePreferenceUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -177,34 +203,17 @@
 		17B0AEC52B0A831D00E33270 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				17B0AEBD2B0A831D00E33270 /* Enums */,
 				17B0AEBF2B0A831D00E33270 /* Models */,
-				17B0AEC12B0A831D00E33270 /* RepositoryProtocols */,
+				17B0AEC12B0A831D00E33270 /* Repositories */,
 				17B0AEC42B0A831D00E33270 /* UseCases */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
 		};
-		17B0AEC82B0A831D00E33270 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				17B0AEC62B0A831D00E33270 /* AmbienceTemperatureRangeEmbeddedObject.swift */,
-				17B0AEC72B0A831D00E33270 /* UserInformationObject.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		17B0AECA2B0A831D00E33270 /* Providers */ = {
-			isa = PBXGroup;
-			children = (
-				17B0AEC92B0A831D00E33270 /* UserInformationRealmProvider.swift */,
-			);
-			path = Providers;
-			sourceTree = "<group>";
-		};
 		17B0AECC2B0A831D00E33270 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				176284552D5964D200B1CC39 /* ThemeRepositoryImpl.swift */,
 				17B0AECB2B0A831D00E33270 /* UserInformationRepositoryImpl.swift */,
 			);
 			path = Repositories;
@@ -213,8 +222,7 @@
 		17B0AECD2B0A831D00E33270 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				17B0AEC82B0A831D00E33270 /* Models */,
-				17B0AECA2B0A831D00E33270 /* Providers */,
+				1762845E2D59887300B1CC39 /* Database */,
 				17B0AECC2B0A831D00E33270 /* Repositories */,
 			);
 			path = Data;
@@ -224,8 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				17871D2D2B1A62A30022D0E9 /* Core.framework */,
-				EAFF99DBC951A5786E93FCF6 /* Pods_UserInformationDomain.framework */,
-				80A17C59BE2720977E14EDF6 /* Pods_UserInformationDomainTests.framework */,
+				5F2CBCC005C9DE1527EB89EF /* Pods_UserInformationDomain.framework */,
+				2251FC4777B16019D6A907DD /* Pods_UserInformationDomainTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -401,18 +409,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				17B0AED12B0A833700E33270 /* GetExpectedWaterConsumptionUseCase.swift in Sources */,
+				17BBB1F22D693140005205E3 /* WeightUnit.swift in Sources */,
 				17B0AED62B0A834C00E33270 /* TemperatureFormat.swift in Sources */,
-				17B0AEDA2B0A83D700E33270 /* UserInformationObject.swift in Sources */,
+				176284482D59614900B1CC39 /* ThemePreference.swift in Sources */,
+				176284562D5964D200B1CC39 /* ThemeRepositoryImpl.swift in Sources */,
 				17B0AED32B0A834300E33270 /* UserInformation.swift in Sources */,
 				17AE2B622B030EF50049F554 /* UserInformationDomain.docc in Sources */,
+				176284602D59887F00B1CC39 /* Database.swift in Sources */,
 				17B0AECF2B0A831D00E33270 /* UserInformationDomainAssembly.swift in Sources */,
 				17B0AED42B0A834C00E33270 /* AmbienceTemperatureLevel.swift in Sources */,
+				1762844C2D59619500B1CC39 /* GetCurrentThemePreferenceUseCase.swift in Sources */,
 				17B0AED52B0A834C00E33270 /* WeightFormat.swift in Sources */,
+				176284542D59649200B1CC39 /* ThemeRepository.swift in Sources */,
+				176284582D59838900B1CC39 /* GetUserProfileInfoUseCase.swift in Sources */,
+				176284622D59888600B1CC39 /* Migrations.swift in Sources */,
+				174449F12D54184B00BC46F2 /* ActivityLevel.swift in Sources */,
+				17BBB1F02D693128005205E3 /* Weight.swift in Sources */,
 				17B0AED02B0A833700E33270 /* RegisterUserInformationUseCase.swift in Sources */,
-				17B0AED82B0A83CF00E33270 /* UserInformationRealmProvider.swift in Sources */,
 				17B0AED72B0A83C900E33270 /* UserInformationRepositoryImpl.swift in Sources */,
-				17B0AED92B0A83D700E33270 /* AmbienceTemperatureRangeEmbeddedObject.swift in Sources */,
 				27EE31090661B646FD9A66A5 /* UserInformationRepository.swift in Sources */,
+				176284522D5961D100B1CC39 /* SetCurrentThemePreferenceUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,7 +590,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -606,7 +622,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

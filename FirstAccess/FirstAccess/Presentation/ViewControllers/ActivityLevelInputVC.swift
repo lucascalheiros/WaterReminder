@@ -8,33 +8,24 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import UserInformationDomain
+import Combine
 
 class ActivityLevelInputVC: BaseChildPageController {
+
+    var cancellableBag = Set<AnyCancellable>()
+
 	private let disposeBag = DisposeBag()
 
-	lazy var activityLevelSlider = {
-		let slider = ActivitySliderView()
-		slider.translatesAutoresizingMaskIntoConstraints = false
-		view.addSubview(slider)
-		slider.addTarget(self, action: #selector(self.sliderValueDidChange(_:)), for: .valueChanged)
-		slider.addGestureRecognizer(
-			UITapGestureRecognizer(target: self, action: #selector(sliderTapped(gestureRecognizer:)))
-		)
-		return slider
-	}()
-	
-	private lazy var sliderLabelStackView: UIStackView = {
-		let stackView = UIStackView()
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.axis = .horizontal
-		stackView.alignment = .fill
-		stackView.distribution = .fillEqually
-		stackView.spacing = 20
-		view.addSubview(stackView)
-		return stackView
-	}()
-	
-	let weekNumber = Array(0 ... 7)
+    private lazy var cardStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 20
+        view.addConstrainedSubview(stackView)
+        return stackView
+    }()
 
     static func newInstance(firstAccessInformationViewModel: FirstAccessInformationSharedViewModel) -> ActivityLevelInputVC {
         ActivityLevelInputVC(firstAccessInformationViewModel: firstAccessInformationViewModel)
@@ -45,61 +36,30 @@ class ActivityLevelInputVC: BaseChildPageController {
 		
         informativeMainText.text = String(localized: "activityLevel.mainText")
 
-		weekNumber.forEach { number in
-			sliderLabelStackView.addArrangedSubview({
-				let label = UILabel()
-				label.textColor = .white
-				label.text = String(number)
-				label.textAlignment = .center
-				label.translatesAutoresizingMaskIntoConstraints = false
-				label.addGestureRecognizer(
-					IntParameterUITapGestureRecognizer(target: self, action: #selector(numberTapped), value: number)
-				)
-				label.isUserInteractionEnabled = true
-				view.bringSubviewToFront(label)
-				return label
-			}())
-		}
-		
+        ActivityLevel.allCases.forEach { activityLevel in
+            let cardView = ActivityLevelCardView(
+                title: activityLevel.title,
+                description: activityLevel.description
+            )
+            cardView.addTapListener { [weak self] in
+                self?.firstAccessInformationViewModel.setActivityLevel(activityLevel)
+            }
+            firstAccessInformationViewModel.$activityLevel.sinkUI {
+                cardView.isSelected = activityLevel == $0
+            }.store(in: &cancellableBag)
+            cardStackView.addConstrainedArrangedSubview(cardView)
+        }
+
 		NSLayoutConstraint.activate([
 			informativeMainText.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-			informativeMainText.bottomAnchor.constraint(equalTo: activityLevelSlider.topAnchor),
+			informativeMainText.bottomAnchor.constraint(equalTo: cardStackView.topAnchor, constant: -16),
 			informativeMainText.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -32),
 			informativeMainText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			activityLevelSlider.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -32),
-			activityLevelSlider.heightAnchor.constraint(equalToConstant: 60),
-			activityLevelSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			activityLevelSlider.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-			sliderLabelStackView.topAnchor.constraint(equalTo: activityLevelSlider.bottomAnchor, constant: 8),
-			sliderLabelStackView.leadingAnchor.constraint(equalTo: activityLevelSlider.leadingAnchor),
-			sliderLabelStackView.trailingAnchor.constraint(equalTo: activityLevelSlider.trailingAnchor)
+            cardStackView.topAnchor.constraint(equalTo: informativeMainText.bottomAnchor, constant: 16),
+            cardStackView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -32),
+            cardStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            cardStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32),
 		])
-	}
-	
-	@objc func sliderValueDidChange(_ sender: UISlider!) {
-		let roundedStepValue = round(sender.value / 1)
-		sender.value = roundedStepValue
-	}
-	
-	@objc func sliderTapped(gestureRecognizer: UIGestureRecognizer) {
-		let pointTapped: CGPoint = gestureRecognizer.location(in: view)
-		
-		let positionOfSlider: CGPoint = activityLevelSlider.frame.origin
-		let widthOfSlider: CGFloat = activityLevelSlider.frame.size.width
-		let newValue = ((pointTapped.x - positionOfSlider.x) * CGFloat(activityLevelSlider.maximumValue) /
-						widthOfSlider)
-		let roundedStepValue = Float(round(newValue / 1))
-
-		activityLevelSlider.setValue(roundedStepValue, animated: true)
-		self.firstAccessInformationViewModel.exerciseDays.accept(Float(roundedStepValue))
-
-	}
-
-	@objc func numberTapped(_ sender: IntParameterUITapGestureRecognizer) {
-		if let value = sender.value {
-			activityLevelSlider.setValue(Float(value), animated: true)
-			self.firstAccessInformationViewModel.exerciseDays.accept(Float(value))
-		}
 	}
 }
 class IntParameterUITapGestureRecognizer: UITapGestureRecognizer {

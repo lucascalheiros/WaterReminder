@@ -19,7 +19,9 @@ class WeightInputVC: BaseChildPageController {
 			.map { _ in
 				picker.selectedWeightInfo
 			}
-			.bind(to: firstAccessInformationViewModel.weightInfo)
+            .subscribe(onNext: { [weak self] in
+                self?.firstAccessInformationViewModel.setWeightInfo($0)
+            })
 			.disposed(by: disposeBag)
 		return picker
 	}()

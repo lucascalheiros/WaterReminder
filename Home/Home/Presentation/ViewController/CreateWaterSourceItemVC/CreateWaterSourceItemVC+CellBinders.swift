@@ -10,10 +10,10 @@ import WaterManagementDomain
 
 extension CreateWaterSourceItemVC {
     func bindWaterSourceTypeCell(_ cell: WaterSourceTypeSettingCell) {
-        cell.titleLabel.text = String(localized: "createWaterSource.cellTitle.waterSourceType")
+        cell.titleLabel.text = String(localized: "Drink")
 
-        createWaterSourceItemViewModel.$waterSourceType.sink {
-            cell.detailLabel.text = $0.exhibitionName
+        createWaterSourceItemViewModel.$drink.compactMap {$0}.sinkUI {
+            cell.detailLabel.text = $0.name
             cell.detailLabel.textColor = $0.color
         }.store(in: &cell.cancellableBag)
 
@@ -21,15 +21,15 @@ extension CreateWaterSourceItemVC {
     }
 
     func bindWaterSourceVolumeCell(_ cell: WaterSourceTypeSettingCell) {
-        createWaterSourceItemViewModel.waterWithFormat.sink {
-            cell.detailLabel.text = $0.exhibitionValueWithFormat()
+        createWaterSourceItemViewModel.waterWithFormat.sinkUI {
+            cell.detailLabel.text = $0.formattedValueAndUnit
         }.store(in: &cell.cancellableBag)
 
-        createWaterSourceItemViewModel.$waterSourceType.sink {
+        createWaterSourceItemViewModel.$drink.compactMap {$0}.sinkUI {
             cell.detailLabel.textColor = $0.color
         }.store(in: &cell.cancellableBag)
 
-        cell.titleLabel.text = String(localized: "createWaterSource.cellTitle.volume")
+        cell.titleLabel.text = String(localized: "Volume")
         cell.selectionStyle = .none
     }
 }

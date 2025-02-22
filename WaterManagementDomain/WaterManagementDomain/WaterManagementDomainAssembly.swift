@@ -7,74 +7,119 @@
 
 import Swinject
 import SwinjectAutoregistration
+import GRDB
 
 public class WaterManagementDomainAssembly: Assembly {
     public init() {}
 
-	public func assemble(container: Container) {
-		assembleRepositories(container)
-		assembleUseCases(container)
-	}
+    public func assemble(container: Container) {
+        assembleRepositories(container)
+        assembleUseCases(container)
+    }
 
-	func assembleRepositories(_ container: Container) {
-		container.autoregister(
-			DailyWaterConsumptionRepository.self,
-			initializer: DailyWaterConsumptionRepositoryImpl.init
-		)
-		container.autoregister(
-			WaterSourceRepository.self,
-			initializer: WaterSourceRepositoryImpl.init
-		)
-		container.autoregister(
-			WaterConsumedRepository.self,
-			initializer: WaterConsumedRepositoryImpl.init
-		)
-		container.autoregister(
-			VolumeFormatRepository.self,
-			initializer: VolumeFormatRepositoryImpl.init
-		)
-	}
-
-	func assembleUseCases(_ container: Container) {
-		container.autoregister(
-			RegisterDailyWaterConsumptionUseCase.self,
-			initializer: RegisterDailyWaterConsumptionUseCaseImpl.init
-		)
-		container.autoregister(
-			GetDailyWaterConsumptionUseCase.self,
-			initializer: GetDailyWaterConsumptionUseCaseImpl.init
-		)
-		container.autoregister(
-			ManageWaterConsumedUseCase.self,
-			initializer: ManageWaterConsumedUseCaseImpl.init
-		)
-		container.autoregister(
-			ManageWaterSourceUseCase.self,
-			initializer: ManageWaterSourceUseCaseImpl.init
-		)
-		container.autoregister(
-			GetDailyWaterConsumptionUseCase.self,
-			initializer: GetDailyWaterConsumptionUseCaseImpl.init
-		)
-		container.autoregister(
-			GetWaterSourceUseCase.self,
-			initializer: GetWaterSourceUseCaseImpl.init
-		)
-		container.autoregister(
-			GetWaterConsumedUseCase.self,
-			initializer: GetWaterConsumedUseCaseImpl.init
-		)
-		container.autoregister(
-			GetVolumeFormatUseCase.self,
-			initializer: GetVolumeFormatUseCaseImpl.init
-		)
+    func assembleRepositories(_ container: Container) {
         container.autoregister(
-            RegisterVolumeFormatUseCase.self,
-            initializer: RegisterVolumeFormatUseCaseImpl.init
+            DatabaseQueue.self,
+            name: databaseFile,
+            initializer: {
+                return  try! getDatabase(databaseFile)
+            }
+        ).inObjectScope(.container)
+        container.autoregister(
+            DailyWaterConsumptionRepository.self,
+            initializer: {
+                DailyWaterConsumptionRepositoryImpl.init(dbQueue: container.resolve(DatabaseQueue.self, name: databaseFile)!)
+            }
         )
         container.autoregister(
-            GetConsumedWaterPercentageUseCase.self,
-			initializer: GetConsumedWaterPercentageUseCaseImpl.init
-		)
-	}
+            WaterSourceRepository.self,
+            initializer: {
+                WaterSourceRepositoryImpl.init(dbQueue: container.resolve(DatabaseQueue.self, name: databaseFile)!)
+            }
+        )
+        container.autoregister(
+            WaterConsumedRepository.self,
+            initializer: {
+                WaterConsumedRepositoryImpl.init(dbQueue: container.resolve(DatabaseQueue.self, name: databaseFile)!)
+            }
+        )
+        container.autoregister(
+            VolumeFormatRepository.self,
+            initializer: VolumeFormatRepositoryImpl.init
+        )
+        container.autoregister(
+            DrinkRepository.self,
+            initializer: {
+                DrinkRepositoryImpl.init(dbQueue: container.resolve(DatabaseQueue.self, name: databaseFile)!)
+            }
+        )
+    }
+
+    func assembleUseCases(_ container: Container) {
+        container.autoregister(
+            RegisterDailyWaterConsumptionUseCase.self,
+            initializer: RegisterDailyWaterConsumptionUseCase.init
+        )
+        container.autoregister(
+            GetDailyWaterConsumptionUseCase.self,
+            initializer: GetDailyWaterConsumptionUseCase.init
+        )
+        container.autoregister(
+            DeleteWaterConsumedUseCase.self,
+            initializer: DeleteWaterConsumedUseCase.init
+        )
+        container.autoregister(
+            UpdateWaterSourceUseCase.self,
+            initializer: UpdateWaterSourceUseCase.init
+        )
+        container.autoregister(
+            GetDailyWaterConsumptionUseCase.self,
+            initializer: GetDailyWaterConsumptionUseCase.init
+        )
+        container.autoregister(
+            GetWaterSourceUseCase.self,
+            initializer: GetWaterSourceUseCase.init
+        )
+        container.autoregister(
+            GetWaterConsumedUseCase.self,
+            initializer: GetWaterConsumedUseCase.init
+        )
+        container.autoregister(
+            GetVolumeFormatUseCase.self,
+            initializer: GetVolumeFormatUseCase.init
+        )
+        container.autoregister(
+            RegisterVolumeFormatUseCase.self,
+            initializer: RegisterVolumeFormatUseCase.init
+        )
+        container.autoregister(
+            GetConsumptionSummaryUseCase.self,
+            initializer: GetConsumptionSummaryUseCase.init
+        )
+        container.autoregister(
+            GetDrinkUseCase.self,
+            initializer: GetDrinkUseCase.init
+        )
+        container.autoregister(
+            RegisterWaterConsumptionUseCase.self,
+            initializer: RegisterWaterConsumptionUseCase.init
+        )
+        container.autoregister(
+            CreateWaterSourceUseCase.self,
+            initializer: CreateWaterSourceUseCase.init
+        )
+        container.autoregister(
+            DeleteWaterSourceUseCase.self,
+            initializer: DeleteWaterSourceUseCase.init
+        )
+        container.autoregister(
+            CreateDrinkUseCase.self,
+            initializer: CreateDrinkUseCase.init
+        )
+        container.autoregister(
+            DeleteDrinkUseCase.self,
+            initializer: DeleteDrinkUseCase.init
+        )
+    }
 }
+

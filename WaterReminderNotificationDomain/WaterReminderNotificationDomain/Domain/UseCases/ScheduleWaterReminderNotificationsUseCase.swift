@@ -21,8 +21,8 @@ class ScheduleWaterReminderNotificationsUseCase {
 		self.notificationSettingsRepository = notificationSettingsRepository
 	}
 
-	private func scheduleNotifications(startTime: TimePeriod, endTime: TimePeriod, frequency: NotificationFrequencyEnum) {
-		waterReminderNotificationManager.clearAllWaterReminderNotifications()
+	private func scheduleNotifications(startTime: TimePeriod, endTime: TimePeriod, frequency: NotificationFrequencyEnum) async {
+		await waterReminderNotificationManager.clearAllWaterReminderNotifications()
 		let intervalPeriod = frequency.timePeriod()
 		let intervalTimes = (endTime - startTime) / intervalPeriod
 		(0 ..< intervalTimes).forEach { times in
@@ -34,8 +34,8 @@ class ScheduleWaterReminderNotificationsUseCase {
 		}
 	}
 
-	private func scheduleNotifications(timePeriodList: [TimePeriod], weekDays: [WeekDaysEnum]) {
-		waterReminderNotificationManager.clearAllWaterReminderNotifications()
+    private func scheduleNotifications(timePeriodList: [TimePeriod], weekDays: [WeekDaysEnum]) async {
+		await waterReminderNotificationManager.clearAllWaterReminderNotifications()
 		for weekDay in weekDays {
 			for reminderTime in timePeriodList {
 				var date = DateComponents()
@@ -53,12 +53,12 @@ class ScheduleWaterReminderNotificationsUseCase {
 			let timePeriodList = try await notificationSettingsRepository.fixedNotifications.awaitFirst().filter { $0.enabled }.map { $0.timePeriod }
 			let excludedWeekDays = try await notificationSettingsRepository.notificationWeekDaysState.awaitFirst().filter { !$0.enabled }.map { $0.weekDay }
 			let weekDays = WeekDaysEnum.allCases.filter { !excludedWeekDays.contains($0) }
-			scheduleNotifications(
+			await scheduleNotifications(
 				timePeriodList: timePeriodList,
 				weekDays: weekDays
 				)
 		} else {
-			waterReminderNotificationManager.clearAllWaterReminderNotifications()
+            await waterReminderNotificationManager.clearAllWaterReminderNotifications()
 		}
 	}
 }

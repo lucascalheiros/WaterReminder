@@ -60,7 +60,7 @@ public class SettingsFlow: Flow {
         let viewController = container.resolve(ManageNotificationsVC.self)!
         let nav = UINavigationController(rootViewController: viewController)
         nav.modalPresentationStyle = .pageSheet
-        nav.setDefaultAppearance()
+        nav.setModalAppearance()
 
         if let sheet = nav.sheetPresentationController {
             sheet.detents = [.large()]
@@ -75,7 +75,7 @@ public class SettingsFlow: Flow {
         let viewController = container.resolve(AddFixedNotificationVC.self)!
         let nav = UINavigationController(rootViewController: viewController)
         nav.modalPresentationStyle = .pageSheet
-        nav.setDefaultAppearance()
+        nav.setModalAppearance()
 
         if let sheet = nav.sheetPresentationController {
             sheet.detents = [.medium()]

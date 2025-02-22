@@ -24,7 +24,6 @@
 		175F93172B09017800758C50 /* SettingsSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93142B09017800758C50 /* SettingsSwitchTableViewCell.swift */; };
 		175F931A2B09018600758C50 /* SettingsFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93182B09018600758C50 /* SettingsFlow.swift */; };
 		175F931B2B09018600758C50 /* SettingsFlowSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F93192B09018600758C50 /* SettingsFlowSteps.swift */; };
-		17871D362B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D352B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework */; };
 		17871D372B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D352B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17871D3A2B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D392B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework */; };
 		17871D3B2B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D392B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -36,6 +35,8 @@
 		17AE2B0C2B030BE10049F554 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17AE2B012B030BE10049F554 /* Settings.framework */; };
 		17AE2B112B030BE10049F554 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2B102B030BE10049F554 /* SettingsTests.swift */; };
 		17BD79FB2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BD79FA2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift */; };
+		17D0439E2D52F9DC008915FE /* WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17D0439D2D52F9DC008915FE /* WaterManagementDomain.framework */; };
+		17D0439F2D52F9DC008915FE /* WaterManagementDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17D0439D2D52F9DC008915FE /* WaterManagementDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17ED03052B1B809600BA33B7 /* AddFixedNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ED03042B1B809600BA33B7 /* AddFixedNotificationViewModel.swift */; };
 		27EE324795C56290DFD19E82 /* SettingsSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3A1F1D3411CFEE6CF88B /* SettingsSelectionTableViewCell.swift */; };
 		27EE35355BECB93DFC2984D2 /* ManageNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3DFB9F07FB20DF35CA17 /* ManageNotificationsVC.swift */; };
@@ -45,8 +46,8 @@
 		27EE38AD43381BCF0003E9A6 /* SettingsVC+SelectHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3B33BC4731315DB510BA /* SettingsVC+SelectHandlers.swift */; };
 		27EE3E88038EC640D6FA6DCC /* SettingsVC+CellBinders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3DD18D7F8B080A6BE0B4 /* SettingsVC+CellBinders.swift */; };
 		27EE3F4C2B5A2EAACD9B4F3E /* SettingsVC+Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE32A26DEC4393C2C6CA8C /* SettingsVC+Sections.swift */; };
-		2EDD4AE1DD4717116D9277F1 /* Pods_Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31BA7263DFEC32BC05C0E11 /* Pods_Settings.framework */; };
-		E02FCE9E2B237247F7773CAD /* Pods_SettingsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA9687BFF758CF47B67BD97 /* Pods_SettingsTests.framework */; };
+		CCFFF1BC540FFB80371C4B2E /* Pods_Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D206A3FADBBC5C02BFB3C18 /* Pods_Settings.framework */; };
+		F1C54A7FE9CB35E28ED21AF2 /* Pods_SettingsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6719C41EE794FA7576B9600C /* Pods_SettingsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				17D0439F2D52F9DC008915FE /* WaterManagementDomain.framework in Embed Frameworks */,
 				17871D372B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework in Embed Frameworks */,
 				17871D3B2B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework in Embed Frameworks */,
 			);
@@ -106,6 +108,7 @@
 		17AE2B0B2B030BE10049F554 /* SettingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SettingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17AE2B102B030BE10049F554 /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
 		17BD79FA2B0EED9600F16C32 /* ManageNotificationsVC+Datasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManageNotificationsVC+Datasource.swift"; sourceTree = "<group>"; };
+		17D0439D2D52F9DC008915FE /* WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17ED03042B1B809600BA33B7 /* AddFixedNotificationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFixedNotificationViewModel.swift; sourceTree = "<group>"; };
 		27EE32A26DEC4393C2C6CA8C /* SettingsVC+Sections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+Sections.swift"; sourceTree = "<group>"; };
 		27EE3A1F1D3411CFEE6CF88B /* SettingsSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSelectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -115,11 +118,11 @@
 		27EE3DD18D7F8B080A6BE0B4 /* SettingsVC+CellBinders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SettingsVC+CellBinders.swift"; sourceTree = "<group>"; };
 		27EE3DF2E0278AD04261D005 /* SettingsDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDetailTableViewCell.swift; sourceTree = "<group>"; };
 		27EE3DFB9F07FB20DF35CA17 /* ManageNotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageNotificationsVC.swift; sourceTree = "<group>"; };
+		3D206A3FADBBC5C02BFB3C18 /* Pods_Settings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Settings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6719C41EE794FA7576B9600C /* Pods_SettingsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SettingsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ECAB27A228BAC271F038264 /* Pods-Settings.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Settings.debug.xcconfig"; path = "Target Support Files/Pods-Settings/Pods-Settings.debug.xcconfig"; sourceTree = "<group>"; };
 		B8103F62BCE6AE9B23C1DEE0 /* Pods-SettingsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SettingsTests.release.xcconfig"; path = "Target Support Files/Pods-SettingsTests/Pods-SettingsTests.release.xcconfig"; sourceTree = "<group>"; };
-		BFA9687BFF758CF47B67BD97 /* Pods_SettingsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SettingsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E85855B3A144AA436D67B98F /* Pods-Settings.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Settings.release.xcconfig"; path = "Target Support Files/Pods-Settings/Pods-Settings.release.xcconfig"; sourceTree = "<group>"; };
-		F31BA7263DFEC32BC05C0E11 /* Pods_Settings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Settings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,9 +130,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17D0439E2D52F9DC008915FE /* WaterManagementDomain.framework in Frameworks */,
 				17871D3A2B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework in Frameworks */,
-				2EDD4AE1DD4717116D9277F1 /* Pods_Settings.framework in Frameworks */,
-				17871D362B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework in Frameworks */,
+				CCFFF1BC540FFB80371C4B2E /* Pods_Settings.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17AE2B0C2B030BE10049F554 /* Settings.framework in Frameworks */,
-				E02FCE9E2B237247F7773CAD /* Pods_SettingsTests.framework in Frameworks */,
+				F1C54A7FE9CB35E28ED21AF2 /* Pods_SettingsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +271,7 @@
 				17AE2B022B030BE10049F554 /* Products */,
 				34C392F2DDBA053BB1CF1BEA /* Pods */,
 				9FCDE4278B08DA4BBA1475D1 /* Frameworks */,
+				17D043992D52F622008915FE /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -324,6 +328,14 @@
 			path = ManageNotificationsVC;
 			sourceTree = "<group>";
 		};
+		17D043992D52F622008915FE /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				17871D352B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		34C392F2DDBA053BB1CF1BEA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,12 +351,12 @@
 		9FCDE4278B08DA4BBA1475D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17D0439D2D52F9DC008915FE /* WaterManagementDomain.framework */,
 				17871D392B1A62EE0022D0E9 /* WaterReminderNotificationDomain.framework */,
-				17871D352B1A62DA0022D0E9 /* Pods_WaterManagementDomain.framework */,
 				175F93812B09031B00758C50 /* WaterManagementDomain.framework */,
 				175F93822B09031B00758C50 /* WaterReminderNotificationDomain.framework */,
-				F31BA7263DFEC32BC05C0E11 /* Pods_Settings.framework */,
-				BFA9687BFF758CF47B67BD97 /* Pods_SettingsTests.framework */,
+				3D206A3FADBBC5C02BFB3C18 /* Pods_Settings.framework */,
+				6719C41EE794FA7576B9600C /* Pods_SettingsTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -700,7 +712,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -732,7 +744,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

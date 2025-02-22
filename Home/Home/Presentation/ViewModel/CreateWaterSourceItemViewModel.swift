@@ -11,32 +11,46 @@ import RxSwift
 
 class CreateWaterSourceItemViewModel {
 
-    let disposeBag: DisposeBag = DisposeBag()
-    let getVolumeFormatUseCase: GetVolumeFormatUseCase
-    let manageWaterSourceUseCase: ManageWaterSourceUseCase
+    private let getVolumeFormatUseCase: GetVolumeFormatUseCase
+    private let createWaterSourceUseCase: CreateWaterSourceUseCase
+    private let getDrinkUseCase: GetDrinkUseCase
 
-    @Published var waterSourceType = WaterSourceType.water
+    var cancellableBag = Set<AnyCancellable>()
+
+    @Published var drink: Drink?
+    @Published var drinks = [Drink]()
     @Published var waterInMl = 500
-    @Published var volumeFormat: VolumeFormat = VolumeFormat.metric
+    @Published var volumeFormat: SystemFormat = SystemFormat.metric
     
     lazy var waterWithFormat = $waterInMl.combineLatest($volumeFormat).map {
-        WaterWithFormat(waterInML: $0, volumeFormat: $1)
+        Volume($0, .milliliters).to($1)
     }
 
-    init(getVolumeFormatUseCase: GetVolumeFormatUseCase, manageWaterSourceUseCase: ManageWaterSourceUseCase) {
+    init(
+        getVolumeFormatUseCase: GetVolumeFormatUseCase,
+        createWaterSourceUseCase: CreateWaterSourceUseCase,
+        getDrinkUseCase: GetDrinkUseCase
+    ) {
         self.getVolumeFormatUseCase = getVolumeFormatUseCase
-        self.manageWaterSourceUseCase = manageWaterSourceUseCase
+        self.createWaterSourceUseCase = createWaterSourceUseCase
+        self.getDrinkUseCase = getDrinkUseCase
 
-        getVolumeFormatUseCase.volumeFormat().subscribe(onNext: { self.volumeFormat = $0 }).disposed(by: disposeBag)
+        getVolumeFormatUseCase.execute().sinkUI { self.volumeFormat = $0 }.store(in: &cancellableBag)
+        getDrinkUseCase.execute().first().sinkUI {
+            self.drink = $0.first
+            self.drinks = $0
+        }.store(in: &cancellableBag)
     }
 
-    func getCurrentWaterWithFormat() -> WaterWithFormat {
-        WaterWithFormat(waterInML: waterInMl, volumeFormat: volumeFormat)
+    func getCurrentWaterWithFormat() -> Volume {
+        Volume(waterInMl, .milliliters).to(volumeFormat)
     }
 
     func saveWaterSource() {
-        manageWaterSourceUseCase.createWaterSource(waterVolume: waterInMl, waterSourceType: waterSourceType)
-            .subscribe(onCompleted: {}).disposed(by: disposeBag)
+        guard let drink else { return }
+        Task {
+            try? await createWaterSourceUseCase.execute(Volume(waterInMl.toDouble(), .milliliters), drink)
+        }
     }
 
 }
