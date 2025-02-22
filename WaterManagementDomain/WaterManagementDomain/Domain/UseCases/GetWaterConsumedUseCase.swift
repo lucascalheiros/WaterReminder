@@ -25,12 +25,12 @@ public class GetWaterConsumedUseCase {
     public func getWaterConsumedVolumeByPeriod(_ startPeriod: Date, _ endPeriod: Date) -> AnyPublisher<Volume, any Error> {
 		wrapWithFormat(
 			getWaterConsumedList(startPeriod, endPeriod)
-                .map { $0.map { $0.consumedCup.volume }.reduce(0, { $0 + $1 }) }
+                .map { $0.map { $0.hydrationVolume }.reduce(0, +) }
                 .eraseToAnyPublisher()
 		)
 	}
 
-	private func wrapWithFormat(_ waterInMl: AnyPublisher<Int, any Error>) -> AnyPublisher<Volume, any Error> {
+	private func wrapWithFormat(_ waterInMl: AnyPublisher<Double, any Error>) -> AnyPublisher<Volume, any Error> {
         return waterInMl.combineLatest(getVolumeFormatUseCase.execute().setFailureType(to: Error.self)) { volume, format in
             return Volume(volume, .milliliters).to(format)
         }.eraseToAnyPublisher()

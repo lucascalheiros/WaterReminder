@@ -17,7 +17,7 @@ public struct ConsumptionSummary {
     public var percentageForDrink: [PercentageForDrink] {
         let maxVolume = max(expectedVolume.to(.milliliters).value, totalConsumedVolume.value)
         return Dictionary(grouping: consumedCups, by: { $0.consumedCup.drinkId }).map { waterSourceType, waterConsumedListByType in
-            let volumePerType = waterConsumedListByType.map { $0.consumedCup.volume }.reduce(0, +).toDouble()
+            let volumePerType = waterConsumedListByType.map { $0.hydrationVolume }.reduce(0.0, +)
             let percentage = volumePerType / maxVolume
             let waterConsumed = waterConsumedListByType.first!
             return PercentageForDrink(percentage: Float(percentage), drink: waterConsumed.drink)
@@ -25,7 +25,8 @@ public struct ConsumptionSummary {
     }
 
     public var totalConsumedVolume: Volume {
-        let volume = consumedCups.map { $0.consumedCup.volume }.reduce(0, +)
+        let volume = consumedCups.map { $0.hydrationVolume }.reduce(0, +)
         return Volume(volume, .milliliters)
     }
+
 }

@@ -95,9 +95,10 @@ class HistoryChartViewModel: ObservableObject {
         static func fromWaterConsumedList(_ waterConsumed: [ConsumedCupInfo], _ volumeFormat: SystemFormat) -> [WaterIntake] {
             let group = Dictionary(grouping: waterConsumed, by: { GroupingKey(date: Calendar.current.dateComponents([.year, .month, .day], from: $0.consumedCup.consumptionTime),  drinkInfo: $0.drink) })
             return group.map {
-                WaterIntake(
+                let volumeInMl = $0.value.map { $0.hydrationVolume }.reduce(0, +)
+                return WaterIntake(
                     date: $0.key.date,
-                    volume: $0.value.map { volumeFormat.fromMetric($0.consumedCup.volume.toFloat()) }.reduce(0, +),
+                    volume: Volume(volumeInMl, .milliliters).to(volumeFormat).value.float,
                     drinkInfo: $0.key.drinkInfo
                 )
             }.sorted(by: { $0.volume > $1.volume })
