@@ -5,49 +5,46 @@
 //  Created by Lucas Calheiros on 03/08/23.
 //
 
-import RxSwift
-import RxCocoa
 import WaterManagementDomain
+import Combine
 
 class DailyWaterSelectorDelegate {
-	let disposeBag = DisposeBag()
+    private let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
+    private let registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase
+    private let getVolumeFormatUseCase: GetVolumeFormatUseCase
+    private let registerVolumeFormatUseCase: RegisterVolumeFormatUseCase
 
-	private let getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase
-	private let registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase
-	private let getVolumeFormatUseCase: GetVolumeFormatUseCase
-	private let registerVolumeFormatUseCase: RegisterVolumeFormatUseCase
+    lazy var volumeWithFormat = {
+        getDailyWaterConsumptionUseCase.lastDailyWaterConsumption().combineLatest(
+            volumeFormat.setFailureType(to: Error.self)
+        ) { lastDailyWaterConsumption, volumeFormat in
+            Volume(lastDailyWaterConsumption?.expectedVolume ?? 0, .milliliters).to(volumeFormat)
+        }.catch{_ in Empty<Volume, Never>()}
+    }()
 
-	lazy var volumeWithFormat = {
-		Observable.combineLatest(
-			getDailyWaterConsumptionUseCase.lastDailyWaterConsumption(),
-            volumeFormat
-		) { lastDailyWaterConsumption, volumeFormat in
-			WaterWithFormat(waterInML: lastDailyWaterConsumption?.expectedVolume ?? 0, volumeFormat: volumeFormat)
-		}
-	}()
+    lazy var volumeFormat = getVolumeFormatUseCase.execute()
 
-    lazy var volumeFormat = getVolumeFormatUseCase.volumeFormat()
+    init(
+        getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase,
+        registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase,
+        getVolumeFormatUseCase: GetVolumeFormatUseCase,
+        registerVolumeFormatUseCase: RegisterVolumeFormatUseCase
+    ) {
+        self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
+        self.registerDailyWaterConsumptionUseCase = registerDailyWaterConsumptionUseCase
+        self.getVolumeFormatUseCase = getVolumeFormatUseCase
+        self.registerVolumeFormatUseCase = registerVolumeFormatUseCase
+    }
 
-	init(
-		getDailyWaterConsumptionUseCase: GetDailyWaterConsumptionUseCase,
-		registerDailyWaterConsumptionUseCase: RegisterDailyWaterConsumptionUseCase,
-		getVolumeFormatUseCase: GetVolumeFormatUseCase,
-		registerVolumeFormatUseCase: RegisterVolumeFormatUseCase
-	) {
-		self.getDailyWaterConsumptionUseCase = getDailyWaterConsumptionUseCase
-		self.registerDailyWaterConsumptionUseCase = registerDailyWaterConsumptionUseCase
-		self.getVolumeFormatUseCase = getVolumeFormatUseCase
-		self.registerVolumeFormatUseCase = registerVolumeFormatUseCase
-	}
+    func setVolumeAndFormat(_ volumeInFormat: Float, _ format: SystemFormat) {
+        let volumeMetric = Int(format.toMetric(volumeInFormat))
+        Task {
+            try await registerDailyWaterConsumptionUseCase.registerDailyWaterConsumption(waterValue: volumeMetric)
+            registerVolumeFormatUseCase.setVolumeFormat(format)
+        }
+    }
 
-	func setVolumeAndFormat(_ volumeInFormat: Float, _ format: VolumeFormat) {
-		let volumeMetric = Int(format.toMetric(volumeInFormat))
-		registerDailyWaterConsumptionUseCase.registerDailyWaterConsumption(waterValue: volumeMetric)
-			.subscribe().disposed(by: disposeBag)
-		registerVolumeFormatUseCase.setVolumeFormat(format)
-	}
-
-    func setFormat(_ format: VolumeFormat) {
+    func setFormat(_ format: SystemFormat) {
         registerVolumeFormatUseCase.setVolumeFormat(format)
     }
 }

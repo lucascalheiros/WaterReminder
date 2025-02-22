@@ -6,15 +6,29 @@
 //
 
 import UIKit
+import Components
 
 public extension UINavigationController {
-	func setDefaultAppearance() {
+    func setDefaultAppearance(titleColor: UIColor? = nil) {
 		let navigationBarAppearance = UINavigationBarAppearance()
-		navigationBarAppearance.backgroundColor = AppColorGroup.background.color
+        navigationBarAppearance.configureWithTransparentBackground()
+        navigationBarAppearance.backgroundColor = DefaultComponentsTheme.current.background.color.withAlphaComponent(0.6)
 		navigationBarAppearance.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont.screenTitle
+            NSAttributedString.Key.foregroundColor: titleColor ?? DefaultComponentsTheme.current.background.onColor,
+            NSAttributedString.Key.font: DefaultComponentsTheme.current.screenTitle
         ]
+        self.navigationBar.prefersLargeTitles = true
 		self.navigationBar.standardAppearance = navigationBarAppearance
+        navigationBar.isTranslucent = true
 	}
+
+    func setModalAppearance(titleColor: UIColor? = nil) {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.backgroundColor = DefaultComponentsTheme.current.background.color
+        navigationBarAppearance.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor: titleColor ?? DefaultComponentsTheme.current.background.onColor,
+            NSAttributedString.Key.font: DefaultComponentsTheme.current.screenTitle
+        ]
+        self.navigationBar.standardAppearance = navigationBarAppearance
+    }
 }

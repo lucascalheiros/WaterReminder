@@ -77,13 +77,13 @@ class PeriodSelectorModalVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        periodSelectorDelegate.initialTime.sink { time in
+        periodSelectorDelegate.initialTime.sinkUI { time in
             let index = self.timeToIndex(time)
             self.initialTimeIndex.accept(index)
             self.initialNotificationTime.selectRow(self.timeToIndex(time), inComponent: 0, animated: true)
         }.store(in: &cancellableBag)
 
-        periodSelectorDelegate.finalTime.sink { time in
+        periodSelectorDelegate.finalTime.sinkUI { time in
             let index = self.timeToIndex(time)
             self.finalTimeIndex.accept(index)
             self.finalNotificationTime.selectRow(index, inComponent: 0, animated: true)

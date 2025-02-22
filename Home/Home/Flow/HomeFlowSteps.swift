@@ -6,9 +6,12 @@
 //
 
 import RxFlow
+import WaterManagementDomain
 
 public enum HomeFlowSteps: Step {
 	case home
 	case waterSourceEditor
     case createWaterSource
+    case addDrink
+    case drinkShortcut(Drink)
 }

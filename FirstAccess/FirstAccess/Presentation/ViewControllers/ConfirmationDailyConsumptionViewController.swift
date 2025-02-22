@@ -6,80 +6,70 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 import Components
 import Common
 import Core
 import WaterManagementDomain
+import Combine
 
 class ConfirmationDailyConsumptionVC: BaseChildPageController {
-	private let disposeBag = DisposeBag()
+    var cancellableBag = Set<AnyCancellable>()
 
 	private lazy var dailyWaterEditText = {
 		let text = InputFieldWithSuffix()
 		return text
 	}()
 
-	private var currentVolumeFormat = VolumeFormat.metric
-
 	private lazy var volumeFormatSegmentationControl = {
-		let button =  UISegmentedControl(items: VolumeFormat.allCases.map { $0.localizedDisplay })
-		dailyWaterEditText.suffix.text = VolumeFormat.metric.formatDisplay
+		let button =  UISegmentedControl(items: SystemFormat.allCases.map { $0.localizedDisplay })
 		button.selectedSegmentIndex = 0
         button.backgroundColor = AppColorGroup.surface.color
 		let attributes = [
-			NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.foregroundColor: AppColorGroup.surface.onColor,
 			NSAttributedString.Key.font: UIFont.body
 		]
+        let attributesSelected = [
+            NSAttributedString.Key.foregroundColor: AppColorGroup.primary.onColor,
+            NSAttributedString.Key.font: UIFont.body
+        ]
 		button.setTitleTextAttributes(attributes, for: .normal)
-		button.setTitleTextAttributes(attributes, for: .selected)
+		button.setTitleTextAttributes(attributesSelected, for: .selected)
         button.selectedSegmentTintColor = AppColorGroup.primary.color
-		button.rx.selectedSegmentIndex.bind {
-			let format = (VolumeFormat(rawValue: $0) ?? VolumeFormat.metric)
-			self.dailyWaterEditText.suffix.text = format.formatDisplay
-			self.dailyWaterEditText.text = String(format: "%.1f", self.waterVolumeTo(format))
-			self.currentVolumeFormat = format
-		}.disposed(by: disposeBag)
+        button.addTarget(self, action: #selector(volumeFormatSegmentationControlChanged), for: .valueChanged)
 		return button
 	}()
 
 	private lazy var confirmationBtn = {
 		let button = UIButton()
 		button.setTitle(String(localized: "generic.confirm"), for: .normal)
+        button.setTitleColor(AppColorGroup.background.onColor, for: .normal)
         button.titleLabel?.font = .buttonBig
-		button.rx.tap.bind {
-			self.onConfirmPressed()
-		}.disposed(by: disposeBag)
+        button.addTapListener { [weak self] in
+            self?.onConfirmPressed()
+        }
 		return button
 	}()
 
     private lazy var timePeriodSelector = {
         let picker = TimePeriodPickerView()
         picker.updateData(dayTime: firstAccessInformationViewModel.timePeriodFifteenMinutesSpaced)
-        picker.selectRow(firstAccessInformationViewModel.initialTimeIndex.value, inComponent: 0, animated: false)
-        picker.selectRow(firstAccessInformationViewModel.finalTimeIndex.value, inComponent: 1, animated: false)
-        picker.rx.itemSelected.map { _ in
-            return picker
-        }.bind { [weak self] picker in
-            self?.firstAccessInformationViewModel.initialTimeIndex.accept(picker.initialTimeIndex)
-            self?.firstAccessInformationViewModel.finalTimeIndex.accept(picker.finalTimeIndex)
+        picker.selectRow(firstAccessInformationViewModel.initialTimeIndex, inComponent: 0, animated: false)
+        picker.selectRow(firstAccessInformationViewModel.finalTimeIndex, inComponent: 1, animated: false)
+        picker.valueChangeListener = { [weak self] in
+            self?.firstAccessInformationViewModel.setInitialTimeIndex($0.initialTimeIndex)
+            self?.firstAccessInformationViewModel.setFinalTimeIndex($0.finalTimeIndex)
         }
-            .disposed(by: disposeBag)
         return picker
     }()
 
-	private lazy var shouldRemindSwitch = {
-		let uiSwitch = SwitchWithLabel()
-		uiSwitch.label.text = String(localized: "welcomeConfirmation.remindMe")
+    private lazy var shouldRemindSwitch = {
+        let uiSwitch = SwitchWithLabel()
+        uiSwitch.label.text = String(localized: "welcomeConfirmation.remindMe")
         uiSwitch.label.font = UIFont.h4
-		uiSwitch.switchView.setOn(true, animated: false)
-		uiSwitch.switchView.rx.controlEvent(.valueChanged)
-			.withLatestFrom(uiSwitch.switchView.rx.value)
-			.bind(to: firstAccessInformationViewModel.shouldRemind)
-			.disposed(by: disposeBag)
-		return uiSwitch
-	}()
+        uiSwitch.switchView.setOn(true, animated: false)
+        uiSwitch.switchView.addTarget(self, action: #selector(onShouldRemindSwitchChanged), for: .valueChanged)
+        return uiSwitch
+    }()
 
 	let viewWrapper = UIView()
 
@@ -89,32 +79,42 @@ class ConfirmationDailyConsumptionVC: BaseChildPageController {
 
 	override func viewWillAppear(_ animated: Bool) {
 		firstAccessInformationViewModel.expectedWaterVolume
-			.safeAsSingle()
-			.subscribe(onSuccess: { expectedWaterVolume in
-				switch expectedWaterVolume {
-				case .successful(let waterQuantity):
-					self.dailyWaterEditText.text = waterQuantity.toString()
-				default:
-					return
-				}
-			}).disposed(by: disposeBag)
+            .eraseToAnyPublisher()
+            .first()
+            .sinkUI {expectedWaterVolume in
+                switch expectedWaterVolume {
+                case .successful(let waterQuantity):
+                    self.dailyWaterEditText.text = waterQuantity.toString()
+                default:
+                    return
+                }
+            }.store(in: &cancellableBag)
+
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		firstAccessInformationViewModel.shouldRemind.subscribe(onNext : { [weak self] bool in
-            self?.timePeriodSelector.isHidden = !bool
-		}).disposed(by: disposeBag)
-
-		firstAccessInformationViewModel.scheduleNotificationOnConfirmEvent.subscribe(onNext: { _ in
-			self.requestNotificationPermisionThenSchedule()
-		}).disposed(by: disposeBag)
-
 		prepareHideKeyboardWhenTappedOut()
 		prepareConfiguration()
 		prepareConstraints()
+        observeViewModel()
 	}
+
+    func observeViewModel() {
+        firstAccessInformationViewModel.$shouldRemind.sinkUI { [weak self] bool in
+            self?.timePeriodSelector.isHidden = !bool
+        }.store(in: &cancellableBag)
+
+        firstAccessInformationViewModel.scheduleNotificationOnConfirmEvent.sinkUI { _ in
+            self.requestNotificationPermissionThenSchedule()
+        }.store(in: &cancellableBag)
+
+        firstAccessInformationViewModel.$currentVolume.sinkUI { [weak self] volume in
+            guard let self else { return }
+            dailyWaterEditText.suffix.text = volume.unit.system.formatDisplay
+            dailyWaterEditText.text = volume.formattedValue
+        }.store(in: &cancellableBag)
+    }
 
 	func prepareConfiguration() {
 		informativeMainText.text = String(localized: "welcomeConfirmation.mainText")
@@ -163,25 +163,42 @@ class ConfirmationDailyConsumptionVC: BaseChildPageController {
 	}
 
 	func onConfirmPressed() {
-		let waterVolume: Int = Int(waterVolumeInML()) // todo allow float
-		self.firstAccessInformationViewModel.confirmWaterVolume(waterValue: waterVolume)
+        firstAccessInformationViewModel.setCurrentVolume(Double(dailyWaterEditText.text ?? "") ?? 0)
+        let notificationCenter = UNUserNotificationCenter.current()
+
+        notificationCenter.getNotificationSettings { settings in
+            Task { @MainActor in
+                switch settings.authorizationStatus {
+                case .notDetermined:
+                    try await notificationCenter.requestAuthorization(options: [.alert, .badge, .sound])
+                    self.firstAccessInformationViewModel.confirm()
+                case .authorized, .provisional, .denied:
+                    self.firstAccessInformationViewModel.confirm()
+
+                default:
+                    print("Unknown authorization status")
+                }
+            }
+        }
 	}
 
-	func waterVolumeInML() -> Float {
-		let volume = self.dailyWaterEditText.text.unwrapLet { $0.toFloat() ?? 0 } ?? 0
-		return currentVolumeFormat.toMetric(volume)
-	}
-
-	func waterVolumeTo(_ volumeFormat: VolumeFormat) -> Float {
-		let volume = waterVolumeInML()
-		return volumeFormat.fromMetric(volume)
-	}
-
-	func requestNotificationPermisionThenSchedule() {
+	func requestNotificationPermissionThenSchedule() {
 		UNUserNotificationCenter.current().requestAuthorization(
 			options: [.alert, .badge, .sound]
 		) { _, _ in
 			self.firstAccessInformationViewModel.scheduleReminderNotifications()
 		}
 	}
+
+    @objc private func volumeFormatSegmentationControlChanged() {
+        let index = volumeFormatSegmentationControl.selectedSegmentIndex
+        let format = (SystemFormat(rawValue: index) ?? SystemFormat.metric)
+        firstAccessInformationViewModel.setCurrentVolume(Double(dailyWaterEditText.text ?? "") ?? 0)
+        firstAccessInformationViewModel.setCurrentVolumeFormat(format)
+    }
+
+    @objc private func onShouldRemindSwitchChanged() {
+        firstAccessInformationViewModel.setShouldRemind(shouldRemindSwitch.switchView.isOn)
+    }
+
 }

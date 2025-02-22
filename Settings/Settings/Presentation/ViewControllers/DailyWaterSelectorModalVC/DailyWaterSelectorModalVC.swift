@@ -5,67 +5,66 @@
 //  Created by Lucas Calheiros on 21/07/23.
 //
 
-import RxCocoa
-import RxSwift
 import UIKit
 import Common
 import Components
 import Core
 import WaterManagementDomain
+import Combine
 
 class DailyWaterSelectorModalVC: UIViewController {
-	var disposeBag = DisposeBag()
+    var cancellableBag = Set<AnyCancellable>()
 
 	let dailyWaterSelectorDelegate: DailyWaterSelectorDelegate
 
 	private lazy var dailyWaterEditText = InputFieldWithSuffix()
 
-	private var lastVolumeFormat: VolumeFormat?
+	private var lastVolumeFormat: SystemFormat?
 
 	private lazy var volumeFormatSegmentationControl = {
-		let button = UISegmentedControl(items: VolumeFormat.allCases.map { $0.localizedDisplay })
-		button.backgroundColor = AppColorGroup.surface.color
-		let attributes = [
-			NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont.body
+		let button = UISegmentedControl(items: SystemFormat.allCases.map { $0.localizedDisplay })
+        button.backgroundColor = DefaultComponentsTheme.current.surface.color
+		let normalAttr = [
+            NSAttributedString.Key.foregroundColor: DefaultComponentsTheme.current.surface.onColor,
+            NSAttributedString.Key.font: DefaultComponentsTheme.current.body
 		]
-		button.setTitleTextAttributes(attributes, for: .normal)
-		button.setTitleTextAttributes(attributes, for: .selected)
-		button.selectedSegmentTintColor = .blue
-		button.rx.selectedSegmentIndex.bind {
-			if $0 == -1 {
-				return
-			}
-			let format = (VolumeFormat(rawValue: $0) ?? VolumeFormat.metric)
-			self.dailyWaterEditText.suffix.text = format.formatDisplay
-			if let lastVolumeFormat = self.lastVolumeFormat {
-				let lastVolumeInML = self.lastVolumeFormat?.toMetric(self.dailyWaterEditText.text?.toFloat() ?? 0.0) ?? 0
-				let waterWithFormat = WaterWithFormat(waterInML: Int(lastVolumeInML), volumeFormat: format)
-				self.dailyWaterEditText.text = waterWithFormat.exhibitionValue()
-			}
-			self.lastVolumeFormat = format
-		}.disposed(by: disposeBag)
+        let selectedAttr = [
+            NSAttributedString.Key.foregroundColor: DefaultComponentsTheme.current.primary.onColor,
+            NSAttributedString.Key.font: DefaultComponentsTheme.current.body
+        ]
+		button.setTitleTextAttributes(normalAttr, for: .normal)
+		button.setTitleTextAttributes(selectedAttr, for: .selected)
+        button.selectedSegmentTintColor = DefaultComponentsTheme.current.primary.color
+        button.addTarget(self, action: #selector(onVolumeFormatChange), for: .valueChanged)
 		return button
 	}()
 
-	lazy var cancel = UIBarButtonItem(
-		title: String(localized: "generic.cancel"),
-		primaryAction: .init(handler: { _ in
-			self.dismiss(animated: true)
-		})
-	)
+    lazy var cancel = {
+        let btn = UIBarButtonItem(
+            title: String(localized: "generic.cancel"),
+            primaryAction: .init(handler: { _ in
+                self.dismiss(animated: true)
+            })
+        )
+        btn.tintColor = DefaultComponentsTheme.current.background.onColor
+        return btn
+    }()
 
-	lazy var confirm = UIBarButtonItem(
-		title: String(localized: "generic.confirm"), image: nil,
-		primaryAction: .init(handler: { _ in
-			let waterVolume = self.dailyWaterEditText.text?.toFloat() ?? 0
-			self.dailyWaterSelectorDelegate.setVolumeAndFormat(
-				waterVolume,
-				(VolumeFormat(rawValue:  self.volumeFormatSegmentationControl.selectedSegmentIndex) ?? VolumeFormat.metric)
-			)
-			self.dismiss(animated: true)
-		})
-	)
+    lazy var confirm = {
+        let btn = UIBarButtonItem(
+            title: String(localized: "generic.confirm"), image: nil,
+            primaryAction: .init(handler: { _ in
+                let waterVolume = self.dailyWaterEditText.text?.toFloat() ?? 0
+                self.dailyWaterSelectorDelegate.setVolumeAndFormat(
+                    waterVolume,
+                    (SystemFormat(rawValue:  self.volumeFormatSegmentationControl.selectedSegmentIndex) ?? SystemFormat.metric)
+                )
+                self.dismiss(animated: true)
+            })
+        )
+        btn.tintColor = DefaultComponentsTheme.current.background.onColor
+        return btn
+    }()
 
 	init(dailyWaterSelectorDelegate: DailyWaterSelectorDelegate) {
 		self.dailyWaterSelectorDelegate = dailyWaterSelectorDelegate
@@ -80,17 +79,14 @@ class DailyWaterSelectorModalVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		dailyWaterSelectorDelegate.volumeWithFormat.safeAsSingle().subscribe( onSuccess: { volumeWithFormat in
-			self.dailyWaterEditText.text = volumeWithFormat.exhibitionValue()
-			self.dailyWaterEditText.suffix.text = volumeWithFormat.volumeFormat.formatDisplay
-			self.lastVolumeFormat = volumeWithFormat.volumeFormat
-			self.volumeFormatSegmentationControl.selectedSegmentIndex = volumeWithFormat.volumeFormat.rawValue
+        dailyWaterSelectorDelegate.volumeWithFormat.first().sinkUI { volumeWithFormat in
+            self.dailyWaterEditText.text = volumeWithFormat.formattedValue
+            self.dailyWaterEditText.suffix.text = volumeWithFormat.unit.formatted
+            self.lastVolumeFormat = volumeWithFormat.unit.system
+			self.volumeFormatSegmentationControl.selectedSegmentIndex = volumeWithFormat.unit.system.rawValue
+        }.store(in: &cancellableBag)
 
-		}).disposed(by: disposeBag)
-
-		view.backgroundColor = AppColorGroup.surface.color
-		cancel.tintColor = .blue
-		confirm.tintColor = .blue
+        view.backgroundColor = DefaultComponentsTheme.current.background.color
 
 		navigationItem.leftBarButtonItem = cancel
 		navigationItem.rightBarButtonItem = confirm
@@ -106,4 +102,19 @@ class DailyWaterSelectorModalVC: UIViewController {
 			volumeFormatSegmentationControl.topAnchor.constraint(equalTo: dailyWaterEditText.bottomAnchor, constant: 8)
 		])
 	}
+
+    @objc private func onVolumeFormatChange() {
+        let index = volumeFormatSegmentationControl.selectedSegmentIndex
+        if index == -1 {
+            return
+        }
+        let format = (SystemFormat(rawValue: index) ?? SystemFormat.metric)
+        self.dailyWaterEditText.suffix.text = format.formatDisplay
+        if let lastVolumeFormat = self.lastVolumeFormat {
+            let lastVolumeInML = self.lastVolumeFormat?.toMetric(self.dailyWaterEditText.text?.toFloat() ?? 0.0) ?? 0
+            self.dailyWaterEditText.text = Volume(lastVolumeInML, .milliliters).to(format).formattedValue
+        }
+        self.lastVolumeFormat = format
+
+    }
 }

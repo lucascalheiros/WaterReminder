@@ -10,43 +10,50 @@ import UIKit
 public extension UIFont {
 
     static var h1: UIFont {
-        .boldSystemFont(ofSize: 40)
+        .systemFont(ofSize: 40)
     }
 
     static var h2: UIFont {
-        .boldSystemFont(ofSize: 30)
+        .systemFont(ofSize: 30)
     }
 
     static var h3: UIFont {
-        .boldSystemFont(ofSize: 25)
+        .systemFont(ofSize: 25)
     }
 
     static var h4: UIFont {
-        .boldSystemFont(ofSize: 20)
+        .systemFont(ofSize: 20)
     }
 
     static var body: UIFont {
-        .boldSystemFont(ofSize: 16)
+        .systemFont(ofSize: 16)
     }
 
     static var caption: UIFont {
-        .boldSystemFont(ofSize: 15)
+        .systemFont(ofSize: 15)
     }
 
     static var screenTitle: UIFont {
-        .h4
+        .h4.bold()
     }
 
     static var sectionTitle: UIFont {
-        .h4
+        .h4.bold()
     }
 
     static var buttonBig: UIFont {
-        .h4
+        .h4.bold()
     }
 
     static var buttonDefault: UIFont {
-        .body
+        .body.bold()
     }
 
+}
+
+extension UIFont {
+    public func bold() -> UIFont {
+        let descriptor = fontDescriptor.withSymbolicTraits(.traitBold) ?? fontDescriptor
+        return UIFont(descriptor: descriptor, size: pointSize)
+    }
 }

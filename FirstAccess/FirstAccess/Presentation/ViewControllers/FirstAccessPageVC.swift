@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 import RxSwift
+import Common
+import Core
+import Components
 
 public class FirstAccessPageVC: UIPageViewController {
 	let pageProvider: PageProviderProtocol
@@ -17,9 +20,12 @@ public class FirstAccessPageVC: UIPageViewController {
 		let button = UIButton()
 		button.setTitle(String(localized: "generic.next"), for: .normal)
         button.titleLabel?.font = .buttonDefault
-		button.translatesAutoresizingMaskIntoConstraints = false
-		view.addSubview(button)
-		button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nextClick)))
+        button.setTitleColor(DefaultComponentsTheme.current.background.onColor, for: .normal)
+        view.addConstrainedSubview(button)
+        button.addTapListener {
+            let currentIndex = self.presentationIndex(for: self)
+            self.firstAccessInformationViewModel.pageNavigationDelegate.setPage(page: currentIndex + 1)
+        }
 		return button
 	}()
 	
@@ -27,9 +33,12 @@ public class FirstAccessPageVC: UIPageViewController {
 		let button = UIButton()
 		button.setTitle(String(localized: "generic.previous"), for: .normal)
 		button.titleLabel?.font = .buttonDefault
-		button.translatesAutoresizingMaskIntoConstraints = false
-		view.addSubview(button)
-		button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(previousClick)))
+        button.setTitleColor(DefaultComponentsTheme.current.background.onColor, for: .normal)
+		view.addConstrainedSubview(button)
+        button.addTapListener {
+            let currentIndex = self.presentationIndex(for: self)
+            self.firstAccessInformationViewModel.pageNavigationDelegate.setPage(page: currentIndex - 1)
+        }
 		return button
 	}()
 
@@ -57,10 +66,11 @@ public class FirstAccessPageVC: UIPageViewController {
 
     public override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		setupPageController()
 
 		firstAccessInformationViewModel.pageNavigationDelegate.setTotalPages(total: pageProvider.count)
+
 		firstAccessInformationViewModel.pageNavigationDelegate.currentPageIndex.subscribe {
 			let currentIndex = self.presentationIndex(for: self)
 			if let controller = self.pageProvider.instanceFor(index: $0) {
@@ -86,6 +96,10 @@ public class FirstAccessPageVC: UIPageViewController {
 			previousButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 			previousButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16)
 		])
+
+        let pageControl = UIPageControl.appearance()
+        pageControl.currentPageIndicatorTintColor = DefaultComponentsTheme.current.background.onColor
+        pageControl.pageIndicatorTintColor = DefaultComponentsTheme.current.background.onColor.withAlphaComponent(0.3)
 	}
 	
 	func getProvider() -> PageProviderProtocol {
@@ -95,7 +109,7 @@ public class FirstAccessPageVC: UIPageViewController {
 	private func setupPageController() {
 		dataSource = self
 		delegate = self
-		view.backgroundColor = .systemTeal
+        view.backgroundColor = DefaultComponentsTheme.current.background.color
 		view.frame = CGRect(x: 0,y: 0,width: self.view.frame.width,height: self.view.frame.height)
 		setViewControllers([pageProvider.instanceFor(index: 0)!], direction: .forward, animated: true,
 						   completion: nil)
@@ -112,17 +126,6 @@ public class FirstAccessPageVC: UIPageViewController {
 			let currentIndex = presentationIndex(for: self)
 			firstAccessInformationViewModel.pageNavigationDelegate.setPage(page: currentIndex)
 		}
-
-	}
-
-	@objc func nextClick() {
-		let currentIndex = presentationIndex(for: self)
-		firstAccessInformationViewModel.pageNavigationDelegate.setPage(page: currentIndex + 1)
-	}
-	
-	@objc func previousClick() {
-		let currentIndex = presentationIndex(for: self)
-		firstAccessInformationViewModel.pageNavigationDelegate.setPage(page: currentIndex - 1)
 	}
 
 	func hasPreviousPage() -> Bool {

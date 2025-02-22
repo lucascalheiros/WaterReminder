@@ -38,7 +38,7 @@ struct HistoryChart: View {
                 BarMark(
                     x: .value(String(localized: "Date"), Calendar.current.date(from: $0.date)!),
                     y: .value(String(localized: "Water Volume"), $0.volume)
-                ).foregroundStyle($0.waterSourceType.color.suColor)
+                ).foregroundStyle($0.drinkInfo.color.suColor)
             }
 
             RuleMark(y: .value(String(localized: "Daily Goal"), viewModel.expectedWaterVolumeFormatted))

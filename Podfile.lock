@@ -1,79 +1,47 @@
 PODS:
-  - Realm (10.40.2):
-    - Realm/Headers (= 10.40.2)
-  - Realm/Headers (10.40.2)
-  - RealmSwift (10.40.2):
-    - Realm (= 10.40.2)
-  - RxCocoa (6.6.0):
-    - RxRelay (= 6.6.0)
-    - RxSwift (= 6.6.0)
+  - GRDB.swift (6.24.1):
+    - GRDB.swift/standard (= 6.24.1)
+  - GRDB.swift/standard (6.24.1)
+  - RxCocoa (6.8.0):
+    - RxRelay (= 6.8.0)
+    - RxSwift (= 6.8.0)
   - RxFlow (2.13.0):
     - RxCocoa (>= 6.0.0)
     - RxSwift (>= 6.0.0)
-  - RxRealm (5.0.6):
-    - Realm (~> 10.40.1)
-    - RealmSwift (~> 10.40.1)
-    - RxCocoa (~> 6.1)
-    - RxSwift (~> 6.1)
-  - RxRelay (6.6.0):
-    - RxSwift (= 6.6.0)
-  - RxSwift (6.6.0)
-  - RxSwiftExt (6.2.1):
-    - RxSwiftExt/Core (= 6.2.1)
-    - RxSwiftExt/RxCocoa (= 6.2.1)
-  - RxSwiftExt/Core (6.2.1):
-    - RxSwift (~> 6.0)
-  - RxSwiftExt/RxCocoa (6.2.1):
-    - RxCocoa (~> 6.0)
-    - RxSwiftExt/Core
+  - RxRelay (6.8.0):
+    - RxSwift (= 6.8.0)
+  - RxSwift (6.8.0)
   - Swinject (2.8.3)
   - SwinjectAutoregistration (2.8.3):
     - Swinject (~> 2.8.3)
 
 DEPENDENCIES:
-  - RealmSwift (~> 10.40.1)
-  - RxCocoa (= 6.6.0)
+  - GRDB.swift
+  - RxCocoa (= 6.8.0)
   - RxFlow (= 2.13.0)
-  - RxRealm (from `https://github.com/RxSwiftCommunity/RxRealm.git`, branch `main`)
-  - RxSwift (= 6.6.0)
-  - RxSwiftExt (= 6.2.1)
+  - RxSwift (= 6.8.0)
   - Swinject (= 2.8.3)
   - SwinjectAutoregistration (= 2.8.3)
 
 SPEC REPOS:
   trunk:
-    - Realm
-    - RealmSwift
+    - GRDB.swift
     - RxCocoa
     - RxFlow
     - RxRelay
     - RxSwift
-    - RxSwiftExt
     - Swinject
     - SwinjectAutoregistration
 
-EXTERNAL SOURCES:
-  RxRealm:
-    :branch: main
-    :git: https://github.com/RxSwiftCommunity/RxRealm.git
-
-CHECKOUT OPTIONS:
-  RxRealm:
-    :commit: 363c9a5595e3e99fcc435286078bc327ddb79bc8
-    :git: https://github.com/RxSwiftCommunity/RxRealm.git
-
 SPEC CHECKSUMS:
-  Realm: 731e86d9388287b18e36b0beb2493fc4845ce8a2
-  RealmSwift: c2a1059ba52e1e08467b1253b1d4ab354ef3177b
-  RxCocoa: 44a80de90e25b739b5aeaae3c8c371a32e3343cc
+  GRDB.swift: 136dcb5d8dddca50aae3ba7d77475f79e7232cd8
+  RxCocoa: 2d33c1e1e5d66492052ad46b11024ae287572880
   RxFlow: 52f6f6379918392c1ea8cb62d8dcf2df9a5463dd
-  RxRealm: ec29970dc65e379e659871344e46c98bf05ddef6
-  RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
-  RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
-  RxSwiftExt: 43aaacb6a4d3c69c55e9d1cf4f79920043d13583
+  RxRelay: 335c78b926a2aea8d863a6d25f1ed3b5ad8e8705
+  RxSwift: 4e28be97cbcfeee614af26d83415febbf2bf6f45
   Swinject: 893c9a543000ac2f10ee4cbaf0933c6992c935d5
   SwinjectAutoregistration: e3ee378dc458acf78d176fc7fec3902603452667
 
-PODFILE CHECKSUM: 3f29391fef57891b38b5edeb7faf69804ed47eeb
+PODFILE CHECKSUM: b21c633bd1bd0adad4d56192487e79ccb1717bf6
 
-COCOAPODS: 1.13.0
+COCOAPODS: 1.15.2

@@ -43,7 +43,7 @@ extension ManageNotificationsVC {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40.0
+        return 50.0
     }
 
     func applySnapshot(_ items: [SectionItems], animatingDifferences: Bool = true) {

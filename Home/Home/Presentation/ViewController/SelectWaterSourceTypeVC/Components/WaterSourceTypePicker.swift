@@ -10,8 +10,9 @@ import WaterManagementDomain
 
 class WaterSourceTypePicker: UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate {
 	
-    var listener: WaterSourceTypeSelector?
-    var waterSourceType: WaterSourceType = .water
+    var onDrinkSelected: ((Drink) -> Void)?
+    var drink: Drink?
+    var drinks = [Drink]()
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -23,9 +24,9 @@ class WaterSourceTypePicker: UIPickerView, UIPickerViewDataSource, UIPickerViewD
 		fatalError("init(coder:) has not been implemented")
 	}
 
-    func selectType(_ type: WaterSourceType, animated: Bool = false) {
-        waterSourceType = type
-        selectRow(WaterSourceType.allCases.firstIndex(of: type) ?? 0, inComponent: 0, animated: animated)
+    func selectType(_ drink: Drink, animated: Bool = false) {
+        self.drink = drink
+        selectRow(drinks.firstIndex(of: drink) ?? 0, inComponent: 0, animated: animated)
     }
 
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -34,17 +35,17 @@ class WaterSourceTypePicker: UIPickerView, UIPickerViewDataSource, UIPickerViewD
 
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
 		if component == 0 {
-			return WaterSourceType.allCases.count
+			return drinks.count
 		} else {
 			return 0
 		}
 	}
 
 	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-		let waterSourceType = WaterSourceType.allCases[row]
+		let drink = drinks[row]
 		let label = view as? UILabel ?? UILabel()
-		label.text = waterSourceType.exhibitionName
-		label.textColor = waterSourceType.color
+		label.text = drink.name
+		label.textColor = drink.color
 		label.textAlignment = .center
 		switch component {
 		case 0:
@@ -56,12 +57,8 @@ class WaterSourceTypePicker: UIPickerView, UIPickerViewDataSource, UIPickerViewD
 	}
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let type = WaterSourceType.allCases[row]
-        waterSourceType = type
-        listener?.onWaterSourceTypeChange(type)
+        let drink = drinks[row]
+        self.drink = drink
+        self.onDrinkSelected?(drink)
     }
-}
-
-protocol WaterSourceTypeSelector {
-    func onWaterSourceTypeChange(_ type: WaterSourceType)
 }

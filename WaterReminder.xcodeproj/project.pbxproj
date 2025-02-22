@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		174405E62B0855E9008952B6 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174405E52B0855E9008952B6 /* AppTheme.swift */; };
+		174449FB2D54585500BC46F2 /* GRDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174449FA2D54585500BC46F2 /* GRDB.framework */; };
 		17668C182AFEF90B00B09779 /* AppColorGroupTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668C172AFEF90B00B09779 /* AppColorGroupTest.swift */; };
 		17668CAC2AFF0CB900B09779 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17668CA92AFF0CB900B09779 /* Common.framework */; };
 		17668CAD2AFF0CB900B09779 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17668CA92AFF0CB900B09779 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -40,9 +41,9 @@
 		17B0AFF92B0DA28C00E33270 /* Home.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17B0AFF72B0DA28C00E33270 /* Home.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17B0AFFB2B0DA29400E33270 /* History.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B0AFFA2B0DA29400E33270 /* History.framework */; };
 		17B0AFFC2B0DA29400E33270 /* History.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17B0AFFA2B0DA29400E33270 /* History.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A009FB04E55FB3F36D76656F /* Pods_WaterReminderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC0EAEA573404C95054ACAD6 /* Pods_WaterReminderUITests.framework */; };
-		A402A7848B69CE047780138C /* Pods_WaterReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89691ED0E72EE4C7C0B4234D /* Pods_WaterReminder.framework */; };
-		D16CDC8172FCF3C2F577F669 /* Pods_WaterReminderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2F96EAC78B55869B47FEF9B /* Pods_WaterReminderTests.framework */; };
+		2407BB43AD98E5A41817745D /* Pods_WaterReminderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E21A255420228B77E0137CB /* Pods_WaterReminderUITests.framework */; };
+		3352EAC905049F85D3AF87E2 /* Pods_WaterReminderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFF251B968E855BA10BF045 /* Pods_WaterReminderTests.framework */; };
+		4BA740267E16B9C341C4E28E /* Pods_WaterReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE292C621E6A247A6CECB98B /* Pods_WaterReminder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 
 /* Begin PBXFileReference section */
 		174405E52B0855E9008952B6 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		174449F82D54571A00BC46F2 /* libLLVM.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLLVM.dylib; path = usr/lib/libLLVM.dylib; sourceTree = SDKROOT; };
+		174449FA2D54585500BC46F2 /* GRDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GRDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17668C172AFEF90B00B09779 /* AppColorGroupTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColorGroupTest.swift; sourceTree = "<group>"; };
 		17668CA92AFF0CB900B09779 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17668CAA2AFF0CB900B09779 /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,14 +116,14 @@
 		17B0AF862B0AD1C800E33270 /* RootFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootFlow.swift; sourceTree = "<group>"; };
 		17B0AFF72B0DA28C00E33270 /* Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AFFA2B0DA29400E33270 /* History.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = History.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E21A255420228B77E0137CB /* Pods_WaterReminderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterReminderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CB561B306A05A225B35159 /* Pods-WaterReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminder.debug.xcconfig"; path = "Target Support Files/Pods-WaterReminder/Pods-WaterReminder.debug.xcconfig"; sourceTree = "<group>"; };
 		3CD9DDC84F124696E7EC0410 /* Pods-WaterReminderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminderTests.debug.xcconfig"; path = "Target Support Files/Pods-WaterReminderTests/Pods-WaterReminderTests.debug.xcconfig"; sourceTree = "<group>"; };
 		498094A4854CFEC80036AFF4 /* Pods-WaterReminderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminderTests.release.xcconfig"; path = "Target Support Files/Pods-WaterReminderTests/Pods-WaterReminderTests.release.xcconfig"; sourceTree = "<group>"; };
 		6D8FDCE0831CAD48B8A52AED /* Pods-WaterReminderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminderUITests.release.xcconfig"; path = "Target Support Files/Pods-WaterReminderUITests/Pods-WaterReminderUITests.release.xcconfig"; sourceTree = "<group>"; };
-		89691ED0E72EE4C7C0B4234D /* Pods_WaterReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AFF251B968E855BA10BF045 /* Pods_WaterReminderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterReminderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A089A521960E6AF58EC03262 /* Pods-WaterReminderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminderUITests.debug.xcconfig"; path = "Target Support Files/Pods-WaterReminderUITests/Pods-WaterReminderUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		BC0EAEA573404C95054ACAD6 /* Pods_WaterReminderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterReminderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2F96EAC78B55869B47FEF9B /* Pods_WaterReminderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterReminderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE292C621E6A247A6CECB98B /* Pods_WaterReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WaterReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F398270663C036DF608F9DE0 /* Pods-WaterReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterReminder.release.xcconfig"; path = "Target Support Files/Pods-WaterReminder/Pods-WaterReminder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				174449FB2D54585500BC46F2 /* GRDB.framework in Frameworks */,
 				17AE2BB22B0312170049F554 /* UserInformationDomain.framework in Frameworks */,
 				17668CAE2AFF0CB900B09779 /* Components.framework in Frameworks */,
 				17AE2BB42B0312170049F554 /* WaterManagementDomain.framework in Frameworks */,
@@ -139,7 +143,7 @@
 				17AE2B1C2B030C060049F554 /* Settings.framework in Frameworks */,
 				17B0AF6D2B0ACCB300E33270 /* FirstAccess.framework in Frameworks */,
 				17B0AFFB2B0DA29400E33270 /* History.framework in Frameworks */,
-				A402A7848B69CE047780138C /* Pods_WaterReminder.framework in Frameworks */,
+				4BA740267E16B9C341C4E28E /* Pods_WaterReminder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D16CDC8172FCF3C2F577F669 /* Pods_WaterReminderTests.framework in Frameworks */,
+				3352EAC905049F85D3AF87E2 /* Pods_WaterReminderTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A009FB04E55FB3F36D76656F /* Pods_WaterReminderUITests.framework in Frameworks */,
+				2407BB43AD98E5A41817745D /* Pods_WaterReminderUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1384,6 +1388,8 @@
 		9BCD0976D0A0FB05A7F659A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				174449FA2D54585500BC46F2 /* GRDB.framework */,
+				174449F82D54571A00BC46F2 /* libLLVM.dylib */,
 				17B0AFFA2B0DA29400E33270 /* History.framework */,
 				17B0AFF72B0DA28C00E33270 /* Home.framework */,
 				17B0AF6C2B0ACCB300E33270 /* FirstAccess.framework */,
@@ -1394,9 +1400,9 @@
 				17668CA92AFF0CB900B09779 /* Common.framework */,
 				17668CAA2AFF0CB900B09779 /* Components.framework */,
 				17668CAB2AFF0CB900B09779 /* Core.framework */,
-				89691ED0E72EE4C7C0B4234D /* Pods_WaterReminder.framework */,
-				C2F96EAC78B55869B47FEF9B /* Pods_WaterReminderTests.framework */,
-				BC0EAEA573404C95054ACAD6 /* Pods_WaterReminderUITests.framework */,
+				BE292C621E6A247A6CECB98B /* Pods_WaterReminder.framework */,
+				9AFF251B968E855BA10BF045 /* Pods_WaterReminderTests.framework */,
+				1E21A255420228B77E0137CB /* Pods_WaterReminderUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1427,7 +1433,7 @@
 				17AE68262A08590400571ED8 /* Resources */,
 				172F4DBC2A2429A700318699 /* ShellScript */,
 				17668CB22AFF0CB900B09779 /* Embed Frameworks */,
-				453686B1AAA97257190FDD95 /* [CP] Embed Pods Frameworks */,
+				E26233EC7A40BCE05CFAC03C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1587,23 +1593,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		453686B1AAA97257190FDD95 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WaterReminder/Pods-WaterReminder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WaterReminder/Pods-WaterReminder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WaterReminder/Pods-WaterReminder-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7C789BAEDAE932207AC9AFA4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1624,6 +1613,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E26233EC7A40BCE05CFAC03C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WaterReminder/Pods-WaterReminder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WaterReminder/Pods-WaterReminder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WaterReminder/Pods-WaterReminder-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD9D1FD65A1B4DA4D37AA58A /* [CP] Check Pods Manifest.lock */ = {
@@ -1841,6 +1847,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1870,6 +1877,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -8,7 +8,6 @@
 import UIKit
 import RxRelay
 import RxSwift
-import RxSwiftExt
 import Core
 import Components
 import WaterManagementDomain
@@ -36,7 +35,7 @@ class WaterConsumptionChartCell: IdentifiableUICollectionViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-
+        cancellableBag.removeAll()
     }
 
     func bind(in parent: UIViewController, viewModel: HistoryChartViewModel) {

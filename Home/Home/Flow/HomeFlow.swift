@@ -9,6 +9,7 @@ import UIKit
 import RxFlow
 import Swinject
 import Core
+import WaterManagementDomain
 
 public class HomeFlow: Flow {
 
@@ -39,7 +40,10 @@ public class HomeFlow: Flow {
 			return waterSourceModal()
         case .createWaterSource:
             return createWaterSourceModel()
-
+        case .addDrink:
+            return addDrinkModal()
+        case .drinkShortcut(let drink):
+            return drinkShortcutModal(drink)
 		}
 	}
 
@@ -53,7 +57,7 @@ public class HomeFlow: Flow {
 	private func waterSourceModal() -> FlowContributors {
 		let viewController = container.resolve(EditWaterSourceListVC.self)!
 		let nav = UINavigationController(rootViewController: viewController)
-        nav.setDefaultAppearance()
+        nav.setModalAppearance()
         nav.modalPresentationStyle = .pageSheet
 
 		if let sheet = nav.sheetPresentationController {
@@ -67,11 +71,39 @@ public class HomeFlow: Flow {
     private func createWaterSourceModel() -> FlowContributors {
         let viewController = container.resolve(CreateWaterSourceItemVC.self)!
         let nav = UINavigationController(rootViewController: viewController)
-        nav.setDefaultAppearance()
+        nav.setModalAppearance()
         nav.modalPresentationStyle = .pageSheet
 
         if let sheet = nav.sheetPresentationController {
-            sheet.detents = [.large()]
+            sheet.detents = [.medium()]
+        }
+
+        rootViewController.visibleViewController?.present(nav, animated: true, completion: nil)
+        return .none
+    }
+
+    private func addDrinkModal() -> FlowContributors {
+        let viewController = container.resolve(AddDrinkVC.self)!
+        let nav = UINavigationController(rootViewController: viewController)
+        nav.setModalAppearance()
+        nav.modalPresentationStyle = .pageSheet
+
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+
+        rootViewController.visibleViewController?.present(nav, animated: true, completion: nil)
+        return .none
+    }
+
+    private func drinkShortcutModal(_ drink: Drink) -> FlowContributors {
+        let viewController = container.resolve(DrinkShortcutVC.self, argument: drink)!
+        let nav = UINavigationController(rootViewController: viewController)
+        nav.setModalAppearance(titleColor: drink.color)
+        nav.modalPresentationStyle = .pageSheet
+
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.medium()]
         }
 
         rootViewController.visibleViewController?.present(nav, animated: true, completion: nil)

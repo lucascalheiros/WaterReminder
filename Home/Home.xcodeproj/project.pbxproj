@@ -9,34 +9,41 @@
 /* Begin PBXBuildFile section */
 		1704AB962B327DE800D601BA /* WaterManagementDomain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1704AB952B327DE800D601BA /* WaterManagementDomain.framework */; };
 		1704AB972B327DE800D601BA /* WaterManagementDomain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1704AB952B327DE800D601BA /* WaterManagementDomain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1706DF472D57D6B6005C2A3B /* DrinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706DF462D57D6AF005C2A3B /* DrinkCell.swift */; };
+		1706DF492D57D735005C2A3B /* DrinkListHorizontalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706DF482D57D72B005C2A3B /* DrinkListHorizontalCollectionView.swift */; };
+		1706DF4D2D5844AB005C2A3B /* AddCupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706DF4C2D5844A0005C2A3B /* AddCupCell.swift */; };
+		1724ED842D5EB86B0063C971 /* DrinkShortcutsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1724ED832D5EB85D0063C971 /* DrinkShortcutsInfo.swift */; };
+		176284652D59972300B1CC39 /* AddDrinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176284642D59972300B1CC39 /* AddDrinkVC.swift */; };
+		176284672D59973F00B1CC39 /* AddDrinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176284662D59973900B1CC39 /* AddDrinkViewModel.swift */; };
+		176284692D5997BB00B1CC39 /* AddDrinkVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176284682D5997BB00B1CC39 /* AddDrinkVC+Datasource.swift */; };
+		1762846B2D5997E300B1CC39 /* AddDrinkVC+CellBinders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1762846A2D5997E300B1CC39 /* AddDrinkVC+CellBinders.swift */; };
+		177BFC672D5D6DA800A2B4AC /* DrinkShortcutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BFC662D5D6D9F00A2B4AC /* DrinkShortcutVC.swift */; };
+		177BFC692D5D6DEA00A2B4AC /* DrinkShortcutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BFC682D5D6DE000A2B4AC /* DrinkShortcutViewModel.swift */; };
+		177BFC6C2D5D721E00A2B4AC /* DrinkChips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BFC6B2D5D721E00A2B4AC /* DrinkChips.swift */; };
+		177BFC6E2D5D72BF00A2B4AC /* GetDefaultDrinkShortcutsInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177BFC6D2D5D72A500A2B4AC /* GetDefaultDrinkShortcutsInfoUseCase.swift */; };
 		17871D3D2B1A630A0022D0E9 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D3C2B1A630A0022D0E9 /* Core.framework */; };
 		17871D3E2B1A630A0022D0E9 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17871D3C2B1A630A0022D0E9 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17B0AEEA2B0A8B8A00E33270 /* Home.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEE92B0A8B8A00E33270 /* Home.docc */; };
 		17B0AEF02B0A8B8A00E33270 /* Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17B0AEE52B0A8B8A00E33270 /* Home.framework */; };
 		17B0AEF52B0A8B8A00E33270 /* HomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AEF42B0A8B8A00E33270 /* HomeTests.swift */; };
-		17B0AFD72B0DA21500E33270 /* ReorderWaterSourceUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFA32B0DA20000E33270 /* ReorderWaterSourceUseCaseImpl.swift */; };
-		17B0AFD92B0DA21500E33270 /* ReorderWaterSourceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFA52B0DA20000E33270 /* ReorderWaterSourceUseCase.swift */; };
+		17B0AFD72B0DA21500E33270 /* ReorderWaterSourceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFA32B0DA20000E33270 /* ReorderWaterSourceUseCase.swift */; };
 		17B0AFDA2B0DA21500E33270 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFD12B0DA20000E33270 /* HomeViewModel.swift */; };
-		17B0AFDB2B0DA23E00E33270 /* HomeSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFB52B0DA20000E33270 /* HomeSections.swift */; };
-		17B0AFDD2B0DA23E00E33270 /* HomeVC+WaterSourceListSection+Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFBB2B0DA20000E33270 /* HomeVC+WaterSourceListSection+Header.swift */; };
 		17B0AFDE2B0DA23E00E33270 /* WaterSourceCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFBF2B0DA20000E33270 /* WaterSourceCellView.swift */; };
 		17B0AFE02B0DA23E00E33270 /* WaterSourceEditableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFCA2B0DA20000E33270 /* WaterSourceEditableCell.swift */; };
 		17B0AFE12B0DA23E00E33270 /* WaterSourceListHorizontalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFBE2B0DA20000E33270 /* WaterSourceListHorizontalCollectionView.swift */; };
-		17B0AFE22B0DA23E00E33270 /* HomeVC+WaterSourceListSection+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFBA2B0DA20000E33270 /* HomeVC+WaterSourceListSection+Cell.swift */; };
 		17B0AFE32B0DA23E00E33270 /* WaterSourceListSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFC12B0DA20000E33270 /* WaterSourceListSectionHeader.swift */; };
 		17B0AFE42B0DA23E00E33270 /* WaterSourceTypePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFB12B0DA20000E33270 /* WaterSourceTypePicker.swift */; };
 		17B0AFE62B0DA23E00E33270 /* EditWaterSourceListVC+TableLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFC82B0DA20000E33270 /* EditWaterSourceListVC+TableLayout.swift */; };
 		17B0AFE72B0DA23E00E33270 /* EditWaterSourceListVC+DragAndDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFC72B0DA20000E33270 /* EditWaterSourceListVC+DragAndDrop.swift */; };
-		17B0AFE82B0DA23E00E33270 /* WaterPercentageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFBC2B0DA20000E33270 /* WaterPercentageCell.swift */; };
+		17B0AFE82B0DA23E00E33270 /* WaterPercentage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFBC2B0DA20000E33270 /* WaterPercentage.swift */; };
 		17B0AFE92B0DA23E00E33270 /* SelectWaterSourceTypeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFB32B0DA20000E33270 /* SelectWaterSourceTypeVC.swift */; };
-		17B0AFEA2B0DA23E00E33270 /* HomeVC+WaterPercentageSection+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFB92B0DA20000E33270 /* HomeVC+WaterPercentageSection+Cell.swift */; };
 		17B0AFED2B0DA23E00E33270 /* AddWaterSourceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFCB2B0DA20000E33270 /* AddWaterSourceCell.swift */; };
-		17B0AFEF2B0DA23E00E33270 /* WaterSourceDeleteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFCD2B0DA20000E33270 /* WaterSourceDeleteDelegate.swift */; };
-		17B0AFF22B0DA23E00E33270 /* HomeVC+FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFB82B0DA20000E33270 /* HomeVC+FlowLayout.swift */; };
-		17B0AFF32B0DA23E00E33270 /* HomeVC+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFB72B0DA20000E33270 /* HomeVC+Datasource.swift */; };
-		17B0AFF52B0DA23E00E33270 /* CreateWaterSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFAE2B0DA20000E33270 /* CreateWaterSourceDelegate.swift */; };
 		17B0AFF62B0DA23E00E33270 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AFB62B0DA20000E33270 /* HomeVC.swift */; };
-		1AE00E222286469F8A1248B3 /* Pods_Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A5C6C646C543D43CB4253DA /* Pods_Home.framework */; };
+		17B0D2BF2D6A15490089B34D /* AddDrinkVC+SelectHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0D2BE2D6A153D0089B34D /* AddDrinkVC+SelectHandlers.swift */; };
+		17B0D2C12D6A18650089B34D /* WaterSourceSettingStepperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0D2C02D6A18650089B34D /* WaterSourceSettingStepperCell.swift */; };
+		17B0D2C32D6A25C40089B34D /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0D2C22D6A25BF0089B34D /* CircleView.swift */; };
+		17B0D2C52D6A26CA0089B34D /* WaterSourceSettingColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0D2C42D6A26CA0089B34D /* WaterSourceSettingColorCell.swift */; };
+		17BBB1E32D68C167005205E3 /* GetSortedWaterSourceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BBB1E22D68C156005205E3 /* GetSortedWaterSourceUseCase.swift */; };
 		27EE31E6E22C56CC93D30441 /* CreateWaterSourceItemVC+CellBinders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3D5C05C3BD64C51732C6 /* CreateWaterSourceItemVC+CellBinders.swift */; };
 		27EE32209F9EA6BDF076FA25 /* HomeFlowSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE31546E655E1D902B2D20 /* HomeFlowSteps.swift */; };
 		27EE32309C832D480BE1F711 /* EditWaterSourceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE37B0A2044ED1712A8485 /* EditWaterSourceListViewModel.swift */; };
@@ -51,7 +58,8 @@
 		27EE3BEA143158F3AD5F57CD /* WaterSourceSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE35D3104B4F53770C1167 /* WaterSourceSettingCell.swift */; };
 		27EE3D8754AB96A3DB289EF6 /* HomeFlowStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE348022AD2AF4F1A2BED0 /* HomeFlowStepper.swift */; };
 		27EE3F2D626F12714610F5CA /* CreateWaterSourceItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EE3E4490B67E07E60D443B /* CreateWaterSourceItemViewModel.swift */; };
-		4CCCC85768527C3D97E7B388 /* Pods_HomeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 734B0B024335418C9283D8DF /* Pods_HomeTests.framework */; };
+		6A72B138D99DE7949CDBF766 /* Pods_Home.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C856F59C90288AFE2F7AFA7 /* Pods_Home.framework */; };
+		EC333E89CA7D4AFF9D094D21 /* Pods_HomeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0690C0821DF7692DEBCA676A /* Pods_HomeTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,26 +88,31 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0690C0821DF7692DEBCA676A /* Pods_HomeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1704AB922B327DD900D601BA /* Pods_WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1704AB952B327DE800D601BA /* WaterManagementDomain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WaterManagementDomain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1706DF462D57D6AF005C2A3B /* DrinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCell.swift; sourceTree = "<group>"; };
+		1706DF482D57D72B005C2A3B /* DrinkListHorizontalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkListHorizontalCollectionView.swift; sourceTree = "<group>"; };
+		1706DF4C2D5844A0005C2A3B /* AddCupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCupCell.swift; sourceTree = "<group>"; };
+		1724ED832D5EB85D0063C971 /* DrinkShortcutsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkShortcutsInfo.swift; sourceTree = "<group>"; };
+		176284642D59972300B1CC39 /* AddDrinkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkVC.swift; sourceTree = "<group>"; };
+		176284662D59973900B1CC39 /* AddDrinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDrinkViewModel.swift; sourceTree = "<group>"; };
+		176284682D5997BB00B1CC39 /* AddDrinkVC+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddDrinkVC+Datasource.swift"; sourceTree = "<group>"; };
+		1762846A2D5997E300B1CC39 /* AddDrinkVC+CellBinders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddDrinkVC+CellBinders.swift"; sourceTree = "<group>"; };
+		177BFC662D5D6D9F00A2B4AC /* DrinkShortcutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkShortcutVC.swift; sourceTree = "<group>"; };
+		177BFC682D5D6DE000A2B4AC /* DrinkShortcutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkShortcutViewModel.swift; sourceTree = "<group>"; };
+		177BFC6B2D5D721E00A2B4AC /* DrinkChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkChips.swift; sourceTree = "<group>"; };
+		177BFC6D2D5D72A500A2B4AC /* GetDefaultDrinkShortcutsInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDefaultDrinkShortcutsInfoUseCase.swift; sourceTree = "<group>"; };
 		17871D3C2B1A630A0022D0E9 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AEE52B0A8B8A00E33270 /* Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AEE92B0A8B8A00E33270 /* Home.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Home.docc; sourceTree = "<group>"; };
 		17B0AEEF2B0A8B8A00E33270 /* HomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17B0AEF42B0A8B8A00E33270 /* HomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTests.swift; sourceTree = "<group>"; };
-		17B0AFA32B0DA20000E33270 /* ReorderWaterSourceUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderWaterSourceUseCaseImpl.swift; sourceTree = "<group>"; };
-		17B0AFA52B0DA20000E33270 /* ReorderWaterSourceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderWaterSourceUseCase.swift; sourceTree = "<group>"; };
-		17B0AFAE2B0DA20000E33270 /* CreateWaterSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWaterSourceDelegate.swift; sourceTree = "<group>"; };
+		17B0AFA32B0DA20000E33270 /* ReorderWaterSourceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReorderWaterSourceUseCase.swift; sourceTree = "<group>"; };
 		17B0AFB12B0DA20000E33270 /* WaterSourceTypePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSourceTypePicker.swift; sourceTree = "<group>"; };
 		17B0AFB32B0DA20000E33270 /* SelectWaterSourceTypeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWaterSourceTypeVC.swift; sourceTree = "<group>"; };
-		17B0AFB52B0DA20000E33270 /* HomeSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSections.swift; sourceTree = "<group>"; };
 		17B0AFB62B0DA20000E33270 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		17B0AFB72B0DA20000E33270 /* HomeVC+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+Datasource.swift"; sourceTree = "<group>"; };
-		17B0AFB82B0DA20000E33270 /* HomeVC+FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+FlowLayout.swift"; sourceTree = "<group>"; };
-		17B0AFB92B0DA20000E33270 /* HomeVC+WaterPercentageSection+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+WaterPercentageSection+Cell.swift"; sourceTree = "<group>"; };
-		17B0AFBA2B0DA20000E33270 /* HomeVC+WaterSourceListSection+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+WaterSourceListSection+Cell.swift"; sourceTree = "<group>"; };
-		17B0AFBB2B0DA20000E33270 /* HomeVC+WaterSourceListSection+Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeVC+WaterSourceListSection+Header.swift"; sourceTree = "<group>"; };
-		17B0AFBC2B0DA20000E33270 /* WaterPercentageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPercentageCell.swift; sourceTree = "<group>"; };
+		17B0AFBC2B0DA20000E33270 /* WaterPercentage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterPercentage.swift; sourceTree = "<group>"; };
 		17B0AFBE2B0DA20000E33270 /* WaterSourceListHorizontalCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterSourceListHorizontalCollectionView.swift; sourceTree = "<group>"; };
 		17B0AFBF2B0DA20000E33270 /* WaterSourceCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSourceCellView.swift; sourceTree = "<group>"; };
 		17B0AFC12B0DA20000E33270 /* WaterSourceListSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSourceListSectionHeader.swift; sourceTree = "<group>"; };
@@ -107,8 +120,12 @@
 		17B0AFC82B0DA20000E33270 /* EditWaterSourceListVC+TableLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditWaterSourceListVC+TableLayout.swift"; sourceTree = "<group>"; };
 		17B0AFCA2B0DA20000E33270 /* WaterSourceEditableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSourceEditableCell.swift; sourceTree = "<group>"; };
 		17B0AFCB2B0DA20000E33270 /* AddWaterSourceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWaterSourceCell.swift; sourceTree = "<group>"; };
-		17B0AFCD2B0DA20000E33270 /* WaterSourceDeleteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSourceDeleteDelegate.swift; sourceTree = "<group>"; };
 		17B0AFD12B0DA20000E33270 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		17B0D2BE2D6A153D0089B34D /* AddDrinkVC+SelectHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddDrinkVC+SelectHandlers.swift"; sourceTree = "<group>"; };
+		17B0D2C02D6A18650089B34D /* WaterSourceSettingStepperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSourceSettingStepperCell.swift; sourceTree = "<group>"; };
+		17B0D2C22D6A25BF0089B34D /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		17B0D2C42D6A26CA0089B34D /* WaterSourceSettingColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterSourceSettingColorCell.swift; sourceTree = "<group>"; };
+		17BBB1E22D68C156005205E3 /* GetSortedWaterSourceUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSortedWaterSourceUseCase.swift; sourceTree = "<group>"; };
 		21D8E86F316A25BD4B045EB6 /* Pods-HomeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeTests.release.xcconfig"; path = "Target Support Files/Pods-HomeTests/Pods-HomeTests.release.xcconfig"; sourceTree = "<group>"; };
 		27EE306EDE81A12B0D20C7B8 /* EditWaterSourceListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWaterSourceListVC.swift; sourceTree = "<group>"; };
 		27EE31546E655E1D902B2D20 /* HomeFlowSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFlowSteps.swift; sourceTree = "<group>"; };
@@ -126,8 +143,7 @@
 		27EE3FE0B226AB6F7D9DC54C /* HomeFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFlow.swift; sourceTree = "<group>"; };
 		5AC8F95E2AE8BDE294B10EFD /* Pods-Home.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Home.release.xcconfig"; path = "Target Support Files/Pods-Home/Pods-Home.release.xcconfig"; sourceTree = "<group>"; };
 		5D0D4BE11BEA6E6226C40F79 /* Pods-Home.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Home.debug.xcconfig"; path = "Target Support Files/Pods-Home/Pods-Home.debug.xcconfig"; sourceTree = "<group>"; };
-		734B0B024335418C9283D8DF /* Pods_HomeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A5C6C646C543D43CB4253DA /* Pods_Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C856F59C90288AFE2F7AFA7 /* Pods_Home.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Home.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		973ADEBABFFE6707DBDD4B03 /* Pods-HomeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeTests.debug.xcconfig"; path = "Target Support Files/Pods-HomeTests/Pods-HomeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,8 +153,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1704AB962B327DE800D601BA /* WaterManagementDomain.framework in Frameworks */,
-				1AE00E222286469F8A1248B3 /* Pods_Home.framework in Frameworks */,
 				17871D3D2B1A630A0022D0E9 /* Core.framework in Frameworks */,
+				6A72B138D99DE7949CDBF766 /* Pods_Home.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,19 +163,56 @@
 			buildActionMask = 2147483647;
 			files = (
 				17B0AEF02B0A8B8A00E33270 /* Home.framework in Frameworks */,
-				4CCCC85768527C3D97E7B388 /* Pods_HomeTests.framework in Frameworks */,
+				EC333E89CA7D4AFF9D094D21 /* Pods_HomeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1766D7992B128911009F17EC /* Enums */ = {
+		1706DF452D57D69D005C2A3B /* DrinkList */ = {
 			isa = PBXGroup;
 			children = (
-				17B0AFB52B0DA20000E33270 /* HomeSections.swift */,
+				1706DF462D57D6AF005C2A3B /* DrinkCell.swift */,
+				1706DF482D57D72B005C2A3B /* DrinkListHorizontalCollectionView.swift */,
 			);
-			path = Enums;
+			path = DrinkList;
+			sourceTree = "<group>";
+		};
+		176284632D5996FA00B1CC39 /* AddDrinkVC */ = {
+			isa = PBXGroup;
+			children = (
+				176284642D59972300B1CC39 /* AddDrinkVC.swift */,
+				1762846A2D5997E300B1CC39 /* AddDrinkVC+CellBinders.swift */,
+				176284682D5997BB00B1CC39 /* AddDrinkVC+Datasource.swift */,
+				17B0D2BE2D6A153D0089B34D /* AddDrinkVC+SelectHandlers.swift */,
+			);
+			path = AddDrinkVC;
+			sourceTree = "<group>";
+		};
+		177BFC652D5D6D8C00A2B4AC /* DrinkShortcutVC */ = {
+			isa = PBXGroup;
+			children = (
+				177BFC6A2D5D721A00A2B4AC /* Components */,
+				177BFC662D5D6D9F00A2B4AC /* DrinkShortcutVC.swift */,
+			);
+			path = DrinkShortcutVC;
+			sourceTree = "<group>";
+		};
+		177BFC6A2D5D721A00A2B4AC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				177BFC6B2D5D721E00A2B4AC /* DrinkChips.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		177BFC6F2D5D730100A2B4AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1724ED832D5EB85D0063C971 /* DrinkShortcutsInfo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		17B0AEDB2B0A8B8A00E33270 = {
@@ -186,10 +239,10 @@
 			isa = PBXGroup;
 			children = (
 				17B0AEE92B0A8B8A00E33270 /* Home.docc */,
+				27EE3D3C895670338DFDD5DD /* HomeAssembly.swift */,
 				17B0AFA72B0DA20000E33270 /* Domain */,
 				17B0AFA22B0DA20000E33270 /* Flow */,
 				17B0AFD32B0DA20000E33270 /* Presentation */,
-				27EE3D3C895670338DFDD5DD /* HomeAssembly.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -215,24 +268,18 @@
 		17B0AFA42B0DA20000E33270 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				17B0AFA32B0DA20000E33270 /* ReorderWaterSourceUseCaseImpl.swift */,
+				17BBB1E22D68C156005205E3 /* GetSortedWaterSourceUseCase.swift */,
+				177BFC6D2D5D72A500A2B4AC /* GetDefaultDrinkShortcutsInfoUseCase.swift */,
+				17B0AFA32B0DA20000E33270 /* ReorderWaterSourceUseCase.swift */,
 			);
 			path = UseCases;
-			sourceTree = "<group>";
-		};
-		17B0AFA62B0DA20000E33270 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				17B0AFA52B0DA20000E33270 /* ReorderWaterSourceUseCase.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		17B0AFA72B0DA20000E33270 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				177BFC6F2D5D730100A2B4AC /* Model */,
 				17B0AFA42B0DA20000E33270 /* UseCases */,
-				17B0AFA62B0DA20000E33270 /* Protocols */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -240,28 +287,21 @@
 		17B0AFAD2B0DA20000E33270 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				17B0D2C22D6A25BF0089B34D /* CircleView.swift */,
 				27EE35D3104B4F53770C1167 /* WaterSourceSettingCell.swift */,
+				17B0D2C42D6A26CA0089B34D /* WaterSourceSettingColorCell.swift */,
+				17B0D2C02D6A18650089B34D /* WaterSourceSettingStepperCell.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		17B0AFAF2B0DA20000E33270 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				17B0AFAE2B0DA20000E33270 /* CreateWaterSourceDelegate.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		17B0AFB02B0DA20000E33270 /* CreateWaterSourceItemVC */ = {
 			isa = PBXGroup;
 			children = (
-				17B0AFAD2B0DA20000E33270 /* Components */,
-				17B0AFAF2B0DA20000E33270 /* Protocols */,
+				27EE3C6FBEB6D3D0528167DD /* CreateWaterSourceItemVC.swift */,
 				27EE3D5C05C3BD64C51732C6 /* CreateWaterSourceItemVC+CellBinders.swift */,
 				27EE320C127B1CA89A58E28B /* CreateWaterSourceItemVC+Datasource.swift */,
 				27EE34B8CA441B5EA1DEEA93 /* CreateWaterSourceItemVC+SelectHandlers.swift */,
-				27EE3C6FBEB6D3D0528167DD /* CreateWaterSourceItemVC.swift */,
 			);
 			path = CreateWaterSourceItemVC;
 			sourceTree = "<group>";
@@ -283,28 +323,30 @@
 			path = SelectWaterSourceTypeVC;
 			sourceTree = "<group>";
 		};
-		17B0AFBD2B0DA20000E33270 /* WaterPercentageCell */ = {
+		17B0AFBD2B0DA20000E33270 /* WaterPercentage */ = {
 			isa = PBXGroup;
 			children = (
-				17B0AFBC2B0DA20000E33270 /* WaterPercentageCell.swift */,
+				17B0AFBC2B0DA20000E33270 /* WaterPercentage.swift */,
 			);
-			path = WaterPercentageCell;
+			path = WaterPercentage;
 			sourceTree = "<group>";
 		};
-		17B0AFC02B0DA20000E33270 /* WaterSourceListCell */ = {
+		17B0AFC02B0DA20000E33270 /* WaterSourceList */ = {
 			isa = PBXGroup;
 			children = (
+				1706DF4C2D5844A0005C2A3B /* AddCupCell.swift */,
 				17B0AFBF2B0DA20000E33270 /* WaterSourceCellView.swift */,
 				17B0AFBE2B0DA20000E33270 /* WaterSourceListHorizontalCollectionView.swift */,
 			);
-			path = WaterSourceListCell;
+			path = WaterSourceList;
 			sourceTree = "<group>";
 		};
 		17B0AFC22B0DA20000E33270 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				17B0AFBD2B0DA20000E33270 /* WaterPercentageCell */,
-				17B0AFC02B0DA20000E33270 /* WaterSourceListCell */,
+				1706DF452D57D69D005C2A3B /* DrinkList */,
+				17B0AFBD2B0DA20000E33270 /* WaterPercentage */,
+				17B0AFC02B0DA20000E33270 /* WaterSourceList */,
 				17B0AFC12B0DA20000E33270 /* WaterSourceListSectionHeader.swift */,
 			);
 			path = Components;
@@ -314,13 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				17B0AFB62B0DA20000E33270 /* HomeVC.swift */,
-				17B0AFB72B0DA20000E33270 /* HomeVC+Datasource.swift */,
-				17B0AFB82B0DA20000E33270 /* HomeVC+FlowLayout.swift */,
-				17B0AFB92B0DA20000E33270 /* HomeVC+WaterPercentageSection+Cell.swift */,
-				17B0AFBA2B0DA20000E33270 /* HomeVC+WaterSourceListSection+Cell.swift */,
-				17B0AFBB2B0DA20000E33270 /* HomeVC+WaterSourceListSection+Header.swift */,
 				17B0AFC22B0DA20000E33270 /* Components */,
-				1766D7992B128911009F17EC /* Enums */,
 			);
 			path = HomeVC;
 			sourceTree = "<group>";
@@ -334,24 +370,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		17B0AFCE2B0DA20000E33270 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				17B0AFCD2B0DA20000E33270 /* WaterSourceDeleteDelegate.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		17B0AFCF2B0DA20000E33270 /* EditWaterSourceListVC */ = {
 			isa = PBXGroup;
 			children = (
+				27EE306EDE81A12B0D20C7B8 /* EditWaterSourceListVC.swift */,
+				27EE3E3B35CAD04B33D01F67 /* EditWaterSourceListVC+CellBinders.swift */,
+				27EE3CBD7CD3D875362E31C9 /* EditWaterSourceListVC+Datasource.swift */,
 				17B0AFC72B0DA20000E33270 /* EditWaterSourceListVC+DragAndDrop.swift */,
 				17B0AFC82B0DA20000E33270 /* EditWaterSourceListVC+TableLayout.swift */,
 				17B0AFCC2B0DA20000E33270 /* Components */,
-				17B0AFCE2B0DA20000E33270 /* Protocols */,
-				27EE3E3B35CAD04B33D01F67 /* EditWaterSourceListVC+CellBinders.swift */,
-				27EE3CBD7CD3D875362E31C9 /* EditWaterSourceListVC+Datasource.swift */,
-				27EE306EDE81A12B0D20C7B8 /* EditWaterSourceListVC.swift */,
 			);
 			path = EditWaterSourceListVC;
 			sourceTree = "<group>";
@@ -359,10 +386,13 @@
 		17B0AFD02B0DA20000E33270 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				17B0AFAD2B0DA20000E33270 /* Components */,
+				176284632D5996FA00B1CC39 /* AddDrinkVC */,
 				17B0AFB02B0DA20000E33270 /* CreateWaterSourceItemVC */,
-				17B0AFB42B0DA20000E33270 /* SelectWaterSourceTypeVC */,
-				17B0AFC32B0DA20000E33270 /* HomeVC */,
+				177BFC652D5D6D8C00A2B4AC /* DrinkShortcutVC */,
 				17B0AFCF2B0DA20000E33270 /* EditWaterSourceListVC */,
+				17B0AFC32B0DA20000E33270 /* HomeVC */,
+				17B0AFB42B0DA20000E33270 /* SelectWaterSourceTypeVC */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -370,9 +400,11 @@
 		17B0AFD22B0DA20000E33270 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				17B0AFD12B0DA20000E33270 /* HomeViewModel.swift */,
+				176284662D59973900B1CC39 /* AddDrinkViewModel.swift */,
 				27EE3E4490B67E07E60D443B /* CreateWaterSourceItemViewModel.swift */,
+				177BFC682D5D6DE000A2B4AC /* DrinkShortcutViewModel.swift */,
 				27EE37B0A2044ED1712A8485 /* EditWaterSourceListViewModel.swift */,
+				17B0AFD12B0DA20000E33270 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -392,8 +424,8 @@
 				1704AB952B327DE800D601BA /* WaterManagementDomain.framework */,
 				1704AB922B327DD900D601BA /* Pods_WaterManagementDomain.framework */,
 				17871D3C2B1A630A0022D0E9 /* Core.framework */,
-				7A5C6C646C543D43CB4253DA /* Pods_Home.framework */,
-				734B0B024335418C9283D8DF /* Pods_HomeTests.framework */,
+				6C856F59C90288AFE2F7AFA7 /* Pods_Home.framework */,
+				0690C0821DF7692DEBCA676A /* Pods_HomeTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -568,31 +600,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17B0AFE22B0DA23E00E33270 /* HomeVC+WaterSourceListSection+Cell.swift in Sources */,
-				17B0AFEA2B0DA23E00E33270 /* HomeVC+WaterPercentageSection+Cell.swift in Sources */,
+				1706DF472D57D6B6005C2A3B /* DrinkCell.swift in Sources */,
+				1706DF4D2D5844AB005C2A3B /* AddCupCell.swift in Sources */,
+				176284652D59972300B1CC39 /* AddDrinkVC.swift in Sources */,
+				177BFC672D5D6DA800A2B4AC /* DrinkShortcutVC.swift in Sources */,
+				17B0D2BF2D6A15490089B34D /* AddDrinkVC+SelectHandlers.swift in Sources */,
 				17B0AFED2B0DA23E00E33270 /* AddWaterSourceCell.swift in Sources */,
-				17B0AFDD2B0DA23E00E33270 /* HomeVC+WaterSourceListSection+Header.swift in Sources */,
-				17B0AFD72B0DA21500E33270 /* ReorderWaterSourceUseCaseImpl.swift in Sources */,
+				17B0AFD72B0DA21500E33270 /* ReorderWaterSourceUseCase.swift in Sources */,
+				17B0D2C12D6A18650089B34D /* WaterSourceSettingStepperCell.swift in Sources */,
 				17B0AFE02B0DA23E00E33270 /* WaterSourceEditableCell.swift in Sources */,
-				17B0AFD92B0DA21500E33270 /* ReorderWaterSourceUseCase.swift in Sources */,
+				1762846B2D5997E300B1CC39 /* AddDrinkVC+CellBinders.swift in Sources */,
 				17B0AFE72B0DA23E00E33270 /* EditWaterSourceListVC+DragAndDrop.swift in Sources */,
 				17B0AFDA2B0DA21500E33270 /* HomeViewModel.swift in Sources */,
-				17B0AFDB2B0DA23E00E33270 /* HomeSections.swift in Sources */,
+				1724ED842D5EB86B0063C971 /* DrinkShortcutsInfo.swift in Sources */,
 				17B0AFE62B0DA23E00E33270 /* EditWaterSourceListVC+TableLayout.swift in Sources */,
-				17B0AFF32B0DA23E00E33270 /* HomeVC+Datasource.swift in Sources */,
 				17B0AEEA2B0A8B8A00E33270 /* Home.docc in Sources */,
 				17B0AFE12B0DA23E00E33270 /* WaterSourceListHorizontalCollectionView.swift in Sources */,
 				17B0AFF62B0DA23E00E33270 /* HomeVC.swift in Sources */,
 				17B0AFE32B0DA23E00E33270 /* WaterSourceListSectionHeader.swift in Sources */,
-				17B0AFF22B0DA23E00E33270 /* HomeVC+FlowLayout.swift in Sources */,
 				17B0AFE92B0DA23E00E33270 /* SelectWaterSourceTypeVC.swift in Sources */,
-				17B0AFEF2B0DA23E00E33270 /* WaterSourceDeleteDelegate.swift in Sources */,
-				17B0AFE82B0DA23E00E33270 /* WaterPercentageCell.swift in Sources */,
-				17B0AFF52B0DA23E00E33270 /* CreateWaterSourceDelegate.swift in Sources */,
+				17BBB1E32D68C167005205E3 /* GetSortedWaterSourceUseCase.swift in Sources */,
+				17B0AFE82B0DA23E00E33270 /* WaterPercentage.swift in Sources */,
 				17B0AFE42B0DA23E00E33270 /* WaterSourceTypePicker.swift in Sources */,
+				177BFC6C2D5D721E00A2B4AC /* DrinkChips.swift in Sources */,
+				177BFC692D5D6DEA00A2B4AC /* DrinkShortcutViewModel.swift in Sources */,
 				17B0AFDE2B0DA23E00E33270 /* WaterSourceCellView.swift in Sources */,
 				27EE3D8754AB96A3DB289EF6 /* HomeFlowStepper.swift in Sources */,
+				176284672D59973F00B1CC39 /* AddDrinkViewModel.swift in Sources */,
+				1706DF492D57D735005C2A3B /* DrinkListHorizontalCollectionView.swift in Sources */,
+				17B0D2C32D6A25C40089B34D /* CircleView.swift in Sources */,
 				27EE37BDD0A7EACB277B72AB /* HomeFlow.swift in Sources */,
+				17B0D2C52D6A26CA0089B34D /* WaterSourceSettingColorCell.swift in Sources */,
 				27EE32209F9EA6BDF076FA25 /* HomeFlowSteps.swift in Sources */,
 				27EE3A6F232BBF6E8F89F424 /* HomeAssembly.swift in Sources */,
 				27EE3BEA143158F3AD5F57CD /* WaterSourceSettingCell.swift in Sources */,
@@ -604,6 +642,8 @@
 				27EE36C013392AF8D4F7C0D8 /* EditWaterSourceListVC+Datasource.swift in Sources */,
 				27EE3B84E8F0AF1DF8378B06 /* EditWaterSourceListVC.swift in Sources */,
 				27EE3F2D626F12714610F5CA /* CreateWaterSourceItemViewModel.swift in Sources */,
+				177BFC6E2D5D72BF00A2B4AC /* GetDefaultDrinkShortcutsInfoUseCase.swift in Sources */,
+				176284692D5997BB00B1CC39 /* AddDrinkVC+Datasource.swift in Sources */,
 				27EE32309C832D480BE1F711 /* EditWaterSourceListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -766,7 +806,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -798,7 +838,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -1,5 +1,5 @@
 //
-//  VolumeFormat+ExhibitionInfo.swift
+//  SystemFormat+ExhibitionInfo.swift
 //  WaterReminder
 //
 //  Created by Lucas Calheiros on 13/08/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension VolumeFormat {
+public extension SystemFormat {
     var formatDisplay: String {
 		switch self {
 		case .metric:

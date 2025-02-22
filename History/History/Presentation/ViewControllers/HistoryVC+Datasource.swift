@@ -28,7 +28,7 @@ extension HistoryVC {
         )
     }
 
-    func applySnapshot(waterConsumedByDay: [Date:[WaterConsumed]], animatingDifferences: Bool = true) {
+    func applySnapshot(waterConsumedByDay: [Date:[ConsumedCupInfo]], animatingDifferences: Bool = true) {
         var snapshot = Snapshot()
         snapshot.appendSections([.historyChart] + waterConsumedByDay.keys.sorted(by: >).map(Sections.dailyHistory))
         snapshot.appendItems([.historyChart(waterConsumedByDay.reduce([], {$0 + $1.value}))], toSection: .historyChart)
@@ -51,12 +51,14 @@ extension HistoryVC {
                     withReuseIdentifier: DailyConsumptionSection.identifier,
                     for: indexPath
                 ) as? DailyConsumptionSection {
-                    sectionHeader.bindData(
-                        date: date,
-                        percentageWithWaterSourceTypeList: self.historyViewModel.waterPercentageWithTypeByDay(date),
-                        consumedVolume: self.historyViewModel.waterConsumedByDay(date)
-                    )
-
+                    sectionHeader.date = date
+                    sectionHeader.volumeUnit = self.historyViewModel.volumeFormat?.unit
+                    self.historyViewModel.waterPercentageWithTypeByDay(date).sinkUI {
+                        sectionHeader.consumptionSummary = $0
+                    }.store(in: &sectionHeader.cancellableBag)
+                    self.historyViewModel.$volumeFormat.sinkUI {
+                        sectionHeader.volumeUnit = $0?.unit
+                    }.store(in: &sectionHeader.cancellableBag)
                     return sectionHeader
                 }
             default:
@@ -77,13 +79,17 @@ extension HistoryVC {
             cellProvider: { (collectionView, indexPath, item) ->
                 UICollectionViewCell? in
                 switch item {
-                case .historyChart(let waterConsumedList):
+                case .historyChart(_):
                     return collectionView.dequeueIdentifiableCell(indexPath) { (cell: WaterConsumptionChartCell) in
                         cell.bind(in: self, viewModel: self.historyViewModel.historyChartModel)
                     }
                 case .waterConsumed(let waterConsumed):
                     return collectionView.dequeueIdentifiableCell(indexPath) { (cell: DailyConsumptionCell) in
-                        cell.bind(waterConsumed: Just(waterConsumed).eraseToAnyPublisher(), volumeFormat: self.historyViewModel.$volumeFormat.eraseToAnyPublisher())
+                        cell.consumedCupInfo = waterConsumed
+                        cell.systemFormat = self.historyViewModel.volumeFormat
+                        self.historyViewModel.$volumeFormat.sinkUI {
+                            cell.systemFormat = $0
+                        }.store(in: &cell.cancellableBag)
                     }
                 }
             })
@@ -105,7 +111,7 @@ extension HistoryVC {
                 image: UIImage(systemName: "trash"),
                 attributes: .destructive) { _ in
                     if case .waterConsumed(let waterConsumed) =  self.diffableDatasource.itemIdentifier(for: indexPath) {
-                        self.historyViewModel.deleteWaterConsumed(waterConsumed)
+                        self.historyViewModel.deleteWaterConsumed(waterConsumed.consumedCup)
                     }
             }
 
@@ -114,8 +120,8 @@ extension HistoryVC {
     }
 
     enum SectionItems: Hashable {
-        case historyChart([WaterConsumed])
-        case waterConsumed(WaterConsumed)
+        case historyChart([ConsumedCupInfo])
+        case waterConsumed(ConsumedCupInfo)
     }
 
     enum Sections: Hashable {

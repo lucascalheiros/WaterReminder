@@ -12,6 +12,8 @@ open class InputFieldWithSuffix: UITextField, UITextFieldDelegate {
 
 	private lazy var bottomLine = CALayer()
 
+    open var valueChangeListener: ((String) -> Void)?
+
     open override var text: String? {
 		get {
 			super.text
@@ -97,6 +99,7 @@ open class InputFieldWithSuffix: UITextField, UITextFieldDelegate {
 		let newString = currentString.replacingCharacters(in: range, with: string)
 		if allowedCharacters.isSuperset(of: characterSet) && newString.count <= 7 {
 			textPhantom.text = newString
+            valueChangeListener?(newString)
 			return true
 		}
 		return false

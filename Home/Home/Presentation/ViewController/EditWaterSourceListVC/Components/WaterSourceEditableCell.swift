@@ -9,10 +9,13 @@ import UIKit
 import Core
 import WaterManagementDomain
 import Common
+import Combine
 
 class WaterSourceEditableCell: IdentifiableUITableViewCell {
 
 	static let identifier = "WaterSourceEditableCell"
+
+    var cancellableBag = Set<AnyCancellable>()
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -30,12 +33,12 @@ class WaterSourceEditableCell: IdentifiableUITableViewCell {
 		let button = UIButton(type: .custom)
 		button.setImage(UIImage(systemName: "trash"), for: .normal)
         button.setImage(UIImage(systemName: "trash.fill"), for: .highlighted)
-		button.tintColor = AppColorGroup.primary.color
+        button.tintColor = AppColorGroup.error.color
         button.addTapListener { [weak self] in
             guard let waterSource = self?.waterSource else {
                 return
             }
-            self?.waterSourceDeleteDelegate?.onDeleteWaterSource(waterSource)
+            self?.onDeleteWaterSource?(waterSource.cup)
         }
 		return button
 	}()
@@ -52,17 +55,27 @@ class WaterSourceEditableCell: IdentifiableUITableViewCell {
 		return imageView
 	}()
 
-    private var waterSource: WaterSource?
+    var waterSource: CupInfo? {
+        didSet {
+            guard let waterSource else {
+                return
+            }
+            titleLabel.text = waterSource.drink.name
+            titleLabel.textColor = waterSource.drink.color
+        }
+    }
 
-    var waterSourceDeleteDelegate: WaterSourceDeleteDelegate?
+    var volumeFormat: SystemFormat? {
+        didSet {
+            guard let waterSource, let volumeFormat else {
+                return
+            }
+            volumeLabel.text = Volume(waterSource.cup.volume, .milliliters).to(volumeFormat).formattedValueAndUnit
+            volumeLabel.textColor = waterSource.drink.color
+        }
+    }
 
-    func bindData(waterSource: WaterSource, volumeFormat: VolumeFormat) {
-		titleLabel.text = waterSource.waterSourceType.exhibitionName
-		titleLabel.textColor = waterSource.waterSourceType.color
-        volumeLabel.text = WaterWithFormat(waterInML: waterSource.volume, volumeFormat: volumeFormat).exhibitionValueWithFormat()
-		volumeLabel.textColor = waterSource.waterSourceType.color
-        self.waterSource = waterSource
-	}
+    var onDeleteWaterSource: ((WaterSource) -> Void)?
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -73,6 +86,11 @@ class WaterSourceEditableCell: IdentifiableUITableViewCell {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cancellableBag.removeAll()
+    }
 
 	private func prepareConfiguration() {
 		contentView.backgroundColor = AppColorGroup.surface.color

@@ -8,6 +8,7 @@
 import RxFlow
 
 public enum FirstAccessFlowSteps: Step {
+    case entryPoint
 	case firstAccessUserInformationIsRequired
 	case firstAccessUserInformationAlreadyProvided
 }

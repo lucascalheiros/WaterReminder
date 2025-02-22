@@ -7,12 +7,13 @@
 
 import Common
 import UIKit
+import Components
 
 class SettingsSectionHeaderView: ProgrammaticView {
 
     private lazy var titleLabel = {
         let label = UILabel()
-        label.textColor = UIColor.white
+        label.textColor = DefaultComponentsTheme.current.background.onColor
         label.font = .sectionTitle
         return label
     }()
@@ -25,7 +26,8 @@ class SettingsSectionHeaderView: ProgrammaticView {
         addConstrainedSubview(titleLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            heightAnchor.constraint(equalToConstant: 50),
+
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
         ])

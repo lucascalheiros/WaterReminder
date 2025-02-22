@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01FD86B683E3521CCE42B91F /* Pods_ComponentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78931D0686F863E6240A29A3 /* Pods_ComponentsTests.framework */; };
+		0E5B55EE4546A5A74A7DFD09 /* Pods_Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44C97ADE4FEF91877FD62076 /* Pods_Components.framework */; };
 		174405DD2B084E89008952B6 /* DefaultComponentsTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174405DC2B084E89008952B6 /* DefaultComponentsTheme.swift */; };
 		174405DF2B084EB2008952B6 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174405DE2B084EB2008952B6 /* ThemeProtocol.swift */; };
 		175F92BF2B08ECF800758C50 /* TimePeriodPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F92BE2B08ECF800758C50 /* TimePeriodPickerView.swift */; };
@@ -23,8 +25,6 @@
 		17668CED2AFF1CF500B09779 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17668CEC2AFF1CF500B09779 /* Common.framework */; };
 		17668CEE2AFF1CF500B09779 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17668CEC2AFF1CF500B09779 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		179380C42B1AB14600D4EAC4 /* DayTimeSelectorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179380C32B1AB14600D4EAC4 /* DayTimeSelectorPickerView.swift */; };
-		D3BC50EECD8BE98AF91D480E /* Pods_ComponentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66F01F87093EE543DC10BE3 /* Pods_ComponentsTests.framework */; };
-		DAF65BC629F5A258D879F268 /* Pods_Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E02EB776EB77D41D0FC9304 /* Pods_Components.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,12 +68,12 @@
 		17668CE12AFF178500B09779 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		17668CEC2AFF1CF500B09779 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		179380C32B1AB14600D4EAC4 /* DayTimeSelectorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTimeSelectorPickerView.swift; sourceTree = "<group>"; };
+		44C97ADE4FEF91877FD62076 /* Pods_Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49DE7AC6DCEB1E26D4D2AAD6 /* Pods-ComponentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentsTests.debug.xcconfig"; path = "Target Support Files/Pods-ComponentsTests/Pods-ComponentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		58AE4964CCBC1113F4AC9210 /* Pods-ComponentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentsTests.release.xcconfig"; path = "Target Support Files/Pods-ComponentsTests/Pods-ComponentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		7848D903E5FD94D0DF1AFCE0 /* Pods-Components.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Components.debug.xcconfig"; path = "Target Support Files/Pods-Components/Pods-Components.debug.xcconfig"; sourceTree = "<group>"; };
-		9E02EB776EB77D41D0FC9304 /* Pods_Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78931D0686F863E6240A29A3 /* Pods_ComponentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComponentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8F2348DAFB5A4E0F0F05BCB /* Pods-Components.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Components.release.xcconfig"; path = "Target Support Files/Pods-Components/Pods-Components.release.xcconfig"; sourceTree = "<group>"; };
-		F66F01F87093EE543DC10BE3 /* Pods_ComponentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ComponentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DAF65BC629F5A258D879F268 /* Pods_Components.framework in Frameworks */,
 				17668CED2AFF1CF500B09779 /* Common.framework in Frameworks */,
+				0E5B55EE4546A5A74A7DFD09 /* Pods_Components.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17668C762AFF0A1A00B09779 /* Components.framework in Frameworks */,
-				D3BC50EECD8BE98AF91D480E /* Pods_ComponentsTests.framework in Frameworks */,
+				01FD86B683E3521CCE42B91F /* Pods_ComponentsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,8 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				17668CEC2AFF1CF500B09779 /* Common.framework */,
-				9E02EB776EB77D41D0FC9304 /* Pods_Components.framework */,
-				F66F01F87093EE543DC10BE3 /* Pods_ComponentsTests.framework */,
+				44C97ADE4FEF91877FD62076 /* Pods_Components.framework */,
+				78931D0686F863E6240A29A3 /* Pods_ComponentsTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -506,7 +506,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -538,7 +538,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

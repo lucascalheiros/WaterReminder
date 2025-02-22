@@ -7,12 +7,15 @@
 
 import Foundation
 
-class RegisterUserInformationUseCase {
+public class RegisterUserInformationUseCase {
 	let userInformationRepository: UserInformationRepository
 
 	internal init(userInformationRepository: UserInformationRepository) {
 		self.userInformationRepository = userInformationRepository
 	}
 
+    public func execute(_ userInfo: UserInformation) async throws {
+        try await userInformationRepository.saveUserInformation(userInfo)
+    }
 	
 }

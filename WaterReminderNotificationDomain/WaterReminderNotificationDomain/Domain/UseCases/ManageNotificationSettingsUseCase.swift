@@ -29,7 +29,7 @@ public class ManageNotificationSettingsUseCase {
 		if notificationSettings.isReminderEnabled {
 			try await scheduleWaterReminderNotificationsUseCase.scheduleNotifications()
 		} else {
-			waterReminderNotificationManager.clearAllWaterReminderNotifications()
+			await waterReminderNotificationManager.clearAllWaterReminderNotifications()
 		}
 	}
 }

@@ -6,54 +6,63 @@
 //
 
 import Foundation
-import RxSwift
-import RealmSwift
-import RxRealm
-import Core
+import GRDB
+import Combine
 
-internal class WaterSourceRepositoryImpl: BaseRepository<WaterSourceObject>, WaterSourceRepository {
-    private var waterSourceList = [
-        WaterSource(volume: 250, waterSourceType: .water),
-        WaterSource(volume: 500, waterSourceType: .water),
-        WaterSource(volume: 500, waterSourceType: .coffee)
-    ]
-    
-    private let disposeBag = DisposeBag()
+internal class WaterSourceRepositoryImpl: WaterSourceRepository {
 
-    init() {
-        super.init(WaterManagementRealmProvider())
-        list().safeAsSingle()
-            .flatMapCompletable {
-                $0.isEmpty ?
-                self.save(self.waterSourceList.map { $0.toDataObject() }) : Completable.empty()
-            }
-            .subscribe().disposed(by: disposeBag)
+    private let dbQueue: DatabaseQueue
+
+    init(dbQueue: DatabaseQueue) {
+        self.dbQueue = dbQueue
     }
 
-    func getWaterSourceList() -> Observable<[WaterSource]> {
-        list().map { $0.sorted(by: { ($0.order ?? Int.max) < ($1.order ?? Int.max) }) }
+    func getWaterSourceList() -> AnyPublisher<[CupInfo], any Error> {
+        return ValueObservation.tracking { db in
+            try WaterSource
+                .including(required: WaterSource.drink)
+                .asRequest(of: CupInfo.self)
+                .fetchAll(db)
+        }
+        .publisher(in: dbQueue)
+        .eraseToAnyPublisher()
     }
 
-	func createWaterSource(waterSource: WaterSource) -> Completable {
-		self.save(waterSource.toDataObject())
+    func createWaterSource(waterSource: WaterSource) async throws {
+        try await dbQueue.write { db in
+            try waterSource.insert(db)
+        }
+    }
+
+	func createWaterSource(_ volume: Volume, _ drink: Drink) async throws {
+        try await dbQueue.write { db in
+            try WaterSource(
+                volume: volume.to(.milliliters).value.toInt(),
+                drinkId: drink.id!
+            ).insert(db)
+        }
 	}
 
-    func updateWaterSourcePinState(waterSource: WaterSource, isPinned: Bool) -> Completable {
-        return list().safeAsSingle()
-            .flatMapCompletable {
-                let order = isPinned ? ($0.map { $0.order ?? 0 }.max() ?? 0) + 1 : nil
-                let waterSource = WaterSourceObject(waterSource: waterSource)
-                waterSource.order = order
-                waterSource.isPinned = isPinned
-                return self.save(waterSource)
+	func updateWaterSources(waterSources: [WaterSource]) async throws {
+        try await dbQueue.write { db in
+            try waterSources.forEach{
+                try $0.save(db)
             }
-    }
-
-	func updateWaterSources(waterSources: [WaterSource]) -> Completable {
-		return self.save(waterSources.map({  WaterSourceObject(waterSource: $0) }))
+        }
 	}
 
-    func deleteWaterSource(waterSource: WaterSource) -> Completable {
-        return self.delete(waterSource.toDataObject()._id)
+    func deleteWaterSource(waterSource: WaterSource) async throws {
+        let _ = try await dbQueue.write { db in
+            try WaterSource.deleteOne(db, key: waterSource.id)
+        }
     }
 }
+
+extension WaterSource: TableRecord, FetchableRecord, PersistableRecord {
+    static let drink = belongsTo(Drink.self)
+
+}
+extension CupInfo: FetchableRecord {
+
+}
+

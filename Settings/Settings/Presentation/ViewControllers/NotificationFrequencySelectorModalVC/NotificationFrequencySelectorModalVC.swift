@@ -46,7 +46,7 @@ class NotificationFrequencySelectorModalVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		notificationFrequencySelectorDelegate.notificationFrequency.sink {
+		notificationFrequencySelectorDelegate.notificationFrequency.sinkUI {
 				self.notificationFrequencyPickerView.selectRow($0.rawValue, inComponent: 0, animated: true)
         }.store(in: &cancellableBag)
 

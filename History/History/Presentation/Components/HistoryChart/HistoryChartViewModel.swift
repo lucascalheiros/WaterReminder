@@ -11,8 +11,8 @@ import WaterManagementDomain
 
 class HistoryChartViewModel: ObservableObject {
     @Published var expectedWaterVolume: Float?
-    @Published var volumeFormat: VolumeFormat?
-    @Published var waterConsumedList: [WaterConsumed] = []
+    @Published var volumeFormat: SystemFormat?
+    @Published var waterConsumedList: [ConsumedCupInfo] = []
     @Published var historyPeriod: HistoryPeriod = .week
 
     var expectedWaterVolumeFormatted: Float {
@@ -35,16 +35,16 @@ class HistoryChartViewModel: ObservableObject {
                 WaterIntake(
                     date: key,
                     volume: waterIntake.volume / uniqueDays,
-                    waterSourceType: waterIntake.waterSourceType)
+                    drinkInfo: waterIntake.drinkInfo)
             }
         }.joined()
         return Dictionary(grouping: averageMonthParticipationIntake, by: {
-            GroupingKey(date: DateComponents(year: $0.date.year, month: $0.date.month),  waterSourceType: $0.waterSourceType)
+            GroupingKey(date: DateComponents(year: $0.date.year, month: $0.date.month),  drinkInfo: $0.drinkInfo)
         }).map { (key, value) in
             WaterIntake(
                 date: key.date,
                 volume: value.map { $0.volume }.reduce(0, +),
-                waterSourceType: key.waterSourceType)
+                drinkInfo: key.drinkInfo)
         }.sorted(by: { $0.volume > $1.volume })
     }
 
@@ -77,28 +77,28 @@ class HistoryChartViewModel: ObservableObject {
 
     struct GroupingKey: Hashable {
         let date: DateComponents
-        let waterSourceType: WaterSourceType
+        let drinkInfo: Drink
     }
 
     struct WaterIntake: Swift.Identifiable {
         let date: DateComponents
         let volume: Float
-        let waterSourceType: WaterSourceType
+        let drinkInfo: Drink
         var id: UUID = UUID()
 
-        init(date: DateComponents, volume: Float, waterSourceType: WaterSourceType) {
+        init(date: DateComponents, volume: Float, drinkInfo: Drink) {
             self.date = date
             self.volume = volume
-            self.waterSourceType = waterSourceType
+            self.drinkInfo = drinkInfo
         }
 
-        static func fromWaterConsumedList(_ waterConsumed: [WaterConsumed], _ volumeFormat: VolumeFormat) -> [WaterIntake] {
-            let group = Dictionary(grouping: waterConsumed, by: { GroupingKey(date: Calendar.current.dateComponents([.year, .month, .day], from: $0.consumptionTime),  waterSourceType: $0.waterSourceType) })
+        static func fromWaterConsumedList(_ waterConsumed: [ConsumedCupInfo], _ volumeFormat: SystemFormat) -> [WaterIntake] {
+            let group = Dictionary(grouping: waterConsumed, by: { GroupingKey(date: Calendar.current.dateComponents([.year, .month, .day], from: $0.consumedCup.consumptionTime),  drinkInfo: $0.drink) })
             return group.map {
                 WaterIntake(
                     date: $0.key.date,
-                    volume: $0.value.map { volumeFormat.fromMetric($0.volume.toFloat()) }.reduce(0, +),
-                    waterSourceType: $0.key.waterSourceType
+                    volume: $0.value.map { volumeFormat.fromMetric($0.consumedCup.volume.toFloat()) }.reduce(0, +),
+                    drinkInfo: $0.key.drinkInfo
                 )
             }.sorted(by: { $0.volume > $1.volume })
         }

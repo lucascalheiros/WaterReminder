@@ -7,8 +7,9 @@
 
 import UIKit
 import Core
+import Common
 
-class WaterSourceListSectionHeader: UICollectionReusableView {
+class WaterSourceListSectionHeader: ProgrammaticView {
 
 	private lazy var editBtn: UIButton = {
 		let button = UIButton(type: .custom)
@@ -33,10 +34,6 @@ class WaterSourceListSectionHeader: UICollectionReusableView {
 			editBtn.topAnchor.constraint(equalTo: topAnchor, constant: 8),
 			editBtn.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
-	}
-
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
 	}
 
 	@objc func onClick() {

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		113FEA3E4D2AA7459EA8B839 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA03E727D7A71FAF295D677F /* Pods_Core.framework */; };
+		0D899DCD3F19BA192AB41B32 /* Pods_CoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44AE0473285B19B17061CA07 /* Pods_CoreTests.framework */; };
 		174405EA2B0856CE008952B6 /* AppColorGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174405E92B0856CE008952B6 /* AppColorGroup.swift */; };
 		17668C942AFF0B3800B09779 /* Core.docc in Sources */ = {isa = PBXBuildFile; fileRef = 17668C932AFF0B3800B09779 /* Core.docc */; };
 		17668C9A2AFF0B3800B09779 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17668C8F2AFF0B3800B09779 /* Core.framework */; };
@@ -16,13 +16,11 @@
 		17668CEB2AFF1B5A00B09779 /* UIFont+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17668CEA2AFF1B5A00B09779 /* UIFont+Resources.swift */; };
 		17668CF12AFF1D0400B09779 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17668CF02AFF1D0400B09779 /* Common.framework */; };
 		17668CF22AFF1D0400B09779 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17668CF02AFF1D0400B09779 /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		17AE2AEC2B03050A0049F554 /* ObjectToDomainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2AEB2B03050A0049F554 /* ObjectToDomainProtocol.swift */; };
-		17AE2AEE2B03058C0049F554 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2AED2B03058C0049F554 /* BaseRepository.swift */; };
-		17AE2AF02B0305B10049F554 /* RealmProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2AEF2B0305B10049F554 /* RealmProviderProtocol.swift */; };
-		17AE2AF42B0305E50049F554 /* BaseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AE2AF32B0305E50049F554 /* BaseObject.swift */; };
 		17B0AF762B0ACD1A00E33270 /* FirstAccessFlowSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF702B0ACD0300E33270 /* FirstAccessFlowSteps.swift */; };
 		17B0AF792B0ACD1A00E33270 /* MainAppFlowSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B0AF732B0ACD0300E33270 /* MainAppFlowSteps.swift */; };
-		DFA425AEAC05E420B79D2FA1 /* Pods_CoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BE965EE55A3ACC7EC6C2E22 /* Pods_CoreTests.framework */; };
+		17BBB1E52D68EC09005205E3 /* Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17BBB1E42D68EC09005205E3 /* Components.framework */; };
+		17BBB1E62D68EC09005205E3 /* Components.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17BBB1E42D68EC09005205E3 /* Components.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BAB3662CEBD73C36CCAD3E01 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D51E2986B2B2AEB5D9094C /* Pods_Core.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				17BBB1E62D68EC09005205E3 /* Components.framework in Embed Frameworks */,
 				17668CF22AFF1D0400B09779 /* Common.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -59,17 +58,14 @@
 		17668CCF2AFF160000B09779 /* UINavigationController+DefaultAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+DefaultAppearance.swift"; sourceTree = "<group>"; };
 		17668CEA2AFF1B5A00B09779 /* UIFont+Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Resources.swift"; sourceTree = "<group>"; };
 		17668CF02AFF1D0400B09779 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		17AE2AEB2B03050A0049F554 /* ObjectToDomainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectToDomainProtocol.swift; sourceTree = "<group>"; };
-		17AE2AED2B03058C0049F554 /* BaseRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
-		17AE2AEF2B0305B10049F554 /* RealmProviderProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmProviderProtocol.swift; sourceTree = "<group>"; };
-		17AE2AF32B0305E50049F554 /* BaseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseObject.swift; sourceTree = "<group>"; };
 		17B0AF702B0ACD0300E33270 /* FirstAccessFlowSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAccessFlowSteps.swift; sourceTree = "<group>"; };
 		17B0AF732B0ACD0300E33270 /* MainAppFlowSteps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAppFlowSteps.swift; sourceTree = "<group>"; };
+		17BBB1E42D68EC09005205E3 /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		33D51E2986B2B2AEB5D9094C /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39876B85B202247C79A11B76 /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
+		44AE0473285B19B17061CA07 /* Pods_CoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		476C184296318AF7EF045BAB /* Pods-CoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreTests.debug.xcconfig"; path = "Target Support Files/Pods-CoreTests/Pods-CoreTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8BE965EE55A3ACC7EC6C2E22 /* Pods_CoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D59100D440F2F39354648DE8 /* Pods-CoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreTests.release.xcconfig"; path = "Target Support Files/Pods-CoreTests/Pods-CoreTests.release.xcconfig"; sourceTree = "<group>"; };
-		EA03E727D7A71FAF295D677F /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +73,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				113FEA3E4D2AA7459EA8B839 /* Pods_Core.framework in Frameworks */,
 				17668CF12AFF1D0400B09779 /* Common.framework in Frameworks */,
+				17BBB1E52D68EC09005205E3 /* Components.framework in Frameworks */,
+				BAB3662CEBD73C36CCAD3E01 /* Pods_Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17668C9A2AFF0B3800B09779 /* Core.framework in Frameworks */,
-				DFA425AEAC05E420B79D2FA1 /* Pods_CoreTests.framework in Frameworks */,
+				0D899DCD3F19BA192AB41B32 /* Pods_CoreTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +119,6 @@
 				174405E92B0856CE008952B6 /* AppColorGroup.swift */,
 				17668CEA2AFF1B5A00B09779 /* UIFont+Resources.swift */,
 				17668CCF2AFF160000B09779 /* UINavigationController+DefaultAppearance.swift */,
-				17AE2AF62B0309E40049F554 /* Base */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -133,17 +129,6 @@
 				17668C9E2AFF0B3800B09779 /* CoreTests.swift */,
 			);
 			path = CoreTests;
-			sourceTree = "<group>";
-		};
-		17AE2AF62B0309E40049F554 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				17AE2AF32B0305E50049F554 /* BaseObject.swift */,
-				17AE2AED2B03058C0049F554 /* BaseRepository.swift */,
-				17AE2AEB2B03050A0049F554 /* ObjectToDomainProtocol.swift */,
-				17AE2AEF2B0305B10049F554 /* RealmProviderProtocol.swift */,
-			);
-			path = Base;
 			sourceTree = "<group>";
 		};
 		17B0AF712B0ACD0300E33270 /* FirstAccessFlow */ = {
@@ -174,9 +159,10 @@
 		C68CDFB2568E2DBCC275B4F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17BBB1E42D68EC09005205E3 /* Components.framework */,
 				17668CF02AFF1D0400B09779 /* Common.framework */,
-				EA03E727D7A71FAF295D677F /* Pods_Core.framework */,
-				8BE965EE55A3ACC7EC6C2E22 /* Pods_CoreTests.framework */,
+				33D51E2986B2B2AEB5D9094C /* Pods_Core.framework */,
+				44AE0473285B19B17061CA07 /* Pods_CoreTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -351,14 +337,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17AE2AEE2B03058C0049F554 /* BaseRepository.swift in Sources */,
 				17668CEB2AFF1B5A00B09779 /* UIFont+Resources.swift in Sources */,
-				17AE2AEC2B03050A0049F554 /* ObjectToDomainProtocol.swift in Sources */,
 				174405EA2B0856CE008952B6 /* AppColorGroup.swift in Sources */,
 				17668C942AFF0B3800B09779 /* Core.docc in Sources */,
-				17AE2AF42B0305E50049F554 /* BaseObject.swift in Sources */,
 				17668CD02AFF160000B09779 /* UINavigationController+DefaultAppearance.swift in Sources */,
-				17AE2AF02B0305B10049F554 /* RealmProviderProtocol.swift in Sources */,
 				17B0AF792B0ACD1A00E33270 /* MainAppFlowSteps.swift in Sources */,
 				17B0AF762B0ACD1A00E33270 /* FirstAccessFlowSteps.swift in Sources */,
 			);
@@ -522,7 +504,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -554,7 +536,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

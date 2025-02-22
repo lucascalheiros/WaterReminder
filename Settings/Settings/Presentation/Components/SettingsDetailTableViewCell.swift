@@ -22,16 +22,35 @@ class SettingsDetailTableViewCell: IdentifiableUITableViewCell {
 	lazy var titleLabel: UILabel = {
 		let label = UILabel()
         label.textColor = AppColorGroup.surface.onColor
+        label.font = .body
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
 		return label
 	}()
 
 	lazy var detailLabel: UILabel = {
 		let label = UILabel()
-		label.textColor = AppColorGroup.surface.onColor
+        label.textColor = AppColorGroup.primary.color
+        label.font = .body.bold()
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 		return label
 	}()
 
-	lazy var rightArrow: UIImageView = UIImageView(image: UIImage(systemName: "chevron.right"))
+    lazy var rightArrow: UIImageView = {
+        let view = UIImageView(image: UIImage(systemName: "chevron.right"))
+        view.tintColor = AppColorGroup.primary.color
+        view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        view.isHidden = true
+        return view
+    }()
+
+    lazy var horizontalStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 8
+        stack.distribution = .fill
+        stack.alignment = .center
+        return stack
+    }()
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -47,15 +66,15 @@ class SettingsDetailTableViewCell: IdentifiableUITableViewCell {
 	}
 
 	func prepareConstraints() {
-		contentView.addConstrainedSubviews(titleLabel, detailLabel, rightArrow)
+		contentView.addConstrainedSubviews(horizontalStackView)
+        horizontalStackView.addConstrainedArrangedSubviews(titleLabel, detailLabel, rightArrow)
 
 		NSLayoutConstraint.activate([
-			titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-			titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			detailLabel.trailingAnchor.constraint(equalTo: rightArrow.leadingAnchor, constant: -8),
-			rightArrow.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-			rightArrow.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            horizontalStackView.heightAnchor.constraint(equalToConstant: 44),
+            horizontalStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            horizontalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            horizontalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            horizontalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
 		])
 	}
 

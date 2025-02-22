@@ -5,32 +5,61 @@
 //  Created by Lucas Calheiros on 16/05/23.
 //
 
-import RxSwift
-import RealmSwift
-import RxRealm
+import GRDB
 import Core
+import Combine
 
-internal class WaterConsumedRepositoryImpl: BaseRepository<WaterConsumedObject>, WaterConsumedRepository {
+internal class WaterConsumedRepositoryImpl: WaterConsumedRepository {
 
-	init() {
-		super.init(WaterManagementRealmProvider())
-	}
+    private let dbQueue: DatabaseQueue
 
-    func getWaterConsumedList() -> Observable<[WaterConsumed]> {
-        list()
+    init(dbQueue: DatabaseQueue) {
+        self.dbQueue = dbQueue
+    }
+
+    func getWaterConsumedList() -> AnyPublisher<[ConsumedCupInfo], any Error> {
+        return ValueObservation.tracking { db in
+            try WaterConsumed
+                .including(required: WaterConsumed.drink)
+                .asRequest(of: ConsumedCupInfo.self)
+                .fetchAll(db)
+        }
+        .publisher(in: dbQueue)
+        .eraseToAnyPublisher()
     }
     
-	func registerWaterConsumption(waterVolume: Int, sourceType: WaterSourceType) -> Completable {
-        save(
-            WaterConsumed(
-                volume: waterVolume,
+    func registerWaterConsumption(cup: WaterSource) async throws {
+        try await dbQueue.write { db in
+            try WaterConsumed(
+                volume: cup.volume,
                 consumptionTime: Date(),
-                waterSourceType: sourceType
-            ).toDataObject()
-        )
+                drinkId: cup.drinkId
+            ).insert(db)
+        }
     }
-    
-    func deleteWaterConsumed(_ waterConsumed: WaterConsumed) -> RxSwift.Completable {
-        delete(waterConsumed.toDataObject()._id)
+
+    func registerWaterConsumption(_ volume: Volume, _ drink: Drink) async throws {
+        try await dbQueue.write { db in
+            try WaterConsumed(
+                volume: volume.to(.milliliters).value.toInt(),
+                consumptionTime: Date(),
+                drinkId: drink.id!
+            ).insert(db)
+        }
+    }
+
+    func deleteWaterConsumed(_ waterConsumed: WaterConsumed) async throws {
+        let _ = try await dbQueue.write { db in
+            try WaterConsumed.deleteOne(db, key: waterConsumed.id)
+        }
     }
 }
+
+extension WaterConsumed: TableRecord, FetchableRecord, PersistableRecord {
+    static let drink = belongsTo(Drink.self)
+}
+
+extension ConsumedCupInfo: FetchableRecord {
+
+}
+

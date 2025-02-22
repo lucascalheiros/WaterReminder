@@ -48,8 +48,7 @@ class ManageNotificationsVC: UITableViewController {
 
     func observeViewModel() {
         manageNotificationsViewModel.$fixedNotification.combineLatest(manageNotificationsViewModel.$weekDaysState)
-            .receive(on: DispatchQueue.main)
-            .sink { notifications, weekDays in
+            .sinkUI { notifications, weekDays in
                 self.applySnapshot(
                     weekDays.map { SectionItems.weekDaysItem($0) } +
                     notifications.map { SectionItems.fixedNotificationItem($0) } +
