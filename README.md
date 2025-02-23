@@ -23,5 +23,6 @@ The domain layer uses a simplified variation of Clean Architecture, where we hav
 * Common modules: Usual behavior sharing modules, as Common (extensions and utilitary behaviors), Components (DesignSystem), and Core (required behavior sharing related to application business rule, as RxFlow steps)
 
 The structure for a Shared Domain module will look like:
+
 <img width="364" alt="image" src="https://github.com/user-attachments/assets/3dc049bb-6e04-4912-a58f-ddb15703194c" />
 
